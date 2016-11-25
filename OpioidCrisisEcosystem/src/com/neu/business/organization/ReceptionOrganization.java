@@ -5,10 +5,25 @@
  */
 package com.neu.business.organization;
 
+import com.neu.business.role.ChemistRole;
+import com.neu.business.role.ReceptionistRole;
+import com.neu.business.role.Role;
+import java.util.ArrayList;
+
 /**
  *
  * @author Soham
  */
-public class ReceptionOrganization extends Organization{
-    
+public class ReceptionOrganization extends Organization {
+
+    public ReceptionOrganization() {
+        super(Type.Receptionist.getValue());
+    }
+
+    @Override
+    public ArrayList<Role> getSupportedRole() {
+        ArrayList<Role> roles = new ArrayList<>();
+        roles.add(new ReceptionistRole());
+        return roles;
+    }
 }

@@ -5,10 +5,24 @@
  */
 package com.neu.business.organization;
 
+import com.neu.business.role.DoctorRole;
+import com.neu.business.role.Role;
+import java.util.ArrayList;
+
 /**
  *
  * @author Soham
  */
-public class DoctorOrganization extends Organization{
-    
+public class DoctorOrganization extends Organization {
+
+    public DoctorOrganization() {
+        super(Organization.Type.Doctor.getValue());
+    }
+
+    @Override
+    public ArrayList<Role> getSupportedRole() {
+        ArrayList<Role> roles = new ArrayList();
+        roles.add(new DoctorRole());
+        return roles;
+    }
 }
