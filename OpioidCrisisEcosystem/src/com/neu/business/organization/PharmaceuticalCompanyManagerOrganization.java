@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.neu.business.role;
+package com.neu.business.organization;
 
 /**
  *
- * @author shrikantmudholkar
+ * @author Soham
  */
-public abstract class Role {
+public class PharmaceuticalCompanyManagerOrganization extends Organization{
     
 }

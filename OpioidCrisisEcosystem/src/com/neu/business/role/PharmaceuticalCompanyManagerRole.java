@@ -9,6 +9,6 @@ package com.neu.business.role;
  *
  * @author shrikantmudholkar
  */
-public abstract class Role {
+public class PharmaceuticalCompanyManagerRole extends Role{
     
 }
