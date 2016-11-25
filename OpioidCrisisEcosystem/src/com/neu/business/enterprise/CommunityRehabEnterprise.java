@@ -9,6 +9,6 @@ package com.neu.business.enterprise;
  *
  * @author shrikantmudholkar
  */
-public class CommunityRehabEnterprise {
+public class CommunityRehabEnterprise extends Enterprise{
     
 }

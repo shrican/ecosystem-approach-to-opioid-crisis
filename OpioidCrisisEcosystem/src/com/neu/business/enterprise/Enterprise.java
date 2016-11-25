@@ -9,6 +9,6 @@ package com.neu.business.enterprise;
  *
  * @author shrikantmudholkar
  */
-public class Enterprise {
+public abstract class Enterprise {
     
 }
