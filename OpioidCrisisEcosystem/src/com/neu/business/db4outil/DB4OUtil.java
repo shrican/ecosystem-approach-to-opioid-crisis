@@ -17,14 +17,12 @@ import com.neu.business.EcoSystem;
  * @author Soham
  */
 public class DB4OUtil {
-    
-    
-    
+
     private static final String FILENAME = "D:\\DataBank.db4o"; // path to the data store, this can also be stored in java classes
     private static DB4OUtil dB4OUtil;
-    
-    public synchronized static DB4OUtil getInstance(){
-        if (dB4OUtil == null){
+
+    public synchronized static DB4OUtil getInstance() {
+        if (dB4OUtil == null) {
             dB4OUtil = new DB4OUtil();
         }
         return dB4OUtil;
@@ -63,7 +61,7 @@ public class DB4OUtil {
         conn.commit();
         conn.close();
     }
-    
+
 //    public EcoSystem retrieveSystem(){
 //        ObjectContainer conn = createConnection();
 //        ObjectSet<EcoSystem> systems = conn.query(EcoSystem.class); // Change to the object you want to save

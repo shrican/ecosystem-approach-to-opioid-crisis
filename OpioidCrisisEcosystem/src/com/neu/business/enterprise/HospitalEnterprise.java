@@ -5,10 +5,22 @@
  */
 package com.neu.business.enterprise;
 
+import com.neu.business.role.Role;
+import java.util.ArrayList;
+
 /**
  *
  * @author shrikantmudholkar
  */
-public class HospitalEnterprise extends Enterprise{
-    
+public class HospitalEnterprise extends Enterprise {
+
+    public HospitalEnterprise(String name) {
+        super(name, EnterpriseType.HospitalEnterprise);
+    }
+
+    @Override
+    public ArrayList<Role> getSupportedRole() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
