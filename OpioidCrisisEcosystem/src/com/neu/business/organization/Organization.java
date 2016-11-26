@@ -29,7 +29,7 @@ public abstract class Organization {
         Doctor("Doctor Organization"),
         Receptionist("Receptionist Organization"),
         Chemist("Chemist Organization"),
-        PhramaceuticalCompanyManager("Phramaceutical Company Manager Organization"),
+        PharmaceuticalCompanyManager("Pharmaceutical Company Manager Organization"),
         RehabilitationManager("Rehabilitation Manager Organization"),
         DEA("DEA Organization");
 
@@ -57,6 +57,46 @@ public abstract class Organization {
 
     public String toString() {
         return name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public WorkQueue getWorkQueue() {
+        return workQueue;
+    }
+
+    public void setWorkQueue(WorkQueue workQueue) {
+        this.workQueue = workQueue;
+    }
+
+    public EmployeeDirectory getEmployeeDirectory() {
+        return employeeDirectory;
+    }
+
+    public void setEmployeeDirectory(EmployeeDirectory employeeDirectory) {
+        this.employeeDirectory = employeeDirectory;
+    }
+
+    public UserAccountDirectory getUserAccountDirectory() {
+        return userAccountDirectory;
+    }
+
+    public void setUserAccountDirectory(UserAccountDirectory userAccountDirectory) {
+        this.userAccountDirectory = userAccountDirectory;
+    }
+
+    public int getOrganizationID() {
+        return organizationID;
+    }
+
+    public void setOrganizationID(int organizationID) {
+        this.organizationID = organizationID;
     }
 
 }
