@@ -122,18 +122,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         containerJPanel.setBackground(new java.awt.Color(255, 255, 255));
         containerJPanel.setPreferredSize(new java.awt.Dimension(900, 1000));
-
-        javax.swing.GroupLayout containerJPanelLayout = new javax.swing.GroupLayout(containerJPanel);
-        containerJPanel.setLayout(containerJPanelLayout);
-        containerJPanelLayout.setHorizontalGroup(
-            containerJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 814, Short.MAX_VALUE)
-        );
-        containerJPanelLayout.setVerticalGroup(
-            containerJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 742, Short.MAX_VALUE)
-        );
-
+        containerJPanel.setLayout(new java.awt.CardLayout());
         jSplitPane1.setRightComponent(containerJPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
