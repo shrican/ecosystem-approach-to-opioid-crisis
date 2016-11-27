@@ -9,9 +9,10 @@ import com.db4o.Db4oEmbedded;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 import com.db4o.config.EmbeddedConfiguration;
+import com.db4o.query.Predicate;
 import com.db4o.ta.TransparentPersistenceSupport;
 import com.neu.business.EcoSystem;
-import com.neu.business.ConfigureSytem;
+import com.neu.business.ConfigureSystem;
 
 /**
  *
@@ -19,7 +20,7 @@ import com.neu.business.ConfigureSytem;
  */
 public class DB4OUtil {
 
-    private static final String FILENAME = "DB4O\\DataBank.db4o"; // path to the data store, this can also be stored in java classes
+    private static final String FILENAME = "src\\DataBank.db4o"; // path to the data store
     private static DB4OUtil dB4OUtil;
 
     public synchronized static DB4OUtil getInstance() {
@@ -58,17 +59,30 @@ public class DB4OUtil {
 
     public synchronized void storeSystem(EcoSystem system) {
         ObjectContainer conn = createConnection();
+        deleteOldSystem(conn);
         conn.store(system);
         conn.commit();
         conn.close();
+    }
+
+    public void deleteOldSystem(ObjectContainer conn) {
+        ObjectSet<EcoSystem> systems = conn.query(new Predicate<EcoSystem>() {
+            @Override
+            public boolean match(EcoSystem et) {
+                return true;
+            }
+        });
+        for (EcoSystem ecoSystem : systems) {
+            conn.delete(ecoSystem);
+        }
     }
 
     public EcoSystem retrieveSystem() {
         ObjectContainer conn = createConnection();
         ObjectSet<EcoSystem> systems = conn.query(EcoSystem.class); // Change to the object you want to save
         EcoSystem system;
-        if (systems.size() == 0) {
-            system = ConfigureSytem.configure();  // If there's no System in the record, create a new one
+        if (systems.isEmpty()) {
+            system = ConfigureSystem.configure();  // If there's no System in the record, create a new one
         } else {
             system = systems.get(systems.size() - 1);
         }

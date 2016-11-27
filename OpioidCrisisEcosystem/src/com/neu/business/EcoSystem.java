@@ -17,19 +17,19 @@ import java.util.ArrayList;
  */
 public class EcoSystem extends Organization {
 
-    private static EcoSystem business;
+    private static EcoSystem ecoSystem;
     private ArrayList<Network> networkList;
-
-    public static EcoSystem getInstance() {
-        if (business == null) {
-            business = new EcoSystem();
-        }
-        return business;
-    }
 
     private EcoSystem() {
         super(null);
         networkList = new ArrayList<>();
+    }
+
+    public static EcoSystem getInstance() {
+        if (ecoSystem == null) {
+            ecoSystem = new EcoSystem();
+        }
+        return ecoSystem;
     }
 
     public ArrayList<Network> getNetworkList() {

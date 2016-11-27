@@ -13,7 +13,7 @@ import com.neu.business.useraccount.UserAccount;
  *
  * @author shrikantmudholkar
  */
-public class ConfigureSytem {
+public class ConfigureSystem {
 
     public static EcoSystem configure() {
 
