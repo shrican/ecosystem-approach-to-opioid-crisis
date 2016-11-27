@@ -11,7 +11,7 @@ import com.db4o.ObjectSet;
 import com.db4o.config.EmbeddedConfiguration;
 import com.db4o.ta.TransparentPersistenceSupport;
 import com.neu.business.EcoSystem;
-import com.neu.business.ConfigureSytem;
+import com.neu.business.ConfigureSystem;
 
 /**
  *
@@ -68,7 +68,7 @@ public class DB4OUtil {
         ObjectSet<EcoSystem> systems = conn.query(EcoSystem.class); // Change to the object you want to save
         EcoSystem system;
         if (systems.size() == 0) {
-            system = ConfigureSytem.configure();  // If there's no System in the record, create a new one
+            system = ConfigureSystem.configure();  // If there's no System in the record, create a new one
         } else {
             system = systems.get(systems.size() - 1);
         }
