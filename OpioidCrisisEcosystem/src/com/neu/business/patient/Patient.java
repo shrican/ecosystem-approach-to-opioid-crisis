@@ -11,4 +11,14 @@ package com.neu.business.patient;
  */
 public class Patient {
     
+    private String firstName;
+    private String lastName;
+    
+    private OpioidAbuseSymptomsHistory opioidAbuseSymptomsHistory;
+    private OpioidWithdrawalSymptomsHistory opioidWithdrawalSymptomsHistory;
+    private PostOpioidAddiction postOpioidAddiction;
+    
+    
+    
+    
 }
