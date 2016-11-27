@@ -11,6 +11,7 @@ import com.db4o.ObjectSet;
 import com.db4o.config.EmbeddedConfiguration;
 import com.db4o.ta.TransparentPersistenceSupport;
 import com.neu.business.EcoSystem;
+import com.neu.business.ConfigureSytem;
 
 /**
  *
@@ -18,7 +19,7 @@ import com.neu.business.EcoSystem;
  */
 public class DB4OUtil {
 
-    private static final String FILENAME = "D:\\DataBank.db4o"; // path to the data store, this can also be stored in java classes
+    private static final String FILENAME = "DB4O\\DataBank.db4o"; // path to the data store, this can also be stored in java classes
     private static DB4OUtil dB4OUtil;
 
     public synchronized static DB4OUtil getInstance() {
@@ -62,17 +63,16 @@ public class DB4OUtil {
         conn.close();
     }
 
-//    public EcoSystem retrieveSystem(){
-//        ObjectContainer conn = createConnection();
-//        ObjectSet<EcoSystem> systems = conn.query(EcoSystem.class); // Change to the object you want to save
-//        EcoSystem system;
-//        if (systems.size() == 0){
-//            system = ConfigureSystem.configure();  // If there's no System in the record, create a new one
-//        }
-//        else{
-//            system = systems.get(systems.size() - 1);
-//        }
-//        conn.close();
-//        return system;
-//    }
+    public EcoSystem retrieveSystem() {
+        ObjectContainer conn = createConnection();
+        ObjectSet<EcoSystem> systems = conn.query(EcoSystem.class); // Change to the object you want to save
+        EcoSystem system;
+        if (systems.size() == 0) {
+            system = ConfigureSytem.configure();  // If there's no System in the record, create a new one
+        } else {
+            system = systems.get(systems.size() - 1);
+        }
+        conn.close();
+        return system;
+    }
 }

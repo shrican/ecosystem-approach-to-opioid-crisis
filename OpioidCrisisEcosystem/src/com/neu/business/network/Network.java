@@ -16,8 +16,9 @@ public class Network {
     private String name;
     private EnterpriseDirectory enterpriseDirectory;
 
-    public Network() {
+    public Network(String name) {
         enterpriseDirectory = new EnterpriseDirectory();
+        this.name = name;
     }
 
     public EnterpriseDirectory getEnterpriseDirectory() {
@@ -26,10 +27,6 @@ public class Network {
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     @Override
