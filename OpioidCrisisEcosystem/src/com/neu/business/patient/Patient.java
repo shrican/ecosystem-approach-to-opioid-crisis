@@ -10,15 +10,14 @@ package com.neu.business.patient;
  * @author Soham
  */
 public class Patient {
-    
-    private String firstName;
-    private String lastName;
-    
+
+    private String name;
+
+    private String id;
+    private static int cnt = 0;
+
     private OpioidAbuseSymptomsHistory opioidAbuseSymptomsHistory;
     private OpioidWithdrawalSymptomsHistory opioidWithdrawalSymptomsHistory;
     private PostOpioidAddiction postOpioidAddiction;
-    
-    
-    
-    
+
 }

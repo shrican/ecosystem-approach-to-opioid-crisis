@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.neu.userinterface.doctorrole;
+package com.neu.userinterface.chemistrole;
 
 /**
  *
  * @author shrikantmudholkar
  */
-public class doctorWorkArea extends javax.swing.JPanel {
+public class ChemistWorkArea extends javax.swing.JPanel {
 
     /**
-     * Creates new form doctorWorkArea
+     * Creates new form chemistWorkArea
      */
-    public doctorWorkArea() {
+    public ChemistWorkArea() {
         initComponents();
     }
 

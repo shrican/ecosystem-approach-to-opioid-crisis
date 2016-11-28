@@ -92,5 +92,4 @@ public class OpioidAbuseSymptoms {
     public void setMuscleTension(boolean muscleTension) {
         this.muscleTension = muscleTension;
     }
-
 }

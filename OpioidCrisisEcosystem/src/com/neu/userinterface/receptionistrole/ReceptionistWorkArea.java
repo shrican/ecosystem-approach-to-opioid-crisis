@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.neu.userinterface.rehabmanagerrole;
+package com.neu.userinterface.receptionistrole;
 
 /**
  *
  * @author shrikantmudholkar
  */
-public class rehabManagerWorkArea extends javax.swing.JPanel {
+public class ReceptionistWorkArea extends javax.swing.JPanel {
 
     /**
-     * Creates new form rehabManagerWorkArea
+     * Creates new form receptionistWorkArea
      */
-    public rehabManagerWorkArea() {
+    public ReceptionistWorkArea() {
         initComponents();
     }
 

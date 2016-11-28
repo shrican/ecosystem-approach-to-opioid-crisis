@@ -9,12 +9,12 @@ package com.neu.userinterface.pharmaceuticalcompanymanagerrole;
  *
  * @author shrikantmudholkar
  */
-public class pharmaceuticalCompanyManagerWA extends javax.swing.JPanel {
+public class PharmaceuticalCompanyManagerWA extends javax.swing.JPanel {
 
     /**
      * Creates new form pharmaceuticalCompanyManagerWA
      */
-    public pharmaceuticalCompanyManagerWA() {
+    public PharmaceuticalCompanyManagerWA() {
         initComponents();
     }
 
