@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.neu.userinterface.adminrole;
+package com.neu.userinterface.adminrole.hospital;
 
 /**
  *
  * @author shrikantmudholkar
  */
-public class adminWorkArea extends javax.swing.JPanel {
+public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form adminWorkAreaJPanel
      */
-    public adminWorkArea() {
+    public HospitalAdminWorkAreaJPanel() {
         initComponents();
     }
 
