@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.neu.userinterface.adminrole.pharmacy;
+package com.neu.userinterface.adminrole.communityrehab;
 
 /**
  *
  * @author Soham
  */
-public class PharmacyAdminWorkAreaJPanel extends javax.swing.JPanel {
+public class ManageCommRehabOrganizationJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form PharmacyAdminWorkAreaJPanel
+     * Creates new form ManageCommRehabOrganizationJPanel
      */
-    public PharmacyAdminWorkAreaJPanel() {
+    public ManageCommRehabOrganizationJPanel() {
         initComponents();
     }
 

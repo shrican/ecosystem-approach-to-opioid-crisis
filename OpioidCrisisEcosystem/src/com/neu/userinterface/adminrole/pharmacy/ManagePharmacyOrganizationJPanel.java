@@ -9,12 +9,12 @@ package com.neu.userinterface.adminrole.pharmacy;
  *
  * @author Soham
  */
-public class PharmacyAdminWorkAreaJPanel extends javax.swing.JPanel {
+public class ManagePharmacyOrganizationJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form PharmacyAdminWorkAreaJPanel
+     * Creates new form ManagePharmacylOrganizationJPanel
      */
-    public PharmacyAdminWorkAreaJPanel() {
+    public ManagePharmacyOrganizationJPanel() {
         initComponents();
     }
 
