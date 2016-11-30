@@ -116,7 +116,7 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
     private void manageHospitalOrgJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageHospitalOrgJButtonActionPerformed
         // TODO add your handling code here:
         
-        ManageHospitalOrganizationJPanel manageHospitalOrganizationJPanel = new ManageHospitalOrganizationJPanel(userProcessContainer, enterprise);
+        ManageHospitalOrganizationJPanel manageHospitalOrganizationJPanel = new ManageHospitalOrganizationJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
         userProcessContainer.add("manageHospitalOrganizationJPanel", manageHospitalOrganizationJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -124,7 +124,7 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void manageHospitalEmpJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageHospitalEmpJButtonActionPerformed
         // TODO add your handling code here:
-        ManageHospitalEmployeeJPanel manageHospitalEmployeeJPanel = new ManageHospitalEmployeeJPanel(userProcessContainer, enterprise);
+        ManageHospitalEmployeeJPanel manageHospitalEmployeeJPanel = new ManageHospitalEmployeeJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
         userProcessContainer.add("manageHospitalEmployeeJPanel", manageHospitalEmployeeJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
