@@ -15,7 +15,7 @@ import javax.swing.JPanel;
  *
  * @author shrikantmudholkar
  */
-public class DoctorWorkArea extends javax.swing.JPanel {
+public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
     private DoctorOrganization organization;
@@ -25,7 +25,7 @@ public class DoctorWorkArea extends javax.swing.JPanel {
     /**
      * Creates new form doctorWorkArea
      */
-    public DoctorWorkArea(JPanel userProcessContainer, UserAccount account, DoctorOrganization organization, Enterprise enterprise) {
+    public DoctorWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, DoctorOrganization organization, Enterprise enterprise) {
         initComponents();
 
         this.userProcessContainer = userProcessContainer;
