@@ -5,17 +5,26 @@
  */
 package com.neu.userinterface.adminrole.communityrehab;
 
+import com.neu.business.enterprise.Enterprise;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Soham
  */
-public class CommRehabAdminWorkAreaJPanell extends javax.swing.JPanel {
+public class CommRehabAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form CommRehabAdminWorkAreaJPanell
      */
-    public CommRehabAdminWorkAreaJPanell() {
+    
+    private JPanel userProcessContainer;
+    private Enterprise enterprise;
+    
+    public CommRehabAdminWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
     }
 
     /**

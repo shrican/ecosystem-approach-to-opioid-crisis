@@ -5,6 +5,9 @@
  */
 package com.neu.userinterface.adminrole.drugenforcementadministration;
 
+import com.neu.business.enterprise.Enterprise;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Soham
@@ -14,8 +17,14 @@ public class DEAAdminWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form DEAAdminWorkAreaJPanel
      */
-    public DEAAdminWorkAreaJPanel() {
+    
+    private JPanel userProcessContainer;
+    private Enterprise enterprise;
+    
+    public DEAAdminWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
     }
 
     /**

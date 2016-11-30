@@ -5,6 +5,9 @@
  */
 package com.neu.userinterface.adminrole.pharmaceuticalcompany;
 
+import com.neu.business.enterprise.Enterprise;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Soham
@@ -14,8 +17,14 @@ public class PharmaceuticalCompanyAdminWorkAreaJPanel extends javax.swing.JPanel
     /**
      * Creates new form PharmaceuticalCompanyAdminWorkArea
      */
-    public PharmaceuticalCompanyAdminWorkAreaJPanel() {
+    
+    private JPanel userProcessContainer;
+    private Enterprise enterprise;
+    
+    public PharmaceuticalCompanyAdminWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
     }
 
     /**

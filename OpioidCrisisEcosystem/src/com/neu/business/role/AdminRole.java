@@ -9,8 +9,11 @@ import com.neu.business.EcoSystem;
 import com.neu.business.enterprise.Enterprise;
 import com.neu.business.organization.Organization;
 import com.neu.business.useraccount.UserAccount;
+import com.neu.userinterface.adminrole.communityrehab.CommRehabAdminWorkAreaJPanel;
+import com.neu.userinterface.adminrole.drugenforcementadministration.DEAAdminWorkAreaJPanel;
 import com.neu.userinterface.adminrole.hospital.HospitalAdminWorkAreaJPanel;
 import com.neu.userinterface.adminrole.pharmacy.PharmacyAdminWorkAreaJPanel;
+import com.neu.userinterface.adminrole.pharmaceuticalcompany.PharmaceuticalCompanyAdminWorkAreaJPanel;
 import javax.swing.JPanel;
 
 /**
@@ -31,6 +34,12 @@ public class AdminRole extends Role {
             return new HospitalAdminWorkAreaJPanel(userProcessContainer, enterprise);
         } else if (enterprise.getEnterpriseType().getValue().equals("Pharmacy Enterprise")) {
             return new PharmacyAdminWorkAreaJPanel(userProcessContainer, enterprise);
+        } else if (enterprise.getEnterpriseType().getValue().equals("Pharmaceutical Company Enterprise")) {
+            return new PharmaceuticalCompanyAdminWorkAreaJPanel(userProcessContainer, enterprise);
+        } else if (enterprise.getEnterpriseType().getValue().equals("Drug Enforcement Administration Enterprise")) {
+            return new DEAAdminWorkAreaJPanel(userProcessContainer, enterprise);
+        } else if (enterprise.getEnterpriseType().getValue().equals("Community Rehab Enterprise")) {
+            return new CommRehabAdminWorkAreaJPanel(userProcessContainer, enterprise);
         }
 
         return null;
