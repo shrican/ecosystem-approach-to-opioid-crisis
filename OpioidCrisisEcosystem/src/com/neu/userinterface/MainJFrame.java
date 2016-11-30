@@ -57,6 +57,7 @@ public class MainJFrame extends javax.swing.JFrame {
         setBackground(new java.awt.Color(247, 247, 247));
 
         jSplitPane1.setDividerLocation(180);
+        jSplitPane1.setDividerSize(3);
 
         loginJPanel.setBackground(new java.awt.Color(244, 244, 244));
         loginJPanel.setPreferredSize(new java.awt.Dimension(1000, 688));
