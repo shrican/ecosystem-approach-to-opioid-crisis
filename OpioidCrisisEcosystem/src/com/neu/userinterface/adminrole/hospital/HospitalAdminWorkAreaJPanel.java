@@ -6,6 +6,8 @@
 package com.neu.userinterface.adminrole.hospital;
 
 import com.neu.business.enterprise.Enterprise;
+import com.neu.userinterface.systemadminrole.ManageNetworkJPanel;
+import java.awt.CardLayout;
 import javax.swing.JPanel;
 
 /**
@@ -38,32 +40,123 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        manageHospitalOrgJButton = new javax.swing.JButton();
+        manageHospitalEmpJButton = new javax.swing.JButton();
+        manageHospitalUsersJButton = new javax.swing.JButton();
+        manageHospitalRehabAssoJButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Hospital Admin Work Area");
 
+        manageHospitalOrgJButton.setText("Manage Organization");
+        manageHospitalOrgJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageHospitalOrgJButtonActionPerformed(evt);
+            }
+        });
+
+        manageHospitalEmpJButton.setText("Manage Employee");
+        manageHospitalEmpJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageHospitalEmpJButtonActionPerformed(evt);
+            }
+        });
+
+        manageHospitalUsersJButton.setText("Manage User Account");
+        manageHospitalUsersJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageHospitalUsersJButtonActionPerformed(evt);
+            }
+        });
+
+        manageHospitalRehabAssoJButton.setText("Manage Rehabilitation Association");
+        manageHospitalRehabAssoJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageHospitalRehabAssoJButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(720, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(199, 199, 199)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(manageHospitalOrgJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(manageHospitalUsersJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(manageHospitalRehabAssoJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(manageHospitalEmpJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(517, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(613, Short.MAX_VALUE))
+                .addGap(71, 71, 71)
+                .addComponent(manageHospitalOrgJButton)
+                .addGap(18, 18, 18)
+                .addComponent(manageHospitalEmpJButton)
+                .addGap(18, 18, 18)
+                .addComponent(manageHospitalUsersJButton)
+                .addGap(18, 18, 18)
+                .addComponent(manageHospitalRehabAssoJButton)
+                .addContainerGap(396, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void manageHospitalOrgJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageHospitalOrgJButtonActionPerformed
+        // TODO add your handling code here:
+        
+        ManageHospitalOrganizationJPanel manageHospitalOrganizationJPanel = new ManageHospitalOrganizationJPanel(userProcessContainer, enterprise);
+        userProcessContainer.add("manageHospitalOrganizationJPanel", manageHospitalOrganizationJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_manageHospitalOrgJButtonActionPerformed
+
+    private void manageHospitalEmpJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageHospitalEmpJButtonActionPerformed
+        // TODO add your handling code here:
+        ManageHospitalEmployeeJPanel manageHospitalEmployeeJPanel = new ManageHospitalEmployeeJPanel(userProcessContainer, enterprise);
+        userProcessContainer.add("manageHospitalEmployeeJPanel", manageHospitalEmployeeJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+        
+    }//GEN-LAST:event_manageHospitalEmpJButtonActionPerformed
+
+    private void manageHospitalUsersJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageHospitalUsersJButtonActionPerformed
+        // TODO add your handling code here:
+        
+        ManageHospitalUserAccountJPanel manageHospitalUserAccountJPanel = new ManageHospitalUserAccountJPanel(userProcessContainer, enterprise);
+        userProcessContainer.add("manageHospitalUserAccountJPanel", manageHospitalUserAccountJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+        
+    }//GEN-LAST:event_manageHospitalUsersJButtonActionPerformed
+
+    private void manageHospitalRehabAssoJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageHospitalRehabAssoJButtonActionPerformed
+        // TODO add your handling code here:
+        
+        ManageHospitalRehabAssociationJPanel manageHospitalRehabAssociationJPanel = new ManageHospitalRehabAssociationJPanel(userProcessContainer, enterprise);
+        userProcessContainer.add("manageHospitalRehabAssociationJPanel", manageHospitalRehabAssociationJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+        
+    }//GEN-LAST:event_manageHospitalRehabAssoJButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton manageHospitalEmpJButton;
+    private javax.swing.JButton manageHospitalOrgJButton;
+    private javax.swing.JButton manageHospitalRehabAssoJButton;
+    private javax.swing.JButton manageHospitalUsersJButton;
     // End of variables declaration//GEN-END:variables
 }
