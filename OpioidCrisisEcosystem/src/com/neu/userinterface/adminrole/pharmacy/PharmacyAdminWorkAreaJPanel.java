@@ -5,6 +5,9 @@
  */
 package com.neu.userinterface.adminrole.pharmacy;
 
+import com.neu.business.enterprise.Enterprise;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Soham
@@ -14,7 +17,15 @@ public class PharmacyAdminWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form PharmacyAdminWorkAreaJPanel
      */
-    public PharmacyAdminWorkAreaJPanel() {
+    
+    private JPanel userProcessContainer;
+    private Enterprise enterprise;
+    
+    public PharmacyAdminWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise) {
+        initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
+        
         initComponents();
     }
 
@@ -27,19 +38,31 @@ public class PharmacyAdminWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setText("Pharmacy Admin Work Area");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addContainerGap(197, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addContainerGap(272, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -29,6 +29,15 @@ public class Network {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEnterpriseDirectory(EnterpriseDirectory enterpriseDirectory) {
+        this.enterpriseDirectory = enterpriseDirectory;
+    }
+    
+
     @Override
     public String toString() {
         return name;
