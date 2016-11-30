@@ -33,7 +33,7 @@ public class ManageHospitalUserAccountJPanel extends javax.swing.JPanel {
         
         popOrganizationComboBox();
         // employeeJComboBox.removeAllItems();
-        popData();
+        populateUserTableData();
     }
 
     /**
@@ -227,17 +227,17 @@ public class ManageHospitalUserAccountJPanel extends javax.swing.JPanel {
         }
     }
 
-    public void popData() {
+    public void populateUserTableData() {
 
         DefaultTableModel model = (DefaultTableModel) userJTable.getModel();
 
         model.setRowCount(0);
 
         for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
-            for (UserAccount ua : organization.getUserAccountDirectory().getUserAccountList()) {
+            for (UserAccount userAccount : organization.getUserAccountDirectory().getUserAccountList()) {
                 Object row[] = new Object[2];
-                row[0] = ua;
-                row[1] = ua.getRole();
+                row[0] = userAccount;
+                row[1] = userAccount.getRole();
                 ((DefaultTableModel) userJTable.getModel()).addRow(row);
             }
         }
@@ -267,7 +267,7 @@ public class ManageHospitalUserAccountJPanel extends javax.swing.JPanel {
 
         organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
 
-        popData();
+        populateUserTableData();
     }//GEN-LAST:event_createUserJButtonActionPerformed
 
 
