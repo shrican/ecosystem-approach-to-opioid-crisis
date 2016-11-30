@@ -32,7 +32,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;
-        
+
         populateTable();
         populateNetworkComboBox();
     }
@@ -229,13 +229,14 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         String name = nameJTextField.getText();
 
         Employee employee = enterprise.getEmployeeDirectory().createEmployee(name);
+        
+        new AdminRole();
 
         UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new AdminRole());
+        
         populateTable();
     }//GEN-LAST:event_addUserAccountJButtonActionPerformed
 
-    
-    
     private void populateNetworkComboBox() {
         networkJComboBox.removeAllItems();
 
@@ -252,7 +253,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         }
 
     }
-    
+
     private void populateTable() {
         DefaultTableModel model = (DefaultTableModel) enterpriseJTable.getModel();
 

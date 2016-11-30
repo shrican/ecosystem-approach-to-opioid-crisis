@@ -19,17 +19,20 @@ import javax.swing.JPanel;
  */
 public class AdminRole extends Role {
 
+    public AdminRole() {
+
+        super();
+    }
+
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
 
-        if (enterprise.getEnterpriseType().getValue() == "Hospital Enterprise") {
+        if (enterprise.getEnterpriseType().getValue().equals("Hospital Enterprise")) {
             return new HospitalAdminWorkAreaJPanel(userProcessContainer, enterprise);
-        } 
-        
-        else if (enterprise.getEnterpriseType().getValue() == "Pharmacy Enterprise") {
+        } else if (enterprise.getEnterpriseType().getValue().equals("Pharmacy Enterprise")) {
             return new PharmacyAdminWorkAreaJPanel(userProcessContainer, enterprise);
         }
-        
+
         return null;
     }
 }

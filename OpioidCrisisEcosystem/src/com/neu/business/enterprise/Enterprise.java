@@ -62,7 +62,5 @@ public abstract class Enterprise extends Organization {
     public void setEnterpriseType(EnterpriseType enterpriseType) {
         this.enterpriseType = enterpriseType;
     }
-    
-    
 
 }
