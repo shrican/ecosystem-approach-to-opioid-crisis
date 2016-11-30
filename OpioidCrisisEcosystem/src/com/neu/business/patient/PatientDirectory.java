@@ -14,4 +14,6 @@ import java.util.List;
 public class PatientDirectory {
     
     private List<Patient> patientList;
+    
+    
 }
