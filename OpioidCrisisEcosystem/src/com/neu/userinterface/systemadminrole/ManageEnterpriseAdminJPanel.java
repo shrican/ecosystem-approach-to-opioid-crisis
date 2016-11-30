@@ -223,8 +223,6 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
 
         Employee employee = enterprise.getEmployeeDirectory().createEmployee(name);
         
-        new AdminRole();
-
         UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new AdminRole());
         
         populateTable();
