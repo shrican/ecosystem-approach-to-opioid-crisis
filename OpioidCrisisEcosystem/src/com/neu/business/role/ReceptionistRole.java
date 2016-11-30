@@ -8,7 +8,9 @@ package com.neu.business.role;
 import com.neu.business.EcoSystem;
 import com.neu.business.enterprise.Enterprise;
 import com.neu.business.organization.Organization;
+import com.neu.business.organization.ReceptionOrganization;
 import com.neu.business.useraccount.UserAccount;
+import com.neu.userinterface.receptionistrole.ReceptionistWorkAreaJPanel;
 import javax.swing.JPanel;
 
 /**
@@ -18,8 +20,8 @@ import javax.swing.JPanel;
 public class ReceptionistRole extends Role {
 
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem system) {
+        return new ReceptionistWorkAreaJPanel(userProcessContainer, account, (ReceptionOrganization)organization, enterprise);
     }
     
 }

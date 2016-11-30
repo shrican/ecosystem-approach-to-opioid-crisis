@@ -5,12 +5,25 @@
  */
 package com.neu.business.workqueue;
 
+import com.neu.business.patient.Patient;
+
 /**
  *
  * @author Soham
  */
 public class ScheduleAppointmentWorkRequest extends WorkRequest {
-    
-    
+
+    private int id;
+    private static int countId = 0;
+
+    private Patient patient;
+
+    public ScheduleAppointmentWorkRequest() {
+        id = ++countId;
+    }
+
+    public int getId() {
+        return id;
+    }
 
 }
