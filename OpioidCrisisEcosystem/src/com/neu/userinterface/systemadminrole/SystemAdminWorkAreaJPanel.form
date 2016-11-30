@@ -40,6 +40,7 @@
     <Container class="javax.swing.JSplitPane" name="splitPane">
       <Properties>
         <Property name="dividerLocation" type="int" value="160"/>
+        <Property name="dividerSize" type="int" value="3"/>
       </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout"/>
@@ -112,7 +113,7 @@
                           <Component id="manageEnterpriseJButton" alignment="0" max="32767" attributes="0"/>
                           <Component id="manageAdminJButton" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="990" max="32767" attributes="0"/>
+                      <EmptySpace pref="992" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

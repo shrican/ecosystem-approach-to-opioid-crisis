@@ -103,6 +103,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
 
         splitPane.setDividerLocation(160);
+        splitPane.setDividerSize(3);
 
         jScrollPane1.setViewportView(networkTree);
 
@@ -166,7 +167,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                     .addComponent(manageNetworkJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(manageEnterpriseJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(manageAdminJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(990, Short.MAX_VALUE))
+                .addContainerGap(992, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

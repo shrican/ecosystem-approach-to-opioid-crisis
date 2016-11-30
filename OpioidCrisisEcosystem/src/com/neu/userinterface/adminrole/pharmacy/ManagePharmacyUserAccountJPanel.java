@@ -5,6 +5,9 @@
  */
 package com.neu.userinterface.adminrole.pharmacy;
 
+import com.neu.business.enterprise.Enterprise;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Soham
@@ -16,6 +19,10 @@ public class ManagePharmacyUserAccountJPanel extends javax.swing.JPanel {
      */
     public ManagePharmacyUserAccountJPanel() {
         initComponents();
+    }
+
+    ManagePharmacyUserAccountJPanel(JPanel userProcessContainer, Enterprise enterprise) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
