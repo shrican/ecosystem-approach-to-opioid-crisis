@@ -30,6 +30,8 @@ public class ManageHospitalEmployeeJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.organizationDirectory = organizationDirectory;
+        populateOrganizationComboBox();
+        populateOrganizationEmpComboBox();
     }
     
     

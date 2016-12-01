@@ -6,6 +6,7 @@
 package com.neu.userinterface.receptionistrole;
 
 import com.neu.business.enterprise.Enterprise;
+import com.neu.business.enterprise.HospitalEnterprise;
 import com.neu.business.organization.ReceptionOrganization;
 import com.neu.business.useraccount.UserAccount;
 import java.awt.CardLayout;
@@ -26,7 +27,7 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
     private Enterprise enterprise;
     private UserAccount userAccount;
     
-    public ReceptionistWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, ReceptionOrganization organization, Enterprise enterprise) {
+    public ReceptionistWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, ReceptionOrganization organization, HospitalEnterprise enterprise) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
@@ -51,6 +52,8 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         scheduleSummaryJTable = new javax.swing.JTable();
         viewPatientDetailsJButton = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Reception Work Area");
@@ -106,30 +109,31 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(100, 100, 100)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1)
+                    .addComponent(managePatientJButton1)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(viewPatientDetailsJButton)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(managePatientJButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(managePatientJButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(212, Short.MAX_VALUE))
+                        .addComponent(managePatientJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(178, 178, 178)
+                        .addComponent(viewPatientDetailsJButton))
+                    .addComponent(jScrollPane1))
+                .addContainerGap(200, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {managePatientJButton, managePatientJButton1, viewPatientDetailsJButton});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(49, 49, 49)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(viewPatientDetailsJButton)
+                .addGap(46, 46, 46)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(62, 62, 62)
-                .addComponent(managePatientJButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(managePatientJButton)
+                    .addComponent(viewPatientDetailsJButton))
                 .addGap(32, 32, 32)
                 .addComponent(managePatientJButton1)
                 .addContainerGap(245, Short.MAX_VALUE))
@@ -139,7 +143,7 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
     private void managePatientJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_managePatientJButtonActionPerformed
         // TODO add your handling code here:
         
-        ManagePatientJPanel managePatientJPanel = new ManagePatientJPanel( );
+        ManagePatientJPanel managePatientJPanel = new ManagePatientJPanel(userProcessContainer  );
         userProcessContainer.add("managePatientJPanel", managePatientJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

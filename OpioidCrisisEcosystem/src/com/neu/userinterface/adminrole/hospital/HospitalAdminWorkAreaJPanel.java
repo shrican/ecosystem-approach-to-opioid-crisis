@@ -6,6 +6,7 @@
 package com.neu.userinterface.adminrole.hospital;
 
 import com.neu.business.enterprise.Enterprise;
+import com.neu.business.patient.PatientDirectory;
 import com.neu.userinterface.systemadminrole.ManageNetworkJPanel;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -22,6 +23,7 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
     
     private JPanel userProcessContainer;
     private Enterprise enterprise;
+    private PatientDirectory patientDirectory;
     
     public HospitalAdminWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();

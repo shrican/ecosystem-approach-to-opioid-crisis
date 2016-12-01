@@ -25,5 +25,4 @@ public class ScheduleAppointmentWorkRequest extends WorkRequest {
     public int getId() {
         return id;
     }
-
 }

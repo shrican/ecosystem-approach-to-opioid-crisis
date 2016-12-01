@@ -5,17 +5,30 @@
  */
 package com.neu.userinterface.receptionistrole;
 
+import com.neu.business.EcoSystem;
+import com.neu.business.patient.Patient;
+import com.neu.business.patient.PatientDirectory;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Soham
  */
 public class ManagePatientJPanel extends javax.swing.JPanel {
+    
+    private JPanel userProcessContainer;
+    
+    private PatientDirectory patientDirectory;
 
     /**
      * Creates new form ManagePatientJPanel
      */
-    public ManagePatientJPanel() {
+    public ManagePatientJPanel(JPanel userProcessContainer) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.patientDirectory = EcoSystem.getPatientDirectory();
+        
     }
 
     /**
@@ -35,10 +48,11 @@ public class ManagePatientJPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         patientPhoneJTextField = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        patientPhoneJTextField1 = new javax.swing.JTextField();
+        patientAgeJTextField = new javax.swing.JTextField();
         addPatientJButton = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         patientBloodGroupJTextField = new javax.swing.JTextField();
+        backJButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -54,8 +68,26 @@ public class ManagePatientJPanel extends javax.swing.JPanel {
         jLabel5.setText("Age :");
 
         addPatientJButton.setText("Add ");
+        addPatientJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addPatientJButtonActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Blood Group :");
+
+        patientBloodGroupJTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                patientBloodGroupJTextFieldActionPerformed(evt);
+            }
+        });
+
+        backJButton1.setText("<< Back");
+        backJButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backJButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -69,30 +101,29 @@ public class ManagePatientJPanel extends javax.swing.JPanel {
                             .addGap(100, 100, 100)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGap(95, 95, 95)
                                     .addComponent(patientNameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jLabel1)))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(77, 77, 77)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabel4)
-                                .addComponent(jLabel3))
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel2))
+                            .addGap(33, 33, 33)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(patientGenderJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(33, 33, 33)
-                                    .addComponent(patientPhoneJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addGap(33, 33, 33)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(patientBloodGroupJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(patientPhoneJTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(patientGenderJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(patientPhoneJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(backJButton1)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel6))
+                            .addGap(33, 33, 33)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(patientBloodGroupJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(patientAgeJTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(683, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -111,7 +142,7 @@ public class ManagePatientJPanel extends javax.swing.JPanel {
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(patientPhoneJTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(patientAgeJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -122,23 +153,50 @@ public class ManagePatientJPanel extends javax.swing.JPanel {
                     .addComponent(patientPhoneJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(addPatientJButton)
-                .addContainerGap(383, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 309, Short.MAX_VALUE)
+                .addComponent(backJButton1)
+                .addGap(45, 45, 45))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void backJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton1ActionPerformed
+        // TODO add your handling code here:
+
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_backJButton1ActionPerformed
+
+    private void addPatientJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPatientJButtonActionPerformed
+        // TODO add your handling code here:
+
+        Patient patient = patientDirectory.addPatient();
+        patient.setName(patientNameJTextField.getText());
+        patient.setGender(patientGenderJTextField.getText());
+        patient.setAge(Integer.parseInt(patientAgeJTextField.getText()));
+        patient.setBloodGroup(patientBloodGroupJTextField.getText());
+        patient.setPhoneNo(patientPhoneJTextField.getText());
+
+    }//GEN-LAST:event_addPatientJButtonActionPerformed
+
+    private void patientBloodGroupJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patientBloodGroupJTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_patientBloodGroupJTextFieldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addPatientJButton;
+    private javax.swing.JButton backJButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JTextField patientAgeJTextField;
     private javax.swing.JTextField patientBloodGroupJTextField;
     private javax.swing.JTextField patientGenderJTextField;
     private javax.swing.JTextField patientNameJTextField;
     private javax.swing.JTextField patientPhoneJTextField;
-    private javax.swing.JTextField patientPhoneJTextField1;
     // End of variables declaration//GEN-END:variables
 }

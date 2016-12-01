@@ -30,6 +30,12 @@ public class Patient {
 
     public Patient() {
         //auto increment
+        id = String.valueOf(count);
+        opioidAbuseSymptomsHistory = new OpioidAbuseSymptomsHistory();
+        opioidWithdrawalSymptomsHistory = new OpioidWithdrawalSymptomsHistory();
+        postOpioidAddiction = new PostOpioidAddiction();
+        prescriptionHistory = new PrescriptionHistory();
+
     }
 
     public String getName() {

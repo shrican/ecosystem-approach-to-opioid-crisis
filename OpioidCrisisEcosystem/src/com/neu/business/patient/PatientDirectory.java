@@ -5,6 +5,7 @@
  */
 package com.neu.business.patient;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,8 +13,29 @@ import java.util.List;
  * @author Soham
  */
 public class PatientDirectory {
-    
+
     private List<Patient> patientList;
-    
-    
+    private static PatientDirectory patientDirectory;
+
+    private PatientDirectory() {
+        patientList = new ArrayList<>();
+    }
+
+    public static PatientDirectory getInstance() {
+        if (patientDirectory == null) {
+            patientDirectory = new PatientDirectory();
+        }
+        return patientDirectory;
+    }
+
+    public List<Patient> getPatientList() {
+        return patientList;
+    }
+
+    public Patient addPatient() {
+        Patient patient = new Patient();
+        patientList.add(patient);
+        return patient;
+    }
+
 }

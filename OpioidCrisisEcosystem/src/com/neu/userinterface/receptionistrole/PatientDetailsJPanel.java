@@ -5,17 +5,23 @@
  */
 package com.neu.userinterface.receptionistrole;
 
+import com.neu.business.EcoSystem;
+import com.neu.business.patient.PatientDirectory;
+
 /**
  *
  * @author Soham
  */
 public class PatientDetailsJPanel extends javax.swing.JPanel {
 
+    private PatientDirectory patientDirectory;
+
     /**
      * Creates new form PatientDetailsJPanel
      */
     public PatientDetailsJPanel() {
         initComponents();
+        this.patientDirectory = EcoSystem.getPatientDirectory();
     }
 
     /**
@@ -64,6 +70,11 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
         patientPhoneJTextField.setEditable(false);
 
         updatePatientJButton.setText("Update");
+        updatePatientJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updatePatientJButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -136,6 +147,10 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
                 .addContainerGap(332, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void updatePatientJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePatientJButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updatePatientJButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
