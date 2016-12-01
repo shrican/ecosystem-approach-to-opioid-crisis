@@ -18,6 +18,13 @@ public class OpioidAbuseSymptomsHistory {
     public List<OpioidAbuseSymptoms> getOpioidAbuseSysmpomsList() {
         return opioidAbuseSysmpomsList;
     }
+    
+    public OpioidAbuseSymptoms addAbuseSymptom()
+    {
+        OpioidAbuseSymptoms oas = new OpioidAbuseSymptoms();
+        opioidAbuseSysmpomsList.add(oas);
+        return oas;
+    }
 
     public void setOpioidAbuseSysmpomsList(List<OpioidAbuseSymptoms> opioidAbuseSysmpomsList) {
         this.opioidAbuseSysmpomsList = opioidAbuseSysmpomsList;

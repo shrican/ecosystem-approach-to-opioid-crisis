@@ -18,6 +18,13 @@ public class OpioidWithdrawalSymptomsHistory {
     public List<OpioidWithdrawalSymptoms> getOpioidWithdrawalSymptomsList() {
         return opioidWithdrawalSymptomsList;
     }
+    
+    public OpioidWithdrawalSymptoms addWithdrawalSymptom()
+    {
+        OpioidWithdrawalSymptoms ows = new OpioidWithdrawalSymptoms();
+        opioidWithdrawalSymptomsList.add(ows);
+        return ows;
+    }
 
     public void setOpioidWithdrawalSymptomsList(List<OpioidWithdrawalSymptoms> opioidWithdrawalSymptomsList) {
         this.opioidWithdrawalSymptomsList = opioidWithdrawalSymptomsList;

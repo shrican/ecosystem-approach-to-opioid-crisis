@@ -24,6 +24,7 @@ public class Patient {
     private OpioidWithdrawalSymptomsHistory opioidWithdrawalSymptomsHistory;
     private PostOpioidAddiction postOpioidAddiction;
     private PrescriptionHistory prescriptionHistory;
+    private PatientSymptomsHistory symptomsHistory;
 
     private String id;
     private static int count = 0;
@@ -35,7 +36,7 @@ public class Patient {
         opioidWithdrawalSymptomsHistory = new OpioidWithdrawalSymptomsHistory();
         postOpioidAddiction = new PostOpioidAddiction();
         prescriptionHistory = new PrescriptionHistory();
-
+        symptomsHistory = new PatientSymptomsHistory();
     }
 
     public String getName() {

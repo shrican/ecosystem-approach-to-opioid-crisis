@@ -5,6 +5,7 @@
  */
 package com.neu.business.patient;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,6 +14,14 @@ import java.util.List;
  */
 public class PatientSymptomsHistory {
   
+    private ArrayList<Symptoms> symptomHistory;
+
+    public ArrayList<Symptoms> getSymptomHistory() {
+        return symptomHistory;
+    }
      
-    
+    public void addSymptoms(Symptoms s)
+    {
+        symptomHistory.add(s);
+    }
 }
