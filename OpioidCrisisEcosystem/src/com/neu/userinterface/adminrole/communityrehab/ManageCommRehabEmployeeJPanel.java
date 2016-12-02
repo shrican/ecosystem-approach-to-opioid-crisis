@@ -5,6 +5,9 @@
  */
 package com.neu.userinterface.adminrole.communityrehab;
 
+import com.neu.business.organization.OrganizationDirectory;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Soham
@@ -14,8 +17,13 @@ public class ManageCommRehabEmployeeJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ManageCommRehabEmployeeJPanel
      */
-    public ManageCommRehabEmployeeJPanel() {
+    private JPanel userProcessContainer;
+    private OrganizationDirectory organizationDirectory;
+    
+    public ManageCommRehabEmployeeJPanel(JPanel userProcessContainer, OrganizationDirectory organizationDirectory) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.organizationDirectory = organizationDirectory;
     }
 
     /**

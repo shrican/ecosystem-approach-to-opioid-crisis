@@ -6,6 +6,7 @@
 package com.neu.userinterface.adminrole.pharmaceuticalcompany;
 
 import com.neu.business.enterprise.Enterprise;
+import java.awt.CardLayout;
 import javax.swing.JPanel;
 
 /**
@@ -37,30 +38,96 @@ public class PharmaceuticalCompanyAdminWorkAreaJPanel extends javax.swing.JPanel
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        managePharmaceuticalOrgJButton = new javax.swing.JButton();
+        managePharmaceuticalEmpJButton = new javax.swing.JButton();
+        managePharmaceuticalUsersJButton = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Pharmaceutical Company Admin Work Area");
+
+        managePharmaceuticalOrgJButton.setText("Manage Organization");
+        managePharmaceuticalOrgJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                managePharmaceuticalOrgJButtonActionPerformed(evt);
+            }
+        });
+
+        managePharmaceuticalEmpJButton.setText("Manage Employee");
+        managePharmaceuticalEmpJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                managePharmaceuticalEmpJButtonActionPerformed(evt);
+            }
+        });
+
+        managePharmaceuticalUsersJButton.setText("Manage User Account");
+        managePharmaceuticalUsersJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                managePharmaceuticalUsersJButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(494, Short.MAX_VALUE))
+                .addGap(96, 96, 96)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(managePharmaceuticalOrgJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(managePharmaceuticalUsersJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(managePharmaceuticalEmpJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(410, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(36, 36, 36)
                 .addComponent(jLabel1)
-                .addContainerGap(565, Short.MAX_VALUE))
+                .addGap(71, 71, 71)
+                .addComponent(managePharmaceuticalOrgJButton)
+                .addGap(25, 25, 25)
+                .addComponent(managePharmaceuticalEmpJButton)
+                .addGap(25, 25, 25)
+                .addComponent(managePharmaceuticalUsersJButton)
+                .addContainerGap(346, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void managePharmaceuticalOrgJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_managePharmaceuticalOrgJButtonActionPerformed
+        // TODO add your handling code here:
+
+        ManagePharmaceuticalOrganizationJPanel managePharmaceuticalOrganizationJPanel = new ManagePharmaceuticalOrganizationJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
+        userProcessContainer.add("managePharmaceuticalOrganizationJPanel", managePharmaceuticalOrganizationJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_managePharmaceuticalOrgJButtonActionPerformed
+
+    private void managePharmaceuticalEmpJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_managePharmaceuticalEmpJButtonActionPerformed
+        // TODO add your handling code here:
+        ManagePharmaceuticalEmployeeJPanel managePharmaceuticalEmployeeJPanel = new ManagePharmaceuticalEmployeeJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
+        userProcessContainer.add("managePharmaceuticalEmployeeJPanel", managePharmaceuticalEmployeeJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+
+    }//GEN-LAST:event_managePharmaceuticalEmpJButtonActionPerformed
+
+    private void managePharmaceuticalUsersJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_managePharmaceuticalUsersJButtonActionPerformed
+        // TODO add your handling code here:
+
+        ManagePharmaceuticalUserAccountJPanel managePharmaceuticalUserAccountJPanel = new ManagePharmaceuticalUserAccountJPanel(userProcessContainer, enterprise);
+        userProcessContainer.add("managePharmaceuticalUserAccountJPanel", managePharmaceuticalUserAccountJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+
+    }//GEN-LAST:event_managePharmaceuticalUsersJButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton managePharmaceuticalEmpJButton;
+    private javax.swing.JButton managePharmaceuticalOrgJButton;
+    private javax.swing.JButton managePharmaceuticalUsersJButton;
     // End of variables declaration//GEN-END:variables
 }

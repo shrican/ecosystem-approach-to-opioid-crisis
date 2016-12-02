@@ -6,6 +6,7 @@
 package com.neu.userinterface.adminrole.communityrehab;
 
 import com.neu.business.enterprise.Enterprise;
+import java.awt.CardLayout;
 import javax.swing.JPanel;
 
 /**
@@ -37,29 +38,96 @@ public class CommRehabAdminWorkAreaJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        manageCommRehabOrgJButton = new javax.swing.JButton();
+        manageCommRehabEmpJButton = new javax.swing.JButton();
+        manageCommRehabUsersJButton = new javax.swing.JButton();
 
-        jLabel1.setText("Rehab Admin Work Area");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setText("Community Rehab Admin Work Area");
+
+        manageCommRehabOrgJButton.setText("Manage Organization");
+        manageCommRehabOrgJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageCommRehabOrgJButtonActionPerformed(evt);
+            }
+        });
+
+        manageCommRehabEmpJButton.setText("Manage Employee");
+        manageCommRehabEmpJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageCommRehabEmpJButtonActionPerformed(evt);
+            }
+        });
+
+        manageCommRehabUsersJButton.setText("Manage User Account");
+        manageCommRehabUsersJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageCommRehabUsersJButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(747, Short.MAX_VALUE))
+                .addGap(100, 100, 100)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(manageCommRehabOrgJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(manageCommRehabUsersJButton, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
+                        .addComponent(manageCommRehabEmpJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(471, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(571, Short.MAX_VALUE))
+                .addGap(71, 71, 71)
+                .addComponent(manageCommRehabOrgJButton)
+                .addGap(25, 25, 25)
+                .addComponent(manageCommRehabEmpJButton)
+                .addGap(25, 25, 25)
+                .addComponent(manageCommRehabUsersJButton)
+                .addContainerGap(369, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void manageCommRehabOrgJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageCommRehabOrgJButtonActionPerformed
+        // TODO add your handling code here:
+
+        ManageCommRehabOrganizationJPanel manageCommRehabOrganizationJPanel = new ManageCommRehabOrganizationJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
+        userProcessContainer.add("manageCommRehabOrganizationJPanel", manageCommRehabOrganizationJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_manageCommRehabOrgJButtonActionPerformed
+
+    private void manageCommRehabEmpJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageCommRehabEmpJButtonActionPerformed
+        // TODO add your handling code here:
+        ManageCommRehabEmployeeJPanel manageCommRehabEmployeeJPanel = new ManageCommRehabEmployeeJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
+        userProcessContainer.add("manageCommRehabEmployeeJPanel", manageCommRehabEmployeeJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+
+    }//GEN-LAST:event_manageCommRehabEmpJButtonActionPerformed
+
+    private void manageCommRehabUsersJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageCommRehabUsersJButtonActionPerformed
+        // TODO add your handling code here:
+
+        ManageCommRehabUserAccountJPanel manageCommRehabUserAccountJPanel = new ManageCommRehabUserAccountJPanel(userProcessContainer, enterprise);
+        userProcessContainer.add("manageCommRehabUserAccountJPanel", manageCommRehabUserAccountJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+
+    }//GEN-LAST:event_manageCommRehabUsersJButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton manageCommRehabEmpJButton;
+    private javax.swing.JButton manageCommRehabOrgJButton;
+    private javax.swing.JButton manageCommRehabUsersJButton;
     // End of variables declaration//GEN-END:variables
 }
