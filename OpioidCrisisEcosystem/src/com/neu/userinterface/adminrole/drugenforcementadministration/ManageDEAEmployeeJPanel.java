@@ -5,6 +5,9 @@
  */
 package com.neu.userinterface.adminrole.drugenforcementadministration;
 
+import com.neu.business.organization.OrganizationDirectory;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Soham
@@ -14,8 +17,14 @@ public class ManageDEAEmployeeJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ManageDEAEmployeeJPanel
      */
-    public ManageDEAEmployeeJPanel() {
+    
+    private JPanel userProcessContainer;
+    private OrganizationDirectory organizationDirectory;
+    
+    public ManageDEAEmployeeJPanel(JPanel userProcessContainer, OrganizationDirectory organizationDirectory) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.organizationDirectory = organizationDirectory;
     }
 
     /**

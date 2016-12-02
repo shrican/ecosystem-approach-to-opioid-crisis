@@ -21,13 +21,325 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="1187" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="138" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtFieldPatientAge" min="-2" pref="250" max="-2" attributes="0"/>
+                                  <Component id="txtFieldPatientName" min="-2" pref="250" max="-2" attributes="0"/>
+                                  <Component id="txtFieldPatientGender" min="-2" pref="250" max="-2" attributes="0"/>
+                                  <Component id="txtFieldPatientBloodGroup" min="-2" pref="250" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="checkBackPain" min="-2" max="-2" attributes="0"/>
+                                  <Component id="checkHeadache" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="checkFibromyalgia" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="checkNerveDamage" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="checkBrokenBones" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="checkArthritis" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="checkMSclerosis" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="checkShingles" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="checkCancer" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="checkInjury" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="checkSprain" min="-2" max="-2" attributes="0"/>
+                                  <Component id="checkSpasm" min="-2" max="-2" attributes="0"/>
+                                  <Component id="checkInfection" min="-2" max="-2" attributes="0"/>
+                                  <Component id="checkIntestinalDisorder" min="-2" max="-2" attributes="0"/>
+                                  <Component id="checkAbdominalPain" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="comboBoxTablets" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="durationComboBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="daysweeksmonthsComboBox" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace pref="456" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="726" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtFieldPatientName" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtFieldPatientAge" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtFieldPatientGender" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtFieldPatientBloodGroup" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="checkBackPain" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="checkArthritis" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="checkAbdominalPain" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="checkHeadache" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="checkMSclerosis" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="checkIntestinalDisorder" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="checkFibromyalgia" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="checkShingles" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="checkInfection" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="checkNerveDamage" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="checkCancer" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="checkSpasm" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="checkBrokenBones" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="checkInjury" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="checkSprain" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="comboBoxTablets" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="durationComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="daysweeksmonthsComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="121" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="18" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Appointment"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Patient Name :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtFieldPatientName">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel3">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Age :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtFieldPatientAge">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel4">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Gender :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtFieldPatientGender">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel5">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Blood Group :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtFieldPatientBloodGroup">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel6">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="14" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Diagnosis :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="checkBackPain">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Low Back Pain"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="checkHeadache">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Headache"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="checkArthritis">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Arthritis"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="checkMSclerosis">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Multiple Sclerosis"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="checkFibromyalgia">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Fibromyalgia"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="checkShingles">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Shingles"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="checkNerveDamage">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nerve Damage"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="checkCancer">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cancer"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="checkBrokenBones">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Broken Bones"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="checkInjury">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Injury"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="checkAbdominalPain">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Abdominal Pain"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="checkIntestinalDisorder">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Intestinal Disorder"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="checkInfection">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Infection"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="checkSpasm">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Muscle Spasm"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="checkSprain">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Sprain"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel7">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="14" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Prescription :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="comboBoxTablets">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel8">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="tablets of codeine per day for"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="durationComboBox">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="daysweeksmonthsComboBox">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+  </SubComponents>
 </Form>

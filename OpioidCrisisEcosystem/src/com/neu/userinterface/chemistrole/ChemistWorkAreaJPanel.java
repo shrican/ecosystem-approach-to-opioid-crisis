@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.neu.userinterface.dearole;
+package com.neu.userinterface.chemistrole;
 
 /**
  *
  * @author shrikantmudholkar
  */
-public class DEAWorkArea extends javax.swing.JPanel {
+public class ChemistWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form deaWorkArea
+     * Creates new form chemistWorkArea
      */
-    public DEAWorkArea() {
+    public ChemistWorkAreaJPanel() {
         initComponents();
     }
 
@@ -31,11 +31,11 @@ public class DEAWorkArea extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 922, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 711, Short.MAX_VALUE)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

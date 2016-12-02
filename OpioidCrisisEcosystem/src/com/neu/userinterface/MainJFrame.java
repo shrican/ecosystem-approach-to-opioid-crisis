@@ -203,7 +203,7 @@ public class MainJFrame extends javax.swing.JFrame {
             return;
         } else {
             CardLayout layout = (CardLayout) containerJPanel.getLayout();
-            containerJPanel.add(userAccount.getRole().toString() + "workArea", userAccount.getRole().createWorkArea(containerJPanel, userAccount, inOrganization, inEnterprise, system));
+            containerJPanel.add(userAccount.getRole().toString() + "WorkAreaJPanel", userAccount.getRole().createWorkArea(containerJPanel, userAccount, inOrganization, inEnterprise, system));
             layout.next(containerJPanel);
         }
         loginJButton.setEnabled(false);

@@ -28,7 +28,7 @@ public class Presciption {
         private int value;
 
         private Dosage(int value) {
-            this.value = this.value;
+            this.value = value;
         }
 
         public int getValue() {

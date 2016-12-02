@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.neu.userinterface.pharmaceuticalcompanymanagerrole;
+package com.neu.userinterface.dearole;
 
 /**
  *
  * @author shrikantmudholkar
  */
-public class PharmaceuticalCompanyManagerWA extends javax.swing.JPanel {
+public class DEAWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form pharmaceuticalCompanyManagerWA
+     * Creates new form deaWorkArea
      */
-    public PharmaceuticalCompanyManagerWA() {
+    public DEAWorkAreaJPanel() {
         initComponents();
     }
 
@@ -31,11 +31,11 @@ public class PharmaceuticalCompanyManagerWA extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 922, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 711, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
