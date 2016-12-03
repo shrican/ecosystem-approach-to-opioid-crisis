@@ -5,6 +5,11 @@
  */
 package com.neu.userinterface.pharmaceuticalcompanymanagerrole;
 
+import com.neu.business.enterprise.Enterprise;
+import com.neu.business.organization.PharmaceuticalCompanyManagerOrganization;
+import com.neu.business.useraccount.UserAccount;
+import javax.swing.JPanel;
+
 /**
  *
  * @author shrikantmudholkar
@@ -14,8 +19,17 @@ public class PharmaceuticalCompanyManagerWorkAreaJPanel extends javax.swing.JPan
     /**
      * Creates new form pharmaceuticalCompanyManagerWA
      */
-    public PharmaceuticalCompanyManagerWorkAreaJPanel() {
+    private JPanel userProcessContainer;
+    private UserAccount account;
+    private PharmaceuticalCompanyManagerOrganization organization;
+    private Enterprise enterprise;
+    
+    public PharmaceuticalCompanyManagerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, PharmaceuticalCompanyManagerOrganization organization, Enterprise enterprise) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.account = account;
+        this.organization = organization;
+        this.enterprise = enterprise;
     }
 
     /**

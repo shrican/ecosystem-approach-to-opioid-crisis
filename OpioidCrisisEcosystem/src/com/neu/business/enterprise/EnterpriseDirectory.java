@@ -38,7 +38,7 @@ public class EnterpriseDirectory {
             enterprise = new CommunityRehabEnterprise(name);
             enterpriseList.add(enterprise);
         } else if (type == Enterprise.EnterpriseType.DrugEnforcementAdministrationEnterprise) {
-            enterprise = new DrugEnformentAdministrationEnterprise(name);
+            enterprise = new DrugEnforcementAdministrationEnterprise(name);
             enterpriseList.add(enterprise);
         }
         return enterprise;

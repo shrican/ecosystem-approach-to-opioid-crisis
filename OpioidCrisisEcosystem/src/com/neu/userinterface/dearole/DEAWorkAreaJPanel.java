@@ -5,6 +5,12 @@
  */
 package com.neu.userinterface.dearole;
 
+import com.neu.business.enterprise.DrugEnforcementAdministrationEnterprise;
+import com.neu.business.enterprise.Enterprise;
+import com.neu.business.organization.DEAOrganization;
+import com.neu.business.useraccount.UserAccount;
+import javax.swing.JPanel;
+
 /**
  *
  * @author shrikantmudholkar
@@ -14,8 +20,19 @@ public class DEAWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form deaWorkArea
      */
-    public DEAWorkAreaJPanel() {
+    
+    private JPanel userProcessContainer;
+    private Enterprise enterprise;
+    private DEAOrganization organization;
+    private UserAccount account;
+    
+
+    public DEAWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, DEAOrganization organization, DrugEnforcementAdministrationEnterprise enterprise) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
+        this.organization = organization;
+        this.account = account;
     }
 
     /**

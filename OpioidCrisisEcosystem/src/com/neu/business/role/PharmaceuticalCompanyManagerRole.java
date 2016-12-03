@@ -8,6 +8,7 @@ package com.neu.business.role;
 import com.neu.business.EcoSystem;
 import com.neu.business.enterprise.Enterprise;
 import com.neu.business.organization.Organization;
+import com.neu.business.organization.PharmaceuticalCompanyManagerOrganization;
 import com.neu.business.useraccount.UserAccount;
 import com.neu.userinterface.pharmaceuticalcompanymanagerrole.PharmaceuticalCompanyManagerWorkAreaJPanel;
 import javax.swing.JPanel;
@@ -20,7 +21,7 @@ public class PharmaceuticalCompanyManagerRole extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new PharmaceuticalCompanyManagerWorkAreaJPanel();
+        return new PharmaceuticalCompanyManagerWorkAreaJPanel(userProcessContainer, account, (PharmaceuticalCompanyManagerOrganization)organization, enterprise);
     }
     
 }
