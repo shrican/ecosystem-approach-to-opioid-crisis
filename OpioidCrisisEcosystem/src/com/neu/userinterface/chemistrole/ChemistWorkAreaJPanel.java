@@ -5,17 +5,31 @@
  */
 package com.neu.userinterface.chemistrole;
 
+import com.neu.business.enterprise.PharmacyEnterprise;
+import com.neu.business.organization.ChemistOrganization;
+import com.neu.business.useraccount.UserAccount;
+import javax.swing.JPanel;
+
 /**
  *
- * @author shrikantmudholkar
+ * @author Soham
  */
 public class ChemistWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form chemistWorkArea
+     * Creates new form ChemistWorkAreaJPanel
      */
-    public ChemistWorkAreaJPanel() {
+    private JPanel userProcessContainer;
+    private UserAccount userAccount;
+    private ChemistOrganization organization;
+    private PharmacyEnterprise enterprise;
+    
+    public ChemistWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, ChemistOrganization organization, PharmacyEnterprise enterprise) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.userAccount = userAccount;
+        this.organization = organization;
+        this.enterprise = enterprise;
     }
 
     /**
@@ -27,30 +41,19 @@ public class ChemistWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-
-        jLabel1.setText("Chemist Work Area");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(777, Short.MAX_VALUE))
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(571, Short.MAX_VALUE))
+            .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
