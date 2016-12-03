@@ -21,6 +21,7 @@ public class ManagePharmacyEmployeeJPanel extends javax.swing.JPanel {
 
     JPanel userProcessContainer;
     OrganizationDirectory organizationDirectory;
+    Organization organization;
 
     /**
      * Creates new form ManagePharmacyEmployeeJPanel
@@ -29,6 +30,10 @@ public class ManagePharmacyEmployeeJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.organizationDirectory = organizationDirectory;
+        
+        populateOrganizationComboBox();
+        
+        populateOrganizationEmpComboBox();
 
     }
     
@@ -38,6 +43,7 @@ public class ManagePharmacyEmployeeJPanel extends javax.swing.JPanel {
         
         for (Organization organization : organizationDirectory.getOrganizationList()){
             organizationJComboBox.addItem(organization);
+            populateTable(organization);
         }
     }
     
