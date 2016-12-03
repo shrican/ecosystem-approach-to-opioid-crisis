@@ -40,6 +40,7 @@ public class ScheduleAppointmentJPanel extends javax.swing.JPanel {
         monthJComboBox = new javax.swing.JComboBox<>();
         dayJComboBox = new javax.swing.JComboBox<>();
         yearJComboBox = new javax.swing.JComboBox<>();
+        backJButton2 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -69,6 +70,13 @@ public class ScheduleAppointmentJPanel extends javax.swing.JPanel {
 
         yearJComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        backJButton2.setText("<< Back");
+        backJButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backJButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -77,7 +85,7 @@ public class ScheduleAppointmentJPanel extends javax.swing.JPanel {
                 .addGap(100, 100, 100)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addComponent(jLabel4)
                             .addGap(11, 11, 11))
@@ -95,7 +103,10 @@ public class ScheduleAppointmentJPanel extends javax.swing.JPanel {
                                     .addComponent(yearJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(patientNameJComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(doctorNameJComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addComponent(scheduleAppointmentJButton)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(backJButton2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(scheduleAppointmentJButton))))
                 .addContainerGap(408, Short.MAX_VALUE))
         );
 
@@ -121,7 +132,9 @@ public class ScheduleAppointmentJPanel extends javax.swing.JPanel {
                     .addComponent(dayJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(yearJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(57, 57, 57)
-                .addComponent(scheduleAppointmentJButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(scheduleAppointmentJButton)
+                    .addComponent(backJButton2))
                 .addContainerGap(347, Short.MAX_VALUE))
         );
 
@@ -136,8 +149,17 @@ public class ScheduleAppointmentJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_scheduleAppointmentJButtonActionPerformed
 
+    private void backJButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton2ActionPerformed
+        // TODO add your handling code here:
+
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_backJButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backJButton2;
     private javax.swing.JComboBox<String> dayJComboBox;
     private javax.swing.JComboBox<String> doctorNameJComboBox;
     private javax.swing.JLabel jLabel1;

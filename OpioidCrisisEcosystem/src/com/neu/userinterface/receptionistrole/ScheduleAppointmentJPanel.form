@@ -25,7 +25,7 @@
               <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel4" linkSize="1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
@@ -48,7 +48,11 @@
                               <Component id="doctorNameJComboBox" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <Component id="scheduleAppointmentJButton" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="backJButton2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="scheduleAppointmentJButton" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
               <EmptySpace pref="408" max="32767" attributes="0"/>
@@ -78,7 +82,10 @@
                   <Component id="yearJComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-              <Component id="scheduleAppointmentJButton" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="scheduleAppointmentJButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="backJButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace pref="347" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -190,6 +197,14 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="backJButton2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&lt;&lt; Back"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backJButton2ActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
