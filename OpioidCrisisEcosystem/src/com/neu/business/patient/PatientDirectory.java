@@ -17,7 +17,7 @@ public class PatientDirectory {
     private List<Patient> patientList;
     private static PatientDirectory patientDirectory;
 
-    private PatientDirectory() {
+    public PatientDirectory() {
         patientList = new ArrayList<>();
     }
 
