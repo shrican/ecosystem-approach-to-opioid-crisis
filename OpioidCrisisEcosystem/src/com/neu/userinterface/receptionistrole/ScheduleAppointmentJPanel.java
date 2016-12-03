@@ -5,6 +5,9 @@
  */
 package com.neu.userinterface.receptionistrole;
 
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Soham
@@ -14,7 +17,7 @@ public class ScheduleAppointmentJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ScheduleAppointmentJPanel
      */
-    
+    private JPanel userProcessContainer;
     
     
     public ScheduleAppointmentJPanel() {
