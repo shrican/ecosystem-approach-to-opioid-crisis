@@ -219,7 +219,7 @@ public class ManageHospitalUserAccountJPanel extends javax.swing.JPanel {
     private void populateRoleComboBox(Organization organization) {
         roleJComboBox.removeAllItems();
         for (Role role : organization.getSupportedRole()) {
-            roleJComboBox.addItem(role.toString());
+            roleJComboBox.addItem(role);
         }
     }
 

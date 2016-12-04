@@ -18,20 +18,20 @@ import javax.swing.JPanel;
 public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
-    private DoctorOrganization organization;
+    private DoctorOrganization doctorOrganization;
     private Enterprise enterprise;
     private UserAccount userAccount;
 
     /**
      * Creates new form doctorWorkArea
      */
-    public DoctorWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, DoctorOrganization organization, Enterprise enterprise) {
+    public DoctorWorkAreaJPanel(JPanel userProcessContainer, UserAccount userAccount, DoctorOrganization doctorOrganization, Enterprise enterprise) {
         initComponents();
 
         this.userProcessContainer = userProcessContainer;
-        this.organization = organization;
+        this.doctorOrganization = doctorOrganization;
         this.enterprise = enterprise;
-        this.userAccount = account;
+        this.userAccount = userAccount;
     }
 
     /**
@@ -45,7 +45,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        checkAppointmentJButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -59,7 +59,12 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setText("Check Appointments");
+        checkAppointmentJButton.setText("Check Appointments");
+        checkAppointmentJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkAppointmentJButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -70,7 +75,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(checkAppointmentJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(878, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -79,7 +84,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(61, 61, 61)
                 .addComponent(jLabel1)
                 .addGap(58, 58, 58)
-                .addComponent(jButton2)
+                .addComponent(checkAppointmentJButton)
                 .addGap(50, 50, 50)
                 .addComponent(jButton1)
                 .addContainerGap(474, Short.MAX_VALUE))
@@ -90,10 +95,18 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void checkAppointmentJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkAppointmentJButtonActionPerformed
+        // TODO add your handling code here:
+        ManageScheduleJPanel manageScheduleJPanel = new ManageScheduleJPanel (userProcessContainer, userAccount, doctorOrganization);
+        userProcessContainer.add("manageScheduleJPanel", manageScheduleJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_checkAppointmentJButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton checkAppointmentJButton;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -166,7 +166,7 @@ public class ScheduleAppointmentJPanel extends javax.swing.JPanel {
         ScheduleAppointmentWorkRequest appointmentWorkRequest = new ScheduleAppointmentWorkRequest();
         appointmentWorkRequest.setMessage(message);
         appointmentWorkRequest.setSender(userAccount);
-        appointmentWorkRequest.setStatus("Sent");
+        appointmentWorkRequest.setStatus("Scheduled for visit");
         appointmentWorkRequest.setPatient((Patient) patientNameJComboBox.getSelectedItem());
 
         Organization doctorOrganization = null;

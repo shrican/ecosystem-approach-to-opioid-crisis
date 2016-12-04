@@ -75,6 +75,6 @@ public abstract class WorkRequest {
 
     @Override
     public String toString() {
-        return this.message;
+        return this.status;
     }
 }
