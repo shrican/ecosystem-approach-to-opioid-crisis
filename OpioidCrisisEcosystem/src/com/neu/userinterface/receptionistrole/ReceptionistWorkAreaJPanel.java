@@ -7,12 +7,18 @@ package com.neu.userinterface.receptionistrole;
 
 import com.neu.business.enterprise.Enterprise;
 import com.neu.business.enterprise.HospitalEnterprise;
+import com.neu.business.organization.DoctorOrganization;
+import com.neu.business.organization.Organization;
 import com.neu.business.organization.ReceptionOrganization;
 import com.neu.business.patient.Patient;
 import com.neu.business.patient.PatientDirectory;
 import com.neu.business.useraccount.UserAccount;
+import com.neu.business.workqueue.ScheduleAppointmentWorkRequest;
+import com.neu.business.workqueue.WorkQueue;
+import com.neu.business.workqueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -40,6 +46,8 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
         this.hospitalPatientDirectory = enterprise.getPatientDirectory();
 
         //valueLabel.setText(enterprise.getName());
+        
+        populateAppointmentSchedule(enterprise);
     }
 
     /**
@@ -96,7 +104,9 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(scheduleSummaryJTable);
         if (scheduleSummaryJTable.getColumnModel().getColumnCount() > 0) {
             scheduleSummaryJTable.getColumnModel().getColumn(0).setResizable(false);
+            scheduleSummaryJTable.getColumnModel().getColumn(0).setPreferredWidth(15);
             scheduleSummaryJTable.getColumnModel().getColumn(1).setResizable(false);
+            scheduleSummaryJTable.getColumnModel().getColumn(1).setPreferredWidth(55);
             scheduleSummaryJTable.getColumnModel().getColumn(2).setResizable(false);
             scheduleSummaryJTable.getColumnModel().getColumn(3).setResizable(false);
             scheduleSummaryJTable.getColumnModel().getColumn(4).setResizable(false);
@@ -166,13 +176,40 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
 
     private void viewPatientDetailsJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPatientDetailsJButtonActionPerformed
         // TODO add your handling code here:
-        PatientDetailsJPanel patientDetailsJPanel = new PatientDetailsJPanel();
+        Patient patient = (Patient)scheduleSummaryJTable.getValueAt(scheduleSummaryJTable.getSelectedRow(), 1);
+        
+        PatientDetailsJPanel patientDetailsJPanel = new PatientDetailsJPanel(userProcessContainer, patient);
         userProcessContainer.add("patientDetailsJPanel", patientDetailsJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
 
     }//GEN-LAST:event_viewPatientDetailsJButtonActionPerformed
 
+    
+    private void populateAppointmentSchedule(HospitalEnterprise enterprise) {
+        DefaultTableModel dtm = (DefaultTableModel) scheduleSummaryJTable.getModel();
+        dtm.setRowCount(0);
+        for(Organization organization : enterprise.getOrganizationDirectory().getOrganizationList())
+        {
+            if(organization instanceof DoctorOrganization)
+            {
+                for(UserAccount user : organization.getUserAccountDirectory().getUserAccountList())
+                {
+                    int count = 0;
+                    for(WorkRequest wr : user.getWorkQueue().getWorkRequestList())
+                    {
+                        Object[] row = new Object[5];
+                        Patient patient = ((ScheduleAppointmentWorkRequest) wr).getPatient();
+                        row[0] = count++;
+                        row[1] = patient.getName();
+                        row[2] = user.getEmployee().getName();
+                        row[3] = wr.getStatus();
+                        row[4] = wr.getRequestDate();
+                    }
+                }
+            }
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -182,4 +219,6 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JTable scheduleSummaryJTable;
     private javax.swing.JButton viewPatientDetailsJButton;
     // End of variables declaration//GEN-END:variables
+
+    
 }
