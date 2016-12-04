@@ -27,11 +27,11 @@ public class Patient {
     private PatientSymptomsHistory symptomsHistory;
 
     private String id;
-    private static int count = 0;
+    private static int count = 1;
 
     public Patient() {
         //auto increment
-        id = String.valueOf(count);
+        id = String.valueOf(count++);
         opioidAbuseSymptomsHistory = new OpioidAbuseSymptomsHistory();
         opioidWithdrawalSymptomsHistory = new OpioidWithdrawalSymptomsHistory();
         postOpioidAddiction = new PostOpioidAddiction();
