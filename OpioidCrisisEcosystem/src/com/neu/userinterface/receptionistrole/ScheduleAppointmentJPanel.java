@@ -56,11 +56,7 @@ public class ScheduleAppointmentJPanel extends javax.swing.JPanel {
         doctorNameJComboBox = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         patientNameJComboBox = new javax.swing.JComboBox<>();
-        jLabel4 = new javax.swing.JLabel();
         scheduleAppointmentJButton = new javax.swing.JButton();
-        monthJComboBox = new javax.swing.JComboBox<>();
-        dayJComboBox = new javax.swing.JComboBox<>();
-        yearJComboBox = new javax.swing.JComboBox<>();
         backJButton2 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -77,8 +73,6 @@ public class ScheduleAppointmentJPanel extends javax.swing.JPanel {
                 patientNameJComboBoxActionPerformed(evt);
             }
         });
-
-        jLabel4.setText("Appointment Date :");
 
         scheduleAppointmentJButton.setText("Schedule Appointment");
         scheduleAppointmentJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -103,33 +97,22 @@ public class ScheduleAppointmentJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jLabel4)
-                            .addGap(11, 11, 11))
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel3)
                                 .addComponent(jLabel2))
                             .addGap(88, 88, 88)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(monthJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(dayJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(yearJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(patientNameJComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(patientNameJComboBox, 0, 164, Short.MAX_VALUE)
                                 .addComponent(doctorNameJComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(backJButton2)
                             .addGap(206, 206, 206)
                             .addComponent(scheduleAppointmentJButton))))
-                .addContainerGap(408, Short.MAX_VALUE))
+                .addContainerGap(417, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel2, jLabel3, jLabel4});
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {dayJComboBox, monthJComboBox, yearJComboBox});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel2, jLabel3});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,20 +127,14 @@ public class ScheduleAppointmentJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(patientNameJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(monthJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dayJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(yearJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(57, 57, 57)
+                .addGap(97, 97, 97)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(scheduleAppointmentJButton)
                     .addComponent(backJButton2))
                 .addContainerGap(347, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel2, jLabel3, jLabel4, monthJComboBox});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel2, jLabel3});
 
     }// </editor-fold>//GEN-END:initComponents
 
@@ -229,16 +206,12 @@ public class ScheduleAppointmentJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton2;
-    private javax.swing.JComboBox<String> dayJComboBox;
     private javax.swing.JComboBox<String> doctorNameJComboBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JComboBox<String> monthJComboBox;
     private javax.swing.JComboBox<Object> patientNameJComboBox;
     private javax.swing.JButton scheduleAppointmentJButton;
-    private javax.swing.JComboBox<String> yearJComboBox;
     // End of variables declaration//GEN-END:variables
 
 }

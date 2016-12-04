@@ -46,8 +46,52 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
         this.hospitalPatientDirectory = enterprise.getPatientDirectory();
 
         //valueLabel.setText(enterprise.getName());
+        populatePatientsTable(enterprise);
+//        populateAppointmentSchedule(enterprise);
+    }
+    
+    public void populatePatientsTable(Enterprise enterprise)
+    {
+        DefaultTableModel dtm = (DefaultTableModel)tblPatients.getModel();
+        dtm.setRowCount(0);
         
-        populateAppointmentSchedule(enterprise);
+        if(enterprise instanceof HospitalEnterprise)
+        {
+            for(Patient patient : hospitalPatientDirectory.getPatientList())
+            {
+                boolean hasAppointment = false;
+                Object [] row = new Object[5];
+                row[0] = patient.getId();
+                row[1] = patient;
+                row[2] = patient.getAge();
+                row[3] = patient.getGender();
+                
+                for(Organization organization : enterprise.getOrganizationDirectory().getOrganizationList())
+                {
+                    if(organization instanceof DoctorOrganization)
+                    {
+                        for(UserAccount user : organization.getUserAccountDirectory().getUserAccountList())
+                        {
+                            for(WorkRequest wr : user.getWorkQueue().getWorkRequestList())
+                            {
+                                Patient checker = ((ScheduleAppointmentWorkRequest)wr).getPatient();
+                                if(checker.getName().equals(patient.getName()))
+                                {
+                                    hasAppointment = true;
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                if(hasAppointment == true)
+                    row[4] = "Yes";
+                else
+                    row[4] = "No";
+                
+                dtm.addRow(row);
+            }
+        }
     }
 
     /**
@@ -62,9 +106,11 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         managePatientJButton = new javax.swing.JButton();
         managePatientJButton1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        scheduleSummaryJTable = new javax.swing.JTable();
         viewPatientDetailsJButton = new javax.swing.JButton();
+        btnViewAppointmentDetails = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblPatients = new javax.swing.JTable();
+        btnRefresh = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -85,37 +131,47 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        scheduleSummaryJTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "ID", "Patient Name", "Doctor Name", "Status", "Appointment Date"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(scheduleSummaryJTable);
-        if (scheduleSummaryJTable.getColumnModel().getColumnCount() > 0) {
-            scheduleSummaryJTable.getColumnModel().getColumn(0).setResizable(false);
-            scheduleSummaryJTable.getColumnModel().getColumn(0).setPreferredWidth(15);
-            scheduleSummaryJTable.getColumnModel().getColumn(1).setResizable(false);
-            scheduleSummaryJTable.getColumnModel().getColumn(1).setPreferredWidth(55);
-            scheduleSummaryJTable.getColumnModel().getColumn(2).setResizable(false);
-            scheduleSummaryJTable.getColumnModel().getColumn(3).setResizable(false);
-            scheduleSummaryJTable.getColumnModel().getColumn(4).setResizable(false);
-        }
-
         viewPatientDetailsJButton.setText("View Patient Details");
         viewPatientDetailsJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewPatientDetailsJButtonActionPerformed(evt);
+            }
+        });
+
+        btnViewAppointmentDetails.setText("View Appointment Details");
+        btnViewAppointmentDetails.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewAppointmentDetailsActionPerformed(evt);
+            }
+        });
+
+        tblPatients.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Patient Name", "Age", "Gender", "Has Appointment"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Integer.class, java.lang.String.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tblPatients);
+        if (tblPatients.getColumnModel().getColumnCount() > 0) {
+            tblPatients.getColumnModel().getColumn(0).setPreferredWidth(15);
+            tblPatients.getColumnModel().getColumn(2).setPreferredWidth(15);
+            tblPatients.getColumnModel().getColumn(3).setPreferredWidth(15);
+        }
+
+        btnRefresh.setText("Refresh Table");
+        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshActionPerformed(evt);
             }
         });
 
@@ -124,34 +180,43 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1)
-                    .addComponent(managePatientJButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(managePatientJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(178, 178, 178)
-                        .addComponent(viewPatientDetailsJButton))
-                    .addComponent(jScrollPane1))
+                        .addGap(100, 100, 100)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(managePatientJButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnViewAppointmentDetails))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(managePatientJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(262, 262, 262)
+                                .addComponent(viewPatientDetailsJButton))
+                            .addComponent(jScrollPane2)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(311, 311, 311)
+                        .addComponent(btnRefresh)))
                 .addContainerGap(200, Short.MAX_VALUE))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {managePatientJButton, managePatientJButton1, viewPatientDetailsJButton});
-
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(46, 46, 46)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62)
+                .addGap(70, 70, 70)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(managePatientJButton)
-                    .addComponent(viewPatientDetailsJButton))
-                .addGap(32, 32, 32)
-                .addComponent(managePatientJButton1)
-                .addContainerGap(245, Short.MAX_VALUE))
+                    .addComponent(viewPatientDetailsJButton)
+                    .addComponent(managePatientJButton))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(managePatientJButton1)
+                    .addComponent(btnViewAppointmentDetails))
+                .addGap(40, 40, 40)
+                .addComponent(btnRefresh)
+                .addContainerGap(335, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -176,7 +241,7 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
 
     private void viewPatientDetailsJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPatientDetailsJButtonActionPerformed
         // TODO add your handling code here:
-        Patient patient = (Patient)scheduleSummaryJTable.getValueAt(scheduleSummaryJTable.getSelectedRow(), 1);
+        Patient patient = (Patient)tblPatients.getValueAt(tblPatients.getSelectedRow(), 1);
         
         PatientDetailsJPanel patientDetailsJPanel = new PatientDetailsJPanel(userProcessContainer, patient);
         userProcessContainer.add("patientDetailsJPanel", patientDetailsJPanel);
@@ -185,40 +250,33 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_viewPatientDetailsJButtonActionPerformed
 
+    private void btnViewAppointmentDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewAppointmentDetailsActionPerformed
+        // TODO add your handling code here:
+        
+        ViewAppointmentDetailsJPanel viewAppointmentDetailsJPanel = new ViewAppointmentDetailsJPanel(userProcessContainer, enterprise);
+        userProcessContainer.add("viewAppointmentDetailsJPanel", viewAppointmentDetailsJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+        
+    }//GEN-LAST:event_btnViewAppointmentDetailsActionPerformed
+
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+        // TODO add your handling code here:
+        
+        populatePatientsTable(enterprise);
+    }//GEN-LAST:event_btnRefreshActionPerformed
+
     
-    private void populateAppointmentSchedule(HospitalEnterprise enterprise) {
-        DefaultTableModel dtm = (DefaultTableModel) scheduleSummaryJTable.getModel();
-        dtm.setRowCount(0);
-        for(Organization organization : enterprise.getOrganizationDirectory().getOrganizationList())
-        {
-            int count = 1;
-            if(organization instanceof DoctorOrganization)
-            {
-                for(UserAccount user : organization.getUserAccountDirectory().getUserAccountList())
-                {
-                    
-                    for(WorkRequest wr : organization.getWorkQueue().getWorkRequestList())
-                    {
-                        Object[] row = new Object[5];
-                        Patient patient = ((ScheduleAppointmentWorkRequest) wr).getPatient();
-                        row[0] = count++;
-                        row[1] = patient;
-                        row[2] = user.getEmployee().getName();
-                        row[3] = wr.getStatus();
-                        row[4] = wr.getRequestDate();
-                        dtm.addRow(row);
-                    }
-                }
-            }
-        }
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRefresh;
+    private javax.swing.JButton btnViewAppointmentDetails;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton managePatientJButton;
     private javax.swing.JButton managePatientJButton1;
-    private javax.swing.JTable scheduleSummaryJTable;
+    private javax.swing.JTable tblPatients;
     private javax.swing.JButton viewPatientDetailsJButton;
     // End of variables declaration//GEN-END:variables
 
