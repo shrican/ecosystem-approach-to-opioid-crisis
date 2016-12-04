@@ -5,6 +5,14 @@
  */
 package com.neu.userinterface.receptionistrole;
 
+import com.neu.business.enterprise.Enterprise;
+import com.neu.business.enterprise.HospitalEnterprise;
+import com.neu.business.organization.DoctorOrganization;
+import com.neu.business.organization.Organization;
+import com.neu.business.patient.Patient;
+import com.neu.business.patient.PatientDirectory;
+import com.neu.business.useraccount.UserAccount;
+import com.neu.business.workqueue.ScheduleAppointmentWorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -18,10 +26,18 @@ public class ScheduleAppointmentJPanel extends javax.swing.JPanel {
      * Creates new form ScheduleAppointmentJPanel
      */
     private JPanel userProcessContainer;
-    
-    
-    public ScheduleAppointmentJPanel() {
+
+    private UserAccount userAccount;
+    private HospitalEnterprise enterprise;
+
+    public ScheduleAppointmentJPanel(JPanel userProcessContainer, UserAccount userAccount, Enterprise enterprise) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.enterprise = (HospitalEnterprise) enterprise;
+        this.userAccount = userAccount;
+      //  populateDoctorComboBox();
+        populatePatientComboBox();
+
     }
 
     /**
@@ -52,11 +68,13 @@ public class ScheduleAppointmentJPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Doctor Name : ");
 
-        doctorNameJComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel3.setText("Patient Name : ");
 
-        patientNameJComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        patientNameJComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                patientNameJComboBoxActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Appointment Date :");
 
@@ -66,12 +84,6 @@ public class ScheduleAppointmentJPanel extends javax.swing.JPanel {
                 scheduleAppointmentJButtonActionPerformed(evt);
             }
         });
-
-        monthJComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        dayJComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        yearJComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         backJButton2.setText("<< Back");
         backJButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -99,7 +111,7 @@ public class ScheduleAppointmentJPanel extends javax.swing.JPanel {
                             .addGap(88, 88, 88)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(monthJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(monthJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(dayJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -108,12 +120,14 @@ public class ScheduleAppointmentJPanel extends javax.swing.JPanel {
                                 .addComponent(doctorNameJComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(backJButton2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGap(206, 206, 206)
                             .addComponent(scheduleAppointmentJButton))))
                 .addContainerGap(408, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel2, jLabel3, jLabel4});
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {dayJComboBox, monthJComboBox, yearJComboBox});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,9 +161,31 @@ public class ScheduleAppointmentJPanel extends javax.swing.JPanel {
 
     private void scheduleAppointmentJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scheduleAppointmentJButtonActionPerformed
         // TODO add your handling code here:
-        
-        
-        
+        String message = patientNameJComboBox.getSelectedItem().toString() + " is scheduled for visit";
+
+        ScheduleAppointmentWorkRequest appointmentWorkRequest = new ScheduleAppointmentWorkRequest();
+        appointmentWorkRequest.setMessage(message);
+        appointmentWorkRequest.setSender(userAccount);
+        appointmentWorkRequest.setStatus("Sent");
+        appointmentWorkRequest.setPatient((Patient) patientNameJComboBox.getSelectedItem());
+
+        Organization doctorOrganization = null;
+        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            if (organization instanceof DoctorOrganization) {
+                doctorOrganization = organization;
+                break;
+            }
+        }
+        if (doctorOrganization != null) {
+            doctorOrganization.getWorkQueue().getWorkRequestList().add(appointmentWorkRequest);
+            userAccount.getWorkQueue().getWorkRequestList().add(appointmentWorkRequest);
+            for (UserAccount account : doctorOrganization.getUserAccountDirectory().getUserAccountList()) {
+                if (account.getUsername().equals(doctorNameJComboBox.getSelectedItem().toString())) {
+                    account.getWorkQueue().getWorkRequestList().add(appointmentWorkRequest);
+                }
+            }
+        }
+
     }//GEN-LAST:event_scheduleAppointmentJButtonActionPerformed
 
     private void backJButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton2ActionPerformed
@@ -159,6 +195,10 @@ public class ScheduleAppointmentJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButton2ActionPerformed
+
+    private void patientNameJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patientNameJComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_patientNameJComboBoxActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -170,8 +210,20 @@ public class ScheduleAppointmentJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JComboBox<String> monthJComboBox;
-    private javax.swing.JComboBox<String> patientNameJComboBox;
+    private javax.swing.JComboBox<Object> patientNameJComboBox;
     private javax.swing.JButton scheduleAppointmentJButton;
     private javax.swing.JComboBox<String> yearJComboBox;
     // End of variables declaration//GEN-END:variables
+
+    private void populatePatientComboBox() {
+        patientNameJComboBox.removeAllItems();
+        
+        PatientDirectory patientDirectory = enterprise.getPatientDirectory();
+        for(Patient patient : patientDirectory.getPatientList())
+        patientNameJComboBox.addItem(patient);
+    }
+
+    private void populateDoctorComboBox() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

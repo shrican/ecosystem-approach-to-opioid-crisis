@@ -135,4 +135,9 @@ public class Patient {
         this.prescriptionHistory = prescriptionHistory;
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
+
 }

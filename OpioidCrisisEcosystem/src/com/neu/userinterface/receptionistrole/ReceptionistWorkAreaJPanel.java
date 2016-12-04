@@ -21,15 +21,14 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form receptionistWorkArea
      */
-    
     private JPanel userProcessContainer;
     private ReceptionOrganization organization;
     private Enterprise enterprise;
     private UserAccount userAccount;
-    
+
     public ReceptionistWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, ReceptionOrganization organization, HospitalEnterprise enterprise) {
         initComponents();
-        
+
         this.userProcessContainer = userProcessContainer;
         this.organization = organization;
         this.enterprise = enterprise;
@@ -142,8 +141,8 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
 
     private void managePatientJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_managePatientJButtonActionPerformed
         // TODO add your handling code here:
-        
-        ManagePatientJPanel managePatientJPanel = new ManagePatientJPanel(userProcessContainer  );
+
+        ManagePatientJPanel managePatientJPanel = new ManagePatientJPanel(userProcessContainer);
         userProcessContainer.add("managePatientJPanel", managePatientJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -151,20 +150,20 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
 
     private void managePatientJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_managePatientJButton1ActionPerformed
         // TODO add your handling code here:
-        ScheduleAppointmentJPanel scheduleAppointmentJPanel = new ScheduleAppointmentJPanel( );
+        ScheduleAppointmentJPanel scheduleAppointmentJPanel = new ScheduleAppointmentJPanel(userProcessContainer, userAccount, enterprise);
         userProcessContainer.add("scheduleAppointmentJPanel", scheduleAppointmentJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-        
+
     }//GEN-LAST:event_managePatientJButton1ActionPerformed
 
     private void viewPatientDetailsJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPatientDetailsJButtonActionPerformed
         // TODO add your handling code here:
-        PatientDetailsJPanel patientDetailsJPanel = new PatientDetailsJPanel( );
+        PatientDetailsJPanel patientDetailsJPanel = new PatientDetailsJPanel();
         userProcessContainer.add("patientDetailsJPanel", patientDetailsJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-        
+
     }//GEN-LAST:event_viewPatientDetailsJButtonActionPerformed
 
 

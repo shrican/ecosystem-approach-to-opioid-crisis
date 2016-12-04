@@ -15,19 +15,12 @@ import java.util.List;
 public class PatientDirectory {
 
     private List<Patient> patientList;
-    private static PatientDirectory patientDirectory;
 
-    private PatientDirectory() {
+        public PatientDirectory() {
         patientList = new ArrayList<>();
     }
 
-    public static PatientDirectory getInstance() {
-        if (patientDirectory == null) {
-            patientDirectory = new PatientDirectory();
-        }
-        return patientDirectory;
-    }
-
+    
     public List<Patient> getPatientList() {
         return patientList;
     }

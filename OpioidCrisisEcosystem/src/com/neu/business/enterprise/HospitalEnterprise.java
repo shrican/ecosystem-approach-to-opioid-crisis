@@ -5,6 +5,7 @@
  */
 package com.neu.business.enterprise;
 
+import com.neu.business.patient.PatientDirectory;
 import com.neu.business.role.Role;
 import java.util.ArrayList;
 
@@ -14,8 +15,16 @@ import java.util.ArrayList;
  */
 public class HospitalEnterprise extends Enterprise {
 
+    private PatientDirectory patientDirectory;
+
     public HospitalEnterprise(String name) {
         super(name, EnterpriseType.HospitalEnterprise);
+        patientDirectory = new PatientDirectory();
+
+    }
+
+    public PatientDirectory getPatientDirectory() {
+        return patientDirectory;
     }
 
     @Override
