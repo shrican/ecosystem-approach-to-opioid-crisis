@@ -24,13 +24,14 @@ public class HospitalEnterprise extends Enterprise {
 
     }
 
+    public PatientDirectory getPatientDirectory() {
+        return patientDirectory;
+
+    }
+
     @Override
     public ArrayList<Role> getSupportedRole() {
         return null;
-    }
-
-    public PatientDirectory getPatientDirectory() {
-        return patientDirectory;
     }
 
 }

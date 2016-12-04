@@ -36,12 +36,6 @@ public class EcoSystem extends Organization {
         return ecoSystem;
     }
 
-//    public static PatientDirectory getPatientDirectoryInstance() {
-//        if (patientDirectory == null) {
-//            patientDirectory = PatientDirectory.getInstance();
-//        }
-//        return patientDirectory;
-//    }
     public ArrayList<Network> getNetworkList() {
         return networkList;
     }
@@ -70,5 +64,4 @@ public class EcoSystem extends Organization {
     public PatientDirectory getPatientDirectory() {
         return patientDirectory;
     }
-
 }

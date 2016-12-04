@@ -24,5 +24,15 @@ public class ScheduleAppointmentWorkRequest extends WorkRequest {
 
     public int getId() {
         return id;
+
     }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
 }
