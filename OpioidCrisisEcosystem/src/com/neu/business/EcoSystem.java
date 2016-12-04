@@ -20,12 +20,13 @@ public class EcoSystem extends Organization {
 
     private static EcoSystem ecoSystem;
     private ArrayList<Network> networkList;
-    private static PatientDirectory patientDirectory;
+    private PatientDirectory patientDirectory;
 
     private EcoSystem() {
         super(null);
         networkList = new ArrayList<>();
         patientDirectory = new PatientDirectory();
+
     }
 
     public static EcoSystem getInstance() {
@@ -34,7 +35,7 @@ public class EcoSystem extends Organization {
         }
         return ecoSystem;
     }
-      
+
     public ArrayList<Network> getNetworkList() {
         return networkList;
     }
@@ -60,7 +61,8 @@ public class EcoSystem extends Organization {
         return true;
     }
 
-    public static PatientDirectory getPatientDirectory() {
+    public PatientDirectory getPatientDirectory() {
         return patientDirectory;
     }
+
 }

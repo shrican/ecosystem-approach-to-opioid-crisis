@@ -16,11 +16,10 @@ public class PatientDirectory {
 
     private List<Patient> patientList;
 
-        public PatientDirectory() {
+    public PatientDirectory() {
         patientList = new ArrayList<>();
     }
 
-    
     public List<Patient> getPatientList() {
         return patientList;
     }
@@ -31,4 +30,7 @@ public class PatientDirectory {
         return patient;
     }
 
+    public void addPatient(Patient patient) {
+        patientList.add(patient);
+    }
 }

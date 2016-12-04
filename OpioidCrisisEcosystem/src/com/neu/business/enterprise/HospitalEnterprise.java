@@ -20,7 +20,6 @@ public class HospitalEnterprise extends Enterprise {
     public HospitalEnterprise(String name) {
         super(name, EnterpriseType.HospitalEnterprise);
         patientDirectory = new PatientDirectory();
-
     }
 
     public PatientDirectory getPatientDirectory() {
@@ -31,4 +30,5 @@ public class HospitalEnterprise extends Enterprise {
     public ArrayList<Role> getSupportedRole() {
         return null;
     }
+
 }

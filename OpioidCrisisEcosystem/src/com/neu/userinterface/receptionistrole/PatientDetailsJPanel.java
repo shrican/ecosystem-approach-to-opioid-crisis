@@ -24,7 +24,7 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
      */
     public PatientDetailsJPanel() {
         initComponents();
-        this.patientDirectory = EcoSystem.getPatientDirectory();
+        //patientDirectory = EcoSystem.getPatientDirectory();
     }
 
     /**
