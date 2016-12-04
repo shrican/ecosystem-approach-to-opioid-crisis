@@ -191,11 +191,12 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
         dtm.setRowCount(0);
         for(Organization organization : enterprise.getOrganizationDirectory().getOrganizationList())
         {
+            int count = 1;
             if(organization instanceof DoctorOrganization)
             {
                 for(UserAccount user : organization.getUserAccountDirectory().getUserAccountList())
                 {
-                    int count = 0;
+                    
                     for(WorkRequest wr : organization.getWorkQueue().getWorkRequestList())
                     {
                         Object[] row = new Object[5];
@@ -205,6 +206,7 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
                         row[2] = user.getEmployee().getName();
                         row[3] = wr.getStatus();
                         row[4] = wr.getRequestDate();
+                        dtm.addRow(row);
                     }
                 }
             }
