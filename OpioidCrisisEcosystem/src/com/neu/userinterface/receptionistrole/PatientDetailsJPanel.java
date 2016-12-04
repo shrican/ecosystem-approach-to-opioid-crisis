@@ -29,6 +29,11 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
         
         populateFields(patient);
         btnSave.setEnabled(false);
+        patientNameJTextField.setEditable(false);
+        patientBloodGroupJTextField.setEditable(false);
+        patientGenderJTextField.setEditable(false);
+        patientPhoneJTextField.setEditable(false);
+        patientAgeJTextField.setEditable(false);
         //patientDirectory = EcoSystem.getPatientDirectory();
     }
     

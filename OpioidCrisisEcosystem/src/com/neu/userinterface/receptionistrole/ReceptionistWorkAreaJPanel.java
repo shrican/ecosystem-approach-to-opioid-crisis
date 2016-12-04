@@ -202,7 +202,7 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
                         Object[] row = new Object[5];
                         Patient patient = ((ScheduleAppointmentWorkRequest) wr).getPatient();
                         row[0] = count++;
-                        row[1] = patient.getName();
+                        row[1] = patient;
                         row[2] = user.getEmployee().getName();
                         row[3] = wr.getStatus();
                         row[4] = wr.getRequestDate();
