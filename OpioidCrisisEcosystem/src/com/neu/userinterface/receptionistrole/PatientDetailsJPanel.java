@@ -26,7 +26,19 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.patient = patient;
+        
+        populateFields(patient);
+        btnSave.setEnabled(false);
         //patientDirectory = EcoSystem.getPatientDirectory();
+    }
+    
+    public void populateFields(Patient patient)
+    {
+        patientNameJTextField.setText(patient.getName());
+        patientBloodGroupJTextField.setText(patient.getBloodGroup());
+        patientGenderJTextField.setText(patient.getGender());
+        patientPhoneJTextField.setText(patient.getPhoneNo());
+        patientAgeJTextField.setText(String.valueOf(patient.getAge()));
     }
 
     /**
@@ -44,13 +56,14 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
         patientGenderJTextField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        patientPhoneJTextField1 = new javax.swing.JTextField();
+        patientAgeJTextField = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         patientBloodGroupJTextField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         patientPhoneJTextField = new javax.swing.JTextField();
         updatePatientJButton = new javax.swing.JButton();
         backJButton1 = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Patient Details");
@@ -65,7 +78,7 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
 
         jLabel5.setText("Age :");
 
-        patientPhoneJTextField1.setEditable(false);
+        patientAgeJTextField.setEditable(false);
 
         jLabel6.setText("Blood Group :");
 
@@ -89,6 +102,13 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -109,11 +129,13 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
                                     .addComponent(patientNameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(8, 8, 8)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addGroup(layout.createSequentialGroup()
                                             .addComponent(backJButton1)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(updatePatientJButton))
+                                            .addGap(49, 49, 49)
+                                            .addComponent(updatePatientJButton)
+                                            .addGap(36, 36, 36)
+                                            .addComponent(btnSave))
                                         .addGroup(layout.createSequentialGroup()
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                 .addComponent(jLabel4)
@@ -132,7 +154,7 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
                                 .addGap(33, 33, 33)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(patientBloodGroupJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(patientPhoneJTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(patientAgeJTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(557, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -151,7 +173,7 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(patientPhoneJTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(patientAgeJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -160,19 +182,24 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(patientPhoneJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(updatePatientJButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(backJButton1)))
-                .addContainerGap(322, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updatePatientJButton)
+                    .addComponent(backJButton1)
+                    .addComponent(btnSave))
+                .addContainerGap(332, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void updatePatientJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePatientJButtonActionPerformed
         // TODO add your handling code here:
+        patientNameJTextField.setEditable(true);
+        patientBloodGroupJTextField.setEditable(true);
+        patientGenderJTextField.setEditable(true);
+        patientPhoneJTextField.setEditable(true);
+        patientAgeJTextField.setEditable(true);
+        updatePatientJButton.setEnabled(false);
+        btnSave.setEnabled(true);
     }//GEN-LAST:event_updatePatientJButtonActionPerformed
 
     private void backJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton1ActionPerformed
@@ -183,20 +210,33 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButton1ActionPerformed
 
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // TODO add your handling code here:
+        patient.setName(patientNameJTextField.getText());
+        patient.setAge(Integer.parseInt(patientAgeJTextField.getText()));
+        patient.setBloodGroup(patientBloodGroupJTextField.getText());
+        patient.setGender(patientGenderJTextField.getText());
+        patient.setPhoneNo(patientPhoneJTextField.getText());
+        btnSave.setEnabled(false);
+        updatePatientJButton.setEnabled(true);
+        
+    }//GEN-LAST:event_btnSaveActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton1;
+    private javax.swing.JButton btnSave;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JTextField patientAgeJTextField;
     private javax.swing.JTextField patientBloodGroupJTextField;
     private javax.swing.JTextField patientGenderJTextField;
     private javax.swing.JTextField patientNameJTextField;
     private javax.swing.JTextField patientPhoneJTextField;
-    private javax.swing.JTextField patientPhoneJTextField1;
     private javax.swing.JButton updatePatientJButton;
     // End of variables declaration//GEN-END:variables
 }
