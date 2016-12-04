@@ -16,19 +16,22 @@ import javax.swing.JPanel;
  * @author Soham
  */
 public class ManagePatientJPanel extends javax.swing.JPanel {
-    
+
     private JPanel userProcessContainer;
+
+    private PatientDirectory systemPatientDirectory;
+     private PatientDirectory hospitalPatientDirectory;
     
-    private PatientDirectory patientDirectory;
 
     /**
      * Creates new form ManagePatientJPanel
      */
-    public ManagePatientJPanel(JPanel userProcessContainer) {
+    public ManagePatientJPanel(JPanel userProcessContainer, PatientDirectory systemPatientDirectory, PatientDirectory hospitalPatientDirectory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.patientDirectory = EcoSystem.getPatientDirectory();
-        
+        this.systemPatientDirectory = systemPatientDirectory;
+        this.hospitalPatientDirectory = hospitalPatientDirectory;
+
     }
 
     /**
@@ -185,12 +188,15 @@ public class ManagePatientJPanel extends javax.swing.JPanel {
     private void addPatientJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPatientJButtonActionPerformed
         // TODO add your handling code here:
 
-        Patient patient = patientDirectory.addPatient();
+        Patient patient = new Patient();
         patient.setName(patientNameJTextField.getText());
         patient.setGender(patientGenderJTextField.getText());
         patient.setAge(Integer.parseInt(patientAgeJTextField.getText()));
         patient.setBloodGroup(patientBloodGroupJTextField.getText());
         patient.setPhoneNo(patientPhoneJTextField.getText());
+        systemPatientDirectory.addPatient(patient);
+        hospitalPatientDirectory.addPatient(patient);  
+        
 
     }//GEN-LAST:event_addPatientJButtonActionPerformed
 

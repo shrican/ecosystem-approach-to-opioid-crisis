@@ -8,6 +8,8 @@ package com.neu.userinterface.receptionistrole;
 import com.neu.business.enterprise.Enterprise;
 import com.neu.business.enterprise.HospitalEnterprise;
 import com.neu.business.organization.ReceptionOrganization;
+import com.neu.business.patient.Patient;
+import com.neu.business.patient.PatientDirectory;
 import com.neu.business.useraccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -26,14 +28,18 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
     private ReceptionOrganization organization;
     private Enterprise enterprise;
     private UserAccount userAccount;
+    private PatientDirectory systemPatientDirectory;
+    private PatientDirectory hospitalPatientDirectory;
     
-    public ReceptionistWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, ReceptionOrganization organization, HospitalEnterprise enterprise) {
+    public ReceptionistWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, ReceptionOrganization organization, HospitalEnterprise enterprise, PatientDirectory patientDirectory) {
         initComponents();
-        
+        this.systemPatientDirectory = patientDirectory;
         this.userProcessContainer = userProcessContainer;
         this.organization = organization;
         this.enterprise = enterprise;
         this.userAccount = account;
+        this.hospitalPatientDirectory = enterprise.getPatientDirectory();
+        
         //valueLabel.setText(enterprise.getName());
     }
 
@@ -143,7 +149,7 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
     private void managePatientJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_managePatientJButtonActionPerformed
         // TODO add your handling code here:
         
-        ManagePatientJPanel managePatientJPanel = new ManagePatientJPanel(userProcessContainer  );
+        ManagePatientJPanel managePatientJPanel = new ManagePatientJPanel(userProcessContainer, systemPatientDirectory, hospitalPatientDirectory  );
         userProcessContainer.add("managePatientJPanel", managePatientJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

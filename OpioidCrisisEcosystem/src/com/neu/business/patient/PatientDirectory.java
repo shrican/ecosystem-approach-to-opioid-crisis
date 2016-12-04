@@ -15,19 +15,17 @@ import java.util.List;
 public class PatientDirectory {
 
     private List<Patient> patientList;
-    private static PatientDirectory patientDirectory;
 
     public PatientDirectory() {
         patientList = new ArrayList<>();
     }
 
-    public static PatientDirectory getInstance() {
-        if (patientDirectory == null) {
-            patientDirectory = new PatientDirectory();
-        }
-        return patientDirectory;
-    }
-
+//    public static PatientDirectory getInstance() {
+//        if (patientDirectory == null) {
+//            patientDirectory = new PatientDirectory();
+//        }
+//        return patientDirectory;
+//    }
     public List<Patient> getPatientList() {
         return patientList;
     }
@@ -38,4 +36,8 @@ public class PatientDirectory {
         return patient;
     }
 
+    public void addPatient(Patient patient) {
+        patientList.add(patient);
+
+    }
 }
