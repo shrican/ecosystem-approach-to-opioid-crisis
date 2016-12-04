@@ -6,7 +6,7 @@
 package com.neu.userinterface.receptionistrole;
 
 import com.neu.business.EcoSystem;
-import com.neu.business.patient.PatientDirectory;
+import com.neu.business.patient.Patient;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -16,14 +16,16 @@ import javax.swing.JPanel;
  */
 public class PatientDetailsJPanel extends javax.swing.JPanel {
 
-    private PatientDirectory patientDirectory;
+    private Patient patient;
     private JPanel userProcessContainer;
 
     /**
      * Creates new form PatientDetailsJPanel
      */
-    public PatientDetailsJPanel() {
+    public PatientDetailsJPanel(JPanel userProcessContainer, Patient patient) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.patient = patient;
         //patientDirectory = EcoSystem.getPatientDirectory();
     }
 

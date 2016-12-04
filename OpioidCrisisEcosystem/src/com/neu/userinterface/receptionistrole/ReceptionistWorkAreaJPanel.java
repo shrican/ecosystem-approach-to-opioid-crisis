@@ -196,7 +196,7 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
                 for(UserAccount user : organization.getUserAccountDirectory().getUserAccountList())
                 {
                     int count = 0;
-                    for(WorkRequest wr : user.getWorkQueue().getWorkRequestList())
+                    for(WorkRequest wr : organization.getWorkQueue().getWorkRequestList())
                     {
                         Object[] row = new Object[5];
                         Patient patient = ((ScheduleAppointmentWorkRequest) wr).getPatient();
