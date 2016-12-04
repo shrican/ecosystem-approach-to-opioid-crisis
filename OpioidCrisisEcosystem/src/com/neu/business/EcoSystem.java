@@ -64,5 +64,4 @@ public class EcoSystem extends Organization {
     public PatientDirectory getPatientDirectory() {
         return patientDirectory;
     }
-
 }

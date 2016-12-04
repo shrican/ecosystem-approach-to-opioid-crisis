@@ -35,7 +35,11 @@ public class ScheduleAppointmentJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.enterprise = (HospitalEnterprise) enterprise;
         this.userAccount = userAccount;
+<<<<<<< HEAD
         populateDoctorComboBox();
+=======
+      //  populateDoctorComboBox();
+>>>>>>> shrikant
         populatePatientComboBox();
 
     }
@@ -182,7 +186,10 @@ public class ScheduleAppointmentJPanel extends javax.swing.JPanel {
             for (UserAccount account : doctorOrganization.getUserAccountDirectory().getUserAccountList()) {
                 if (account.getUsername().equals(doctorNameJComboBox.getSelectedItem().toString())) {
                     account.getWorkQueue().getWorkRequestList().add(appointmentWorkRequest);
+<<<<<<< HEAD
                     appointmentWorkRequest.setReceiver(account);
+=======
+>>>>>>> shrikant
                 }
             }
         }
@@ -197,6 +204,7 @@ public class ScheduleAppointmentJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButton2ActionPerformed
 
+<<<<<<< HEAD
     private void populatePatientComboBox() {
         patientNameJComboBox.removeAllItems();
 
@@ -217,6 +225,8 @@ public class ScheduleAppointmentJPanel extends javax.swing.JPanel {
         }
 
     }
+=======
+>>>>>>> shrikant
     private void patientNameJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patientNameJComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_patientNameJComboBoxActionPerformed
@@ -236,4 +246,18 @@ public class ScheduleAppointmentJPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> yearJComboBox;
     // End of variables declaration//GEN-END:variables
 
+<<<<<<< HEAD
+=======
+    private void populatePatientComboBox() {
+        patientNameJComboBox.removeAllItems();
+        
+        PatientDirectory patientDirectory = enterprise.getPatientDirectory();
+        for(Patient patient : patientDirectory.getPatientList())
+        patientNameJComboBox.addItem(patient);
+    }
+
+    private void populateDoctorComboBox() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+>>>>>>> shrikant
 }
