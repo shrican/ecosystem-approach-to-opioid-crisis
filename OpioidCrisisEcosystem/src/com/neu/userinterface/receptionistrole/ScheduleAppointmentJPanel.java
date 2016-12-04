@@ -35,7 +35,7 @@ public class ScheduleAppointmentJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.enterprise = (HospitalEnterprise) enterprise;
         this.userAccount = userAccount;
-      //  populateDoctorComboBox();
+        populateDoctorComboBox();
         populatePatientComboBox();
 
     }
@@ -182,6 +182,7 @@ public class ScheduleAppointmentJPanel extends javax.swing.JPanel {
             for (UserAccount account : doctorOrganization.getUserAccountDirectory().getUserAccountList()) {
                 if (account.getUsername().equals(doctorNameJComboBox.getSelectedItem().toString())) {
                     account.getWorkQueue().getWorkRequestList().add(appointmentWorkRequest);
+                    appointmentWorkRequest.setReceiver(account);
                 }
             }
         }
@@ -196,6 +197,26 @@ public class ScheduleAppointmentJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButton2ActionPerformed
 
+    private void populatePatientComboBox() {
+        patientNameJComboBox.removeAllItems();
+
+        PatientDirectory patientDirectory = enterprise.getPatientDirectory();
+        for (Patient patient : patientDirectory.getPatientList()) {
+            patientNameJComboBox.addItem(patient);
+        }
+    }
+
+    private void populateDoctorComboBox() {
+        doctorNameJComboBox.removeAllItems();
+        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            if (organization instanceof DoctorOrganization) {
+                for (UserAccount userAccount : organization.getUserAccountDirectory().getUserAccountList()) {
+                    doctorNameJComboBox.addItem(userAccount.getUsername());
+                }
+            }
+        }
+
+    }
     private void patientNameJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patientNameJComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_patientNameJComboBoxActionPerformed
@@ -215,15 +236,4 @@ public class ScheduleAppointmentJPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> yearJComboBox;
     // End of variables declaration//GEN-END:variables
 
-    private void populatePatientComboBox() {
-        patientNameJComboBox.removeAllItems();
-        
-        PatientDirectory patientDirectory = enterprise.getPatientDirectory();
-        for(Patient patient : patientDirectory.getPatientList())
-        patientNameJComboBox.addItem(patient);
-    }
-
-    private void populateDoctorComboBox() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }
