@@ -171,7 +171,7 @@
     </Container>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Organization"/>
+        <Property name="text" type="java.lang.String" value="View Organization :"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="organizationJComboBox">

@@ -37,7 +37,9 @@ public class ManagePharmacyOrganizationJPanel extends javax.swing.JPanel {
         organizationJComboBox.removeAllItems();
         for (Type type : Organization.Type.values()) {
             if (!type.getValue().equals(Type.Admin.getValue())) {
-                organizationJComboBox.addItem(type);
+                if(type.getValue().equals("Chemist Organization")){
+                    organizationJComboBox.addItem(type);
+                }
             }
         }
     }

@@ -63,7 +63,7 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Reception Work Area");
 
-        managePatientJButton.setText("Manage Patient");
+        managePatientJButton.setText("Add Patient");
         managePatientJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 managePatientJButtonActionPerformed(evt);

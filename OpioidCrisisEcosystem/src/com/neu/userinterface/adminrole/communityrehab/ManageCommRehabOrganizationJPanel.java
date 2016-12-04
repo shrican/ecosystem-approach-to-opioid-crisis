@@ -37,7 +37,9 @@ public class ManageCommRehabOrganizationJPanel extends javax.swing.JPanel {
         organizationJComboBox.removeAllItems();
         for (Organization.Type type : Organization.Type.values()) {
             if (!type.getValue().equals(Organization.Type.Admin.getValue())) {
-                organizationJComboBox.addItem(type);
+                if(type.getValue().equals("Rehabilitation Manager Organization")){
+                    organizationJComboBox.addItem(type);
+                }
             }
         }
     }
@@ -106,7 +108,6 @@ public class ManageCommRehabOrganizationJPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Organization Type ");
 
-        organizationJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         organizationJComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 organizationJComboBoxActionPerformed(evt);
