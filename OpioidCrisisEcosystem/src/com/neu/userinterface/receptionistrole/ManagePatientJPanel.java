@@ -9,6 +9,7 @@ import com.neu.business.EcoSystem;
 import com.neu.business.patient.Patient;
 import com.neu.business.patient.PatientDirectory;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -197,6 +198,13 @@ public class ManagePatientJPanel extends javax.swing.JPanel {
         systemPatientDirectory.addPatient(patient);
         hospitalPatientDirectory.addPatient(patient);  
         
+        JOptionPane.showMessageDialog(null, "Patient record added");
+        
+        patientNameJTextField.setText("");
+        patientAgeJTextField.setText("");
+        patientGenderJTextField.setText("");
+        patientBloodGroupJTextField.setText("");
+        patientPhoneJTextField.setText("");
 
     }//GEN-LAST:event_addPatientJButtonActionPerformed
 

@@ -200,6 +200,8 @@ public class MainJFrame extends javax.swing.JFrame {
 
         if (userAccount == null) {
             JOptionPane.showMessageDialog(null, "Invalid Credentails!");
+            userNameJTextField.setText("");
+            passwordField.setText("");
             return;
         } else {
             CardLayout layout = (CardLayout) containerJPanel.getLayout();
