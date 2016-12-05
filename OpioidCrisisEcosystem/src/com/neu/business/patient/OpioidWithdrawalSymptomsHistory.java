@@ -5,6 +5,7 @@
  */
 package com.neu.business.patient;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,19 +16,17 @@ public class OpioidWithdrawalSymptomsHistory {
 
     private List<OpioidWithdrawalSymptoms> opioidWithdrawalSymptomsList;
 
+    public OpioidWithdrawalSymptomsHistory() {
+        opioidWithdrawalSymptomsList = new ArrayList<>();
+    }
+
     public List<OpioidWithdrawalSymptoms> getOpioidWithdrawalSymptomsList() {
         return opioidWithdrawalSymptomsList;
     }
-    
-    public OpioidWithdrawalSymptoms addWithdrawalSymptom()
-    {
+
+    public OpioidWithdrawalSymptoms addWithdrawalSymptom() {
         OpioidWithdrawalSymptoms ows = new OpioidWithdrawalSymptoms();
         opioidWithdrawalSymptomsList.add(ows);
         return ows;
     }
-
-    public void setOpioidWithdrawalSymptomsList(List<OpioidWithdrawalSymptoms> opioidWithdrawalSymptomsList) {
-        this.opioidWithdrawalSymptomsList = opioidWithdrawalSymptomsList;
-    }
-
 }

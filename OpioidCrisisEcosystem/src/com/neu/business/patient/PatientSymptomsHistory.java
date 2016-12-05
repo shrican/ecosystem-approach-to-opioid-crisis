@@ -13,19 +13,20 @@ import java.util.List;
  * @author Soham
  */
 public class PatientSymptomsHistory {
-  
+
     private ArrayList<Symptoms> symptomHistory;
-    
-    public PatientSymptomsHistory(){
+
+    public PatientSymptomsHistory() {
         this.symptomHistory = new ArrayList<>();
     }
 
     public ArrayList<Symptoms> getSymptomHistory() {
         return symptomHistory;
     }
-     
-    public void addSymptoms(Symptoms s)
-    {
-        symptomHistory.add(s);
+
+    public Symptoms addSymptoms() {
+        Symptoms symptoms = new Symptoms();
+        symptomHistory.add(symptoms);
+        return symptoms;
     }
 }

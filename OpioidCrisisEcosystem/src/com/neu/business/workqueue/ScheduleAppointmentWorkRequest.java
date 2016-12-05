@@ -13,16 +13,16 @@ import com.neu.business.patient.Patient;
  */
 public class ScheduleAppointmentWorkRequest extends WorkRequest {
 
-    private int id;
+    private String id;
     private static int countId = 0;
 
     private Patient patient;
 
     public ScheduleAppointmentWorkRequest() {
-        id = ++countId;
+        id = String.valueOf(++countId);
     }
 
-    public int getId() {
+    public String getId() {
         return id;
 
     }

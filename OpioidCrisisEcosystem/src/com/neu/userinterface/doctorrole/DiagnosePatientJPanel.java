@@ -25,23 +25,21 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
     /**
      * Creates new form DiagnosePatientJPanel
      */
-    
     private JPanel userProcessContainer;
     private Patient patient;
     private ScheduleAppointmentWorkRequest workRequest;
-    
+
     public DiagnosePatientJPanel(JPanel userProcessContainer, Patient patient, ScheduleAppointmentWorkRequest workRequest) {
         initComponents();
-        
+
         this.userProcessContainer = userProcessContainer;
         this.patient = patient;
         this.workRequest = workRequest;
-        
+
         populateFields(patient);
     }
-    
-    public void populateFields(Patient patient)
-    {
+
+    public void populateFields(Patient patient) {
         txtFieldPatientName.setText(patient.getName());
         txtFieldPatientAge.setText(String.valueOf(patient.getAge()));
         txtFieldPatientGender.setText(patient.getGender());
@@ -286,66 +284,74 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
 
     private void btnDiagnoseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagnoseActionPerformed
         // TODO add your handling code here:
-        
-        PatientSymptomsHistory patientSymptomsHistory = patient.getSymptomsHistory();
-        Symptoms symptoms = new Symptoms();
-        PrescriptionHistory prescriptionHistory = patient.getPrescriptionHistory();
-        Prescription prescription = new Prescription();
-        
-        if(checkAbdominalPain.isSelected())
+
+        Symptoms symptoms = patient.getSymptomsHistory().addSymptoms();
+        Prescription prescription = patient.getPrescriptionHistory().addPrescription();
+
+        if (checkAbdominalPain.isSelected()) {
             symptoms.setHasAbdominalPain(true);
-        if(checkArthritis.isSelected())
+        }
+        if (checkArthritis.isSelected()) {
             symptoms.setHasArthritis(true);
-        if(checkBackPain.isSelected())
+        }
+        if (checkBackPain.isSelected()) {
             symptoms.setHasLowerBackPain(true);
-        if(checkBrokenBones.isSelected())
+        }
+        if (checkBrokenBones.isSelected()) {
             symptoms.setHasBrokenBones(true);
-        if(checkCancer.isSelected())
+        }
+        if (checkCancer.isSelected()) {
             symptoms.setHasCancer(true);
-        if(checkFibromyalgia.isSelected())
+        }
+        if (checkFibromyalgia.isSelected()) {
             symptoms.setHasFibromyalgia(true);
-        if(checkHeadache.isSelected())
+        }
+        if (checkHeadache.isSelected()) {
             symptoms.setHasHeadache(true);
-        if(checkInfection.isSelected())
+        }
+        if (checkInfection.isSelected()) {
             symptoms.setHasInfection(true);
-        if(checkInjury.isSelected())
+        }
+        if (checkInjury.isSelected()) {
             symptoms.setHasInjury(true);
-        if(checkIntestinalDisorder.isSelected())
+        }
+        if (checkIntestinalDisorder.isSelected()) {
             symptoms.setHasIntestinalDisorder(true);
-        if(checkMSclerosis.isSelected())
+        }
+        if (checkMSclerosis.isSelected()) {
             symptoms.setHasMultipleSclerosis(true);
-        if(checkNerveDamage.isSelected())
+        }
+        if (checkNerveDamage.isSelected()) {
             symptoms.setHasNerveDamage(true);
-        if(checkShingles.isSelected())
+        }
+        if (checkShingles.isSelected()) {
             symptoms.setHasShingles(true);
-        if(checkSpasm.isSelected())
+        }
+        if (checkSpasm.isSelected()) {
             symptoms.setHasMuscleSpasm(true);
-        if(checkSprain.isSelected())
+        }
+        if (checkSprain.isSelected()) {
             symptoms.setHasSprain(true);
-        
-        patientSymptomsHistory.getSymptomHistory().add(symptoms);
-        
+        }
+
         int dosage = Integer.parseInt(comboBoxTablets.getSelectedItem().toString());
         int duration = Integer.parseInt(durationComboBox.getSelectedItem().toString());
         int daysweeksmonths = 1;
-        
-        if(daysweeksmonthsComboBox.getSelectedItem().equals("Weeks"))
+
+        if (daysweeksmonthsComboBox.getSelectedItem().equals("Weeks")) {
             daysweeksmonths = 7;
-        else if(daysweeksmonthsComboBox.getSelectedItem().equals("Months"))
+        } else if (daysweeksmonthsComboBox.getSelectedItem().equals("Months")) {
             daysweeksmonths = 30;
-        
+        }
+
         prescription.setNoOfDays(duration * daysweeksmonths);
         prescription.setDrugName("Codeine");
         prescription.setTotalOpioidsPrescribed(dosage * duration * daysweeksmonths);
         prescription.setOpdDate(new Date());
         // Dosage dose = new Dosage(dosage);
-        
+
         workRequest.setResolveDate(new Date());
         workRequest.setStatus("Patient diagnosed");
-        
-        prescriptionHistory.getPrescriptionHistory().add(prescription);
-        
-        
     }//GEN-LAST:event_btnDiagnoseActionPerformed
 
 

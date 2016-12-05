@@ -44,45 +44,27 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.userAccount = account;
         this.hospitalPatientDirectory = enterprise.getPatientDirectory();
-
-        //valueLabel.setText(enterprise.getName());
-        populatePatientsTable(enterprise);
-//        populateAppointmentSchedule(enterprise);
+        populateAppointentsTable(enterprise);
     }
-    
-    public void populatePatientsTable(Enterprise enterprise)
-    {
-        DefaultTableModel dtm = (DefaultTableModel)tblPatients.getModel();
+
+    public void populateAppointentsTable(Enterprise enterprise) {
+        DefaultTableModel dtm = (DefaultTableModel) tblAppointments.getModel();
         dtm.setRowCount(0);
-        if(enterprise instanceof HospitalEnterprise)
-        {
-            for(Patient patient : hospitalPatientDirectory.getPatientList())
-            {
-                Object [] row = new Object[5];
-                row[1] = patient;
-                row[2] = patient.getAge();
-                row[3] = patient.getGender();
-                
-                for(Organization organization : enterprise.getOrganizationDirectory().getOrganizationList())
-                {
-                    if(organization instanceof DoctorOrganization)
-                    {
-                        for(UserAccount user : organization.getUserAccountDirectory().getUserAccountList())
-                        {
-                            for(WorkRequest wr : user.getWorkQueue().getWorkRequestList())
-                            {
-                                Patient checker = ((ScheduleAppointmentWorkRequest)wr).getPatient();
-                                if(checker.getName().equals(patient.getName()))
-                                {
-                                    row[0] = ((ScheduleAppointmentWorkRequest)wr).getId();
-                                    row[4] = wr.getStatus();
-                                }
-                            }
-                        }
+        if (enterprise instanceof HospitalEnterprise) {
+            for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                if (organization instanceof DoctorOrganization) {
+                    for (WorkRequest scheduleAppointmentWorkRequest : organization.getWorkQueue().getWorkRequestList()) {
+                        Object[] row = new Object[6];
+                        Patient patient = ((ScheduleAppointmentWorkRequest) scheduleAppointmentWorkRequest).getPatient();
+                        row[0] = ((ScheduleAppointmentWorkRequest) scheduleAppointmentWorkRequest).getId();
+                        row[1] = patient;
+                        row[2] = patient.getAge();
+                        row[3] = patient.getGender();
+                        row[4] = scheduleAppointmentWorkRequest.getStatus();
+                        row[5] = scheduleAppointmentWorkRequest.getReceiver().getEmployee().getName();
+                        dtm.addRow(row);
                     }
                 }
-                
-                dtm.addRow(row);
             }
         }
     }
@@ -102,7 +84,7 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
         viewPatientDetailsJButton = new javax.swing.JButton();
         btnViewAppointmentDetails = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblPatients = new javax.swing.JTable();
+        tblAppointments = new javax.swing.JTable();
         btnRefresh = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -138,27 +120,34 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        tblPatients.setModel(new javax.swing.table.DefaultTableModel(
+        tblAppointments.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Patient Name", "Age", "Gender", "Appointment Status"
+                "ID", "Patient Name", "Age", "Gender", "Appointment Status", "Doctor"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Integer.class, java.lang.String.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
-        jScrollPane2.setViewportView(tblPatients);
-        if (tblPatients.getColumnModel().getColumnCount() > 0) {
-            tblPatients.getColumnModel().getColumn(0).setPreferredWidth(15);
-            tblPatients.getColumnModel().getColumn(2).setPreferredWidth(15);
-            tblPatients.getColumnModel().getColumn(3).setPreferredWidth(15);
+        jScrollPane2.setViewportView(tblAppointments);
+        if (tblAppointments.getColumnModel().getColumnCount() > 0) {
+            tblAppointments.getColumnModel().getColumn(0).setPreferredWidth(15);
+            tblAppointments.getColumnModel().getColumn(2).setPreferredWidth(15);
+            tblAppointments.getColumnModel().getColumn(3).setPreferredWidth(15);
         }
 
         btnRefresh.setText("Refresh Table");
@@ -234,8 +223,8 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
 
     private void viewPatientDetailsJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPatientDetailsJButtonActionPerformed
         // TODO add your handling code here:
-        Patient patient = (Patient)tblPatients.getValueAt(tblPatients.getSelectedRow(), 1);
-        
+        Patient patient = (Patient) tblAppointments.getValueAt(tblAppointments.getSelectedRow(), 1);
+
         PatientDetailsJPanel patientDetailsJPanel = new PatientDetailsJPanel(userProcessContainer, patient);
         userProcessContainer.add("patientDetailsJPanel", patientDetailsJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
@@ -245,22 +234,20 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnViewAppointmentDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewAppointmentDetailsActionPerformed
         // TODO add your handling code here:
-        
+
         ViewAppointmentDetailsJPanel viewAppointmentDetailsJPanel = new ViewAppointmentDetailsJPanel(userProcessContainer, enterprise);
         userProcessContainer.add("viewAppointmentDetailsJPanel", viewAppointmentDetailsJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-        
+
     }//GEN-LAST:event_btnViewAppointmentDetailsActionPerformed
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
         // TODO add your handling code here:
-        
-        populatePatientsTable(enterprise);
+
+        populateAppointentsTable(enterprise);
     }//GEN-LAST:event_btnRefreshActionPerformed
 
-    
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRefresh;
@@ -269,9 +256,8 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton managePatientJButton;
     private javax.swing.JButton managePatientJButton1;
-    private javax.swing.JTable tblPatients;
+    private javax.swing.JTable tblAppointments;
     private javax.swing.JButton viewPatientDetailsJButton;
     // End of variables declaration//GEN-END:variables
 
-    
 }

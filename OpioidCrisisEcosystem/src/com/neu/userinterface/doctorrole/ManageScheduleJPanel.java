@@ -156,8 +156,8 @@ public class ManageScheduleJPanel extends javax.swing.JPanel {
     private void btnDiagnoseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagnoseActionPerformed
         // TODO add your handling code here:
         Patient patient = (Patient)doctorScheduleJTable.getValueAt(doctorScheduleJTable.getSelectedRow(), 2);
-        ScheduleAppointmentWorkRequest wr = (ScheduleAppointmentWorkRequest)doctorScheduleJTable.getValueAt(doctorScheduleJTable.getSelectedRow(), 0);
-        DiagnosePatientJPanel diagnose = new DiagnosePatientJPanel(userProcessContainer, patient, wr);
+        ScheduleAppointmentWorkRequest workRequest = (ScheduleAppointmentWorkRequest)doctorScheduleJTable.getValueAt(doctorScheduleJTable.getSelectedRow(), 0);
+        DiagnosePatientJPanel diagnose = new DiagnosePatientJPanel(userProcessContainer, patient, workRequest);
         userProcessContainer.add("diagnosePatientJPanel", diagnose);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

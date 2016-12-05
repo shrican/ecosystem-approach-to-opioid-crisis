@@ -159,7 +159,7 @@ public class ScheduleAppointmentJPanel extends javax.swing.JPanel {
             doctorOrganization.getWorkQueue().getWorkRequestList().add(appointmentWorkRequest);
             userAccount.getWorkQueue().getWorkRequestList().add(appointmentWorkRequest);
             for (UserAccount account : doctorOrganization.getUserAccountDirectory().getUserAccountList()) {
-                if (account.getUsername().equals(doctorNameJComboBox.getSelectedItem().toString())) {
+                if (account.getEmployee().getName().equals(doctorNameJComboBox.getSelectedItem().toString())) {
                     account.getWorkQueue().getWorkRequestList().add(appointmentWorkRequest);
                     appointmentWorkRequest.setReceiver(account);
 
@@ -192,11 +192,10 @@ public class ScheduleAppointmentJPanel extends javax.swing.JPanel {
         for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
             if (organization instanceof DoctorOrganization) {
                 for (UserAccount userAccount : organization.getUserAccountDirectory().getUserAccountList()) {
-                    doctorNameJComboBox.addItem(userAccount.getUsername());
+                    doctorNameJComboBox.addItem(userAccount.getEmployee().getName());
                 }
             }
         }
-
     }
 
     private void patientNameJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patientNameJComboBoxActionPerformed

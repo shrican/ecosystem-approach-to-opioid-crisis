@@ -5,6 +5,7 @@
  */
 package com.neu.business.patient;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,19 +16,17 @@ public class OpioidAbuseSymptomsHistory {
 
     private List<OpioidAbuseSymptoms> opioidAbuseSysmpomsList;
 
+    public OpioidAbuseSymptomsHistory() {
+        opioidAbuseSysmpomsList = new ArrayList<>();
+    }
+
     public List<OpioidAbuseSymptoms> getOpioidAbuseSysmpomsList() {
         return opioidAbuseSysmpomsList;
     }
-    
-    public OpioidAbuseSymptoms addAbuseSymptom()
-    {
+
+    public OpioidAbuseSymptoms addAbuseSymptom() {
         OpioidAbuseSymptoms oas = new OpioidAbuseSymptoms();
         opioidAbuseSysmpomsList.add(oas);
         return oas;
     }
-
-    public void setOpioidAbuseSysmpomsList(List<OpioidAbuseSymptoms> opioidAbuseSysmpomsList) {
-        this.opioidAbuseSysmpomsList = opioidAbuseSysmpomsList;
-    }
-
 }

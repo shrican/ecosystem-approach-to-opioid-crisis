@@ -13,10 +13,10 @@ import java.util.List;
  * @author Soham
  */
 public class PrescriptionHistory {
-    
+
     private List<Prescription> prescriptionHistory;
-    
-    public PrescriptionHistory(){
+
+    public PrescriptionHistory() {
         prescriptionHistory = new ArrayList<>();
     }
 
@@ -24,10 +24,9 @@ public class PrescriptionHistory {
         return prescriptionHistory;
     }
 
-    public void setPrescriptionHistory(List<Prescription> prescriptionHistory) {
-        this.prescriptionHistory = prescriptionHistory;
+    public Prescription addPrescription() {
+        Prescription prescription = new Prescription();
+        prescriptionHistory.add(prescription);
+        return prescription;
     }
-    
-    
-    
 }
