@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author Soham
  */
-public class Presciption {
+public class Prescription {
 
     private String drugName;
     private Date opdDate;

@@ -54,14 +54,11 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
     {
         DefaultTableModel dtm = (DefaultTableModel)tblPatients.getModel();
         dtm.setRowCount(0);
-        
         if(enterprise instanceof HospitalEnterprise)
         {
             for(Patient patient : hospitalPatientDirectory.getPatientList())
             {
-                boolean hasAppointment = false;
                 Object [] row = new Object[5];
-                row[0] = patient.getId();
                 row[1] = patient;
                 row[2] = patient.getAge();
                 row[3] = patient.getGender();
@@ -77,17 +74,13 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
                                 Patient checker = ((ScheduleAppointmentWorkRequest)wr).getPatient();
                                 if(checker.getName().equals(patient.getName()))
                                 {
-                                    hasAppointment = true;
+                                    row[0] = ((ScheduleAppointmentWorkRequest)wr).getId();
+                                    row[4] = wr.getStatus();
                                 }
                             }
                         }
                     }
                 }
-                
-                if(hasAppointment == true)
-                    row[4] = "Yes";
-                else
-                    row[4] = "No";
                 
                 dtm.addRow(row);
             }
@@ -150,7 +143,7 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Patient Name", "Age", "Gender", "Has Appointment"
+                "ID", "Patient Name", "Age", "Gender", "Appointment Status"
             }
         ) {
             Class[] types = new Class [] {

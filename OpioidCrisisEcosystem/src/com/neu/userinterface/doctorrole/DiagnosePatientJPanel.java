@@ -5,6 +5,17 @@
  */
 package com.neu.userinterface.doctorrole;
 
+import com.neu.business.patient.Patient;
+import com.neu.business.patient.PatientSymptomsHistory;
+import com.neu.business.patient.Prescription;
+import com.neu.business.patient.Prescription.Dosage;
+import com.neu.business.patient.PrescriptionHistory;
+import com.neu.business.patient.Symptoms;
+import com.neu.business.workqueue.ScheduleAppointmentWorkRequest;
+import com.neu.userinterface.receptionistrole.ScheduleAppointmentJPanel;
+import java.util.Date;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Soham
@@ -14,8 +25,27 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
     /**
      * Creates new form DiagnosePatientJPanel
      */
-    public DiagnosePatientJPanel() {
+    
+    private JPanel userProcessContainer;
+    private Patient patient;
+    private ScheduleAppointmentWorkRequest workRequest;
+    
+    public DiagnosePatientJPanel(JPanel userProcessContainer, Patient patient, ScheduleAppointmentWorkRequest workRequest) {
         initComponents();
+        
+        this.userProcessContainer = userProcessContainer;
+        this.patient = patient;
+        this.workRequest = workRequest;
+        
+        populateFields(patient);
+    }
+    
+    public void populateFields(Patient patient)
+    {
+        txtFieldPatientName.setText(patient.getName());
+        txtFieldPatientAge.setText(String.valueOf(patient.getAge()));
+        txtFieldPatientGender.setText(patient.getGender());
+        txtFieldPatientBloodGroup.setText(patient.getBloodGroup());
     }
 
     /**
@@ -57,6 +87,7 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         durationComboBox = new javax.swing.JComboBox<>();
         daysweeksmonthsComboBox = new javax.swing.JComboBox<>();
+        btnDiagnose = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -65,11 +96,19 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Patient Name :");
 
+        txtFieldPatientName.setEditable(false);
+
         jLabel3.setText("Age :");
+
+        txtFieldPatientAge.setEditable(false);
 
         jLabel4.setText("Gender :");
 
+        txtFieldPatientGender.setEditable(false);
+
         jLabel5.setText("Blood Group :");
+
+        txtFieldPatientBloodGroup.setEditable(false);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("Diagnosis :");
@@ -107,13 +146,20 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setText("Prescription :");
 
-        comboBoxTablets.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxTablets.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
 
         jLabel8.setText("tablets of codeine per day for");
 
-        durationComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        durationComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
 
-        daysweeksmonthsComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        daysweeksmonthsComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Days", "Weeks", "Months" }));
+
+        btnDiagnose.setText("Save Diagnosis & Prescribe");
+        btnDiagnose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDiagnoseActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -139,40 +185,43 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
                                     .addComponent(txtFieldPatientName, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtFieldPatientGender, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtFieldPatientBloodGroup, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(checkBackPain)
-                                    .addComponent(checkHeadache)
-                                    .addComponent(checkFibromyalgia)
-                                    .addComponent(checkNerveDamage)
-                                    .addComponent(checkBrokenBones))
-                                .addGap(130, 130, 130)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(checkArthritis)
-                                    .addComponent(checkMSclerosis)
-                                    .addComponent(checkShingles)
-                                    .addComponent(checkCancer)
-                                    .addComponent(checkInjury))
-                                .addGap(90, 90, 90)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(checkSprain)
-                                    .addComponent(checkSpasm)
-                                    .addComponent(checkInfection)
-                                    .addComponent(checkIntestinalDisorder)
-                                    .addComponent(checkAbdominalPain)))
                             .addComponent(jLabel6)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(comboBoxTablets, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(checkHeadache)
+                                            .addComponent(checkBrokenBones)
+                                            .addComponent(checkAbdominalPain)
+                                            .addComponent(checkInfection)
+                                            .addComponent(checkSprain))
+                                        .addGap(126, 126, 126)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(checkArthritis)
+                                            .addComponent(checkShingles)
+                                            .addComponent(checkInjury)
+                                            .addComponent(checkIntestinalDisorder)
+                                            .addComponent(checkNerveDamage)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel7)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(comboBoxTablets, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jLabel8)))
                                         .addGap(18, 18, 18)
-                                        .addComponent(jLabel8)))
-                                .addGap(18, 18, 18)
-                                .addComponent(durationComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(daysweeksmonthsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(456, Short.MAX_VALUE))
+                                        .addComponent(durationComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(daysweeksmonthsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(84, 84, 84)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnDiagnose)
+                                    .addComponent(checkSpasm)
+                                    .addComponent(checkBackPain)
+                                    .addComponent(checkMSclerosis)
+                                    .addComponent(checkFibromyalgia)
+                                    .addComponent(checkCancer))))))
+                .addGap(202, 400, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,14 +263,14 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
                     .addComponent(checkInfection))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(checkNerveDamage)
-                    .addComponent(checkCancer)
-                    .addComponent(checkSpasm))
+                    .addComponent(checkSpasm)
+                    .addComponent(checkSprain)
+                    .addComponent(checkInjury))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(checkBrokenBones)
-                    .addComponent(checkInjury)
-                    .addComponent(checkSprain))
+                    .addComponent(checkCancer)
+                    .addComponent(checkNerveDamage))
                 .addGap(60, 60, 60)
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
@@ -229,13 +278,79 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
                     .addComponent(comboBoxTablets, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
                     .addComponent(durationComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(daysweeksmonthsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(121, Short.MAX_VALUE))
+                    .addComponent(daysweeksmonthsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDiagnose))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnDiagnoseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagnoseActionPerformed
+        // TODO add your handling code here:
+        
+        PatientSymptomsHistory patientSymptomsHistory = patient.getSymptomsHistory();
+        Symptoms symptoms = new Symptoms();
+        PrescriptionHistory prescriptionHistory = patient.getPrescriptionHistory();
+        Prescription prescription = new Prescription();
+        
+        if(checkAbdominalPain.isSelected())
+            symptoms.setHasAbdominalPain(true);
+        if(checkArthritis.isSelected())
+            symptoms.setHasArthritis(true);
+        if(checkBackPain.isSelected())
+            symptoms.setHasLowerBackPain(true);
+        if(checkBrokenBones.isSelected())
+            symptoms.setHasBrokenBones(true);
+        if(checkCancer.isSelected())
+            symptoms.setHasCancer(true);
+        if(checkFibromyalgia.isSelected())
+            symptoms.setHasFibromyalgia(true);
+        if(checkHeadache.isSelected())
+            symptoms.setHasHeadache(true);
+        if(checkInfection.isSelected())
+            symptoms.setHasInfection(true);
+        if(checkInjury.isSelected())
+            symptoms.setHasInjury(true);
+        if(checkIntestinalDisorder.isSelected())
+            symptoms.setHasIntestinalDisorder(true);
+        if(checkMSclerosis.isSelected())
+            symptoms.setHasMultipleSclerosis(true);
+        if(checkNerveDamage.isSelected())
+            symptoms.setHasNerveDamage(true);
+        if(checkShingles.isSelected())
+            symptoms.setHasShingles(true);
+        if(checkSpasm.isSelected())
+            symptoms.setHasMuscleSpasm(true);
+        if(checkSprain.isSelected())
+            symptoms.setHasSprain(true);
+        
+        patientSymptomsHistory.getSymptomHistory().add(symptoms);
+        
+        int dosage = Integer.parseInt(comboBoxTablets.getSelectedItem().toString());
+        int duration = Integer.parseInt(durationComboBox.getSelectedItem().toString());
+        int daysweeksmonths = 1;
+        
+        if(daysweeksmonthsComboBox.getSelectedItem().equals("Weeks"))
+            daysweeksmonths = 7;
+        else if(daysweeksmonthsComboBox.getSelectedItem().equals("Months"))
+            daysweeksmonths = 30;
+        
+        prescription.setNoOfDays(duration * daysweeksmonths);
+        prescription.setDrugName("Codeine");
+        prescription.setTotalOpioidsPrescribed(dosage * duration * daysweeksmonths);
+        prescription.setOpdDate(new Date());
+        // Dosage dose = new Dosage(dosage);
+        
+        workRequest.setResolveDate(new Date());
+        workRequest.setStatus("Patient diagnosed");
+        
+        prescriptionHistory.getPrescriptionHistory().add(prescription);
+        
+        
+    }//GEN-LAST:event_btnDiagnoseActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDiagnose;
     private javax.swing.JCheckBox checkAbdominalPain;
     private javax.swing.JCheckBox checkArthritis;
     private javax.swing.JCheckBox checkBackPain;

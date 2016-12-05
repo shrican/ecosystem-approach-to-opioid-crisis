@@ -15,6 +15,10 @@ import java.util.List;
 public class PatientSymptomsHistory {
   
     private ArrayList<Symptoms> symptomHistory;
+    
+    public PatientSymptomsHistory(){
+        this.symptomHistory = new ArrayList<>();
+    }
 
     public ArrayList<Symptoms> getSymptomHistory() {
         return symptomHistory;

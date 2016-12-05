@@ -26,6 +26,10 @@ public class Patient {
     private PrescriptionHistory prescriptionHistory;
     private PatientSymptomsHistory symptomsHistory;
 
+    public PatientSymptomsHistory getSymptomsHistory() {
+        return symptomsHistory;
+    }
+
     private String id;
     private static int count = 1;
 

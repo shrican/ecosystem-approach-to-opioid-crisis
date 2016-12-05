@@ -20,7 +20,52 @@ public class Symptoms {
     private boolean hasNerveDamage;
     private boolean hasCancer;
     private boolean hasInjury;
-    private boolean hasBrokenBone;
+    private boolean hasBrokenBones;
+
+    public boolean isHasIntestinalDisorder() {
+        return hasIntestinalDisorder;
+    }
+
+    public void setHasIntestinalDisorder(boolean hasIntestinalDisorder) {
+        this.hasIntestinalDisorder = hasIntestinalDisorder;
+    }
+
+    public boolean isHasInfection() {
+        return hasInfection;
+    }
+
+    public void setHasInfection(boolean hasInfection) {
+        this.hasInfection = hasInfection;
+    }
+
+    public boolean isHasSprain() {
+        return hasSprain;
+    }
+
+    public void setHasSprain(boolean hasSprain) {
+        this.hasSprain = hasSprain;
+    }
+
+    public boolean isHasMuscleSpasm() {
+        return hasMuscleSpasm;
+    }
+
+    public void setHasMuscleSpasm(boolean hasMuscleSpasm) {
+        this.hasMuscleSpasm = hasMuscleSpasm;
+    }
+    private boolean hasAbdominalPain;
+    private boolean hasIntestinalDisorder;
+    private boolean hasInfection;
+    private boolean hasSprain;
+    private boolean hasMuscleSpasm;
+
+    public boolean isHasAbdominalPain() {
+        return hasAbdominalPain;
+    }
+
+    public void setHasAbdominalPain(boolean hasAbdominalPain) {
+        this.hasAbdominalPain = hasAbdominalPain;
+    }
     
     //divide these into acute and chronic pains. prescribe opioids to multiple acute pains, not to chronic
     
@@ -31,8 +76,8 @@ public class Symptoms {
         return hasInjury;
     }
 
-    public boolean isHasBrokenBone() {
-        return hasBrokenBone;
+    public boolean isHasBrokenBones() {
+        return hasBrokenBones;
     }
 
     public int getPainMeasure() {
@@ -43,8 +88,8 @@ public class Symptoms {
         this.hasInjury = hasInjury;
     }
 
-    public void setHasBrokenBone(boolean hasBrokenBone) {
-        this.hasBrokenBone = hasBrokenBone;
+    public void setHasBrokenBones(boolean hasBrokenBones) {
+        this.hasBrokenBones = hasBrokenBones;
     }
 
     public boolean isHasLowerBackPain() {

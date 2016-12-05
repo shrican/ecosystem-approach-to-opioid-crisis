@@ -50,6 +50,7 @@ public class ManageScheduleJPanel extends javax.swing.JPanel {
         doctorScheduleJTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         backJButton1 = new javax.swing.JButton();
+        btnDiagnose = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -87,6 +88,13 @@ public class ManageScheduleJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnDiagnose.setText("Diagnose Patient");
+        btnDiagnose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDiagnoseActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -94,9 +102,13 @@ public class ManageScheduleJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(100, 100, 100)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(backJButton1)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(backJButton1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnDiagnose))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(102, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -107,7 +119,9 @@ public class ManageScheduleJPanel extends javax.swing.JPanel {
                 .addGap(36, 36, 36)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(118, 118, 118)
-                .addComponent(backJButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(backJButton1)
+                    .addComponent(btnDiagnose))
                 .addContainerGap(195, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -122,7 +136,7 @@ public class ManageScheduleJPanel extends javax.swing.JPanel {
             Patient patient = ((ScheduleAppointmentWorkRequest) request).getPatient();
             row[0] = request;
             row[1] = patient.getId();
-            row[2] = patient.getName();
+            row[2] = patient;
             row[3] = request.getRequestDate();
             
             model.addRow(row);
@@ -139,9 +153,21 @@ public class ManageScheduleJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButton1ActionPerformed
 
+    private void btnDiagnoseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagnoseActionPerformed
+        // TODO add your handling code here:
+        Patient patient = (Patient)doctorScheduleJTable.getValueAt(doctorScheduleJTable.getSelectedRow(), 2);
+        ScheduleAppointmentWorkRequest wr = (ScheduleAppointmentWorkRequest)doctorScheduleJTable.getValueAt(doctorScheduleJTable.getSelectedRow(), 0);
+        DiagnosePatientJPanel diagnose = new DiagnosePatientJPanel(userProcessContainer, patient, wr);
+        userProcessContainer.add("diagnosePatientJPanel", diagnose);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+        
+    }//GEN-LAST:event_btnDiagnoseActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton1;
+    private javax.swing.JButton btnDiagnose;
     private javax.swing.JTable doctorScheduleJTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

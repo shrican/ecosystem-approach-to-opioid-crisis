@@ -14,17 +14,17 @@ import java.util.List;
  */
 public class PrescriptionHistory {
     
-    private List<Presciption> prescriptionHistory;
+    private List<Prescription> prescriptionHistory;
     
     public PrescriptionHistory(){
         prescriptionHistory = new ArrayList<>();
     }
 
-    public List<Presciption> getPrescriptionHistory() {
+    public List<Prescription> getPrescriptionHistory() {
         return prescriptionHistory;
     }
 
-    public void setPrescriptionHistory(List<Presciption> prescriptionHistory) {
+    public void setPrescriptionHistory(List<Prescription> prescriptionHistory) {
         this.prescriptionHistory = prescriptionHistory;
     }
     
