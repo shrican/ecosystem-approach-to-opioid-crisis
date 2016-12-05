@@ -5,6 +5,8 @@
  */
 package com.neu.business.patient;
 
+import java.util.Date;
+
 /**
  *
  * @author Soham
@@ -20,6 +22,19 @@ public class OpioidAbuseSymptoms {
     private boolean lowRespiratoryRate;
     private boolean selfHarm;
     private boolean insomnia;
+    private Date date;
+
+    public OpioidAbuseSymptoms() {
+        date = new Date();
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
     public boolean hasInsomnia() {
         return insomnia;

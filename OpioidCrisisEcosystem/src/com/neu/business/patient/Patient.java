@@ -36,6 +36,7 @@ public class Patient {
     public Patient() {
         //auto increment
         id = String.valueOf(count++);
+        registrationDate = new Date();
         opioidAbuseSymptomsHistory = new OpioidAbuseSymptomsHistory();
         opioidWithdrawalSymptomsHistory = new OpioidWithdrawalSymptomsHistory();
         postOpioidAddiction = new PostOpioidAddiction();
