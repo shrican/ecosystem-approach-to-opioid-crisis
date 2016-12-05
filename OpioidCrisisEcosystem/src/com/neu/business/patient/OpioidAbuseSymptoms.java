@@ -32,10 +32,6 @@ public class OpioidAbuseSymptoms {
         return date;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
     public boolean hasInsomnia() {
         return insomnia;
     }
@@ -76,7 +72,7 @@ public class OpioidAbuseSymptoms {
         this.nausea = nausea;
     }
 
-    public boolean hasStomachPain() {
+    public boolean hasChestPain() {
         return chestPain;
     }
 
@@ -84,7 +80,7 @@ public class OpioidAbuseSymptoms {
         this.chestPain = chestPain;
     }
 
-    public boolean hasEnlargedPupils() {
+    public boolean hasPupilaryConstriction() {
         return pupilaryConstriction;
     }
 

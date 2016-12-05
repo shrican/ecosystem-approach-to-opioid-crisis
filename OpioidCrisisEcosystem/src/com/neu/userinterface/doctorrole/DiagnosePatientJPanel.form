@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <Properties>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -65,14 +65,14 @@
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPanel3" pref="0" max="32767" attributes="0"/>
+                  <Component id="jPanel3" max="32767" attributes="0"/>
                   <Component id="jPanel2" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-              <Component id="jPanel4" max="32767" attributes="0"/>
-              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
               <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -265,7 +265,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane2" min="-2" pref="171" max="-2" attributes="0"/>
+                  <Component id="jScrollPane2" min="-2" pref="133" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -342,7 +342,7 @@
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Opioid Abuse Symptons"/>
+            <TitledBorder title="Opioid Abuse Symptoms"/>
           </Border>
         </Property>
       </Properties>
@@ -352,7 +352,29 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="checkNausea" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="checkChestPain" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="checkPupils" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="checkBloodshotEyes" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="checkJointPain" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="checkMusclePain" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="checkLowRespiratory" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="checkSelfHarm" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="checkInsomnia" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Component id="jScrollPane1" max="32767" attributes="0"/>
+                  </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -361,8 +383,20 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="202" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="100" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="checkNausea" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="checkChestPain" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="checkPupils" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="checkBloodshotEyes" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="checkJointPain" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="checkMusclePain" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="checkLowRespiratory" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="checkSelfHarm" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="checkInsomnia" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="58" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -375,14 +409,14 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="jTable1">
+            <Component class="javax.swing.JTable" name="tblAbuseSymptoms">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="10" rowCount="0">
                     <Column editable="false" title="Date" type="java.lang.Object"/>
                     <Column editable="false" title="Nausea" type="java.lang.Object"/>
                     <Column editable="false" title="Chest Pain" type="java.lang.Object"/>
-                    <Column editable="false" title="Pupilory Constriction" type="java.lang.Object"/>
+                    <Column editable="false" title="Pupilary Constriction" type="java.lang.Object"/>
                     <Column editable="false" title="Bloodshot Eyes" type="java.lang.Object"/>
                     <Column editable="false" title="Joint Pain" type="java.lang.Object"/>
                     <Column editable="false" title="Muscle Tension" type="java.lang.Object"/>
@@ -452,6 +486,51 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JCheckBox" name="checkNausea">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Nausea"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="checkChestPain">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Chest Pain"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="checkPupils">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Pupilary Constriction"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="checkBloodshotEyes">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Bloodshot Eyes"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="checkJointPain">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Joint Pain"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="checkMusclePain">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Muscle Pain"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="checkLowRespiratory">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Low Respiratory"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="checkSelfHarm">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Self Harm"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="checkInsomnia">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Insomnia"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="jPanel4">
@@ -531,7 +610,7 @@
                       <Component id="checkCancer" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="checkNerveDamage" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

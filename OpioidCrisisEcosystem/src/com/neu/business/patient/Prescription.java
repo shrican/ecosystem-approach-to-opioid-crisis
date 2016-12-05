@@ -16,9 +16,14 @@ public class Prescription {
     private String drugName;
     private Date opdDate;
     private String id; //auto increment
+    private static int count = 0;
     private Dosage dosage;
     private int noOfDays;
     private int totalOpioidsPrescribed;
+
+    public Prescription() {
+        id = String.valueOf(++count);
+    }
 
     public enum Dosage {
         OnceADay(1),
@@ -63,10 +68,6 @@ public class Prescription {
 
     public String getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public int getNoOfDays() {
