@@ -8,8 +8,10 @@ package com.neu.userinterface.pharmaceuticalcompanymanagerrole;
 import com.neu.business.enterprise.Enterprise;
 import com.neu.business.organization.PharmaceuticalCompanyManagerOrganization;
 import com.neu.business.useraccount.UserAccount;
+import com.neu.business.workqueue.PharmacySupplyWorkRequest;
 import com.neu.business.workqueue.WorkQueue;
 import com.neu.business.workqueue.WorkRequest;
+import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -41,9 +43,19 @@ public class PharmaceuticalCompanyManagerWorkAreaJPanel extends javax.swing.JPan
     {
         DefaultTableModel dtm = (DefaultTableModel)tblPendingOrders.getModel();
         dtm.setRowCount(0);
-        
+        Object [] row = new Object[3];
+        int count = 0;
         WorkQueue workQueue = organization.getWorkQueue();
-        for(WorkRequest workRequest)
+        for(WorkRequest workRequest : workQueue.getWorkRequestList())
+        {
+            if(workRequest.getStatus().equals("Opioids Order Pending"))
+            {
+                row[0] = count++;
+                row[1] = ((PharmacySupplyWorkRequest)workRequest).getPharmacyEnterprise();
+                row[2] = ((PharmacySupplyWorkRequest)workRequest).getOrderAmount();
+                dtm.addRow(row);
+            }
+        }
     }
 
     /**
@@ -125,6 +137,11 @@ public class PharmaceuticalCompanyManagerWorkAreaJPanel extends javax.swing.JPan
         jScrollPane2.setViewportView(tblCompletedOrders);
 
         btnRespond.setText("Respond to Order");
+        btnRespond.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRespondActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -169,6 +186,17 @@ public class PharmaceuticalCompanyManagerWorkAreaJPanel extends javax.swing.JPan
                 .addContainerGap(134, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnRespondActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRespondActionPerformed
+        // TODO add your handling code here:
+        
+        PharmacySupplyWorkRequest pharmaWorkRequest = (PharmacySupplyWorkRequest) tblPendingOrders.getValueAt(tblPendingOrders.getSelectedRow(), tblPendingOrders.getSelectedColumn());
+        SupplyOpioidsJPanel supplyOpioidsJPanel = new SupplyOpioidsJPanel(userProcessContainer, pharmaWorkRequest, enterprise);
+        userProcessContainer.add("SupplyOpioidsJPanel", supplyOpioidsJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+        
+    }//GEN-LAST:event_btnRespondActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

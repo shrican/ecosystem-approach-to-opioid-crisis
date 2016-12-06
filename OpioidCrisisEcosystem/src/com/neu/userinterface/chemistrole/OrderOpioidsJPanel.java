@@ -182,6 +182,7 @@ public class OrderOpioidsJPanel extends javax.swing.JPanel {
         
         PharmaceuticalCompanyManagerOrganization pharmaManager = (PharmaceuticalCompanyManagerOrganization) enterprise.getOrganizationDirectory().getOrganizationList().get(0);
         pharmacySupplyWorkRequest.setMessage("Opioids Order Pending");
+        pharmacySupplyWorkRequest.setPharmacyEnterprise(enterprise);
         pharmaManager.getWorkQueue().getWorkRequestList().add(pharmacySupplyWorkRequest);
         enterprise.getWorkQueue().getWorkRequestList().add(pharmacySupplyWorkRequest);
     }//GEN-LAST:event_btnOrderActionPerformed

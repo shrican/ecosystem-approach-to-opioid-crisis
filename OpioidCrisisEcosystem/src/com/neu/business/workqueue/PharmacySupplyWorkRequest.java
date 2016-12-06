@@ -5,6 +5,8 @@
  */
 package com.neu.business.workqueue;
 
+import com.neu.business.enterprise.PharmacyEnterprise;
+
 /**
  *
  * @author Anmol
@@ -14,6 +16,15 @@ public class PharmacySupplyWorkRequest extends WorkRequest {
     private static int count = 0;
     private int ID;
     private int orderAmount;
+    private PharmacyEnterprise pharmacyEnterprise;
+
+    public PharmacyEnterprise getPharmacyEnterprise() {
+        return pharmacyEnterprise;
+    }
+
+    public void setPharmacyEnterprise(PharmacyEnterprise pharmacyEnterprise) {
+        this.pharmacyEnterprise = pharmacyEnterprise;
+    }
 
     public int getID() {
         return ID;
