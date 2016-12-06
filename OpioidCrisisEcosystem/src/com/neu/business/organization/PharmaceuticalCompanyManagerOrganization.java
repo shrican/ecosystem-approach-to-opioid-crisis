@@ -6,6 +6,7 @@
 package com.neu.business.organization;
 
 import com.neu.business.role.ChemistRole;
+import com.neu.business.role.PharmaceuticalCompanyManagerRole;
 import com.neu.business.role.Role;
 import com.neu.business.workqueue.PharmacySupplyWorkRequest;
 import com.neu.business.workqueue.WorkQueue;
@@ -20,7 +21,7 @@ public class PharmaceuticalCompanyManagerOrganization extends Organization {
     private WorkQueue pharmaWorkQueue;
     
     public PharmaceuticalCompanyManagerOrganization() {
-        super(Type.Chemist.getValue());
+        super(Type.PharmaceuticalCompanyManager.getValue());
         pharmaWorkQueue = new WorkQueue();
     }
     
@@ -33,7 +34,7 @@ public class PharmaceuticalCompanyManagerOrganization extends Organization {
     @Override
     public ArrayList<Role> getSupportedRole() {
         ArrayList<Role> roles = new ArrayList<>();
-        roles.add(new ChemistRole());
+        roles.add(new PharmaceuticalCompanyManagerRole());
         return roles;
     }
 }
