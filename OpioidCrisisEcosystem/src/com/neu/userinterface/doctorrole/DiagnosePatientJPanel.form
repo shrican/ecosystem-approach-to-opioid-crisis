@@ -21,40 +21,13 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="138" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="cmbDosage" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtNoOfDays" min="-2" pref="50" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
-                      <Component id="btnDiagnose" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jPanel1" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                              <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jPanel4" alignment="0" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
+                  <Component id="jScrollPane3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="81" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -64,24 +37,7 @@
               <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPanel3" max="32767" attributes="0"/>
-                  <Component id="jPanel2" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-              <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="cmbDosage" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnDiagnose" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtNoOfDays" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="jScrollPane3" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -96,601 +52,713 @@
         <Property name="text" type="java.lang.String" value="Appointment"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel7">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="14" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Prescription :"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="cmbDosage">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
-            <StringItem index="0" value="1"/>
-            <StringItem index="1" value="2"/>
-            <StringItem index="2" value="3"/>
-          </StringArray>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel8">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="tablets of codeine per day for"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnDiagnose">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Save Diagnosis &amp; Prescribe"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDiagnoseActionPerformed"/>
-      </Events>
-    </Component>
-    <Container class="javax.swing.JPanel" name="jPanel2">
+    <Container class="javax.swing.JScrollPane" name="jScrollPane3">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Patient Details"/>
-          </Border>
-        </Property>
       </Properties>
 
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="txtFieldPatientAge" min="-2" pref="250" max="-2" attributes="0"/>
-                      <Component id="txtFieldPatientName" min="-2" pref="250" max="-2" attributes="0"/>
-                      <Component id="txtFieldPatientGender" min="-2" pref="250" max="-2" attributes="0"/>
-                      <Component id="txtFieldPatientBloodGroup" min="-2" pref="250" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtFieldPatientName" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtFieldPatientAge" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtFieldPatientGender" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtFieldPatientBloodGroup" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Container class="javax.swing.JPanel" name="jPanel6">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Patient Name :"/>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtFieldPatientGender">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtFieldPatientBloodGroup">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtFieldPatientName">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel4">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Gender :"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtFieldPatientAge">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel5">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Blood Group :"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Age :"/>
-          </Properties>
-        </Component>
-      </SubComponents>
-    </Container>
-    <Container class="javax.swing.JPanel" name="jPanel3">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Prescription History"/>
-          </Border>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
-      </Properties>
 
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane2" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jPanel1" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jPanel3" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="jPanel4" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jPanel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="backJButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
               </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane2" min="-2" pref="133" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jPanel3" max="32767" attributes="0"/>
+                          <Component id="jPanel2" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="backJButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-      <SubComponents>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane2">
-          <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-          </AuxValues>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+            </DimensionLayout>
+          </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="tblPrescriptionHistory">
+            <Container class="javax.swing.JPanel" name="jPanel2">
               <Properties>
-                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="5" rowCount="0">
-                    <Column editable="false" title="Prescription No." type="java.lang.Object"/>
-                    <Column editable="false" title="Drug Name" type="java.lang.Object"/>
-                    <Column editable="false" title="Dosage" type="java.lang.Object"/>
-                    <Column editable="false" title="No. of days" type="java.lang.Object"/>
-                    <Column editable="false" title="Date" type="java.lang.Object"/>
-                  </Table>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-                  <TableColumnModel selectionModel="0">
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                  </TableColumnModel>
-                </Property>
-                <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                    <TitledBorder title="Patient Details"/>
+                  </Border>
                 </Property>
               </Properties>
-            </Component>
-          </SubComponents>
-        </Container>
-      </SubComponents>
-    </Container>
-    <Component class="javax.swing.JTextField" name="txtNoOfDays">
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel9">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Days"/>
-      </Properties>
-    </Component>
-    <Container class="javax.swing.JPanel" name="jPanel1">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Opioid Abuse Symptoms"/>
-          </Border>
-        </Property>
-      </Properties>
 
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+              <Layout>
+                <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="checkNausea" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="checkChestPain" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="checkPupils" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="checkBloodshotEyes" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="checkJointPain" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="checkMusclePain" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="checkLowRespiratory" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="checkSelfHarm" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="checkInsomnia" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="txtFieldPatientAge" min="-2" pref="250" max="-2" attributes="0"/>
+                              <Component id="txtFieldPatientName" min="-2" pref="250" max="-2" attributes="0"/>
+                              <Component id="txtFieldPatientGender" min="-2" pref="250" max="-2" attributes="0"/>
+                              <Component id="txtFieldPatientBloodGroup" min="-2" pref="250" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jScrollPane1" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="100" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="checkNausea" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="checkChestPain" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="checkPupils" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="checkBloodshotEyes" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="checkJointPain" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="checkMusclePain" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="checkLowRespiratory" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="checkSelfHarm" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="checkInsomnia" alignment="3" min="-2" max="-2" attributes="0"/>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtFieldPatientName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtFieldPatientAge" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtFieldPatientGender" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtFieldPatientBloodGroup" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace pref="58" max="32767" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-      <SubComponents>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
-          <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-          </AuxValues>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-          <SubComponents>
-            <Component class="javax.swing.JTable" name="tblAbuseSymptoms">
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="jLabel2">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Patient Name :"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtFieldPatientGender">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtFieldPatientBloodGroup">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtFieldPatientName">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel4">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Gender :"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtFieldPatientAge">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel5">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Blood Group :"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel3">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Age :"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="jPanel3">
               <Properties>
-                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="10" rowCount="0">
-                    <Column editable="false" title="Date" type="java.lang.Object"/>
-                    <Column editable="false" title="Nausea" type="java.lang.Object"/>
-                    <Column editable="false" title="Chest Pain" type="java.lang.Object"/>
-                    <Column editable="false" title="Pupilary Constriction" type="java.lang.Object"/>
-                    <Column editable="false" title="Bloodshot Eyes" type="java.lang.Object"/>
-                    <Column editable="false" title="Joint Pain" type="java.lang.Object"/>
-                    <Column editable="false" title="Muscle Tension" type="java.lang.Object"/>
-                    <Column editable="false" title="Low Respiratory rate" type="java.lang.Object"/>
-                    <Column editable="false" title="Self Harm" type="java.lang.Object"/>
-                    <Column editable="false" title="Insomnia" type="java.lang.Object"/>
-                  </Table>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-                  <TableColumnModel selectionModel="0">
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                  </TableColumnModel>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                    <TitledBorder title="Prescription History"/>
+                  </Border>
                 </Property>
-                <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
               </Properties>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jScrollPane2" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jScrollPane2" min="-2" pref="161" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTable" name="tblPrescriptionHistory">
+                      <Properties>
+                        <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                          <Table columnCount="5" rowCount="0">
+                            <Column editable="false" title="Prescription No." type="java.lang.Object"/>
+                            <Column editable="false" title="Drug Name" type="java.lang.Object"/>
+                            <Column editable="false" title="Dosage" type="java.lang.Object"/>
+                            <Column editable="false" title="No. of days" type="java.lang.Object"/>
+                            <Column editable="false" title="Date" type="java.lang.Object"/>
+                          </Table>
+                        </Property>
+                        <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                          <TableColumnModel selectionModel="0">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                          </TableColumnModel>
+                        </Property>
+                        <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                          <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="jPanel1">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                    <TitledBorder title="Opioid Abuse Symptoms"/>
+                  </Border>
+                </Property>
+              </Properties>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="checkNausea" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="checkChestPain" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="checkPupils" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="checkBloodshotEyes" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="checkJointPain" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="checkMusclePain" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="checkLowRespiratory" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="checkSelfHarm" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="checkInsomnia" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="jScrollPane1" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="100" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="checkNausea" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkChestPain" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkPupils" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkBloodshotEyes" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkJointPain" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkMusclePain" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkLowRespiratory" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkSelfHarm" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkInsomnia" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="13" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTable" name="tblAbuseSymptoms">
+                      <Properties>
+                        <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                          <Table columnCount="10" rowCount="0">
+                            <Column editable="false" title="Date" type="java.lang.Object"/>
+                            <Column editable="false" title="Nausea" type="java.lang.Object"/>
+                            <Column editable="false" title="Chest Pain" type="java.lang.Object"/>
+                            <Column editable="false" title="Pupilary Constriction" type="java.lang.Object"/>
+                            <Column editable="false" title="Bloodshot Eyes" type="java.lang.Object"/>
+                            <Column editable="false" title="Joint Pain" type="java.lang.Object"/>
+                            <Column editable="false" title="Muscle Tension" type="java.lang.Object"/>
+                            <Column editable="false" title="Low Respiratory rate" type="java.lang.Object"/>
+                            <Column editable="false" title="Self Harm" type="java.lang.Object"/>
+                            <Column editable="false" title="Insomnia" type="java.lang.Object"/>
+                          </Table>
+                        </Property>
+                        <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                          <TableColumnModel selectionModel="0">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                          </TableColumnModel>
+                        </Property>
+                        <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                          <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Component class="javax.swing.JCheckBox" name="checkNausea">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Nausea"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="checkChestPain">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Chest Pain"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="checkPupils">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Pupilary Constriction"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="checkBloodshotEyes">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bloodshot Eyes"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="checkJointPain">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Joint Pain"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="checkMusclePain">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Muscle Pain"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="checkLowRespiratory">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Low Respiratory"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="checkSelfHarm">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Self Harm"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="checkInsomnia">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Insomnia"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="jPanel4">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                    <TitledBorder title="Diagnosis"/>
+                  </Border>
+                </Property>
+              </Properties>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="checkHeadache" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkBrokenBones" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkAbdominalPain" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkInfection" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkSprain" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="checkArthritis" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkShingles" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkInjury" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkIntestinalDisorder" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkNerveDamage" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="224" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="checkSpasm" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkBackPain" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkMSclerosis" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkFibromyalgia" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkCancer" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="284" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="checkBackPain" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkArthritis" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkAbdominalPain" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="checkHeadache" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkMSclerosis" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkIntestinalDisorder" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="checkFibromyalgia" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkShingles" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkInfection" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="checkSpasm" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkSprain" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkInjury" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="checkBrokenBones" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkCancer" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkNerveDamage" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JCheckBox" name="checkIntestinalDisorder">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Intestinal Disorder"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="checkInjury">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Injury"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="checkHeadache">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Headache"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="checkArthritis">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Arthritis"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="checkInfection">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Infection"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="checkBrokenBones">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Broken Bones"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="checkSprain">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Sprain"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="checkAbdominalPain">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Abdominal Pain"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="checkFibromyalgia">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Fibromyalgia"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="checkSpasm">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Muscle Spasm"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="checkCancer">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Cancer"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="checkShingles">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Shingles"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="checkBackPain">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Low Back Pain"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="checkMSclerosis">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Multiple Sclerosis"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="checkNerveDamage">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Nerve Damage"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="jPanel5">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                    <TitledBorder title="Prescription"/>
+                  </Border>
+                </Property>
+              </Properties>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="cmbDosage" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="txtNoOfDays" min="-2" pref="50" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="639" max="32767" attributes="0"/>
+                          <Component id="btnDiagnose" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="cmbDosage" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnDiagnose" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtNoOfDays" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="jLabel9">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Days"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnDiagnose">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Save Diagnosis &amp; Prescribe"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDiagnoseActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtNoOfDays">
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cmbDosage">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="3">
+                        <StringItem index="0" value="1"/>
+                        <StringItem index="1" value="2"/>
+                        <StringItem index="2" value="3"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel8">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="tablets of codeine per day for"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JButton" name="backJButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&lt;&lt; Back"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backJButtonActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JCheckBox" name="checkNausea">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Nausea"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="checkChestPain">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Chest Pain"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="checkPupils">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Pupilary Constriction"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="checkBloodshotEyes">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Bloodshot Eyes"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="checkJointPain">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Joint Pain"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="checkMusclePain">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Muscle Pain"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="checkLowRespiratory">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Low Respiratory"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="checkSelfHarm">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Self Harm"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="checkInsomnia">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Insomnia"/>
-          </Properties>
-        </Component>
-      </SubComponents>
-    </Container>
-    <Container class="javax.swing.JPanel" name="jPanel4">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Diagnosis"/>
-          </Border>
-        </Property>
-      </Properties>
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="checkHeadache" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="checkBrokenBones" min="-2" max="-2" attributes="0"/>
-                      <Component id="checkAbdominalPain" min="-2" max="-2" attributes="0"/>
-                      <Component id="checkInfection" min="-2" max="-2" attributes="0"/>
-                      <Component id="checkSprain" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="checkArthritis" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="checkShingles" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="checkInjury" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="checkIntestinalDisorder" min="-2" max="-2" attributes="0"/>
-                      <Component id="checkNerveDamage" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="checkSpasm" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="checkBackPain" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="checkMSclerosis" min="-2" max="-2" attributes="0"/>
-                      <Component id="checkFibromyalgia" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="checkCancer" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="32767" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="checkBackPain" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="checkArthritis" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="checkAbdominalPain" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="checkHeadache" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="checkMSclerosis" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="checkIntestinalDisorder" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="checkFibromyalgia" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="checkShingles" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="checkInfection" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="checkSpasm" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="checkSprain" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="checkInjury" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="checkBrokenBones" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="checkCancer" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="checkNerveDamage" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="32767" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JCheckBox" name="checkIntestinalDisorder">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Intestinal Disorder"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="checkInjury">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Injury"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="checkHeadache">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Headache"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="checkArthritis">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Arthritis"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="checkInfection">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Infection"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="checkBrokenBones">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Broken Bones"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="checkSprain">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Sprain"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="checkAbdominalPain">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Abdominal Pain"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="checkFibromyalgia">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Fibromyalgia"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="checkSpasm">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Muscle Spasm"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="checkCancer">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Cancer"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="checkShingles">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Shingles"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="checkBackPain">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Low Back Pain"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="checkMSclerosis">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Multiple Sclerosis"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="checkNerveDamage">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Nerve Damage"/>
-          </Properties>
-        </Component>
       </SubComponents>
     </Container>
   </SubComponents>
