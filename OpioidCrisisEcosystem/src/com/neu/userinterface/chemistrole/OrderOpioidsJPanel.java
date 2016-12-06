@@ -26,7 +26,6 @@ public class OrderOpioidsJPanel extends javax.swing.JPanel {
     /**
      * Creates new form OrderOpioidsJPanel
      */
-    
     private JPanel userProcessContainer;
     private PharmaceuticalCompanyEnterprise pharmaEnterprise;
     private PharmacyEnterprise enterprise;
@@ -34,7 +33,7 @@ public class OrderOpioidsJPanel extends javax.swing.JPanel {
     private Network network;
     private int futureStock = 0;
     private UserAccount userAccount;
-    
+
     public OrderOpioidsJPanel(JPanel userProcessContainer, PharmaceuticalCompanyEnterprise pharmaEnterprise, PharmacyEnterprise enterprise, ChemistOrganization organization, Network network, UserAccount userAccount) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
@@ -46,18 +45,14 @@ public class OrderOpioidsJPanel extends javax.swing.JPanel {
         populateSupplierComboBox();
         populateCurrentStock();
     }
-    
-    public void populateCurrentStock()
-    {
+
+    public void populateCurrentStock() {
         txtFieldCurrentStock.setText(String.valueOf(organization.getStock()));
     }
-    
-    public void populateSupplierComboBox()
-    {
-        for(Enterprise e : network.getEnterpriseDirectory().getEnterpriseList())
-        {
-            if(e.getEnterpriseType().getValue().equals("Pharmaceutical Company Enterprise"))
-            {
+
+    public void populateSupplierComboBox() {
+        for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()) {
+            if (e.getEnterpriseType().getValue().equals("Pharmaceutical Company Enterprise")) {
                 comboBoxPharmaceuticalCompanies.addItem(e);
             }
         }
@@ -85,6 +80,12 @@ public class OrderOpioidsJPanel extends javax.swing.JPanel {
         btnCheckFuture = new javax.swing.JButton();
 
         jLabel1.setText("Supplier :");
+
+        comboBoxPharmaceuticalCompanies.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxPharmaceuticalCompaniesActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Order Amount :");
 
@@ -171,37 +172,41 @@ public class OrderOpioidsJPanel extends javax.swing.JPanel {
 
     private void btnCheckFutureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckFutureActionPerformed
         // TODO add your handling code here:
-        
-        if(txtFieldOrderAmount.equals(""))
+
+        if (txtFieldOrderAmount.equals("")) {
             JOptionPane.showMessageDialog(null, "Enter order amount", "Warning", JOptionPane.WARNING_MESSAGE);
-        else
-            txtFieldFutureStock.setText(String.valueOf(Integer.parseInt(txtFieldCurrentStock.getText()+Integer.parseInt(txtFieldOrderAmount.getText()))));
+        } else {
+            txtFieldFutureStock.setText(String.valueOf(Integer.parseInt(txtFieldCurrentStock.getText() + Integer.parseInt(txtFieldOrderAmount.getText()))));
+        }
     }//GEN-LAST:event_btnCheckFutureActionPerformed
 
     private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
         // TODO add your handling code here:
-        
+
         PharmacySupplyWorkRequest pharmacySupplyWorkRequest = new PharmacySupplyWorkRequest();
         pharmacySupplyWorkRequest.setOrderAmount(Integer.parseInt(txtFieldOrderAmount.getText()));
-        for(Organization o : pharmaEnterprise.getOrganizationDirectory().getOrganizationList()){
-            if(o instanceof PharmaceuticalCompanyManagerOrganization)
-            {PharmaceuticalCompanyManagerOrganization pharmaManager = (PharmaceuticalCompanyManagerOrganization) o;
-        pharmacySupplyWorkRequest.setMessage("Opioids Order Pending");
-        pharmacySupplyWorkRequest.setPharmacyEnterprise(enterprise);
-        pharmacySupplyWorkRequest.setSender(userAccount);
+        for (Organization o : pharmaEnterprise.getOrganizationDirectory().getOrganizationList()) {
+            if (o instanceof PharmaceuticalCompanyManagerOrganization) {
+                PharmaceuticalCompanyManagerOrganization pharmaManager = (PharmaceuticalCompanyManagerOrganization) o;
+                pharmacySupplyWorkRequest.setMessage("Opioids Order Pending");
+                pharmacySupplyWorkRequest.setPharmacyEnterprise(enterprise);
+                pharmacySupplyWorkRequest.setSender(userAccount);
 //        pharmacySupplyWorkRequest.setReceiver(pharmaEnterprise.getOrganizationDirectory().getOrganizationList());
-        for(UserAccount user : pharmaManager.getUserAccountDirectory().getUserAccountList())
-        {
-            user.getWorkQueue().getWorkRequestList().add(pharmacySupplyWorkRequest);
-            pharmacySupplyWorkRequest.setReceiver(user);
-        }
-        userAccount.getWorkQueue().getWorkRequestList().add(pharmacySupplyWorkRequest);
-        pharmaManager.getWorkQueue().getWorkRequestList().add(pharmacySupplyWorkRequest);
-        enterprise.getWorkQueue().getWorkRequestList().add(pharmacySupplyWorkRequest);
-        
+                for (UserAccount user : pharmaManager.getUserAccountDirectory().getUserAccountList()) {
+                    user.getWorkQueue().getWorkRequestList().add(pharmacySupplyWorkRequest);
+                    pharmacySupplyWorkRequest.setReceiver(user);
+                }
+                userAccount.getWorkQueue().getWorkRequestList().add(pharmacySupplyWorkRequest);
+                pharmaManager.getWorkQueue().getWorkRequestList().add(pharmacySupplyWorkRequest);
+                enterprise.getWorkQueue().getWorkRequestList().add(pharmacySupplyWorkRequest);
+
             }
         }
     }//GEN-LAST:event_btnOrderActionPerformed
+
+    private void comboBoxPharmaceuticalCompaniesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxPharmaceuticalCompaniesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBoxPharmaceuticalCompaniesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

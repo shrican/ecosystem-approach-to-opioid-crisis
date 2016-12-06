@@ -578,34 +578,46 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
 
         OpioidAbuseSymptoms opioidAbuseSymptoms = patient.getOpioidAbuseSymptomsHistory().addAbuseSymptom();
-
+        float symptomScore = 0;
+        
         if (checkNausea.isSelected()) {
             opioidAbuseSymptoms.setNausea(true);
+            symptomScore += 1;
         }
         if (checkChestPain.isSelected()) {
             opioidAbuseSymptoms.setChestPain(true);
+            symptomScore += 1;
         }
         if (checkPupils.isSelected()) {
             opioidAbuseSymptoms.setPupilaryConstriction(true);
+            symptomScore += 1;
         }
         if (checkBloodshotEyes.isSelected()) {
             opioidAbuseSymptoms.setBloodshotEyes(true);
+            symptomScore += 1;
         }
         if (checkJointPain.isSelected()) {
             opioidAbuseSymptoms.setJointPain(true);
+            symptomScore += 1;
         }
         if (checkMusclePain.isSelected()) {
             opioidAbuseSymptoms.setMuscleTension(true);
+            symptomScore += 1;
         }
         if (checkLowRespiratory.isSelected()) {
             opioidAbuseSymptoms.setLowRespiratoryRate(true);
+            symptomScore += 1;
         }
         if (checkSelfHarm.isSelected()) {
             opioidAbuseSymptoms.setSelfHarm(true);
+            symptomScore += 1;
         }
         if (checkInsomnia.isSelected()) {
             opioidAbuseSymptoms.setInsomnia(true);
+            symptomScore += 1;
         }
+        
+        patient.setOpioidAddictionSymptomScore(symptomScore);
 
         Symptoms symptoms = patient.getSymptomsHistory().addSymptoms();
         Prescription prescription = patient.getPrescriptionHistory().addPrescription();

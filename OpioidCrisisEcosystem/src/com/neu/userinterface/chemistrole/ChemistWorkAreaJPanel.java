@@ -136,7 +136,7 @@ public class ChemistWorkAreaJPanel extends javax.swing.JPanel {
                 }
             }
         }
-        //maa ka bhosda
+  
         
         
     }//GEN-LAST:event_btnOrderOpioidsActionPerformed
