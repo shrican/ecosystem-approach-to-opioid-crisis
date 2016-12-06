@@ -5,9 +5,13 @@
  */
 package com.neu.userinterface.chemistrole;
 
+import com.neu.business.EcoSystem;
+import com.neu.business.enterprise.Enterprise;
 import com.neu.business.enterprise.PharmacyEnterprise;
+import com.neu.business.network.Network;
 import com.neu.business.organization.ChemistOrganization;
 import com.neu.business.useraccount.UserAccount;
+import java.awt.CardLayout;
 import javax.swing.JPanel;
 
 /**
@@ -23,13 +27,15 @@ public class ChemistWorkAreaJPanel extends javax.swing.JPanel {
     private UserAccount userAccount;
     private ChemistOrganization organization;
     private PharmacyEnterprise enterprise;
+    private EcoSystem system;
     
-    public ChemistWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, ChemistOrganization organization, PharmacyEnterprise enterprise) {
+    public ChemistWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, ChemistOrganization organization, PharmacyEnterprise enterprise, EcoSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.userAccount = userAccount;
         this.organization = organization;
         this.enterprise = enterprise;
+        this.system = system;
     }
 
     /**
@@ -44,14 +50,22 @@ public class ChemistWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtFieldChemistStock = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnOrderOpioids = new javax.swing.JButton();
+        btnSellOpioids = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Chemist Work Area");
 
         jLabel2.setText("Stock remaining: ");
 
-        jButton1.setText("Order Opioids");
+        btnOrderOpioids.setText("Order Opioids");
+        btnOrderOpioids.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrderOpioidsActionPerformed(evt);
+            }
+        });
+
+        btnSellOpioids.setText("Sell Opioids");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -63,30 +77,62 @@ public class ChemistWorkAreaJPanel extends javax.swing.JPanel {
                 .addContainerGap(716, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(30, 30, 30)
-                .addComponent(txtFieldChemistStock, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(142, 142, 142)
-                .addComponent(jButton1)
-                .addGap(176, 176, 176))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtFieldChemistStock, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnSellOpioids)
+                        .addGap(140, 140, 140)
+                        .addComponent(btnOrderOpioids)))
+                .addGap(320, 320, 320))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(41, 41, 41)
+                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtFieldChemistStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addContainerGap(501, Short.MAX_VALUE))
+                    .addComponent(txtFieldChemistStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(94, 94, 94)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSellOpioids)
+                    .addComponent(btnOrderOpioids))
+                .addContainerGap(384, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnOrderOpioidsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderOpioidsActionPerformed
+        // TODO add your handling code here:
+        
+        Network currentNetowrk;
+        
+        for(Network network : system.getNetworkList())
+        {
+            for(Enterprise e : network.getEnterpriseDirectory().getEnterpriseList())
+            {
+                if(e.getName().equals(enterprise.getName()))
+                {
+                    currentNetowrk = network;// getting which network the current chemist and pharmaceutical company are in
+                    OrderOpioidsJPanel orderOpioidsJPanel = new OrderOpioidsJPanel(userProcessContainer, enterprise, organization, currentNetowrk);
+                    userProcessContainer.add("OrderOpioidsJPanel", orderOpioidsJPanel);
+                    CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+                    layout.next(userProcessContainer);
+                }
+            }
+        }
+        //maa ka bhosda
+        
+        
+    }//GEN-LAST:event_btnOrderOpioidsActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnOrderOpioids;
+    private javax.swing.JButton btnSellOpioids;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField txtFieldChemistStock;

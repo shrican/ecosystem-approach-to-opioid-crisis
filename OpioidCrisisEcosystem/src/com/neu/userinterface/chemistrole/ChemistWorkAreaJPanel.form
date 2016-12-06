@@ -30,9 +30,9 @@
                       <Component id="txtFieldChemistStock" min="-2" pref="110" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnSellOpioids" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="140" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnOrderOpioids" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="320" max="-2" attributes="0"/>
@@ -51,8 +51,8 @@
               </Group>
               <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnSellOpioids" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnOrderOpioids" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="384" max="32767" attributes="0"/>
           </Group>
@@ -75,12 +75,15 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtFieldChemistStock">
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btnOrderOpioids">
       <Properties>
         <Property name="text" type="java.lang.String" value="Order Opioids"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnOrderOpioidsActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="btnSellOpioids">
       <Properties>
         <Property name="text" type="java.lang.String" value="Sell Opioids"/>
       </Properties>

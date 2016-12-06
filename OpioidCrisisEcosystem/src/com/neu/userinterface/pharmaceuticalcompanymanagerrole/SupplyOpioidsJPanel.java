@@ -35,7 +35,7 @@ public class SupplyOpioidsJPanel extends javax.swing.JPanel {
     {
         txtFieldPharmacyName.setText(pharmaWorkRequest.getPharmacyEnterprise().getName());
         txtFieldOrderAmount.setText(String.valueOf(pharmaWorkRequest.getOrderAmount()));
-        txtFieldStockLeft.setText(String.valueOf((PharmaceuticalCompanyEnterprise)enterprise.get));
+        //txtFieldStockLeft.setText(String.valueOf((PharmaceuticalCompanyEnterprise)enterprise.get));
     }
 
     /**
