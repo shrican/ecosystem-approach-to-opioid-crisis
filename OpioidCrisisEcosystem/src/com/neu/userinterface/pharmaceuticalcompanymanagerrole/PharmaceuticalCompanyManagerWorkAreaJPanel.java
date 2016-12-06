@@ -43,6 +43,7 @@ public class PharmaceuticalCompanyManagerWorkAreaJPanel extends javax.swing.JPan
         dtm.setRowCount(0);
         
         WorkQueue workQueue = organization.getWorkQueue();
+        for(WorkRequest workRequest)
     }
 
     /**
