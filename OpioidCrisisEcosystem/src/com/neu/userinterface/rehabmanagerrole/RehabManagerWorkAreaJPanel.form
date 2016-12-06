@@ -21,6 +21,8 @@
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="btnBack" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
+                      <Component id="btnViewPatientDetails" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="btnUpdate" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -39,6 +41,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnBack" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnViewPatientDetails" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="229" max="32767" attributes="0"/>
           </Group>
@@ -103,6 +106,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Update"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnViewPatientDetails">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="View Patient Details"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewPatientDetailsActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

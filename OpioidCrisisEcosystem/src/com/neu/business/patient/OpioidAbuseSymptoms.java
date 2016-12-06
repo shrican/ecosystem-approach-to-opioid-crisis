@@ -23,9 +23,12 @@ public class OpioidAbuseSymptoms {
     private boolean selfHarm;
     private boolean insomnia;
     private Date date;
+    private static int count = 1;
+    private int ID;
 
     public OpioidAbuseSymptoms() {
         date = new Date();
+        ID = count++;
     }
 
     public Date getDate() {

@@ -16,8 +16,18 @@ import java.util.ArrayList;
  */
 public class ChemistOrganization extends Organization {
 
+    private int stock;
+    
     public ChemistOrganization() {
         super(Type.Chemist.getValue());
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 
     @Override

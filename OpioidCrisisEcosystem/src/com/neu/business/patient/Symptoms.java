@@ -21,6 +21,14 @@ public class Symptoms {
     private boolean hasCancer;
     private boolean hasInjury;
     private boolean hasBrokenBones;
+    
+    private int id;
+    private static int count = 1;
+    
+    public Symptoms()
+    {
+        id = count++;
+    }
 
     public boolean isHasIntestinalDisorder() {
         return hasIntestinalDisorder;

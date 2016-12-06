@@ -21,8 +21,8 @@ import javax.swing.JPanel;
 public class ChemistRole extends Role{
 
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new ChemistWorkAreaJPanel(userProcessContainer, account, (ChemistOrganization)organization, (PharmacyEnterprise)enterprise);
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem system) {
+        return new ChemistWorkAreaJPanel(userProcessContainer, account, (ChemistOrganization)organization, (PharmacyEnterprise)enterprise, system);
     }
     
 }
