@@ -8,7 +8,10 @@ package com.neu.userinterface.pharmaceuticalcompanymanagerrole;
 import com.neu.business.enterprise.Enterprise;
 import com.neu.business.organization.PharmaceuticalCompanyManagerOrganization;
 import com.neu.business.useraccount.UserAccount;
+import com.neu.business.workqueue.WorkQueue;
+import com.neu.business.workqueue.WorkRequest;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -30,6 +33,16 @@ public class PharmaceuticalCompanyManagerWorkAreaJPanel extends javax.swing.JPan
         this.account = account;
         this.organization = organization;
         this.enterprise = enterprise;
+        
+        populatePendingOrdersTable();
+    }
+    
+    public void populatePendingOrdersTable()
+    {
+        DefaultTableModel dtm = (DefaultTableModel)tblPendingOrders.getModel();
+        dtm.setRowCount(0);
+        
+        WorkQueue workQueue = organization.getWorkQueue();
     }
 
     /**
@@ -42,17 +55,17 @@ public class PharmaceuticalCompanyManagerWorkAreaJPanel extends javax.swing.JPan
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblPendingOrders = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         txtFieldRemainingStock = new javax.swing.JTextField();
         btnAddStock = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tblCompletedOrders = new javax.swing.JTable();
         btnRespond = new javax.swing.JButton();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblPendingOrders.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -75,7 +88,7 @@ public class PharmaceuticalCompanyManagerWorkAreaJPanel extends javax.swing.JPan
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblPendingOrders);
 
         jLabel2.setText("Remaining Stock :");
 
@@ -85,7 +98,7 @@ public class PharmaceuticalCompanyManagerWorkAreaJPanel extends javax.swing.JPan
 
         jLabel3.setText("Completed distribution orders :");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblCompletedOrders.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -108,7 +121,7 @@ public class PharmaceuticalCompanyManagerWorkAreaJPanel extends javax.swing.JPan
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tblCompletedOrders);
 
         btnRespond.setText("Respond to Order");
 
@@ -165,8 +178,8 @@ public class PharmaceuticalCompanyManagerWorkAreaJPanel extends javax.swing.JPan
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable tblCompletedOrders;
+    private javax.swing.JTable tblPendingOrders;
     private javax.swing.JTextField txtFieldRemainingStock;
     // End of variables declaration//GEN-END:variables
 }
