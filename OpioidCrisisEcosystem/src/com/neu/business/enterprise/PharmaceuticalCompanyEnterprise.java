@@ -14,9 +14,22 @@ import java.util.ArrayList;
  */
 public class PharmaceuticalCompanyEnterprise extends Enterprise {
 
+    private int stock;
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+    
     public PharmaceuticalCompanyEnterprise(String name) {
         super(name, EnterpriseType.PharmaceuticalCompanyEnterprise);
+        stock = 5000;
     }
+    
+    
 
     @Override
     public ArrayList<Role> getSupportedRole() {

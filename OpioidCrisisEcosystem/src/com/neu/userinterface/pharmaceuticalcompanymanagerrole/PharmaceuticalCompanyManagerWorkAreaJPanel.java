@@ -37,6 +37,7 @@ public class PharmaceuticalCompanyManagerWorkAreaJPanel extends javax.swing.JPan
         this.enterprise = enterprise;
         
         populatePendingOrdersTable();
+        populateCompletedOrdersTable();
     }
     
     public void populatePendingOrdersTable()
@@ -56,6 +57,25 @@ public class PharmaceuticalCompanyManagerWorkAreaJPanel extends javax.swing.JPan
                 dtm.addRow(row);
             }
         }
+    }
+    
+    public void populateCompletedOrdersTable()
+    {
+       DefaultTableModel dtm = (DefaultTableModel)tblCompletedOrders.getModel();
+        dtm.setRowCount(0);
+        Object [] row = new Object[3];
+        int count = 0;
+        WorkQueue workQueue = organization.getWorkQueue();
+        for(WorkRequest workRequest : workQueue.getWorkRequestList())
+        {
+            if(workRequest.getStatus().equals("Order Complete"))
+            {
+                row[0] = count++;
+                row[1] = ((PharmacySupplyWorkRequest)workRequest).getPharmacyEnterprise();
+                row[2] = ((PharmacySupplyWorkRequest)workRequest).getOrderAmount();
+                dtm.addRow(row);
+            }
+        } 
     }
 
     /**
@@ -77,6 +97,7 @@ public class PharmaceuticalCompanyManagerWorkAreaJPanel extends javax.swing.JPan
         jScrollPane2 = new javax.swing.JScrollPane();
         tblCompletedOrders = new javax.swing.JTable();
         btnRespond = new javax.swing.JButton();
+        btnRefresh = new javax.swing.JButton();
 
         tblPendingOrders.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -143,6 +164,13 @@ public class PharmaceuticalCompanyManagerWorkAreaJPanel extends javax.swing.JPan
             }
         });
 
+        btnRefresh.setText("Refresh Tables");
+        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -150,20 +178,26 @@ public class PharmaceuticalCompanyManagerWorkAreaJPanel extends javax.swing.JPan
             .addGroup(layout.createSequentialGroup()
                 .addGap(198, 198, 198)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnRespond)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(51, 51, 51)
-                                .addComponent(txtFieldRemainingStock, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnAddStock))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(250, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel1))
+                        .addContainerGap(250, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnRespond)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addGap(51, 51, 51)
+                                    .addComponent(txtFieldRemainingStock, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnAddStock))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnRefresh)
+                        .addGap(64, 64, 64))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,7 +206,8 @@ public class PharmaceuticalCompanyManagerWorkAreaJPanel extends javax.swing.JPan
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtFieldRemainingStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAddStock))
+                    .addComponent(btnAddStock)
+                    .addComponent(btnRefresh))
                 .addGap(37, 37, 37)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
@@ -198,9 +233,16 @@ public class PharmaceuticalCompanyManagerWorkAreaJPanel extends javax.swing.JPan
         
     }//GEN-LAST:event_btnRespondActionPerformed
 
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+        // TODO add your handling code here:
+        populatePendingOrdersTable();
+        populateCompletedOrdersTable();
+    }//GEN-LAST:event_btnRefreshActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddStock;
+    private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnRespond;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

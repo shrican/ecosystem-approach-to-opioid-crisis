@@ -6,7 +6,12 @@
 package com.neu.userinterface.pharmaceuticalcompanymanagerrole;
 
 import com.neu.business.enterprise.Enterprise;
+import com.neu.business.enterprise.PharmaceuticalCompanyEnterprise;
+import com.neu.business.enterprise.PharmacyEnterprise;
+import com.neu.business.organization.ChemistOrganization;
 import com.neu.business.workqueue.PharmacySupplyWorkRequest;
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -26,7 +31,7 @@ public class SupplyOpioidsJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.pharmaWorkRequest = pharmaWorkRequest;
-        this.enterprise = enterprise;
+        this.enterprise = (PharmaceuticalCompanyEnterprise)enterprise;
         
         populateFields();
     }
@@ -35,7 +40,7 @@ public class SupplyOpioidsJPanel extends javax.swing.JPanel {
     {
         txtFieldPharmacyName.setText(pharmaWorkRequest.getPharmacyEnterprise().getName());
         txtFieldOrderAmount.setText(String.valueOf(pharmaWorkRequest.getOrderAmount()));
-        //txtFieldStockLeft.setText(String.valueOf((PharmaceuticalCompanyEnterprise)enterprise.get));
+        txtFieldStockLeft.setText(String.valueOf(((PharmaceuticalCompanyEnterprise)enterprise).getStock()));
     }
 
     /**
@@ -63,6 +68,11 @@ public class SupplyOpioidsJPanel extends javax.swing.JPanel {
         jLabel3.setText("Stock Remaining :");
 
         btnDispatch.setText("Dispatch Opioids");
+        btnDispatch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDispatchActionPerformed(evt);
+            }
+        });
 
         btnBack.setText("Back");
 
@@ -111,6 +121,40 @@ public class SupplyOpioidsJPanel extends javax.swing.JPanel {
                 .addContainerGap(294, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnDispatchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDispatchActionPerformed
+        // TODO add your handling code here:
+        
+        int stockLeft = Integer.parseInt(txtFieldStockLeft.getText());
+        int orderAmount = Integer.parseInt(txtFieldOrderAmount.getText());
+        
+        if(stockLeft<orderAmount)
+        {
+            JOptionPane.showMessageDialog(null, "You do not have enough stock to complete this order", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+        else
+        {
+            ((PharmaceuticalCompanyEnterprise)enterprise).setStock(stockLeft-orderAmount);
+            PharmacyEnterprise pharmacyEnterpise = pharmaWorkRequest.getPharmacyEnterprise();
+            ChemistOrganization organization = (ChemistOrganization)enterprise.getOrganizationDirectory().getOrganizationList().get(0);
+            int chemistStock = organization.getStock();
+            organization.setStock(chemistStock+orderAmount);
+            pharmaWorkRequest.setStatus("Order Complete");
+            
+            Object[] options = {"OK"};
+    int n = JOptionPane.showOptionDialog(null,
+                   "Message here ","Title",
+                   JOptionPane.PLAIN_MESSAGE,
+                   JOptionPane.QUESTION_MESSAGE,
+                   null,
+                   options,
+                   options[0]);
+            userProcessContainer.remove(this);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.previous(userProcessContainer);
+        }
+        
+    }//GEN-LAST:event_btnDispatchActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
