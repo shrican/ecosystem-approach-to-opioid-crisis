@@ -14,19 +14,19 @@ import java.util.List;
  */
 public class PrescriptionHistory {
 
-    private List<Prescription> prescriptionHistory;
+    private List<Prescription> prescriptionHistoryList;
 
     public PrescriptionHistory() {
-        prescriptionHistory = new ArrayList<>();
+        prescriptionHistoryList = new ArrayList<>();
     }
 
-    public List<Prescription> getPrescriptionHistory() {
-        return prescriptionHistory;
+    public List<Prescription> getPrescriptionHistoryList() {
+        return prescriptionHistoryList;
     }
 
     public Prescription addPrescription() {
         Prescription prescription = new Prescription();
-        prescriptionHistory.add(prescription);
+        prescriptionHistoryList.add(prescription);
         return prescription;
     }
 }

@@ -17,6 +17,10 @@ public class PharmacySupplyWorkRequest extends WorkRequest {
     private int ID;
     private int orderAmount;
     private PharmacyEnterprise pharmacyEnterprise;
+    
+    public PharmacySupplyWorkRequest(){
+        ID=++count;
+    }
 
     public PharmacyEnterprise getPharmacyEnterprise() {
         return pharmacyEnterprise;

@@ -33,4 +33,33 @@ public class PatientDirectory {
     public void addPatient(Patient patient) {
         patientList.add(patient);
     }
+
+    /*
+        Bayesian estimate:
+        weighted rating (WR) = (v ÷ (v+m)) × R + (m ÷ (v+m)) × C
+     */
+    public int calculateBayesianOpioidAddictionScore(Patient patient) {
+
+        float totalPatients = patientList.size(); // Total patients in the Ecosystem (var m in Bayesian Algorithm)
+        float totalNoOfVisitsForAllPatients = 0; // Total no of of visits for all patients in the Ecosystem 
+        float avgVisitsOfAllPatients; // Average Visits of all patients in the Ecosystem (var v in Bayesian Algorithm)
+        float avgSymScoreOfAllPatients; // Average symptom score of all patients in the Ecosystem (var R in Bayesian Algorithm)
+        float currentPatientTotalSymScore; // Total symptom score for current patient(var C in Bayesian Algorithm)
+        float totalOpioidSymScoreForAllPatients = 0; // Total Opioid Symmptom Score For All Patients
+
+        // Calculate total no of patients
+        for (Patient p : patientList) {
+            totalNoOfVisitsForAllPatients += p.getPrescriptionHistory().getPrescriptionHistoryList().size();
+            totalOpioidSymScoreForAllPatients += p.getOpioidAddictionSymptomScore();
+        }
+
+        // Calculate average Visits of all patients
+        avgVisitsOfAllPatients = totalNoOfVisitsForAllPatients / totalPatients;
+
+        // Calculate average symptom score of all patients
+        avgSymScoreOfAllPatients = totalOpioidSymScoreForAllPatients / totalPatients;
+
+        return 0;
+    }
+
 }

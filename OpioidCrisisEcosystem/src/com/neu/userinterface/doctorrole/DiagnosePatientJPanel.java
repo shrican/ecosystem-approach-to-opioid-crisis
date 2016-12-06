@@ -560,7 +560,7 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
 
         model.setRowCount(0);
 
-        for (Prescription prescription : patient.getPrescriptionHistory().getPrescriptionHistory()) {
+        for (Prescription prescription : patient.getPrescriptionHistory().getPrescriptionHistoryList()) {
             Object[] row = new Object[5];
 
             row[0] = prescription.getId();

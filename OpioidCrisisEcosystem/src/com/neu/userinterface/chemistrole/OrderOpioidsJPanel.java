@@ -10,7 +10,9 @@ import com.neu.business.enterprise.PharmaceuticalCompanyEnterprise;
 import com.neu.business.enterprise.PharmacyEnterprise;
 import com.neu.business.network.Network;
 import com.neu.business.organization.ChemistOrganization;
+import com.neu.business.organization.Organization;
 import com.neu.business.organization.PharmaceuticalCompanyManagerOrganization;
+import com.neu.business.useraccount.UserAccount;
 import com.neu.business.workqueue.PharmacySupplyWorkRequest;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -26,17 +28,21 @@ public class OrderOpioidsJPanel extends javax.swing.JPanel {
      */
     
     private JPanel userProcessContainer;
+    private PharmaceuticalCompanyEnterprise pharmaEnterprise;
     private PharmacyEnterprise enterprise;
     private ChemistOrganization organization;
     private Network network;
     private int futureStock = 0;
+    private UserAccount userAccount;
     
-    public OrderOpioidsJPanel(JPanel userProcessContainer, PharmacyEnterprise enterprise, ChemistOrganization organization, Network network) {
+    public OrderOpioidsJPanel(JPanel userProcessContainer, PharmaceuticalCompanyEnterprise pharmaEnterprise, PharmacyEnterprise enterprise, ChemistOrganization organization, Network network, UserAccount userAccount) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
+        this.pharmaEnterprise = pharmaEnterprise;
         this.enterprise = enterprise;
         this.organization = organization;
         this.network = network;
+        this.userAccount = userAccount;
         populateSupplierComboBox();
         populateCurrentStock();
     }
@@ -52,7 +58,7 @@ public class OrderOpioidsJPanel extends javax.swing.JPanel {
         {
             if(e.getEnterpriseType().getValue().equals("Pharmaceutical Company Enterprise"))
             {
-                comboBoxPharmaceuticalCompanies.addItem(e.toString());
+                comboBoxPharmaceuticalCompanies.addItem(e);
             }
         }
     }
@@ -79,8 +85,6 @@ public class OrderOpioidsJPanel extends javax.swing.JPanel {
         btnCheckFuture = new javax.swing.JButton();
 
         jLabel1.setText("Supplier :");
-
-        comboBoxPharmaceuticalCompanies.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel2.setText("Order Amount :");
 
@@ -179,19 +183,31 @@ public class OrderOpioidsJPanel extends javax.swing.JPanel {
         
         PharmacySupplyWorkRequest pharmacySupplyWorkRequest = new PharmacySupplyWorkRequest();
         pharmacySupplyWorkRequest.setOrderAmount(Integer.parseInt(txtFieldOrderAmount.getText()));
-        
-        PharmaceuticalCompanyManagerOrganization pharmaManager = (PharmaceuticalCompanyManagerOrganization) enterprise.getOrganizationDirectory().getOrganizationList().get(0);
+        for(Organization o : pharmaEnterprise.getOrganizationDirectory().getOrganizationList()){
+            if(o instanceof PharmaceuticalCompanyManagerOrganization)
+            {PharmaceuticalCompanyManagerOrganization pharmaManager = (PharmaceuticalCompanyManagerOrganization) o;
         pharmacySupplyWorkRequest.setMessage("Opioids Order Pending");
         pharmacySupplyWorkRequest.setPharmacyEnterprise(enterprise);
+        pharmacySupplyWorkRequest.setSender(userAccount);
+//        pharmacySupplyWorkRequest.setReceiver(pharmaEnterprise.getOrganizationDirectory().getOrganizationList());
+        for(UserAccount user : pharmaManager.getUserAccountDirectory().getUserAccountList())
+        {
+            user.getWorkQueue().getWorkRequestList().add(pharmacySupplyWorkRequest);
+            pharmacySupplyWorkRequest.setReceiver(user);
+        }
+        userAccount.getWorkQueue().getWorkRequestList().add(pharmacySupplyWorkRequest);
         pharmaManager.getWorkQueue().getWorkRequestList().add(pharmacySupplyWorkRequest);
         enterprise.getWorkQueue().getWorkRequestList().add(pharmacySupplyWorkRequest);
+        
+            }
+        }
     }//GEN-LAST:event_btnOrderActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCheckFuture;
     private javax.swing.JButton btnOrder;
-    private javax.swing.JComboBox<String> comboBoxPharmaceuticalCompanies;
+    private javax.swing.JComboBox<Object> comboBoxPharmaceuticalCompanies;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

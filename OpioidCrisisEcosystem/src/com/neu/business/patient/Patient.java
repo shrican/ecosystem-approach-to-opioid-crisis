@@ -13,12 +13,16 @@ import java.util.Date;
  */
 public class Patient {
 
+    //TODO: calculate opioidAddictionSymptomScore
+    private String id;
+    private static int count = 0;
     private String name;
     private String phoneNo;
     private int age;
     private String bloodGroup;
     private String gender;
     private Date registrationDate;
+    private float opioidAddictionSymptomScore;
 
     private OpioidAbuseSymptomsHistory opioidAbuseSymptomsHistory;
     private OpioidWithdrawalSymptomsHistory opioidWithdrawalSymptomsHistory;
@@ -30,12 +34,9 @@ public class Patient {
         return symptomsHistory;
     }
 
-    private String id;
-    private static int count = 1;
-
     public Patient() {
         //auto increment
-        id = String.valueOf(count++);
+        id = String.valueOf(++count);
         registrationDate = new Date();
         opioidAbuseSymptomsHistory = new OpioidAbuseSymptomsHistory();
         opioidWithdrawalSymptomsHistory = new OpioidWithdrawalSymptomsHistory();
@@ -140,9 +141,16 @@ public class Patient {
         this.prescriptionHistory = prescriptionHistory;
     }
 
+    public float getOpioidAddictionSymptomScore() {
+        return opioidAddictionSymptomScore;
+    }
+
+    public void setOpioidAddictionSymptomScore(float opioidAddictionSymptomScore) {
+        this.opioidAddictionSymptomScore = opioidAddictionSymptomScore;
+    }
+
     @Override
     public String toString() {
         return name;
     }
-
 }

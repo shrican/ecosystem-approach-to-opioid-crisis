@@ -7,6 +7,7 @@ package com.neu.userinterface.chemistrole;
 
 import com.neu.business.EcoSystem;
 import com.neu.business.enterprise.Enterprise;
+import com.neu.business.enterprise.PharmaceuticalCompanyEnterprise;
 import com.neu.business.enterprise.PharmacyEnterprise;
 import com.neu.business.network.Network;
 import com.neu.business.organization.ChemistOrganization;
@@ -32,10 +33,17 @@ public class ChemistWorkAreaJPanel extends javax.swing.JPanel {
     public ChemistWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, ChemistOrganization organization, PharmacyEnterprise enterprise, EcoSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.userAccount = userAccount;
+        this.userAccount = account;
         this.organization = organization;
         this.enterprise = enterprise;
         this.system = system;
+        
+        populateStock();
+    }
+    
+    public void populateStock()
+    {
+         txtFieldChemistStock.setText(String.valueOf(organization.getStock()));
     }
 
     /**
@@ -108,7 +116,8 @@ public class ChemistWorkAreaJPanel extends javax.swing.JPanel {
     private void btnOrderOpioidsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderOpioidsActionPerformed
         // TODO add your handling code here:
         
-        Network currentNetowrk;
+        Network currentNetwork;
+        PharmaceuticalCompanyEnterprise pharmaEnterprise = new PharmaceuticalCompanyEnterprise("Pharmaceutical Company Enterprise");
         
         for(Network network : system.getNetworkList())
         {
@@ -116,8 +125,11 @@ public class ChemistWorkAreaJPanel extends javax.swing.JPanel {
             {
                 if(e.getName().equals(enterprise.getName()))
                 {
-                    currentNetowrk = network;// getting which network the current chemist and pharmaceutical company are in
-                    OrderOpioidsJPanel orderOpioidsJPanel = new OrderOpioidsJPanel(userProcessContainer, enterprise, organization, currentNetowrk);
+                    currentNetwork = network;// getting which network the current chemist and pharmaceutical company are in
+                    
+                    if(e instanceof PharmaceuticalCompanyEnterprise)
+                        pharmaEnterprise = (PharmaceuticalCompanyEnterprise) e;
+                    OrderOpioidsJPanel orderOpioidsJPanel = new OrderOpioidsJPanel(userProcessContainer, pharmaEnterprise, enterprise, organization, currentNetwork, userAccount);
                     userProcessContainer.add("OrderOpioidsJPanel", orderOpioidsJPanel);
                     CardLayout layout = (CardLayout) userProcessContainer.getLayout();
                     layout.next(userProcessContainer);
