@@ -5,6 +5,7 @@
  */
 package com.neu.userinterface.doctorrole;
 
+import com.neu.business.patient.OpioidAbuseSymptoms;
 import com.neu.business.patient.Patient;
 import com.neu.business.patient.PatientSymptomsHistory;
 import com.neu.business.patient.Prescription;
@@ -12,9 +13,11 @@ import com.neu.business.patient.Prescription.Dosage;
 import com.neu.business.patient.PrescriptionHistory;
 import com.neu.business.patient.Symptoms;
 import com.neu.business.workqueue.ScheduleAppointmentWorkRequest;
+import com.neu.business.workqueue.WorkRequest;
 import com.neu.userinterface.receptionistrole.ScheduleAppointmentJPanel;
 import java.util.Date;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -37,6 +40,8 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
         this.workRequest = workRequest;
 
         populateFields(patient);
+        populateAbuseSystemTable();
+        populatePrescriptionHistory();
     }
 
     public void populateFields(Patient patient) {
@@ -56,6 +61,7 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         cmbDosage = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         btnDiagnose = new javax.swing.JButton();
@@ -75,7 +81,16 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblAbuseSymptoms = new javax.swing.JTable();
+        checkNausea = new javax.swing.JCheckBox();
+        checkChestPain = new javax.swing.JCheckBox();
+        checkPupils = new javax.swing.JCheckBox();
+        checkBloodshotEyes = new javax.swing.JCheckBox();
+        checkJointPain = new javax.swing.JCheckBox();
+        checkMusclePain = new javax.swing.JCheckBox();
+        checkLowRespiratory = new javax.swing.JCheckBox();
+        checkSelfHarm = new javax.swing.JCheckBox();
+        checkInsomnia = new javax.swing.JCheckBox();
         jPanel4 = new javax.swing.JPanel();
         checkIntestinalDisorder = new javax.swing.JCheckBox();
         checkInjury = new javax.swing.JCheckBox();
@@ -97,6 +112,9 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Appointment");
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setText("Prescription :");
 
         cmbDosage.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
 
@@ -211,21 +229,21 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel9.setText("Days");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Opioid Abuse Symptons"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Opioid Abuse Symptoms"));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblAbuseSymptoms.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Date", "Nausea", "Chest Pain", "Pupilory Constriction", "Bloodshot Eyes", "Joint Pain", "Muscle Tension", "Low Respiratory rate", "Self Harm", "Insomnia"
+                "Date", "Nausea", "Chest Pain", "Pupilary Constriction", "Bloodshot Eyes", "Joint Pain", "Muscle Tension", "Low Respiratory rate", "Self Harm", "Insomnia"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -236,19 +254,37 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
-            jTable1.getColumnModel().getColumn(4).setResizable(false);
-            jTable1.getColumnModel().getColumn(5).setResizable(false);
-            jTable1.getColumnModel().getColumn(6).setResizable(false);
-            jTable1.getColumnModel().getColumn(7).setResizable(false);
-            jTable1.getColumnModel().getColumn(8).setResizable(false);
-            jTable1.getColumnModel().getColumn(9).setResizable(false);
+        jScrollPane1.setViewportView(tblAbuseSymptoms);
+        if (tblAbuseSymptoms.getColumnModel().getColumnCount() > 0) {
+            tblAbuseSymptoms.getColumnModel().getColumn(0).setResizable(false);
+            tblAbuseSymptoms.getColumnModel().getColumn(1).setResizable(false);
+            tblAbuseSymptoms.getColumnModel().getColumn(2).setResizable(false);
+            tblAbuseSymptoms.getColumnModel().getColumn(3).setResizable(false);
+            tblAbuseSymptoms.getColumnModel().getColumn(4).setResizable(false);
+            tblAbuseSymptoms.getColumnModel().getColumn(5).setResizable(false);
+            tblAbuseSymptoms.getColumnModel().getColumn(6).setResizable(false);
+            tblAbuseSymptoms.getColumnModel().getColumn(7).setResizable(false);
+            tblAbuseSymptoms.getColumnModel().getColumn(8).setResizable(false);
+            tblAbuseSymptoms.getColumnModel().getColumn(9).setResizable(false);
         }
+
+        checkNausea.setText("Nausea");
+
+        checkChestPain.setText("Chest Pain");
+
+        checkPupils.setText("Pupilary Constriction");
+
+        checkBloodshotEyes.setText("Bloodshot Eyes");
+
+        checkJointPain.setText("Joint Pain");
+
+        checkMusclePain.setText("Muscle Pain");
+
+        checkLowRespiratory.setText("Low Respiratory");
+
+        checkSelfHarm.setText("Self Harm");
+
+        checkInsomnia.setText("Insomnia");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -256,15 +292,46 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(checkNausea)
+                        .addGap(18, 18, 18)
+                        .addComponent(checkChestPain)
+                        .addGap(18, 18, 18)
+                        .addComponent(checkPupils)
+                        .addGap(18, 18, 18)
+                        .addComponent(checkBloodshotEyes)
+                        .addGap(18, 18, 18)
+                        .addComponent(checkJointPain)
+                        .addGap(18, 18, 18)
+                        .addComponent(checkMusclePain)
+                        .addGap(18, 18, 18)
+                        .addComponent(checkLowRespiratory)
+                        .addGap(18, 18, 18)
+                        .addComponent(checkSelfHarm)
+                        .addGap(18, 18, 18)
+                        .addComponent(checkInsomnia)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(checkNausea)
+                    .addComponent(checkChestPain)
+                    .addComponent(checkPupils)
+                    .addComponent(checkBloodshotEyes)
+                    .addComponent(checkJointPain)
+                    .addComponent(checkMusclePain)
+                    .addComponent(checkLowRespiratory)
+                    .addComponent(checkSelfHarm)
+                    .addComponent(checkInsomnia))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -356,7 +423,7 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
                     .addComponent(checkBrokenBones)
                     .addComponent(checkCancer)
                     .addComponent(checkNerveDamage))
-                .addGap(34, 34, 34))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -367,9 +434,12 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(138, 138, 138)
-                        .addComponent(cmbDosage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel8)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(cmbDosage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel8)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtNoOfDays, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -395,13 +465,15 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(30, 30, 30)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(68, 68, 68)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57)
+                .addComponent(jLabel7)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbDosage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
@@ -412,8 +484,82 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public void populateAbuseSystemTable() {
+        DefaultTableModel model = (DefaultTableModel) tblAbuseSymptoms.getModel();
+
+        model.setRowCount(0);
+
+        for (OpioidAbuseSymptoms opioidAbuseSymptoms : patient.getOpioidAbuseSymptomsHistory().getOpioidAbuseSysmpomsList()) {
+            Object[] row = new Object[10];
+
+            row[0] = opioidAbuseSymptoms.getDate();
+            row[1] = opioidAbuseSymptoms.hasNausea();
+            row[2] = opioidAbuseSymptoms.hasChestPain();
+            row[3] = opioidAbuseSymptoms.hasPupilaryConstriction();
+            row[4] = opioidAbuseSymptoms.hasBloodshotEyes();
+            row[5] = opioidAbuseSymptoms.hasJointPain();
+            row[6] = opioidAbuseSymptoms.hasMuscleTension();
+            row[7] = opioidAbuseSymptoms.hasLowRespiratoryRate();
+            row[8] = opioidAbuseSymptoms.hasSelfHarm();
+            row[9] = opioidAbuseSymptoms.hasInsomnia();
+
+            model.addRow(row);
+
+        }
+
+    }
+
+    public void populatePrescriptionHistory() {
+        DefaultTableModel model = (DefaultTableModel) tblPrescriptionHistory.getModel();
+
+        model.setRowCount(0);
+
+        for (Prescription prescription : patient.getPrescriptionHistory().getPrescriptionHistory()) {
+            Object[] row = new Object[5];
+
+            row[0] = prescription.getId();
+            row[1] = prescription.getDrugName();
+            //row[2] = prescription.getDosage();
+            row[3] = prescription.getNoOfDays();
+            row[4] = prescription.getOpdDate();
+
+            model.addRow(row);
+        }
+    }
+
+
     private void btnDiagnoseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagnoseActionPerformed
         // TODO add your handling code here:
+
+        OpioidAbuseSymptoms opioidAbuseSymptoms = patient.getOpioidAbuseSymptomsHistory().addAbuseSymptom();
+
+        if (checkNausea.isSelected()) {
+            opioidAbuseSymptoms.setNausea(true);
+        }
+        if (checkChestPain.isSelected()) {
+            opioidAbuseSymptoms.setChestPain(true);
+        }
+        if (checkPupils.isSelected()) {
+            opioidAbuseSymptoms.setPupilaryConstriction(true);
+        }
+        if (checkBloodshotEyes.isSelected()) {
+            opioidAbuseSymptoms.setBloodshotEyes(true);
+        }
+        if (checkJointPain.isSelected()) {
+            opioidAbuseSymptoms.setJointPain(true);
+        }
+        if (checkMusclePain.isSelected()) {
+            opioidAbuseSymptoms.setMuscleTension(true);
+        }
+        if (checkLowRespiratory.isSelected()) {
+            opioidAbuseSymptoms.setLowRespiratoryRate(true);
+        }
+        if (checkSelfHarm.isSelected()) {
+            opioidAbuseSymptoms.setSelfHarm(true);
+        }
+        if (checkInsomnia.isSelected()) {
+            opioidAbuseSymptoms.setInsomnia(true);
+        }
 
         Symptoms symptoms = patient.getSymptomsHistory().addSymptoms();
         Prescription prescription = patient.getPrescriptionHistory().addPrescription();
@@ -481,15 +627,24 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
     private javax.swing.JCheckBox checkAbdominalPain;
     private javax.swing.JCheckBox checkArthritis;
     private javax.swing.JCheckBox checkBackPain;
+    private javax.swing.JCheckBox checkBloodshotEyes;
     private javax.swing.JCheckBox checkBrokenBones;
     private javax.swing.JCheckBox checkCancer;
+    private javax.swing.JCheckBox checkChestPain;
     private javax.swing.JCheckBox checkFibromyalgia;
     private javax.swing.JCheckBox checkHeadache;
     private javax.swing.JCheckBox checkInfection;
     private javax.swing.JCheckBox checkInjury;
+    private javax.swing.JCheckBox checkInsomnia;
     private javax.swing.JCheckBox checkIntestinalDisorder;
+    private javax.swing.JCheckBox checkJointPain;
+    private javax.swing.JCheckBox checkLowRespiratory;
     private javax.swing.JCheckBox checkMSclerosis;
+    private javax.swing.JCheckBox checkMusclePain;
+    private javax.swing.JCheckBox checkNausea;
     private javax.swing.JCheckBox checkNerveDamage;
+    private javax.swing.JCheckBox checkPupils;
+    private javax.swing.JCheckBox checkSelfHarm;
     private javax.swing.JCheckBox checkShingles;
     private javax.swing.JCheckBox checkSpasm;
     private javax.swing.JCheckBox checkSprain;
@@ -499,6 +654,7 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -507,7 +663,7 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblAbuseSymptoms;
     private javax.swing.JTable tblPrescriptionHistory;
     private javax.swing.JTextField txtFieldPatientAge;
     private javax.swing.JTextField txtFieldPatientBloodGroup;
