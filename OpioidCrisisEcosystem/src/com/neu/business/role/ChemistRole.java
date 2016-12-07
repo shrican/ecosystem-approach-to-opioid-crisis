@@ -8,6 +8,7 @@ package com.neu.business.role;
 import com.neu.business.EcoSystem;
 import com.neu.business.enterprise.Enterprise;
 import com.neu.business.enterprise.PharmacyEnterprise;
+import com.neu.business.network.Network;
 import com.neu.business.organization.ChemistOrganization;
 import com.neu.business.organization.Organization;
 import com.neu.business.useraccount.UserAccount;
@@ -21,8 +22,8 @@ import javax.swing.JPanel;
 public class ChemistRole extends Role{
 
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem system) {
-        return new ChemistWorkAreaJPanel(userProcessContainer, account, (ChemistOrganization)organization, (PharmacyEnterprise)enterprise, system);
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem system) {
+        return new ChemistWorkAreaJPanel (userProcessContainer, account, (ChemistOrganization)organization, network);
     }
     
 }

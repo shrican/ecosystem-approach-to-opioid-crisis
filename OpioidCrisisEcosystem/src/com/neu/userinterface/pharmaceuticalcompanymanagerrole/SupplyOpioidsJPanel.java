@@ -11,6 +11,7 @@ import com.neu.business.enterprise.PharmacyEnterprise;
 import com.neu.business.organization.ChemistOrganization;
 import com.neu.business.workqueue.PharmacySupplyWorkRequest;
 import java.awt.CardLayout;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -25,22 +26,21 @@ public class SupplyOpioidsJPanel extends javax.swing.JPanel {
      */
     private JPanel userProcessContainer;
     private PharmacySupplyWorkRequest pharmaWorkRequest;
-    private Enterprise enterprise;
-    
-    public SupplyOpioidsJPanel(JPanel userProcessContainer, PharmacySupplyWorkRequest pharmaWorkRequest, Enterprise enterprise) {
+    private PharmaceuticalCompanyEnterprise enterprise;
+
+    public SupplyOpioidsJPanel(JPanel userProcessContainer, PharmacySupplyWorkRequest pharmaWorkRequest, PharmaceuticalCompanyEnterprise enterprise) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.pharmaWorkRequest = pharmaWorkRequest;
-        this.enterprise = (PharmaceuticalCompanyEnterprise)enterprise;
-        
+        this.enterprise = enterprise;
+
         populateFields();
     }
-    
-    public void populateFields()
-    {
-        txtFieldPharmacyName.setText(pharmaWorkRequest.getPharmacyEnterprise().getName());
+
+    public void populateFields() {
+        txtFieldPharmacyName.setText(pharmaWorkRequest.getRequesterName());
         txtFieldOrderAmount.setText(String.valueOf(pharmaWorkRequest.getOrderAmount()));
-        txtFieldStockLeft.setText(String.valueOf(((PharmaceuticalCompanyEnterprise)enterprise).getStock()));
+        txtFieldStockLeft.setText(String.valueOf((enterprise).getStock()));
     }
 
     /**
@@ -67,6 +67,8 @@ public class SupplyOpioidsJPanel extends javax.swing.JPanel {
 
         jLabel3.setText("Stock Remaining :");
 
+        txtFieldStockLeft.setEnabled(false);
+
         btnDispatch.setText("Dispatch Opioids");
         btnDispatch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,7 +76,12 @@ public class SupplyOpioidsJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnBack.setText("Back");
+        btnBack.setText("<<Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -85,7 +92,7 @@ public class SupplyOpioidsJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnBack)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 196, Short.MAX_VALUE)
                         .addComponent(btnDispatch))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,59 +109,64 @@ public class SupplyOpioidsJPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(77, 77, 77)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtFieldPharmacyName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtFieldOrderAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
+                .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtFieldStockLeft, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDispatch)
-                    .addComponent(btnBack))
+                    .addComponent(jLabel1)
+                    .addComponent(txtFieldPharmacyName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtFieldOrderAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(34, 34, 34)
+                .addComponent(btnDispatch)
+                .addGap(83, 83, 83)
+                .addComponent(btnBack)
                 .addContainerGap(294, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDispatchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDispatchActionPerformed
         // TODO add your handling code here:
-        
+
         int stockLeft = Integer.parseInt(txtFieldStockLeft.getText());
         int orderAmount = Integer.parseInt(txtFieldOrderAmount.getText());
-        
-        if(stockLeft<orderAmount)
-        {
+
+        if (stockLeft < orderAmount) {
             JOptionPane.showMessageDialog(null, "You do not have enough stock to complete this order", "Warning", JOptionPane.WARNING_MESSAGE);
-        }
-        else
-        {
-            ((PharmaceuticalCompanyEnterprise)enterprise).setStock(stockLeft-orderAmount);
-            PharmacyEnterprise pharmacyEnterpise = pharmaWorkRequest.getPharmacyEnterprise();
-            ChemistOrganization organization = (ChemistOrganization)enterprise.getOrganizationDirectory().getOrganizationList().get(0);
-            int chemistStock = organization.getStock();
-            organization.setStock(chemistStock+orderAmount);
-            pharmaWorkRequest.setStatus("Order Complete");
-            
+        } else {
+            enterprise.setStock(stockLeft - orderAmount);
+            // PharmacyEnterprise pharmacyEnterpise = pharmaWorkRequest.getPharmacyEnterprise();
+            // ChemistOrganization organization = (ChemistOrganization)enterprise.getOrganizationDirectory().getOrganizationList().get(0);
+            //int chemistStock = organization.getStock();
+            //organization.setStock(chemistStock+orderAmount);
+            pharmaWorkRequest.setResolveDate(new Date());
+            pharmaWorkRequest.setStatus("Order Completed");
+
             Object[] options = {"OK"};
-    int n = JOptionPane.showOptionDialog(null,
-                   "Message here ","Title",
-                   JOptionPane.PLAIN_MESSAGE,
-                   JOptionPane.QUESTION_MESSAGE,
-                   null,
-                   options,
-                   options[0]);
-            userProcessContainer.remove(this);
-            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-            layout.previous(userProcessContainer);
+            int n = JOptionPane.showOptionDialog(null,
+                    "Opioids supplied", "Title",
+                    JOptionPane.PLAIN_MESSAGE,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options,
+                    options[0]);
+
+            txtFieldStockLeft.setText(String.valueOf((enterprise).getStock()));
+
         }
-        
+
     }//GEN-LAST:event_btnDispatchActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

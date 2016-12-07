@@ -5,7 +5,14 @@
  */
 package com.neu.business.network;
 
+import com.neu.business.enterprise.Enterprise;
+import com.neu.business.enterprise.PharmaceuticalCompanyEnterprise;
 import com.neu.business.enterprise.EnterpriseDirectory;
+import com.neu.business.organization.Organization;
+import com.neu.business.organization.PharmaceuticalCompanyManagerOrganization;
+import com.neu.business.useraccount.UserAccount;
+import com.neu.business.workqueue.PharmacySupplyWorkRequest;
+import com.neu.business.workqueue.WorkRequest;
 
 /**
  *
@@ -36,7 +43,6 @@ public class Network {
     public void setEnterpriseDirectory(EnterpriseDirectory enterpriseDirectory) {
         this.enterpriseDirectory = enterpriseDirectory;
     }
-    
 
     @Override
     public String toString() {

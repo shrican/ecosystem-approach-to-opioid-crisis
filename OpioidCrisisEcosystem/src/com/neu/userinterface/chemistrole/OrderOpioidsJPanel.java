@@ -14,8 +14,11 @@ import com.neu.business.organization.Organization;
 import com.neu.business.organization.PharmaceuticalCompanyManagerOrganization;
 import com.neu.business.useraccount.UserAccount;
 import com.neu.business.workqueue.PharmacySupplyWorkRequest;
+import com.neu.business.workqueue.WorkRequest;
+import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -27,27 +30,24 @@ public class OrderOpioidsJPanel extends javax.swing.JPanel {
      * Creates new form OrderOpioidsJPanel
      */
     private JPanel userProcessContainer;
-    private PharmaceuticalCompanyEnterprise pharmaEnterprise;
-    private PharmacyEnterprise enterprise;
-    private ChemistOrganization organization;
+    private ChemistOrganization chemistOrganization;
     private Network network;
     private int futureStock = 0;
     private UserAccount userAccount;
 
-    public OrderOpioidsJPanel(JPanel userProcessContainer, PharmaceuticalCompanyEnterprise pharmaEnterprise, PharmacyEnterprise enterprise, ChemistOrganization organization, Network network, UserAccount userAccount) {
+    public OrderOpioidsJPanel(JPanel userProcessContainer, Network network, ChemistOrganization chemistOrganization, UserAccount userAccount) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.pharmaEnterprise = pharmaEnterprise;
-        this.enterprise = enterprise;
-        this.organization = organization;
+        this.chemistOrganization = chemistOrganization;
         this.network = network;
         this.userAccount = userAccount;
         populateSupplierComboBox();
         populateCurrentStock();
+        populateOrderTable();
     }
 
     public void populateCurrentStock() {
-        txtFieldCurrentStock.setText(String.valueOf(organization.getStock()));
+        txtFieldCurrentStock.setText(String.valueOf(chemistOrganization.getStock()));
     }
 
     public void populateSupplierComboBox() {
@@ -55,6 +55,26 @@ public class OrderOpioidsJPanel extends javax.swing.JPanel {
             if (e.getEnterpriseType().getValue().equals("Pharmaceutical Company Enterprise")) {
                 comboBoxPharmaceuticalCompanies.addItem(e);
             }
+        }
+    }
+
+    public void populateOrderTable() {
+
+        DefaultTableModel model = (DefaultTableModel) tblChemistOrderSummary.getModel();
+
+        model.setRowCount(0);
+        int count = 0;
+
+        for (WorkRequest workRequest : chemistOrganization.getWorkQueue().getWorkRequestList()) {
+            Object[] row = new Object[6];
+            row[0] = count++;
+            row[1] = ((PharmacySupplyWorkRequest) workRequest).getSenderName();
+            row[2] = ((PharmacySupplyWorkRequest) workRequest).getOrderAmount();
+            row[3] = workRequest;
+            row[4] = workRequest.getRequestDate();
+            row[5] = (workRequest.getStatus()).equals("Order Completed") ? workRequest.getResolveDate() : "Processing";
+
+            model.addRow(row);
         }
     }
 
@@ -74,10 +94,10 @@ public class OrderOpioidsJPanel extends javax.swing.JPanel {
         btnOrder = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         txtFieldCurrentStock = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        txtFieldFutureStock = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        btnCheckFuture = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblChemistOrderSummary = new javax.swing.JTable();
+        btnBack = new javax.swing.JButton();
 
         jLabel1.setText("Supplier :");
 
@@ -89,7 +109,7 @@ public class OrderOpioidsJPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Order Amount :");
 
-        btnOrder.setText("Order");
+        btnOrder.setText("Place Order");
         btnOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnOrderActionPerformed(evt);
@@ -100,16 +120,39 @@ public class OrderOpioidsJPanel extends javax.swing.JPanel {
 
         txtFieldCurrentStock.setEditable(false);
 
-        jLabel4.setText("Stock after receival :");
-
-        txtFieldFutureStock.setEditable(false);
-
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel5.setText("Order Opioids");
 
-        btnCheckFuture.setText("Check");
-        btnCheckFuture.addActionListener(new java.awt.event.ActionListener() {
+        tblChemistOrderSummary.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Company Name", "Order Quantity", "Status", "Requested Date", "Completed Date"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblChemistOrderSummary);
+        if (tblChemistOrderSummary.getColumnModel().getColumnCount() > 0) {
+            tblChemistOrderSummary.getColumnModel().getColumn(0).setResizable(false);
+            tblChemistOrderSummary.getColumnModel().getColumn(1).setResizable(false);
+            tblChemistOrderSummary.getColumnModel().getColumn(2).setResizable(false);
+            tblChemistOrderSummary.getColumnModel().getColumn(3).setResizable(false);
+            tblChemistOrderSummary.getColumnModel().getColumn(4).setResizable(false);
+            tblChemistOrderSummary.getColumnModel().getColumn(5).setResizable(false);
+        }
+
+        btnBack.setText("<<Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCheckFutureActionPerformed(evt);
+                btnBackActionPerformed(evt);
             }
         });
 
@@ -120,34 +163,39 @@ public class OrderOpioidsJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(190, 190, 190)
+                        .addContainerGap()
+                        .addComponent(jLabel5))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 801, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(41, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnBack)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnOrder))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addGap(74, 74, 74)
+                            .addComponent(jLabel3))
+                        .addGap(99, 99, 99)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(comboBoxPharmaceuticalCompanies, 0, 185, Short.MAX_VALUE)
                             .addComponent(txtFieldOrderAmount)
-                            .addComponent(txtFieldCurrentStock)
-                            .addComponent(txtFieldFutureStock))
-                        .addGap(63, 63, 63)
-                        .addComponent(btnCheckFuture))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(326, 326, 326)
-                        .addComponent(btnOrder))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(316, 316, 316)
-                        .addComponent(jLabel5)))
-                .addContainerGap(202, Short.MAX_VALUE))
+                            .addComponent(txtFieldCurrentStock))))
+                .addGap(315, 315, 315))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel5)
-                .addGap(39, 39, 39)
+                .addGap(55, 55, 55)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(75, 75, 75)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(comboBoxPharmaceuticalCompanies, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -161,65 +209,83 @@ public class OrderOpioidsJPanel extends javax.swing.JPanel {
                     .addComponent(txtFieldOrderAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtFieldFutureStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCheckFuture))
-                .addGap(55, 55, 55)
-                .addComponent(btnOrder)
-                .addContainerGap(276, Short.MAX_VALUE))
+                    .addComponent(btnOrder)
+                    .addComponent(btnBack))
+                .addContainerGap(203, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnCheckFutureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckFutureActionPerformed
-        // TODO add your handling code here:
-
-        if (txtFieldOrderAmount.equals("")) {
-            JOptionPane.showMessageDialog(null, "Enter order amount", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else {
-            txtFieldFutureStock.setText(String.valueOf(Integer.parseInt(txtFieldCurrentStock.getText() + Integer.parseInt(txtFieldOrderAmount.getText()))));
-        }
-    }//GEN-LAST:event_btnCheckFutureActionPerformed
 
     private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
         // TODO add your handling code here:
 
+        Enterprise pharmaceuticalCompanyEnterprise = null;
+        Organization pharmaceuticalCompanyManagerOrganization = null;
+
         PharmacySupplyWorkRequest pharmacySupplyWorkRequest = new PharmacySupplyWorkRequest();
         pharmacySupplyWorkRequest.setOrderAmount(Integer.parseInt(txtFieldOrderAmount.getText()));
-        for (Organization o : pharmaEnterprise.getOrganizationDirectory().getOrganizationList()) {
-            if (o instanceof PharmaceuticalCompanyManagerOrganization) {
-                PharmaceuticalCompanyManagerOrganization pharmaManager = (PharmaceuticalCompanyManagerOrganization) o;
-                pharmacySupplyWorkRequest.setMessage("Opioids Order Pending");
-                pharmacySupplyWorkRequest.setPharmacyEnterprise(enterprise);
-                pharmacySupplyWorkRequest.setSender(userAccount);
-//        pharmacySupplyWorkRequest.setReceiver(pharmaEnterprise.getOrganizationDirectory().getOrganizationList());
-                for (UserAccount user : pharmaManager.getUserAccountDirectory().getUserAccountList()) {
-                    user.getWorkQueue().getWorkRequestList().add(pharmacySupplyWorkRequest);
-                    pharmacySupplyWorkRequest.setReceiver(user);
-                }
-                userAccount.getWorkQueue().getWorkRequestList().add(pharmacySupplyWorkRequest);
-                pharmaManager.getWorkQueue().getWorkRequestList().add(pharmacySupplyWorkRequest);
-                enterprise.getWorkQueue().getWorkRequestList().add(pharmacySupplyWorkRequest);
+        pharmacySupplyWorkRequest.setStatus("Opioids Order Pending");
+        pharmacySupplyWorkRequest.setSender(userAccount);
+        pharmacySupplyWorkRequest.setRequesterName(chemistOrganization.getName());
+        pharmacySupplyWorkRequest.setSenderName(comboBoxPharmaceuticalCompanies.getSelectedItem().toString());
 
+        userAccount.getWorkQueue().getWorkRequestList().add(pharmacySupplyWorkRequest);
+        chemistOrganization.getWorkQueue().getWorkRequestList().add(pharmacySupplyWorkRequest);
+
+        for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+            if (enterprise instanceof PharmaceuticalCompanyEnterprise) {
+                pharmaceuticalCompanyEnterprise = enterprise;
+                break;
+            }
+
+        }
+
+        for (Organization organization : pharmaceuticalCompanyEnterprise.getOrganizationDirectory().getOrganizationList()) {
+            if (organization instanceof PharmaceuticalCompanyManagerOrganization) {
+                pharmaceuticalCompanyManagerOrganization = organization;
+                break;
             }
         }
+
+        if (pharmaceuticalCompanyManagerOrganization != null) {
+            pharmaceuticalCompanyManagerOrganization.getWorkQueue().getWorkRequestList().add(pharmacySupplyWorkRequest);
+            userAccount.getWorkQueue().getWorkRequestList().add(pharmacySupplyWorkRequest);
+            for (UserAccount account : pharmaceuticalCompanyManagerOrganization.getUserAccountDirectory().getUserAccountList()) {
+                {
+                    account.getWorkQueue().getWorkRequestList().add(pharmacySupplyWorkRequest);
+                    pharmacySupplyWorkRequest.setReceiver(account);
+
+                }
+            }
+        }
+
+        populateOrderTable();
     }//GEN-LAST:event_btnOrderActionPerformed
 
     private void comboBoxPharmaceuticalCompaniesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxPharmaceuticalCompaniesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comboBoxPharmaceuticalCompaniesActionPerformed
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCheckFuture;
+    private javax.swing.JButton backJButton1;
+    private javax.swing.JButton backJButton2;
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnOrder;
     private javax.swing.JComboBox<Object> comboBoxPharmaceuticalCompanies;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblChemistOrderSummary;
     private javax.swing.JTextField txtFieldCurrentStock;
-    private javax.swing.JTextField txtFieldFutureStock;
     private javax.swing.JTextField txtFieldOrderAmount;
     // End of variables declaration//GEN-END:variables
 }

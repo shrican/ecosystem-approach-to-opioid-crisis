@@ -7,6 +7,7 @@ package com.neu.business.role;
 
 import com.neu.business.EcoSystem;
 import com.neu.business.enterprise.Enterprise;
+import com.neu.business.network.Network;
 import com.neu.business.organization.Organization;
 import com.neu.business.useraccount.UserAccount;
 import com.neu.userinterface.adminrole.communityrehab.CommRehabAdminWorkAreaJPanel;
@@ -28,7 +29,7 @@ public class AdminRole extends Role {
     }
 
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem business) {
 
         if (enterprise.getEnterpriseType().getValue().equals("Hospital Enterprise")) {
             return new HospitalAdminWorkAreaJPanel(userProcessContainer, enterprise);

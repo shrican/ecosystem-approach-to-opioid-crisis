@@ -12,14 +12,32 @@ import com.neu.business.enterprise.PharmacyEnterprise;
  * @author Anmol
  */
 public class PharmacySupplyWorkRequest extends WorkRequest {
-    
+
     private static int count = 0;
     private int ID;
     private int orderAmount;
     private PharmacyEnterprise pharmacyEnterprise;
-    
-    public PharmacySupplyWorkRequest(){
-        ID=++count;
+    private String requesterName;
+    private String senderName;
+
+    public PharmacySupplyWorkRequest() {
+        ID = ++count;
+    }
+
+    public String getSenderName() {
+        return senderName;
+    }
+
+    public void setSenderName(String senderName) {
+        this.senderName = senderName;
+    }
+
+    public String getRequesterName() {
+        return requesterName;
+    }
+
+    public void setRequesterName(String requesterName) {
+        this.requesterName = requesterName;
     }
 
     public PharmacyEnterprise getPharmacyEnterprise() {
@@ -41,7 +59,5 @@ public class PharmacySupplyWorkRequest extends WorkRequest {
     public void setOrderAmount(int orderAmount) {
         this.orderAmount = orderAmount;
     }
-    
-    
-    
+
 }

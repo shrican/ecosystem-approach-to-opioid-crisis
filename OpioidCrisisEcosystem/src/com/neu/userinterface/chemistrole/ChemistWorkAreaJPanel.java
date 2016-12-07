@@ -26,24 +26,21 @@ public class ChemistWorkAreaJPanel extends javax.swing.JPanel {
      */
     private JPanel userProcessContainer;
     private UserAccount userAccount;
-    private ChemistOrganization organization;
-    private PharmacyEnterprise enterprise;
-    private EcoSystem system;
-    
-    public ChemistWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, ChemistOrganization organization, PharmacyEnterprise enterprise, EcoSystem system) {
+    private ChemistOrganization chemistOrganization;
+    private Network network;
+
+    public ChemistWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, ChemistOrganization organization, Network network) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
-        this.organization = organization;
-        this.enterprise = enterprise;
-        this.system = system;
-        
+        this.chemistOrganization = organization;
+        this.network = network;
+
         populateStock();
     }
-    
-    public void populateStock()
-    {
-         txtFieldChemistStock.setText(String.valueOf(organization.getStock()));
+
+    public void populateStock() {
+        txtFieldChemistStock.setText(String.valueOf(chemistOrganization.getStock()));
     }
 
     /**
@@ -115,30 +112,33 @@ public class ChemistWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnOrderOpioidsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderOpioidsActionPerformed
         // TODO add your handling code here:
-        
-        Network currentNetwork;
-        PharmaceuticalCompanyEnterprise pharmaEnterprise = new PharmaceuticalCompanyEnterprise("Pharmaceutical Company Enterprise");
-        
-        for(Network network : system.getNetworkList())
-        {
-            for(Enterprise e : network.getEnterpriseDirectory().getEnterpriseList())
-            {
-                if(e.getName().equals(enterprise.getName()))
-                {
-                    currentNetwork = network;// getting which network the current chemist and pharmaceutical company are in
-                    
-                    if(e instanceof PharmaceuticalCompanyEnterprise)
-                        pharmaEnterprise = (PharmaceuticalCompanyEnterprise) e;
-                    OrderOpioidsJPanel orderOpioidsJPanel = new OrderOpioidsJPanel(userProcessContainer, pharmaEnterprise, enterprise, organization, currentNetwork, userAccount);
-                    userProcessContainer.add("OrderOpioidsJPanel", orderOpioidsJPanel);
-                    CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-                    layout.next(userProcessContainer);
-                }
-            }
-        }
-  
-        
-        
+
+//        Network currentNetwork;
+//        PharmaceuticalCompanyEnterprise pharmaEnterprise = new PharmaceuticalCompanyEnterprise("Pharmaceutical Company Enterprise");
+//        
+//        for(Network network : system.getNetworkList())
+//        {
+//            for(Enterprise e : network.getEnterpriseDirectory().getEnterpriseList())
+//            {
+//                if(e.getName().equals(enterprise.getName()))
+//                {
+//                    currentNetwork = network;// getting which network the current chemist and pharmaceutical company are in
+//                    
+//                    if(e instanceof PharmaceuticalCompanyEnterprise)
+//                        pharmaEnterprise = (PharmaceuticalCompanyEnterprise) e;
+//                    OrderOpioidsJPanel orderOpioidsJPanel = new OrderOpioidsJPanel(userProcessContainer, pharmaEnterprise, enterprise, organization, currentNetwork, userAccount);
+//                    userProcessContainer.add("OrderOpioidsJPanel", orderOpioidsJPanel);
+//                    CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+//                    layout.next(userProcessContainer);
+//                }
+//            }
+//        }
+        OrderOpioidsJPanel orderOpioidsJPanel = new OrderOpioidsJPanel(userProcessContainer, network, chemistOrganization, userAccount);
+        userProcessContainer.add("OrderOpioidsJPanel", orderOpioidsJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+
+        layout.next(userProcessContainer);
+
     }//GEN-LAST:event_btnOrderOpioidsActionPerformed
 
 

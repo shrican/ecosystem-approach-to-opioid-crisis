@@ -22,7 +22,7 @@ public class Patient {
     private String bloodGroup;
     private String gender;
     private Date registrationDate;
-    private float opioidAddictionSymptomScore;
+    private float opioidAddictionSymptomScore; // check method to store and retrieve 
 
     private OpioidAbuseSymptomsHistory opioidAbuseSymptomsHistory;
     private OpioidWithdrawalSymptomsHistory opioidWithdrawalSymptomsHistory;
