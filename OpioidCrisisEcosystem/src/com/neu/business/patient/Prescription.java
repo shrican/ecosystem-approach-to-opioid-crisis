@@ -20,6 +20,51 @@ public class Prescription {
     private Dosage dosage;
     private int noOfDays;
     private int totalOpioidsPrescribed;
+    private String patientName;
+    private boolean fulfilled;
+    private String chemistName;
+    private String doctorName;
+    private Date dateOfFulfilment;
+
+    public Date getDateOfFulfilment() {
+        return dateOfFulfilment;
+    }
+
+    public void setDateOfFulfilment(Date dateOfFulfilment) {
+        this.dateOfFulfilment = dateOfFulfilment;
+    }
+
+    public String getDoctorName() {
+        return doctorName;
+    }
+
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName;
+    }
+
+    public String getChemistName() {
+        return chemistName;
+    }
+
+    public void setChemistName(String chemistName) {
+        this.chemistName = chemistName;
+    }
+
+    public boolean isFulfilled() {
+        return fulfilled;
+    }
+
+    public void setFulfilled(boolean fulfilled) {
+        this.fulfilled = fulfilled;
+    }
+
+    public String getPatientName() {
+        return patientName;
+    }
+
+    public void setPatientName(String patientName) {
+        this.patientName = patientName;
+    }
 
     public Prescription() {
         id = String.valueOf(++count);
@@ -92,4 +137,10 @@ public class Prescription {
 
     }
 
+    
+    @Override
+    public String toString()
+    {
+        return this.doctorName;//to get doctor name for prescription object in sell opioids
+    }
 }

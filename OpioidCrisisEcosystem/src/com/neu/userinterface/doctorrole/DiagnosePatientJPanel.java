@@ -12,6 +12,7 @@ import com.neu.business.patient.Prescription;
 import com.neu.business.patient.Prescription.Dosage;
 import com.neu.business.patient.PrescriptionHistory;
 import com.neu.business.patient.Symptoms;
+import com.neu.business.useraccount.UserAccount;
 import com.neu.business.workqueue.ScheduleAppointmentWorkRequest;
 import com.neu.business.workqueue.WorkRequest;
 import com.neu.userinterface.receptionistrole.ScheduleAppointmentJPanel;
@@ -31,14 +32,16 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
      */
     private JPanel userProcessContainer;
     private Patient patient;
+    private UserAccount userAccount;
     private ScheduleAppointmentWorkRequest workRequest;
 
-    public DiagnosePatientJPanel(JPanel userProcessContainer, Patient patient, ScheduleAppointmentWorkRequest workRequest) {
+    public DiagnosePatientJPanel(JPanel userProcessContainer, Patient patient, ScheduleAppointmentWorkRequest workRequest, UserAccount userAccount) {
         initComponents();
 
         this.userProcessContainer = userProcessContainer;
         this.patient = patient;
         this.workRequest = workRequest;
+        this.userAccount = userAccount;
 
         populateFields(patient);
         populateAbuseSystemTable();
@@ -621,6 +624,8 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
 
         Symptoms symptoms = patient.getSymptomsHistory().addSymptoms();
         Prescription prescription = patient.getPrescriptionHistory().addPrescription();
+        prescription.setPatientName(patient.getName());
+        prescription.setDoctorName(userAccount.getEmployee().getName());
 
         if (checkAbdominalPain.isSelected()) {
             symptoms.setHasAbdominalPain(true);

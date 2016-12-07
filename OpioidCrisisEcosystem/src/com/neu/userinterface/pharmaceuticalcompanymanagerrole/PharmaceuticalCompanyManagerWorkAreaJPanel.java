@@ -170,7 +170,7 @@ public class PharmaceuticalCompanyManagerWorkAreaJPanel extends javax.swing.JPan
         int selectedRow = tblPendingOrders.getSelectedRow();
 
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Select a row to view", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Select an order to fulfil", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
 

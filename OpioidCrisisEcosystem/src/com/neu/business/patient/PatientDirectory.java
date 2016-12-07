@@ -15,9 +15,25 @@ import java.util.List;
 public class PatientDirectory {
 
     private List<Patient> patientList;
+    private ArrayList<Prescription> prescriptionList;
 
     public PatientDirectory() {
         patientList = new ArrayList<>();
+        prescriptionList = new ArrayList<>();
+    }
+    
+    public ArrayList<Prescription> getPrescriptionList()
+    {
+        for(Patient patient : patientList)
+        {
+            for(Prescription prescription : patient.getPrescriptionHistory().getPrescriptionHistoryList())
+            {
+                if(prescriptionList.contains(prescription) == false){
+                    prescriptionList.add(prescription);
+                }
+            }
+        }
+        return prescriptionList;
     }
 
     public List<Patient> getPatientList() {

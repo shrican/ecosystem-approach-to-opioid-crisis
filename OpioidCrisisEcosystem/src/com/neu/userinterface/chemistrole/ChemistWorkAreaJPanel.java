@@ -11,8 +11,11 @@ import com.neu.business.enterprise.PharmaceuticalCompanyEnterprise;
 import com.neu.business.enterprise.PharmacyEnterprise;
 import com.neu.business.network.Network;
 import com.neu.business.organization.ChemistOrganization;
+import com.neu.business.patient.Prescription;
 import com.neu.business.useraccount.UserAccount;
 import java.awt.CardLayout;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JPanel;
 
 /**
@@ -28,13 +31,15 @@ public class ChemistWorkAreaJPanel extends javax.swing.JPanel {
     private UserAccount userAccount;
     private ChemistOrganization chemistOrganization;
     private Network network;
+    private ArrayList<Prescription> prescriptionList;
 
-    public ChemistWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, ChemistOrganization organization, Network network) {
+    public ChemistWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, ChemistOrganization organization, Network network, ArrayList<Prescription> prescriptionList) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
         this.chemistOrganization = organization;
         this.network = network;
+        this.prescriptionList = prescriptionList;
 
         populateStock();
     }

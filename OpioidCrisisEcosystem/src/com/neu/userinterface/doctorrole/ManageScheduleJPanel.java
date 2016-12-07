@@ -157,7 +157,7 @@ public class ManageScheduleJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         Patient patient = (Patient)doctorScheduleJTable.getValueAt(doctorScheduleJTable.getSelectedRow(), 2);
         ScheduleAppointmentWorkRequest workRequest = (ScheduleAppointmentWorkRequest)doctorScheduleJTable.getValueAt(doctorScheduleJTable.getSelectedRow(), 0);
-        DiagnosePatientJPanel diagnose = new DiagnosePatientJPanel(userProcessContainer, patient, workRequest);
+        DiagnosePatientJPanel diagnose = new DiagnosePatientJPanel(userProcessContainer, patient, workRequest, userAccount);
         userProcessContainer.add("diagnosePatientJPanel", diagnose);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
