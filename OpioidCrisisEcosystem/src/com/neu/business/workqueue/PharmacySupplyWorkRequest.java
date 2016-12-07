@@ -19,11 +19,21 @@ public class PharmacySupplyWorkRequest extends WorkRequest {
     private PharmacyEnterprise pharmacyEnterprise;
     private String requesterName;
     private String senderName;
+    private boolean hasBeenUpdatedInStock;
 
     public PharmacySupplyWorkRequest() {
         ID = ++count;
     }
 
+    public boolean isHasBeenUpdatedInStock() {
+        return hasBeenUpdatedInStock;
+    }
+
+    public void setHasBeenUpdatedInStock(boolean hasBeenUpdatedInStock) {
+        this.hasBeenUpdatedInStock = hasBeenUpdatedInStock;
+    }
+
+    
     public String getSenderName() {
         return senderName;
     }

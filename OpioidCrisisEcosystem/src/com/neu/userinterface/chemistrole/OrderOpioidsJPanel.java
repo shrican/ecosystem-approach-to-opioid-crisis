@@ -44,6 +44,19 @@ public class OrderOpioidsJPanel extends javax.swing.JPanel {
         populateSupplierComboBox();
         populateCurrentStock();
         populateOrderTable();
+        calculateStock();
+    }
+
+    public void calculateStock() {
+
+        for (WorkRequest workRequest : chemistOrganization.getWorkQueue().getWorkRequestList()) {
+            if (((PharmacySupplyWorkRequest) workRequest).isHasBeenUpdatedInStock() == false) {
+                int chemistStock = chemistOrganization.getStock();
+                chemistOrganization.setStock(chemistStock + ((PharmacySupplyWorkRequest) workRequest).getOrderAmount());
+                ((PharmacySupplyWorkRequest) workRequest).setHasBeenUpdatedInStock(true);
+            }
+        }
+
     }
 
     public void populateCurrentStock() {

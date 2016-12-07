@@ -63,6 +63,8 @@ public class ChemistWorkAreaJPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Stock remaining: ");
 
+        txtFieldChemistStock.setEditable(false);
+
         btnOrderOpioids.setText("Order Opioids");
         btnOrderOpioids.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
