@@ -101,8 +101,6 @@ public class ManagePharmacyEmployeeJPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Name");
 
-        organizationEmpJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel3.setText("Organization");
 
         organizationJTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -140,7 +138,6 @@ public class ManagePharmacyEmployeeJPanel extends javax.swing.JPanel {
             }
         });
 
-        organizationJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         organizationJComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 organizationJComboBoxActionPerformed(evt);

@@ -70,6 +70,8 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
         backJButton1 = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Patient Details");
 

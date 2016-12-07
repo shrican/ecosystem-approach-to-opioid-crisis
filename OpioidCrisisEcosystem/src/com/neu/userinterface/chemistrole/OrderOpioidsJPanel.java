@@ -112,6 +112,8 @@ public class OrderOpioidsJPanel extends javax.swing.JPanel {
         tblChemistOrderSummary = new javax.swing.JTable();
         btnBack = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel1.setText("Supplier :");
 
         comboBoxPharmaceuticalCompanies.addActionListener(new java.awt.event.ActionListener() {
@@ -287,8 +289,6 @@ public class OrderOpioidsJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backJButton1;
-    private javax.swing.JButton backJButton2;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnOrder;
     private javax.swing.JComboBox<Object> comboBoxPharmaceuticalCompanies;

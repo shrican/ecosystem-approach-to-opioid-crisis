@@ -75,6 +75,9 @@ public class PharmaceuticalCompanyManagerWorkAreaJPanel extends javax.swing.JPan
         btnAddStock = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnRespond = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(255, 255, 255));
 
         tblPendingOrders.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -110,6 +113,8 @@ public class PharmaceuticalCompanyManagerWorkAreaJPanel extends javax.swing.JPan
 
         jLabel2.setText("Remaining Stock :");
 
+        txtFieldRemainingStock.setEditable(false);
+
         btnAddStock.setText("Add to stock");
 
         jLabel1.setText("Pending distribution orders :");
@@ -121,35 +126,42 @@ public class PharmaceuticalCompanyManagerWorkAreaJPanel extends javax.swing.JPan
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setText("Pharmaceutical Company Manager Work Area");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(198, 198, 198)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnRespond)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(51, 51, 51)
-                                .addComponent(txtFieldRemainingStock, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(101, 101, 101)
-                                .addComponent(btnAddStock)))
-                        .addGap(64, 250, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 804, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 88, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(198, 198, 198)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(btnRespond)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addGap(51, 51, 51)
+                                    .addComponent(txtFieldRemainingStock, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(101, 101, 101)
+                                    .addComponent(btnAddStock)))
+                            .addComponent(jLabel1)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel3)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(67, 67, 67)
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtFieldRemainingStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -160,7 +172,7 @@ public class PharmaceuticalCompanyManagerWorkAreaJPanel extends javax.swing.JPan
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnRespond)
-                .addContainerGap(406, Short.MAX_VALUE))
+                .addContainerGap(400, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -196,6 +208,7 @@ public class PharmaceuticalCompanyManagerWorkAreaJPanel extends javax.swing.JPan
     private javax.swing.JButton btnRespond;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblPendingOrders;
     private javax.swing.JTextField txtFieldRemainingStock;

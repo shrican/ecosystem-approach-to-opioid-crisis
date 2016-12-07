@@ -76,6 +76,8 @@ public class ManagePharmaceuticalOrganizationJPanel extends javax.swing.JPanel {
         backJButton = new javax.swing.JButton();
         addJButton = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Manage Organization");
 

@@ -96,13 +96,10 @@
     </Component>
     <Component class="javax.swing.JLabel" name="enterpriseLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="EnterPrise :"/>
+        <Property name="text" type="java.lang.String" value="Enterprise :"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="valueLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="&lt;value&gt;"/>
-      </Properties>
     </Component>
   </SubComponents>
 </Form>

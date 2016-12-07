@@ -27,6 +27,11 @@ public class PharmacyAdminWorkAreaJPanel extends javax.swing.JPanel {
         this.enterprise = enterprise;
 
         initComponents();
+        populateValueLabel();
+    }
+    
+    public void populateValueLabel(){
+        valueLabel.setText(enterprise.getName());
     }
 
     /**
@@ -71,9 +76,7 @@ public class PharmacyAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        enterpriseLabel.setText("EnterPrise :");
-
-        valueLabel.setText("<value>");
+        enterpriseLabel.setText("Enterprise :");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

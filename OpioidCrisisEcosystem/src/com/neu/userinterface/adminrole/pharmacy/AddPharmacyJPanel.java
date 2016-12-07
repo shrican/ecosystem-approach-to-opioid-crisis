@@ -50,6 +50,9 @@ public class AddPharmacyJPanel extends javax.swing.JPanel {
         btnSave = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Add Pharmacy");
 
         jLabel2.setText("Name :");
@@ -112,7 +115,7 @@ public class AddPharmacyJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSave)
                     .addComponent(btnBack))
-                .addContainerGap(350, Short.MAX_VALUE))
+                .addContainerGap(344, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -53,7 +53,9 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
         btnRefresh = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Patient Details");
 
         jLabel2.setText("Name :");
@@ -65,8 +67,6 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
         jLabel5.setText("Blood Group :");
 
         jLabel6.setText("Number :");
-
-        comboBoxSymptomID.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel7.setText("Select Symptoms Record :");
 
@@ -96,8 +96,6 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTable1);
 
         jLabel8.setText("Select Abuse Symptoms Record :");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -251,7 +249,7 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addComponent(btnRefresh)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addComponent(btnBack)
                 .addGap(28, 28, 28))
         );

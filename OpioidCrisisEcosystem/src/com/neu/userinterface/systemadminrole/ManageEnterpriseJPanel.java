@@ -62,10 +62,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
 
         enterpriseJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Enterprise Name", "Network", "Type"
@@ -83,11 +80,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
 
         jLabel1.setText("Network");
 
-        networkJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel3.setText("Enterprise Type");
-
-        enterpriseTypeJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel2.setText("Name");
 

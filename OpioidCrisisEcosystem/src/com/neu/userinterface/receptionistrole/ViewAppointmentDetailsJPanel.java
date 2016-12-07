@@ -13,6 +13,9 @@ import com.neu.business.patient.Patient;
 import com.neu.business.useraccount.UserAccount;
 import com.neu.business.workqueue.ScheduleAppointmentWorkRequest;
 import com.neu.business.workqueue.WorkRequest;
+import com.neu.userinterface.systemadminrole.SystemAdminWorkAreaJPanel;
+import java.awt.CardLayout;
+import java.awt.Component;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -73,6 +76,10 @@ public class ViewAppointmentDetailsJPanel extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         scheduleSummaryJTable = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        backJButton = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(255, 255, 255));
 
         scheduleSummaryJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -92,26 +99,59 @@ public class ViewAppointmentDetailsJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(scheduleSummaryJTable);
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setText("Appointments Details");
+
+        backJButton.setText("<< Back");
+        backJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backJButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(165, 165, 165)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 532, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(165, 165, 165)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(backJButton)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 532, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(203, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(27, 27, 27)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(402, Short.MAX_VALUE))
+                .addGap(52, 52, 52)
+                .addComponent(backJButton)
+                .addContainerGap(319, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        com.neu.userinterface.systemadminrole.SystemAdminWorkAreaJPanel sysAdminwjp = (SystemAdminWorkAreaJPanel) component;
+        sysAdminwjp.populateTree();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_backJButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backJButton;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable scheduleSummaryJTable;
     // End of variables declaration//GEN-END:variables

@@ -67,10 +67,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
 
         networkJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+
             },
             new String [] {
                 "Name"
@@ -124,12 +121,12 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel3)
                     .addComponent(jLabel1)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(addNetworkJButton)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addGap(65, 65, 65)
-                            .addComponent(nameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(65, 65, 65)
+                        .addComponent(nameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(83, 83, 83)
+                        .addComponent(addNetworkJButton))
                     .addComponent(backJButton))
                 .addGap(143, 143, 143))
         );
@@ -145,10 +142,9 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addComponent(addNetworkJButton)
-                .addGap(80, 80, 80)
+                    .addComponent(jLabel2)
+                    .addComponent(addNetworkJButton))
+                .addGap(121, 121, 121)
                 .addComponent(backJButton)
                 .addGap(57, 57, 57))
         );

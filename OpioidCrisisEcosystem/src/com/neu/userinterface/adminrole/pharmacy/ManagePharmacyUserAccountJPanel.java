@@ -111,7 +111,6 @@ public class ManagePharmacyUserAccountJPanel extends javax.swing.JPanel {
             }
         });
 
-        organizationJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         organizationJComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 organizationJComboBoxActionPerformed(evt);
@@ -121,8 +120,6 @@ public class ManagePharmacyUserAccountJPanel extends javax.swing.JPanel {
         jLabel4.setText("Role");
 
         jLabel1.setText("User Name");
-
-        roleJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         userJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -152,8 +149,6 @@ public class ManagePharmacyUserAccountJPanel extends javax.swing.JPanel {
         jLabel2.setText("Password");
 
         jLabel3.setText("Employee");
-
-        employeeJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         backjButton1.setText("<< Back");
         backjButton1.addActionListener(new java.awt.event.ActionListener() {

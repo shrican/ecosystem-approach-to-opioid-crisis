@@ -46,6 +46,9 @@ public class DEAWorkAreaJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("DEA Agent's work area");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -55,14 +58,14 @@ public class DEAWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(779, Short.MAX_VALUE))
+                .addContainerGap(704, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(682, Short.MAX_VALUE))
+                .addContainerGap(676, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

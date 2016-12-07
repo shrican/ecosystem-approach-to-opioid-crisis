@@ -42,6 +42,8 @@ public class PharmaceuticalCompanyAdminWorkAreaJPanel extends javax.swing.JPanel
         managePharmaceuticalEmpJButton = new javax.swing.JButton();
         managePharmaceuticalUsersJButton = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Pharmaceutical Company Admin Work Area");
 
