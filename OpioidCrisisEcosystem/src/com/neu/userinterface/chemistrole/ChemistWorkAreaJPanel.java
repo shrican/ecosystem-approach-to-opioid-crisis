@@ -80,6 +80,11 @@ public class ChemistWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         btnSellOpioids.setText("Sell Opioids");
+        btnSellOpioids.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSellOpioidsActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -149,6 +154,15 @@ public class ChemistWorkAreaJPanel extends javax.swing.JPanel {
         layout.next(userProcessContainer);
 
     }//GEN-LAST:event_btnOrderOpioidsActionPerformed
+
+    private void btnSellOpioidsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSellOpioidsActionPerformed
+        // TODO add your handling code here:
+        SellOpioidsJPanel sellOpioidsJPanel = new SellOpioidsJPanel(userProcessContainer, chemistOrganization, prescriptionList);
+        userProcessContainer.add("sellOpioidsJPanel", sellOpioidsJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnSellOpioidsActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
