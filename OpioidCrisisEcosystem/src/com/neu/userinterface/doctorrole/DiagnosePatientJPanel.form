@@ -324,30 +324,36 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
+                              <Component id="jScrollPane1" max="32767" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="txtOpioidScore" min="-2" pref="103" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
                                   <Component id="checkNausea" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="checkChestPain" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="checkPupils" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="checkBloodshotEyes" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="checkJointPain" min="-2" max="-2" attributes="0"/>
+                                  <Component id="checkChestPain" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="checkPupils" min="-2" pref="185" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="checkMusclePain" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="checkLowRespiratory" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="checkSelfHarm" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="checkInsomnia" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="checkJointPain" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="txt" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="5" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="jScrollPane1" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -356,21 +362,26 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" min="-2" pref="100" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="checkNausea" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="checkChestPain" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="checkPupils" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="checkBloodshotEyes" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="checkJointPain" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="checkMusclePain" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="checkLowRespiratory" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="checkSelfHarm" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="checkInsomnia" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtOpioidScore" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="13" max="32767" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="100" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="checkNausea" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkBloodshotEyes" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkChestPain" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkPupils" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkMusclePain" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkLowRespiratory" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkInsomnia" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkJointPain" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -479,6 +490,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Bloodshot Eyes"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkBloodshotEyesActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="checkJointPain">
                   <Properties>
@@ -489,13 +503,16 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Muscle Pain"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkMusclePainActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="checkLowRespiratory">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Low Respiratory"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JCheckBox" name="checkSelfHarm">
+                <Component class="javax.swing.JCheckBox" name="txt">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Self Harm"/>
                   </Properties>
@@ -504,6 +521,13 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Insomnia"/>
                   </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel6">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Opioid Abuse Symptom Score"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtOpioidScore">
                 </Component>
               </SubComponents>
             </Container>

@@ -21,14 +21,11 @@ public class PatientDirectory {
         patientList = new ArrayList<>();
         prescriptionList = new ArrayList<>();
     }
-    
-    public ArrayList<Prescription> getPrescriptionList()
-    {
-        for(Patient patient : patientList)
-        {
-            for(Prescription prescription : patient.getPrescriptionHistory().getPrescriptionHistoryList())
-            {
-                if(prescriptionList.contains(prescription) == false){
+
+    public ArrayList<Prescription> getPrescriptionList() {
+        for (Patient patient : patientList) {
+            for (Prescription prescription : patient.getPrescriptionHistory().getPrescriptionHistoryList()) {
+                if (prescriptionList.contains(prescription) == false) {
                     prescriptionList.add(prescription);
                 }
             }
@@ -56,29 +53,57 @@ public class PatientDirectory {
      */
     public float calculateBayesianOpioidAddictionScore(Patient patient) {
 
-        float totalPatients = patientList.size(); // Total patients in the Ecosystem (var m in Bayesian Algorithm)
+        float totalPatients = 0; // Total patients in the Ecosystem (var m in Bayesian Algorithm)
         float totalNoOfVisitsForAllPatients = 0; // Total no of of visits for all patients in the Ecosystem 
         float avgVisitsOfAllPatients; // Average Visits of all patients in the Ecosystem (var v in Bayesian Algorithm)
-        float avgSymScoreOfAllPatients; // Average symptom score of all patients in the Ecosystem (var R in Bayesian Algorithm)
-        float currentPatientTotalSymScore = 0; // Total symptom score for current patient(var C in Bayesian Algorithm)
-        float totalOpioidSymScoreForAllPatients = 0; // Total Opioid Symmptom Score For All Patients
-
+        float currentPatientTotalSymScore = 0; // Total symptom score for current patient(var C in Bayesian Algorithm)*****************c*************
+        float avgOpioidSymScoreForAPatient = 0; // Total Opioid Symmptom Score For All Patients
+        float totalOpioidAvgScoreForAllPatients = 0; // Average symptom score of all patients in the Ecosystem (var R in Bayesian Algorithm)**************R******************
         float bayesianOpioidAddictionScore = 0;
-
+        float patientCnt = 0;
         // Calculate total no of patients
         for (Patient p : patientList) {
-            totalNoOfVisitsForAllPatients += p.getPrescriptionHistory().getPrescriptionHistoryList().size();
-            totalOpioidSymScoreForAllPatients += p.getOpioidAddictionSymptomScore();
+            if (!p.getOpioidAbuseSymptomsHistory().getOpioidAbuseSysmpomsList().isEmpty()) {
+                patientCnt++;
+                totalNoOfVisitsForAllPatients += p.getPrescriptionHistory().getPrescriptionHistoryList().size();
+
+                avgOpioidSymScoreForAPatient = 0;
+
+                for (OpioidAbuseSymptoms opioidAbuseSymptoms : p.getOpioidAbuseSymptomsHistory().getOpioidAbuseSysmpomsList()) {
+                    avgOpioidSymScoreForAPatient += opioidAbuseSymptoms.getOpioidAddictionSymptomScore();
+                }
+
+                avgOpioidSymScoreForAPatient /= p.getOpioidAbuseSymptomsHistory().getOpioidAbuseSysmpomsList().size();
+
+                totalOpioidAvgScoreForAllPatients += avgOpioidSymScoreForAPatient;
+            }
         }
 
-        // Calculate average Visits of all patients
+        totalPatients = patientCnt;
+
+        //*************R****************
+        totalOpioidAvgScoreForAllPatients /= patientList.size();
+
+        // Calculate average Visits of all patients ******************************v************************
         avgVisitsOfAllPatients = totalNoOfVisitsForAllPatients / totalPatients;
 
-        // Calculate average symptom score of all patients
-        avgSymScoreOfAllPatients = totalOpioidSymScoreForAllPatients / totalPatients;
+        // Total symptom score for current patient(var C in Bayesian Algorithm)
+        for (OpioidAbuseSymptoms opioidAbuseSymptoms : patient.getOpioidAbuseSymptomsHistory().getOpioidAbuseSysmpomsList()) {
+            currentPatientTotalSymScore += opioidAbuseSymptoms.getOpioidAddictionSymptomScore();
+        }
 
-        // Bayesian weighted rating Algorithm
-        bayesianOpioidAddictionScore = (avgVisitsOfAllPatients / (avgVisitsOfAllPatients + totalPatients)) * avgSymScoreOfAllPatients + (totalPatients / (avgVisitsOfAllPatients + totalPatients)) * currentPatientTotalSymScore;
+        float rv = totalOpioidAvgScoreForAllPatients * avgVisitsOfAllPatients;
+        float cm = currentPatientTotalSymScore * totalPatients;
+        float vplusm = avgVisitsOfAllPatients + totalPatients;
+
+        float no = (rv + cm) / vplusm;
+
+        if (currentPatientTotalSymScore != 0) {
+            // Bayesian weighted rating Algorithm
+            bayesianOpioidAddictionScore = (avgVisitsOfAllPatients / (avgVisitsOfAllPatients + totalPatients)) * totalOpioidAvgScoreForAllPatients + (totalPatients / (avgVisitsOfAllPatients + totalPatients)) * currentPatientTotalSymScore;
+            patient.setBayesianOpioidAddictionScore(bayesianOpioidAddictionScore);
+        }
+
         return bayesianOpioidAddictionScore;
     }
 

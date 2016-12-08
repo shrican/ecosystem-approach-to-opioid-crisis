@@ -8,6 +8,7 @@ package com.neu.userinterface.doctorrole;
 import com.neu.business.enterprise.Enterprise;
 import com.neu.business.organization.DoctorOrganization;
 import com.neu.business.patient.Patient;
+import com.neu.business.patient.PatientDirectory;
 import com.neu.business.useraccount.UserAccount;
 import com.neu.business.workqueue.ScheduleAppointmentWorkRequest;
 import com.neu.business.workqueue.WorkRequest;
@@ -25,13 +26,14 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
     private DoctorOrganization doctorOrganization;
     private Enterprise enterprise;
     private UserAccount userAccount;
+    private PatientDirectory patientDirectory;
 
     /**
      * Creates new form doctorWorkArea
      */
-    public DoctorWorkAreaJPanel(JPanel userProcessContainer, UserAccount userAccount, DoctorOrganization doctorOrganization, Enterprise enterprise) {
+    public DoctorWorkAreaJPanel(JPanel userProcessContainer, UserAccount userAccount, DoctorOrganization doctorOrganization, Enterprise enterprise, PatientDirectory patientDirectory) {
         initComponents();
-
+        this.patientDirectory = patientDirectory;
         this.userProcessContainer = userProcessContainer;
         this.doctorOrganization = doctorOrganization;
         this.enterprise = enterprise;
@@ -143,6 +145,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
     private void btnDiagnoseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagnoseActionPerformed
         // TODO add your handling code here:
         Patient patient = (Patient) doctorScheduleJTable.getValueAt(doctorScheduleJTable.getSelectedRow(), 2);
+        patientDirectory.calculateBayesianOpioidAddictionScore(patient);
         ScheduleAppointmentWorkRequest workRequest = (ScheduleAppointmentWorkRequest) doctorScheduleJTable.getValueAt(doctorScheduleJTable.getSelectedRow(), 0);
         DiagnosePatientJPanel diagnose = new DiagnosePatientJPanel(userProcessContainer, patient, workRequest, userAccount);
         userProcessContainer.add("diagnosePatientJPanel", diagnose);

@@ -22,13 +22,14 @@ public class Patient {
     private String bloodGroup;
     private String gender;
     private Date registrationDate;
-    private float opioidAddictionSymptomScore; // check method to store and retrieve 
+    //private float opioidAddictionSymptomScore; // check method to store and retrieve 
 
     private OpioidAbuseSymptomsHistory opioidAbuseSymptomsHistory;
     private OpioidWithdrawalSymptomsHistory opioidWithdrawalSymptomsHistory;
     private PostOpioidAddiction postOpioidAddiction;
     private PrescriptionHistory prescriptionHistory;
     private PatientSymptomsHistory symptomsHistory;
+    private float bayesianOpioidAddictionScore;
 
     public PatientSymptomsHistory getSymptomsHistory() {
         return symptomsHistory;
@@ -45,6 +46,14 @@ public class Patient {
         symptomsHistory = new PatientSymptomsHistory();
     }
 
+    public float getBayesianOpioidAddictionScore() {
+        return bayesianOpioidAddictionScore;
+    }
+
+    public void setBayesianOpioidAddictionScore(float bayesianOpioidAddictionScore) {
+        this.bayesianOpioidAddictionScore = bayesianOpioidAddictionScore;
+    }
+    
     public String getName() {
         return name;
     }
@@ -141,13 +150,13 @@ public class Patient {
         this.prescriptionHistory = prescriptionHistory;
     }
 
-    public float getOpioidAddictionSymptomScore() {
-        return opioidAddictionSymptomScore;
-    }
-
-    public void setOpioidAddictionSymptomScore(float opioidAddictionSymptomScore) {
-        this.opioidAddictionSymptomScore = opioidAddictionSymptomScore;
-    }
+//    public float getOpioidAddictionSymptomScore() {
+//        return opioidAddictionSymptomScore;
+//    }
+//
+//    public void setOpioidAddictionSymptomScore(float opioidAddictionSymptomScore) {
+//        this.opioidAddictionSymptomScore = opioidAddictionSymptomScore;
+//    }
 
     @Override
     public String toString() {

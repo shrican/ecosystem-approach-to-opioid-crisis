@@ -25,11 +25,21 @@ public class OpioidAbuseSymptoms {
     private Date date;
     private static int count = 1;
     private int ID;
+    private float opioidAddictionSymptomScore=0; // check method to store and retrieve 
 
     public OpioidAbuseSymptoms() {
         date = new Date();
         ID = count++;
     }
+
+    public float getOpioidAddictionSymptomScore() {
+        return opioidAddictionSymptomScore;
+    }
+
+    public void setOpioidAddictionSymptomScore(float opioidAddictionSymptomScore) {
+        this.opioidAddictionSymptomScore = opioidAddictionSymptomScore;
+    }
+
 
     public Date getDate() {
         return date;
@@ -106,4 +116,5 @@ public class OpioidAbuseSymptoms {
     public void setMuscleTension(boolean muscleTension) {
         this.muscleTension = muscleTension;
     }
+    
 }
