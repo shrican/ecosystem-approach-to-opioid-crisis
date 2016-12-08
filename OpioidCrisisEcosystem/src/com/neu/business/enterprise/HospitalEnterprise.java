@@ -16,10 +16,12 @@ import java.util.ArrayList;
 public class HospitalEnterprise extends Enterprise {
 
     private PatientDirectory patientDirectory;
+    private ArrayList<CommunityRehabEnterprise> associatedCommRehabList;
 
     public HospitalEnterprise(String name) {
         super(name, EnterpriseType.HospitalEnterprise);
         patientDirectory = new PatientDirectory();
+        associatedCommRehabList = new ArrayList<>();
     }
 
     public PatientDirectory getPatientDirectory() {
@@ -30,5 +32,17 @@ public class HospitalEnterprise extends Enterprise {
     public ArrayList<Role> getSupportedRole() {
         return null;
     }
+
+    public ArrayList<CommunityRehabEnterprise> getAssociatedCommRehabList() {
+        return associatedCommRehabList;
+    }
+
+    public void setAssociatedCommRehabList(ArrayList<CommunityRehabEnterprise> associatedCommRehabList) {
+        this.associatedCommRehabList = associatedCommRehabList;
+    }
+    
+    public void addAssociatedRehabilitation(CommunityRehabEnterprise enterprise){
+       associatedCommRehabList.add(enterprise);
+   }
 
 }
