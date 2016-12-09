@@ -8,6 +8,7 @@ package com.neu.userinterface.adminrole.communityrehab;
 import com.neu.business.employee.Employee;
 import com.neu.business.enterprise.Enterprise;
 import com.neu.business.organization.Organization;
+import com.neu.business.organization.RehabilitationManagerOrganization;
 import com.neu.business.role.Role;
 import com.neu.business.useraccount.UserAccount;
 import java.awt.CardLayout;
@@ -33,6 +34,21 @@ public class ManageCommRehabUserAccountJPanel extends javax.swing.JPanel {
         
         popOrganizationComboBox();
         populateUserTableData();
+        populateEmployeeComboBox();
+    }
+    
+    public void populateEmployeeComboBox()
+    {
+        for(Organization organization : enterprise.getOrganizationDirectory().getOrganizationList())
+        {
+            if(organization instanceof RehabilitationManagerOrganization)
+            {
+                for(Employee employee : organization.getEmployeeDirectory().getEmployeeList())
+                {
+                    employeeJComboBox.addItem(employee);
+                }
+            }
+        }
     }
     
     public void popOrganizationComboBox() {

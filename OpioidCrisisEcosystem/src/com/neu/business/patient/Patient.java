@@ -22,6 +22,7 @@ public class Patient {
     private String bloodGroup;
     private String gender;
     private Date registrationDate;
+    private String rehabStatus;
     //private float opioidAddictionSymptomScore; // check method to store and retrieve 
 
     private OpioidAbuseSymptomsHistory opioidAbuseSymptomsHistory;
@@ -44,6 +45,15 @@ public class Patient {
         postOpioidAddiction = new PostOpioidAddiction();
         prescriptionHistory = new PrescriptionHistory();
         symptomsHistory = new PatientSymptomsHistory();
+        rehabStatus = "Not recommended";
+    }
+
+    public String getRehabStatus() {
+        return rehabStatus;
+    }
+
+    public void setRehabStatus(String rehabStatus) {
+        this.rehabStatus = rehabStatus;
     }
 
     public float getBayesianOpioidAddictionScore() {

@@ -7,6 +7,7 @@ package com.neu.userinterface.systemadminrole;
 
 import com.neu.business.EcoSystem;
 import com.neu.business.enterprise.Enterprise;
+import com.neu.business.enterprise.PharmacyEnterprise;
 import com.neu.business.network.Network;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -189,11 +190,20 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Invalid Input!");
             return;
         }
-
+        
         String name = nameJTextField.getText();
-
+        String stock = "";
+        int initialStock = 0;
+        
         Enterprise enterprise = network.getEnterpriseDirectory().createAndAddEnterprise(name, type);
 
+        if(type == Enterprise.EnterpriseType.PharmacyEnterprise)
+        {
+            stock = JOptionPane.showInputDialog(null, "Enter " + name + "'s intial stock");
+            initialStock = Integer.parseInt(stock);
+            ((PharmacyEnterprise)enterprise).setInitialPharmacyStock(initialStock);
+        }
+        
         populateTable();
     }//GEN-LAST:event_addEnterpriseJButtonActionPerformed
 

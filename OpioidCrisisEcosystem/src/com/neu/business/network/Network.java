@@ -93,7 +93,7 @@ public class Network {
                     {   String name = checkChemistOrganization.getName();
                         if(organization.getName().equals(name))
                         {
-                            pharmacyInitialStock = ((ChemistOrganization) organization).getInitialStock(); //Anmol to take care of this
+                            pharmacyInitialStock = ((PharmacyEnterprise) enterprise).getInitialPharmacyStock(); //Anmol to take care of this
                             pharmacyCurrentStock = ((ChemistOrganization) organization).getStock();
                         }
                     }

@@ -18,7 +18,6 @@ public class PharmacyEnterprise extends Enterprise {
 
     public PharmacyEnterprise(String name) {
         super(name, EnterpriseType.PharmacyEnterprise);
-        initialPharmacyStock = 500;
     }
 
     @Override
