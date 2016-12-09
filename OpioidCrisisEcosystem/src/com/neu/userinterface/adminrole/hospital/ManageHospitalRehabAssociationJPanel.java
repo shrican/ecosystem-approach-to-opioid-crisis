@@ -6,7 +6,11 @@
 package com.neu.userinterface.adminrole.hospital;
 
 import com.neu.business.enterprise.Enterprise;
+import com.neu.business.enterprise.CommunityRehabEnterprise;
+import com.neu.business.enterprise.HospitalEnterprise;
+import com.neu.business.network.Network;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -18,13 +22,16 @@ public class ManageHospitalRehabAssociationJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ManageHospitalRehabAssociationJPanel
      */
-    
     private JPanel userProcessContainer;
-    private Enterprise enterprise;
-    public ManageHospitalRehabAssociationJPanel(JPanel userProcessContainer, Enterprise enterprise) {
+    private HospitalEnterprise enterprise;
+    private Network network;
+
+    public ManageHospitalRehabAssociationJPanel(JPanel userProcessContainer, Enterprise enterprise, Network network) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.enterprise = enterprise;
+        this.enterprise = (HospitalEnterprise)enterprise;
+        this.network = network;
+        populateRehabComboBox();
     }
 
     /**
@@ -38,6 +45,9 @@ public class ManageHospitalRehabAssociationJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         backJButton = new javax.swing.JButton();
+        comboBoxRehab = new javax.swing.JComboBox();
+        jLabel2 = new javax.swing.JLabel();
+        btnAssociateRehabAction = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -51,27 +61,61 @@ public class ManageHospitalRehabAssociationJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setText("Select Rehabilitation :");
+
+        btnAssociateRehabAction.setText("Associate");
+        btnAssociateRehabAction.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAssociateRehabActionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(backJButton))
-                .addContainerGap(477, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnAssociateRehabAction)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel1)
+                                .addComponent(backJButton)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(193, 193, 193)
+                            .addComponent(jLabel2)
+                            .addGap(103, 103, 103)
+                            .addComponent(comboBoxRehab, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(202, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 395, Short.MAX_VALUE)
+                .addGap(68, 68, 68)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(comboBoxRehab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(55, 55, 55)
+                .addComponent(btnAssociateRehabAction)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 229, Short.MAX_VALUE)
                 .addComponent(backJButton)
                 .addGap(65, 65, 65))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void populateRehabComboBox() {
+        comboBoxRehab.removeAllItems();
+        network.getEnterpriseDirectory().getEnterpriseList().stream()
+                .filter((e) -> (e.getEnterpriseType().getValue().equals("Community Rehab Enterprise")))
+                .forEach((e) -> {
+                    comboBoxRehab.addItem(e);
+                });
+    }
+
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
         // TODO add your handling code here:
@@ -81,9 +125,30 @@ public class ManageHospitalRehabAssociationJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButtonActionPerformed
 
+    private void btnAssociateRehabActionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssociateRehabActionActionPerformed
+        // TODO add your handling code here:
+        Enterprise.EnterpriseType type = (Enterprise.EnterpriseType) comboBoxRehab.getSelectedItem();
+        
+        if (type == null) {
+         JOptionPane.showMessageDialog(null, "Select a Rehabilitation");
+           return;
+        }
+        
+        CommunityRehabEnterprise commRehabEnterprise = (CommunityRehabEnterprise)comboBoxRehab.getSelectedItem();
+      for(CommunityRehabEnterprise en : enterprise.getAssociatedCommRehabList()){
+          if(en.equals(commRehabEnterprise))
+              JOptionPane.showMessageDialog(null,"Already associated with this rehab");
+          return;
+      }
+        enterprise.addAssociatedRehabilitation(commRehabEnterprise);
+    }//GEN-LAST:event_btnAssociateRehabActionActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
+    private javax.swing.JButton btnAssociateRehabAction;
+    private javax.swing.JComboBox comboBoxRehab;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

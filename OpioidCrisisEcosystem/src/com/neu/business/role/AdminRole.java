@@ -32,7 +32,7 @@ public class AdminRole extends Role {
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem business) {
 
         if (enterprise.getEnterpriseType().getValue().equals("Hospital Enterprise")) {
-            return new HospitalAdminWorkAreaJPanel(userProcessContainer, enterprise);
+            return new HospitalAdminWorkAreaJPanel(userProcessContainer, enterprise, network);
         } else if (enterprise.getEnterpriseType().getValue().equals("Pharmacy Enterprise")) {
             return new PharmacyAdminWorkAreaJPanel(userProcessContainer, enterprise);
         } else if (enterprise.getEnterpriseType().getValue().equals("Pharmaceutical Company Enterprise")) {

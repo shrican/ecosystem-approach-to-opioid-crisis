@@ -13,6 +13,8 @@ import java.util.ArrayList;
  * @author shrikantmudholkar
  */
 public class PharmacyEnterprise extends Enterprise {
+    
+    int initialPharmacyStock;
 
     public PharmacyEnterprise(String name) {
         super(name, EnterpriseType.PharmacyEnterprise);
@@ -22,5 +24,15 @@ public class PharmacyEnterprise extends Enterprise {
     public ArrayList<Role> getSupportedRole() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public int getInitialPharmacyStock() {
+        return initialPharmacyStock;
+    }
+
+    public void setInitialPharmacyStock(int initialPharmacyStock) {
+        this.initialPharmacyStock = initialPharmacyStock;
+    }
+    
+    
 
 }

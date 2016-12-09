@@ -5,17 +5,19 @@
  */
 package com.neu.userinterface.doctorrole;
 
+import com.neu.business.enterprise.CommunityRehabEnterprise;
+import com.neu.business.enterprise.Enterprise;
+import com.neu.business.network.Network;
+import com.neu.business.organization.DoctorOrganization;
+import com.neu.business.organization.Organization;
+import com.neu.business.organization.RehabilitationManagerOrganization;
 import com.neu.business.patient.OpioidAbuseSymptoms;
 import com.neu.business.patient.Patient;
-import com.neu.business.patient.PatientSymptomsHistory;
 import com.neu.business.patient.Prescription;
-import com.neu.business.patient.Prescription.Dosage;
-import com.neu.business.patient.PrescriptionHistory;
 import com.neu.business.patient.Symptoms;
 import com.neu.business.useraccount.UserAccount;
 import com.neu.business.workqueue.ScheduleAppointmentWorkRequest;
-import com.neu.business.workqueue.WorkRequest;
-import com.neu.userinterface.receptionistrole.ScheduleAppointmentJPanel;
+import com.neu.business.workqueue.SendToRehabilitationWorkRequest;
 import java.awt.CardLayout;
 import java.util.Date;
 import javax.swing.JPanel;
@@ -34,14 +36,18 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
     private Patient patient;
     private UserAccount userAccount;
     private ScheduleAppointmentWorkRequest workRequest;
+    private Network network;
+    private DoctorOrganization doctorOrganization;
 
-    public DiagnosePatientJPanel(JPanel userProcessContainer, Patient patient, ScheduleAppointmentWorkRequest workRequest, UserAccount userAccount) {
-        initComponents();
+    public DiagnosePatientJPanel(JPanel userProcessContainer, Patient patient, Network network, DoctorOrganization doctorOrganization, ScheduleAppointmentWorkRequest workRequest, UserAccount userAccount) {
+       initComponents();
 
         this.userProcessContainer = userProcessContainer;
         this.patient = patient;
         this.workRequest = workRequest;
         this.userAccount = userAccount;
+        this.doctorOrganization = doctorOrganization;
+        this.network = network;
 
         populateFields(patient);
         populateAbuseSystemTable();
@@ -116,6 +122,7 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
         txtNoOfDays = new javax.swing.JTextField();
         cmbDosage = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
+        btnSendToRehab = new javax.swing.JButton();
         backJButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -327,7 +334,7 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
                         .addComponent(checkJointPain)
                         .addGap(18, 18, 18)
                         .addComponent(txt)
-                        .addGap(0, 5, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -463,6 +470,13 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
 
         jLabel8.setText("tablets of codeine per day for");
 
+        btnSendToRehab.setText("Send to rehab");
+        btnSendToRehab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendToRehabActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -476,7 +490,9 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
                 .addComponent(txtNoOfDays, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 639, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 476, Short.MAX_VALUE)
+                .addComponent(btnSendToRehab)
+                .addGap(84, 84, 84)
                 .addComponent(btnDiagnose))
         );
         jPanel5Layout.setVerticalGroup(
@@ -488,7 +504,8 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel8)
                     .addComponent(btnDiagnose)
                     .addComponent(txtNoOfDays, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
+                    .addComponent(jLabel9)
+                    .addComponent(btnSendToRehab))
                 .addGap(30, 30, 30))
         );
 
@@ -726,10 +743,60 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_checkMusclePainActionPerformed
 
+    private void btnSendToRehabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendToRehabActionPerformed
+        // TODO add your handling code here:
+        
+//        
+//        
+        
+        
+        
+        Enterprise commRehabEnterprise = null;
+        Organization rehabilitationCompanyManagerOrganization = null;
+
+        SendToRehabilitationWorkRequest sendToRehabilitationWorkRequest = new SendToRehabilitationWorkRequest();
+        sendToRehabilitationWorkRequest.setStatus("Rehab needed");
+        sendToRehabilitationWorkRequest.setSender(userAccount);
+        sendToRehabilitationWorkRequest.setPatient(patient);
+        patient.setRehabStatus("Sent to Rehab");
+
+        userAccount.getWorkQueue().getWorkRequestList().add(sendToRehabilitationWorkRequest);
+        doctorOrganization.getWorkQueue().getWorkRequestList().add(sendToRehabilitationWorkRequest);
+
+        for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+            if (enterprise instanceof CommunityRehabEnterprise) {
+                commRehabEnterprise = enterprise;
+                break;
+            }
+
+        }
+
+        for (Organization organization : commRehabEnterprise.getOrganizationDirectory().getOrganizationList()) {
+            if (organization instanceof RehabilitationManagerOrganization) {
+                rehabilitationCompanyManagerOrganization = organization;
+                break;
+            }
+        }
+
+        if (rehabilitationCompanyManagerOrganization != null) {
+            rehabilitationCompanyManagerOrganization.getWorkQueue().getWorkRequestList().add(sendToRehabilitationWorkRequest);
+            userAccount.getWorkQueue().getWorkRequestList().add(sendToRehabilitationWorkRequest);
+            for (UserAccount account : rehabilitationCompanyManagerOrganization.getUserAccountDirectory().getUserAccountList()) {
+                {
+                    account.getWorkQueue().getWorkRequestList().add(sendToRehabilitationWorkRequest);
+                    sendToRehabilitationWorkRequest.setReceiver(account);
+
+                }
+            }
+        }  
+        // get rehab manager user account, add work request to it
+    }//GEN-LAST:event_btnSendToRehabActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
     private javax.swing.JButton btnDiagnose;
+    private javax.swing.JButton btnSendToRehab;
     private javax.swing.JCheckBox checkAbdominalPain;
     private javax.swing.JCheckBox checkArthritis;
     private javax.swing.JCheckBox checkBackPain;

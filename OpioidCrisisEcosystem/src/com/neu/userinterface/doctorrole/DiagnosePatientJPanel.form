@@ -352,7 +352,7 @@
                                   <Component id="checkJointPain" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="txt" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="5" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -715,7 +715,9 @@
                           <Component id="txtNoOfDays" min="-2" pref="50" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="639" max="32767" attributes="0"/>
+                          <EmptySpace pref="476" max="32767" attributes="0"/>
+                          <Component id="btnSendToRehab" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
                           <Component id="btnDiagnose" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -730,6 +732,7 @@
                               <Component id="btnDiagnose" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtNoOfDays" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnSendToRehab" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
@@ -770,6 +773,14 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="tablets of codeine per day for"/>
                   </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnSendToRehab">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Send to rehab"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSendToRehabActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

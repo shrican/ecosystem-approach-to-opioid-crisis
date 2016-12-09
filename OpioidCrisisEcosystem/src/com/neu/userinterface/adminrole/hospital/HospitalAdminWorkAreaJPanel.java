@@ -6,6 +6,7 @@
 package com.neu.userinterface.adminrole.hospital;
 
 import com.neu.business.enterprise.Enterprise;
+import com.neu.business.network.Network;
 import com.neu.business.patient.PatientDirectory;
 import com.neu.userinterface.systemadminrole.ManageNetworkJPanel;
 import java.awt.CardLayout;
@@ -24,11 +25,13 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private Enterprise enterprise;
     private PatientDirectory patientDirectory;
+    private Network network;
     
-    public HospitalAdminWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise) {
+    public HospitalAdminWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise, Network network) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
+        this.network = network;
         
     }
 
@@ -146,7 +149,7 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
     private void manageHospitalRehabAssoJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageHospitalRehabAssoJButtonActionPerformed
         // TODO add your handling code here:
         
-        ManageHospitalRehabAssociationJPanel manageHospitalRehabAssociationJPanel = new ManageHospitalRehabAssociationJPanel(userProcessContainer, enterprise);
+        ManageHospitalRehabAssociationJPanel manageHospitalRehabAssociationJPanel = new ManageHospitalRehabAssociationJPanel(userProcessContainer, enterprise, network);
         userProcessContainer.add("manageHospitalRehabAssociationJPanel", manageHospitalRehabAssociationJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

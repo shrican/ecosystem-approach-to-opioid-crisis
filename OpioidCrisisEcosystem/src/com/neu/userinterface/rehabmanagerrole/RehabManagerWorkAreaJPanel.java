@@ -13,6 +13,7 @@ import com.neu.business.patient.Patient;
 import com.neu.business.patient.PatientDirectory;
 import com.neu.business.useraccount.UserAccount;
 import com.neu.business.workqueue.ScheduleAppointmentWorkRequest;
+import com.neu.business.workqueue.SendToRehabilitationWorkRequest;
 import com.neu.business.workqueue.WorkRequest;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -47,6 +48,7 @@ public class RehabManagerWorkAreaJPanel extends javax.swing.JPanel {
         
         for(Patient patient : ecosystemPatientDirectory.getPatientList())
         {
+            String patientName = patient.getName();
             if(enterprise instanceof HospitalEnterprise)
             {
                 for(Organization organization : enterprise.getOrganizationDirectory().getOrganizationList())
@@ -57,9 +59,13 @@ public class RehabManagerWorkAreaJPanel extends javax.swing.JPanel {
                         {
                             for(WorkRequest workRequest : user.getWorkQueue().getWorkRequestList())
                             {
-                                if(workRequest instanceof ScheduleAppointmentWorkRequest)
+                                if(workRequest instanceof SendToRehabilitationWorkRequest)
                                 {
-                                    
+                                    String rehabPatientName = ((SendToRehabilitationWorkRequest)workRequest).getPatient().getName();
+                                    if(patientName.equals(rehabPatientName))
+                                    {
+                                        
+                                    }
                                 }
                             }
                         }
