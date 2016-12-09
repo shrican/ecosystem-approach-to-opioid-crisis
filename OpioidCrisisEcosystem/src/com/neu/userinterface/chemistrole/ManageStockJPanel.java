@@ -5,8 +5,11 @@
  */
 package com.neu.userinterface.chemistrole;
 
+import com.neu.business.enterprise.Enterprise;
+import com.neu.business.enterprise.PharmacyEnterprise;
 import com.neu.business.network.Network;
 import com.neu.business.organization.ChemistOrganization;
+import com.neu.business.organization.Organization;
 import com.neu.business.patient.Prescription;
 import com.neu.business.useraccount.UserAccount;
 import java.awt.CardLayout;
@@ -172,7 +175,6 @@ public class ManageStockJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "New stock shouldn't be more than old stock", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
         
         chemistOrganization.setStock(newStock);
         ArrayList<String> stockChangesHistory = chemistOrganization.getStockChangeHistory();
