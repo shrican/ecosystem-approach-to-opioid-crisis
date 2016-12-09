@@ -172,11 +172,13 @@ public class ManageStockJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "New stock shouldn't be more than old stock", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
+        
+        
         chemistOrganization.setStock(newStock);
-        ArrayList<String> stockChangesHistory = chemistOrganization.getStockHistory();
+        ArrayList<String> stockChangesHistory = chemistOrganization.getStockChangeHistory();
         String stockChange = "Stock changed from "+String.valueOf(oldStock)+" to "+String.valueOf(newStock);
         stockChangesHistory.add(stockChange);
-        chemistOrganization.setStockHistory(stockChangesHistory);
+        chemistOrganization.setStockChangeHistory(stockChangesHistory);
         populateFields();
 //        txtFieldCurrentStock.setText(String.valueOf(newStock));
     }//GEN-LAST:event_btnUpdateStockActionPerformed

@@ -17,9 +17,19 @@ import java.util.ArrayList;
 public class ChemistOrganization extends Organization {
 
     private int stock;
+    private ArrayList<String> stockChangeHistory;
     
     public ChemistOrganization() {
         super(Type.Chemist.getValue());
+        stockChangeHistory = new ArrayList<>();
+    }
+
+    public ArrayList<String> getStockChangeHistory() {
+        return stockChangeHistory;
+    }
+
+    public void setStockChangeHistory(ArrayList<String> stockChangeHistory) {
+        this.stockChangeHistory = stockChangeHistory;
     }
 
     public int getStock() {
