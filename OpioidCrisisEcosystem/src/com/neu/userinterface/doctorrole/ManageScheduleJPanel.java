@@ -6,8 +6,10 @@
 package com.neu.userinterface.doctorrole;
 
 import com.neu.business.enterprise.Enterprise;
+import com.neu.business.network.Network;
 import com.neu.business.organization.DoctorOrganization;
 import com.neu.business.patient.Patient;
+import com.neu.business.patient.PatientDirectory;
 import com.neu.business.useraccount.UserAccount;
 import com.neu.business.workqueue.ScheduleAppointmentWorkRequest;
 import com.neu.business.workqueue.WorkRequest;
@@ -23,17 +25,22 @@ public class ManageScheduleJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
     private DoctorOrganization doctorOrganization;
+    private Enterprise enterprise;
     private UserAccount userAccount;
+    private PatientDirectory patientDirectory;
+    private Network network;
 
     /**
      * Creates new form ManageScheduleJPanel
      */
-    public ManageScheduleJPanel(JPanel userProcessContainer, UserAccount userAccount, DoctorOrganization doctorOrganization) {
+    public ManageScheduleJPanel(JPanel userProcessContainer, UserAccount userAccount, DoctorOrganization doctorOrganization, Enterprise enterprise, PatientDirectory patientDirectory, Network network) {
         initComponents();
+        this.patientDirectory = patientDirectory;
         this.userProcessContainer = userProcessContainer;
         this.doctorOrganization = doctorOrganization;
+        this.enterprise = enterprise;
         this.userAccount = userAccount;
-
+        this.network = network;
         populateScheduleTable();
     }
 
@@ -138,7 +145,7 @@ public class ManageScheduleJPanel extends javax.swing.JPanel {
             row[1] = patient.getId();
             row[2] = patient;
             row[3] = request.getRequestDate();
-            
+
             model.addRow(row);
 
         }
@@ -155,13 +162,14 @@ public class ManageScheduleJPanel extends javax.swing.JPanel {
 
     private void btnDiagnoseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagnoseActionPerformed
         // TODO add your handling code here:
-        Patient patient = (Patient)doctorScheduleJTable.getValueAt(doctorScheduleJTable.getSelectedRow(), 2);
-        ScheduleAppointmentWorkRequest workRequest = (ScheduleAppointmentWorkRequest)doctorScheduleJTable.getValueAt(doctorScheduleJTable.getSelectedRow(), 0);
-        DiagnosePatientJPanel diagnose = new DiagnosePatientJPanel(userProcessContainer, patient, workRequest, userAccount);
+        Patient patient = (Patient) doctorScheduleJTable.getValueAt(doctorScheduleJTable.getSelectedRow(), 2);
+        patientDirectory.calculateBayesianOpioidAddictionScore(patient);
+        ScheduleAppointmentWorkRequest workRequest = (ScheduleAppointmentWorkRequest) doctorScheduleJTable.getValueAt(doctorScheduleJTable.getSelectedRow(), 0);
+        DiagnosePatientJPanel diagnose = new DiagnosePatientJPanel(userProcessContainer, patient, network, doctorOrganization, workRequest, userAccount);
         userProcessContainer.add("diagnosePatientJPanel", diagnose);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-        
+
     }//GEN-LAST:event_btnDiagnoseActionPerformed
 
 

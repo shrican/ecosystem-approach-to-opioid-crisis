@@ -5,21 +5,21 @@
  */
 package com.neu.userinterface.doctorrole;
 
+import com.neu.business.enterprise.CommunityRehabEnterprise;
+import com.neu.business.enterprise.Enterprise;
+import com.neu.business.network.Network;
+import com.neu.business.organization.DoctorOrganization;
+import com.neu.business.organization.Organization;
+import com.neu.business.organization.RehabilitationManagerOrganization;
 import com.neu.business.patient.OpioidAbuseSymptoms;
 import com.neu.business.patient.Patient;
-import com.neu.business.patient.PatientSymptomsHistory;
 import com.neu.business.patient.Prescription;
-import com.neu.business.patient.Prescription.Dosage;
-import com.neu.business.patient.PrescriptionHistory;
 import com.neu.business.patient.Symptoms;
 import com.neu.business.useraccount.UserAccount;
 import com.neu.business.workqueue.ScheduleAppointmentWorkRequest;
 import com.neu.business.workqueue.SendToRehabilitationWorkRequest;
-import com.neu.business.workqueue.WorkRequest;
-import com.neu.userinterface.receptionistrole.ScheduleAppointmentJPanel;
 import java.awt.CardLayout;
 import java.util.Date;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -36,14 +36,18 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
     private Patient patient;
     private UserAccount userAccount;
     private ScheduleAppointmentWorkRequest workRequest;
+    private Network network;
+    private DoctorOrganization doctorOrganization;
 
-    public DiagnosePatientJPanel(JPanel userProcessContainer, Patient patient, ScheduleAppointmentWorkRequest workRequest, UserAccount userAccount) {
-        initComponents();
+    public DiagnosePatientJPanel(JPanel userProcessContainer, Patient patient, Network network, DoctorOrganization doctorOrganization, ScheduleAppointmentWorkRequest workRequest, UserAccount userAccount) {
+       initComponents();
 
         this.userProcessContainer = userProcessContainer;
         this.patient = patient;
         this.workRequest = workRequest;
         this.userAccount = userAccount;
+        this.doctorOrganization = doctorOrganization;
+        this.network = network;
 
         populateFields(patient);
         populateAbuseSystemTable();
@@ -742,16 +746,49 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
     private void btnSendToRehabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendToRehabActionPerformed
         // TODO add your handling code here:
         
-        if(Double.parseDouble(txtOpioidScore.getText()) < 2.0)
-        {
-            JOptionPane.showMessageDialog(null, "Opioid Abuse Score too low, please reconsider", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
+//        
+//        
         
+        
+        
+        Enterprise commRehabEnterprise = null;
+        Organization rehabilitationCompanyManagerOrganization = null;
+
         SendToRehabilitationWorkRequest sendToRehabilitationWorkRequest = new SendToRehabilitationWorkRequest();
+        sendToRehabilitationWorkRequest.setStatus("Rehab needed");
+        sendToRehabilitationWorkRequest.setSender(userAccount);
         sendToRehabilitationWorkRequest.setPatient(patient);
-        patient.setRehabStatus("Sent to rehab");
-        
+        patient.setRehabStatus("Sent to Rehab");
+
+        userAccount.getWorkQueue().getWorkRequestList().add(sendToRehabilitationWorkRequest);
+        doctorOrganization.getWorkQueue().getWorkRequestList().add(sendToRehabilitationWorkRequest);
+
+        for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+            if (enterprise instanceof CommunityRehabEnterprise) {
+                commRehabEnterprise = enterprise;
+                break;
+            }
+
+        }
+
+        for (Organization organization : commRehabEnterprise.getOrganizationDirectory().getOrganizationList()) {
+            if (organization instanceof RehabilitationManagerOrganization) {
+                rehabilitationCompanyManagerOrganization = organization;
+                break;
+            }
+        }
+
+        if (rehabilitationCompanyManagerOrganization != null) {
+            rehabilitationCompanyManagerOrganization.getWorkQueue().getWorkRequestList().add(sendToRehabilitationWorkRequest);
+            userAccount.getWorkQueue().getWorkRequestList().add(sendToRehabilitationWorkRequest);
+            for (UserAccount account : rehabilitationCompanyManagerOrganization.getUserAccountDirectory().getUserAccountList()) {
+                {
+                    account.getWorkQueue().getWorkRequestList().add(sendToRehabilitationWorkRequest);
+                    sendToRehabilitationWorkRequest.setReceiver(account);
+
+                }
+            }
+        }  
         // get rehab manager user account, add work request to it
     }//GEN-LAST:event_btnSendToRehabActionPerformed
 
