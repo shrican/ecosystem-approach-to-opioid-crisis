@@ -7,7 +7,9 @@ package com.neu.userinterface.chemistrole;
 
 import com.neu.business.organization.ChemistOrganization;
 import com.neu.business.patient.Prescription;
+import com.neu.userinterface.receptionistrole.ReceptionistWorkAreaJPanel;
 import java.awt.CardLayout;
+import java.awt.Component;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -26,59 +28,52 @@ public class SellOpioidsJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private ChemistOrganization chemistOrganization;
     private ArrayList<Prescription> prescriptionList;
-    
-    
+
     public SellOpioidsJPanel(JPanel userProcessContainer, ChemistOrganization chemistOrganization, ArrayList<Prescription> prescriptionList) {
         initComponents();
-        
+
         this.userProcessContainer = userProcessContainer;
         this.chemistOrganization = chemistOrganization;
         this.prescriptionList = prescriptionList;
-        
+
         populatePrescriptionTable();
         populateSoldOpioidsTable();
     }
-    
-    public void populatePrescriptionTable()
-    {
-        DefaultTableModel dtm = (DefaultTableModel)tblPrescriptions.getModel();
+
+    public void populatePrescriptionTable() {
+        DefaultTableModel dtm = (DefaultTableModel) tblPrescriptions.getModel();
         dtm.setRowCount(0);
         int count = 1;
-        for(Prescription prescription : prescriptionList)
-        {
-            if(prescription.isFulfilled() == false){
-            Object[] row = new Object[4];
-            row[0] = count++;
-            row[1] = prescription.getPatientName();
-            row[2] = prescription;
-            row[3] = prescription.getTotalOpioidsPrescribed();
-            
-            dtm.addRow(row);
+        for (Prescription prescription : prescriptionList) {
+            if (prescription.isFulfilled() == false) {
+                Object[] row = new Object[4];
+                row[0] = count++;
+                row[1] = prescription.getPatientName();
+                row[2] = prescription;
+                row[3] = prescription.getTotalOpioidsPrescribed();
+
+                dtm.addRow(row);
             }
         }
     }
-    
-    public void populateSoldOpioidsTable()
-    {
-        DefaultTableModel dtm = (DefaultTableModel)tblSold.getModel();
+
+    public void populateSoldOpioidsTable() {
+        DefaultTableModel dtm = (DefaultTableModel) tblSold.getModel();
         dtm.setRowCount(0);
         int count = 1;
-        for(Prescription prescription : prescriptionList)
-        {
-            if(prescription.isFulfilled() == true && prescription.getChemistName().equals(chemistOrganization.getName()))
-            {
+        for (Prescription prescription : prescriptionList) {
+            if (prescription.isFulfilled() == true && prescription.getChemistName().equals(chemistOrganization.getName())) {
                 Object[] row = new Object[5];
                 row[0] = count++;
                 row[1] = prescription.getPatientName();
                 row[2] = prescription;
                 row[3] = prescription.getTotalOpioidsPrescribed();
                 row[4] = prescription.getDateOfFulfilment();
-                
+
                 dtm.addRow(row);
             }
         }
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -97,6 +92,8 @@ public class SellOpioidsJPanel extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblSold = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
 
@@ -169,6 +166,10 @@ public class SellOpioidsJPanel extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("Sell Opioids");
 
+        jLabel3.setText("Pending prescriptions :");
+
+        jLabel4.setText("Fulfilled prescriptions :");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -179,59 +180,74 @@ public class SellOpioidsJPanel extends javax.swing.JPanel {
                         .addGap(198, 198, 198)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(btnBack)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnSell))
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnBack)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnSell))
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(46, 46, 46))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addComponent(jLabel2)))
-                .addContainerGap(250, Short.MAX_VALUE))
+                .addContainerGap(204, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addGap(19, 19, 19)
+                .addGap(5, 5, 5)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
+                .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSell)
                     .addComponent(btnBack))
-                .addGap(57, 57, 57)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel4)
+                .addGap(23, 23, 23)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(250, Short.MAX_VALUE))
+                .addContainerGap(240, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSellActionPerformed
         // TODO add your handling code here:
-        
+
         int selectedRow = tblPrescriptions.getSelectedRow();
 
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Select an order to fulfil", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
+
         Prescription prescription = (Prescription) tblPrescriptions.getValueAt(selectedRow, 2);
         prescription.setDateOfFulfilment(new Date());
         prescription.setChemistName(chemistOrganization.getName());
         prescription.setFulfilled(true);
-        chemistOrganization.setStock(chemistOrganization.getStock()-prescription.getTotalOpioidsPrescribed());
-        
+        int oldStock = chemistOrganization.getStock();
+        int stockSold = prescription.getTotalOpioidsPrescribed();
+        int newStock = oldStock - stockSold;
+        chemistOrganization.setStock(newStock);
+
         JOptionPane.showMessageDialog(null, "Prescription fulfilled");
-        
         populatePrescriptionTable();
-        
+        populateSoldOpioidsTable();
+
     }//GEN-LAST:event_btnSellActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        com.neu.userinterface.chemistrole.ChemistWorkAreaJPanel chemistwjp = (ChemistWorkAreaJPanel) component;
+        chemistwjp.populateInitialStock();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
@@ -242,6 +258,8 @@ public class SellOpioidsJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnSell;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblPrescriptions;

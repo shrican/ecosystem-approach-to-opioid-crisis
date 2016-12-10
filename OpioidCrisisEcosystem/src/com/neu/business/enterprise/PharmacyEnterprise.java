@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @author shrikantmudholkar
  */
 public class PharmacyEnterprise extends Enterprise {
-    
+
     int initialPharmacyStock;
 
     public PharmacyEnterprise(String name) {
@@ -32,7 +32,5 @@ public class PharmacyEnterprise extends Enterprise {
     public void setInitialPharmacyStock(int initialPharmacyStock) {
         this.initialPharmacyStock = initialPharmacyStock;
     }
-    
-    
 
 }

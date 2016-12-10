@@ -64,7 +64,11 @@ public class RehabManagerWorkAreaJPanel extends javax.swing.JPanel {
                                     String rehabPatientName = ((SendToRehabilitationWorkRequest)workRequest).getPatient().getName();
                                     if(patientName.equals(rehabPatientName))
                                     {
-                                        
+                                        Object[] row = new Object [4];
+                                        row[0] = patient.getId();
+                                        row[1] = patient;
+                                        row[2] = patient.getRehabStatus();
+                                        dtm.addRow(row);
                                     }
                                 }
                             }
@@ -98,14 +102,14 @@ public class RehabManagerWorkAreaJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Patient ID", "Patient", "Status", "Days Remaining"
+                "Patient ID", "Patient", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -121,7 +125,6 @@ public class RehabManagerWorkAreaJPanel extends javax.swing.JPanel {
             tblPatient.getColumnModel().getColumn(0).setResizable(false);
             tblPatient.getColumnModel().getColumn(1).setResizable(false);
             tblPatient.getColumnModel().getColumn(2).setResizable(false);
-            tblPatient.getColumnModel().getColumn(3).setResizable(false);
         }
 
         btnBack.setText("Back");

@@ -32,20 +32,27 @@ public class ChemistWorkAreaJPanel extends javax.swing.JPanel {
     private ChemistOrganization chemistOrganization;
     private Network network;
     private ArrayList<Prescription> prescriptionList;
+    private PharmacyEnterprise pharmacyEnterprise;
 
-    public ChemistWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, ChemistOrganization organization, Network network, ArrayList<Prescription> prescriptionList) {
+    public ChemistWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Enterprise pharmacyEnterprise, ChemistOrganization organization, Network network, ArrayList<Prescription> prescriptionList) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
         this.chemistOrganization = organization;
         this.network = network;
         this.prescriptionList = prescriptionList;
+        this.pharmacyEnterprise = (PharmacyEnterprise) pharmacyEnterprise;
 
         populateStock();
     }
 
     public void populateStock() {
-        txtFieldChemistStock.setText(String.valueOf(chemistOrganization.getStock()));
+        chemistOrganization.setStock(pharmacyEnterprise.getInitialPharmacyStock());
+        populateInitialStock();
+    }
+
+    public void populateInitialStock() {
+        txtFieldChemistStock.setText(String.valueOf(pharmacyEnterprise.getInitialPharmacyStock()));
     }
 
     /**
@@ -60,8 +67,8 @@ public class ChemistWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtFieldChemistStock = new javax.swing.JTextField();
-        btnOrderOpioids = new javax.swing.JButton();
         btnSellOpioids = new javax.swing.JButton();
+        btnManageStock = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -72,17 +79,17 @@ public class ChemistWorkAreaJPanel extends javax.swing.JPanel {
 
         txtFieldChemistStock.setEditable(false);
 
-        btnOrderOpioids.setText("Order Opioids");
-        btnOrderOpioids.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOrderOpioidsActionPerformed(evt);
-            }
-        });
-
         btnSellOpioids.setText("Sell Opioids");
         btnSellOpioids.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSellOpioidsActionPerformed(evt);
+            }
+        });
+
+        btnManageStock.setText("Manage Stock");
+        btnManageStock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageStockActionPerformed(evt);
             }
         });
 
@@ -92,20 +99,22 @@ public class ChemistWorkAreaJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(716, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtFieldChemistStock, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnSellOpioids)
-                        .addGap(140, 140, 140)
-                        .addComponent(btnOrderOpioids)))
-                .addGap(320, 320, 320))
+                        .addComponent(jLabel1)
+                        .addContainerGap(716, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(139, 139, 139)
+                                .addComponent(txtFieldChemistStock, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnSellOpioids)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnManageStock)))
+                        .addGap(320, 320, 320))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,41 +128,10 @@ public class ChemistWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(94, 94, 94)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSellOpioids)
-                    .addComponent(btnOrderOpioids))
+                    .addComponent(btnManageStock))
                 .addContainerGap(384, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnOrderOpioidsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderOpioidsActionPerformed
-        // TODO add your handling code here:
-
-//        Network currentNetwork;
-//        PharmaceuticalCompanyEnterprise pharmaEnterprise = new PharmaceuticalCompanyEnterprise("Pharmaceutical Company Enterprise");
-//        
-//        for(Network network : system.getNetworkList())
-//        {
-//            for(Enterprise e : network.getEnterpriseDirectory().getEnterpriseList())
-//            {
-//                if(e.getName().equals(enterprise.getName()))
-//                {
-//                    currentNetwork = network;// getting which network the current chemist and pharmaceutical company are in
-//                    
-//                    if(e instanceof PharmaceuticalCompanyEnterprise)
-//                        pharmaEnterprise = (PharmaceuticalCompanyEnterprise) e;
-//                    OrderOpioidsJPanel orderOpioidsJPanel = new OrderOpioidsJPanel(userProcessContainer, pharmaEnterprise, enterprise, organization, currentNetwork, userAccount);
-//                    userProcessContainer.add("OrderOpioidsJPanel", orderOpioidsJPanel);
-//                    CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-//                    layout.next(userProcessContainer);
-//                }
-//            }
-//        }
-        OrderOpioidsJPanel orderOpioidsJPanel = new OrderOpioidsJPanel(userProcessContainer, network, chemistOrganization, userAccount);
-        userProcessContainer.add("OrderOpioidsJPanel", orderOpioidsJPanel);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-
-        layout.next(userProcessContainer);
-
-    }//GEN-LAST:event_btnOrderOpioidsActionPerformed
 
     private void btnSellOpioidsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSellOpioidsActionPerformed
         // TODO add your handling code here:
@@ -164,9 +142,18 @@ public class ChemistWorkAreaJPanel extends javax.swing.JPanel {
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnSellOpioidsActionPerformed
 
+    private void btnManageStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageStockActionPerformed
+        // TODO add your handling code here:
+
+        ManageStockJPanel manageStock = new ManageStockJPanel(userProcessContainer, chemistOrganization, prescriptionList, userAccount, network);
+        userProcessContainer.add("ManageStockJPanel", manageStock);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnManageStockActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnOrderOpioids;
+    private javax.swing.JButton btnManageStock;
     private javax.swing.JButton btnSellOpioids;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -5,11 +5,14 @@
  */
 package com.neu.userinterface.adminrole.pharmacy;
 
+import com.neu.business.enterprise.Enterprise;
+import com.neu.business.enterprise.PharmacyEnterprise;
 import com.neu.business.organization.ChemistOrganization;
 import com.neu.business.organization.Organization;
 import com.neu.business.organization.Organization.Type;
 import com.neu.business.organization.OrganizationDirectory;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -144,7 +147,7 @@ public class ManagePharmacyOrganizationJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addComponent(backJButton)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGap(230, 230, 230)
                             .addComponent(addJButton))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(675, Short.MAX_VALUE))
@@ -185,6 +188,11 @@ public class ManagePharmacyOrganizationJPanel extends javax.swing.JPanel {
 
         Type type = (Type) organizationJComboBox.getSelectedItem();
         ChemistOrganization chemistOrganization = (ChemistOrganization) organizationDirectory.createOrganization(type);
+
+//            stock = JOptionPane.showInputDialog(null, "Enter " + name + "'s intial stock");
+//            initialStock = Integer.parseInt(stock);
+//            ((PharmacyEnterprise)enterprise).setInitialPharmacyStock(initialStock);
+
         AddPharmacyJPanel addPharmacyJPanel = new AddPharmacyJPanel(userProcessContainer, chemistOrganization);
         userProcessContainer.add("AddPharmacyJPanel", addPharmacyJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();

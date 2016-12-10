@@ -6,7 +6,9 @@
 package com.neu.userinterface.adminrole.pharmacy;
 
 import com.neu.business.enterprise.Enterprise;
+import com.neu.business.enterprise.PharmacyEnterprise;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -19,18 +21,18 @@ public class PharmacyAdminWorkAreaJPanel extends javax.swing.JPanel {
      * Creates new form PharmacyAdminWorkAreaJPanel
      */
     private JPanel userProcessContainer;
-    private Enterprise enterprise;
-
+    private PharmacyEnterprise enterprise;
+    
     public PharmacyAdminWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.enterprise = enterprise;
-
+        this.enterprise = (PharmacyEnterprise)enterprise;
+        
         initComponents();
         populateValueLabel();
     }
     
-    public void populateValueLabel(){
+    public void populateValueLabel() {
         valueLabel.setText(enterprise.getName());
     }
 
@@ -49,6 +51,9 @@ public class PharmacyAdminWorkAreaJPanel extends javax.swing.JPanel {
         manageOrganizationJButton = new javax.swing.JButton();
         enterpriseLabel = new javax.swing.JLabel();
         valueLabel = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtInitialStock = new javax.swing.JTextField();
+        btnUpdateStock = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -78,23 +83,44 @@ public class PharmacyAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         enterpriseLabel.setText("Enterprise :");
 
+        jLabel2.setText("Initial stock");
+
+        btnUpdateStock.setText("Update");
+        btnUpdateStock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateStockActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(100, 100, 100)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(103, 103, 103)
-                        .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(manageOrganizationJButton)
-                    .addComponent(manageEmployeeJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(userJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(312, Short.MAX_VALUE))
+                        .addGap(100, 100, 100)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(103, 103, 103)
+                                .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(userJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(74, 74, 74)
+                                .addComponent(manageOrganizationJButton)
+                                .addGap(69, 69, 69)
+                                .addComponent(manageEmployeeJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(339, 339, 339)
+                        .addComponent(jLabel2)
+                        .addGap(49, 49, 49)
+                        .addComponent(txtInitialStock, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(btnUpdateStock)))
+                .addContainerGap(281, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {enterpriseLabel, jLabel1, manageEmployeeJButton, manageOrganizationJButton, userJButton, valueLabel});
@@ -108,16 +134,22 @@ public class PharmacyAdminWorkAreaJPanel extends javax.swing.JPanel {
                         .addComponent(enterpriseLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                         .addComponent(valueLabel))
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(51, 51, 51)
-                .addComponent(manageOrganizationJButton)
-                .addGap(80, 80, 80)
-                .addComponent(manageEmployeeJButton)
-                .addGap(80, 80, 80)
-                .addComponent(userJButton)
-                .addContainerGap(508, Short.MAX_VALUE))
+                .addGap(98, 98, 98)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtInitialStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUpdateStock))
+                .addGap(133, 133, 133)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(userJButton)
+                    .addComponent(manageOrganizationJButton)
+                    .addComponent(manageEmployeeJButton))
+                .addContainerGap(519, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {enterpriseLabel, jLabel1, manageEmployeeJButton, manageOrganizationJButton, userJButton, valueLabel});
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel2, txtInitialStock});
 
     }// </editor-fold>//GEN-END:initComponents
 
@@ -125,35 +157,48 @@ public class PharmacyAdminWorkAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         ManagePharmacyUserAccountJPanel muajp = new ManagePharmacyUserAccountJPanel(userProcessContainer, enterprise);
         userProcessContainer.add("ManageUserAccountJPanel", muajp);
-
+        
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_userJButtonActionPerformed
 
     private void manageEmployeeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeeJButtonActionPerformed
-
+        
         ManagePharmacyEmployeeJPanel manageEmployeeJPanel = new ManagePharmacyEmployeeJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
         userProcessContainer.add("manageEmployeeJPanel", manageEmployeeJPanel);
-
+        
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
 
     }//GEN-LAST:event_manageEmployeeJButtonActionPerformed
 
     private void manageOrganizationJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageOrganizationJButtonActionPerformed
-
+        
         ManagePharmacyOrganizationJPanel manageOrganizationJPanel = new ManagePharmacyOrganizationJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
         userProcessContainer.add("manageOrganizationJPanel", manageOrganizationJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_manageOrganizationJButtonActionPerformed
 
+    private void btnUpdateStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateStockActionPerformed
+        // TODO add your handling code here:
+        
+        int initialStock = Integer.parseInt(txtInitialStock.getText());
+        ((PharmacyEnterprise) enterprise).setInitialPharmacyStock(initialStock);
+        
+        JOptionPane.showMessageDialog(null, "Updated");
+        txtInitialStock.setText("");
+    }//GEN-LAST:event_btnUpdateStockActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnUpdateStock;
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JButton manageEmployeeJButton;
     private javax.swing.JButton manageOrganizationJButton;
+    private javax.swing.JTextField txtInitialStock;
     private javax.swing.JButton userJButton;
     private javax.swing.JLabel valueLabel;
     // End of variables declaration//GEN-END:variables

@@ -23,7 +23,7 @@ public class DEARole extends Role {
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem business) {
-        return new DEAWorkAreaJPanel(userProcessContainer, account, (DEAOrganization)organization, (DrugEnforcementAdministrationEnterprise)enterprise);
+        return new DEAWorkAreaJPanel(userProcessContainer, account, (DEAOrganization)organization, enterprise, network  );
     }
     
 }

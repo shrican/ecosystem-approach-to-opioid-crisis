@@ -23,7 +23,7 @@ public class ChemistRole extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem system) {
-        return new ChemistWorkAreaJPanel (userProcessContainer, account, (ChemistOrganization)organization, network, system.getPatientDirectory().getPrescriptionList());
+        return new ChemistWorkAreaJPanel (userProcessContainer, account, enterprise,(ChemistOrganization)organization, network, system.getPatientDirectory().getPrescriptionList());
     }
     
 }

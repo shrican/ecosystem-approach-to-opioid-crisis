@@ -16,6 +16,7 @@ import com.neu.business.useraccount.UserAccount;
 import com.neu.business.workqueue.PharmacySupplyWorkRequest;
 import com.neu.business.workqueue.WorkRequest;
 import java.awt.CardLayout;
+import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -222,11 +223,11 @@ public class OrderOpioidsJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtFieldOrderAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnOrder)
                     .addComponent(btnBack))
-                .addContainerGap(203, Short.MAX_VALUE))
+                .addContainerGap(209, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -283,6 +284,10 @@ public class OrderOpioidsJPanel extends javax.swing.JPanel {
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        com.neu.userinterface.chemistrole.ManageStockJPanel manageStockjp = (ManageStockJPanel) component;
+        manageStockjp.populateFields();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed

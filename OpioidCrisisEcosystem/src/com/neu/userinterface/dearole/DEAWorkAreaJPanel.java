@@ -7,8 +7,15 @@ package com.neu.userinterface.dearole;
 
 import com.neu.business.enterprise.DrugEnforcementAdministrationEnterprise;
 import com.neu.business.enterprise.Enterprise;
+import com.neu.business.enterprise.PharmacyEnterprise;
+import com.neu.business.network.Network;
+import com.neu.business.organization.ChemistOrganization;
 import com.neu.business.organization.DEAOrganization;
+import com.neu.business.organization.Organization;
 import com.neu.business.useraccount.UserAccount;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import javax.swing.JPanel;
 
 /**
@@ -20,19 +27,19 @@ public class DEAWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form deaWorkArea
      */
-    
     private JPanel userProcessContainer;
     private Enterprise enterprise;
     private DEAOrganization organization;
     private UserAccount account;
-    
+    private Network network;
 
-    public DEAWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, DEAOrganization organization, DrugEnforcementAdministrationEnterprise enterprise) {
+    public DEAWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, DEAOrganization organization, Enterprise enterprise, Network network) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         this.organization = organization;
         this.account = account;
+        this.network = network;
     }
 
     /**
@@ -45,32 +52,71 @@ public class DEAWorkAreaJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        btnPharmacyReport = new javax.swing.JButton();
+        btnDoctorReport = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("DEA Agent's work area");
 
+        btnPharmacyReport.setText("Generate Pharmacy Report");
+        btnPharmacyReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPharmacyReportActionPerformed(evt);
+            }
+        });
+
+        btnDoctorReport.setText("Generate Doctor Report");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(704, Short.MAX_VALUE))
+                .addGap(100, 100, 100)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1)
+                    .addComponent(btnPharmacyReport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnDoctorReport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(604, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(676, Short.MAX_VALUE))
+                .addGap(66, 66, 66)
+                .addComponent(btnPharmacyReport)
+                .addGap(77, 77, 77)
+                .addComponent(btnDoctorReport)
+                .addContainerGap(475, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnPharmacyReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPharmacyReportActionPerformed
+        // TODO add your handling code here:
+
+        Map<ChemistOrganization, Double> discripancyMap = new HashMap<>();
+        Double discripancy = 0.0;
+
+        for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+
+            if (enterprise instanceof PharmacyEnterprise) {
+                for (Organization chemistOrganization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                    if (chemistOrganization instanceof ChemistOrganization) {
+                        discripancy = network.pharmacyStockDiscrepancy((ChemistOrganization) chemistOrganization);
+                        discripancyMap.put((ChemistOrganization) chemistOrganization, discripancy);
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_btnPharmacyReportActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDoctorReport;
+    private javax.swing.JButton btnPharmacyReport;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -28,8 +28,7 @@ public class Network {
 
     private String name;
     private EnterpriseDirectory enterpriseDirectory;
-    
-   
+
     public Network(String name) {
         enterpriseDirectory = new EnterpriseDirectory();
         this.name = name;
@@ -55,73 +54,58 @@ public class Network {
     public String toString() {
         return name;
     }
-    
-     public double pharmacyStockDiscrepancy(ChemistOrganization checkChemistOrganization)
-    {
+
+    public double pharmacyStockDiscrepancy(ChemistOrganization checkChemistOrganization) {
         double estimatedStock = 0;
         int pharmacyCurrentStock = 0;
         int pharmacyOrdersTotal = 0;
         int pharmacyPrescriptionsTotal = 0;
         int pharmacyInitialStock = 0;
-        
-        for(Enterprise enterprise : enterpriseDirectory.getEnterpriseList())
-        {
-            if(enterprise instanceof PharmaceuticalCompanyEnterprise)
-            {
-                for(Organization organization : enterprise.getOrganizationDirectory().getOrganizationList())
-                {
-                    if(organization instanceof PharmaceuticalCompanyManagerOrganization)
-                    {
+
+        for (Enterprise enterprise : enterpriseDirectory.getEnterpriseList()) {
+            if (enterprise instanceof PharmaceuticalCompanyEnterprise) {
+                for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                    if (organization instanceof PharmaceuticalCompanyManagerOrganization) {
                         WorkQueue workQueue = organization.getWorkQueue();
-                        for(WorkRequest workRequest : workQueue.getWorkRequestList())
-                        {
-                            
-                            if(workRequest instanceof PharmacySupplyWorkRequest)
-                            {
+                        for (WorkRequest workRequest : workQueue.getWorkRequestList()) {
+
+                            if (workRequest instanceof PharmacySupplyWorkRequest) {
                                 pharmacyOrdersTotal += ((PharmacySupplyWorkRequest) workRequest).getOrderAmount();
                             }
                         }
                     }
                 }
             }
-            
-            if(enterprise instanceof PharmacyEnterprise)
-            {
-                for(Organization organization : enterprise.getOrganizationDirectory().getOrganizationList())
-                {
-                    if(organization instanceof ChemistOrganization)
-                    {   String name = checkChemistOrganization.getName();
-                        if(organization.getName().equals(name))
-                        {
+
+            if (enterprise instanceof PharmacyEnterprise) {
+                for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                    if (organization instanceof ChemistOrganization) {
+                        String name = checkChemistOrganization.getName();
+                        if (organization.getName().equals(name)) {
                             pharmacyInitialStock = ((PharmacyEnterprise) enterprise).getInitialPharmacyStock(); //Anmol to take care of this
                             pharmacyCurrentStock = ((ChemistOrganization) organization).getStock();
                         }
                     }
                 }
             }
-            if(enterprise instanceof HospitalEnterprise)
-            {
-                for(Patient patient : ((HospitalEnterprise) enterprise).getPatientDirectory().getPatientList())
-                {
-                    for(Prescription prescription : patient.getPrescriptionHistory().getPrescriptionHistoryList())
-                    {
-                        if(prescription.getChemistName().equals(checkChemistOrganization.getName()))
-                        {
-                            pharmacyPrescriptionsTotal += prescription.getTotalOpioidsPrescribed();
+            if (enterprise instanceof HospitalEnterprise) {
+                for (Patient patient : ((HospitalEnterprise) enterprise).getPatientDirectory().getPatientList()) {
+                    for (Prescription prescription : patient.getPrescriptionHistory().getPrescriptionHistoryList()) {
+                        if (prescription.isFulfilled()) {
+                            if (prescription.getChemistName().equals(checkChemistOrganization.getName())) {
+                                pharmacyPrescriptionsTotal += prescription.getTotalOpioidsPrescribed();
+                            }
                         }
                     }
                 }
             }
         }
-        
+
         estimatedStock = pharmacyInitialStock + pharmacyOrdersTotal - pharmacyPrescriptionsTotal;
         double discrepancy = 0;
-        if(estimatedStock > pharmacyCurrentStock)
-        {
+        if (estimatedStock > pharmacyCurrentStock) {
             discrepancy = estimatedStock - pharmacyCurrentStock;
-        }
-        else if (estimatedStock == pharmacyCurrentStock)
-        {
+        } else if (estimatedStock == pharmacyCurrentStock) {
             discrepancy = 0;
         }
         return discrepancy;

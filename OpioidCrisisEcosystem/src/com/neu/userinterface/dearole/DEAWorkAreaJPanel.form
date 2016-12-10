@@ -22,9 +22,13 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="704" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnPharmacyReport" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnDoctorReport" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace pref="604" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -33,7 +37,11 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="676" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+              <Component id="btnPharmacyReport" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+              <Component id="btnDoctorReport" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="475" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -45,6 +53,19 @@
           <Font name="Tahoma" size="18" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="DEA Agent&apos;s work area"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnPharmacyReport">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Generate Pharmacy Report"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPharmacyReportActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnDoctorReport">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Generate Doctor Report"/>
       </Properties>
     </Component>
   </SubComponents>
