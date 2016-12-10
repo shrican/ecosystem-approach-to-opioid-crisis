@@ -32,7 +32,7 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="managePatientJButton1" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnScheduleAppointment" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="btnViewAppointmentDetails" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -66,7 +66,7 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="managePatientJButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnScheduleAppointment" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnViewAppointmentDetails" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
@@ -93,12 +93,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="managePatientJButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="managePatientJButton1">
+    <Component class="javax.swing.JButton" name="btnScheduleAppointment">
       <Properties>
         <Property name="text" type="java.lang.String" value="Schedule an appointment"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="managePatientJButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnScheduleAppointmentActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="viewPatientDetailsJButton">

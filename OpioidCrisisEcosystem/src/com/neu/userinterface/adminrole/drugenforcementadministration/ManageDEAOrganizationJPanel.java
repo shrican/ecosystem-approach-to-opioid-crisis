@@ -9,6 +9,7 @@ import com.neu.business.organization.Organization;
 import com.neu.business.organization.Organization.Type;
 import com.neu.business.organization.OrganizationDirectory;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -74,6 +75,8 @@ public class ManageDEAOrganizationJPanel extends javax.swing.JPanel {
         organizationJComboBox = new javax.swing.JComboBox();
         backJButton = new javax.swing.JButton();
         addJButton = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Manage Organization");
@@ -184,6 +187,7 @@ public class ManageDEAOrganizationJPanel extends javax.swing.JPanel {
 
         Type type = (Type) organizationJComboBox.getSelectedItem();
         organizationDirectory.createOrganization(type);
+        JOptionPane.showMessageDialog(null, "New organization created");
         populateTable();
     }//GEN-LAST:event_addJButtonActionPerformed
 

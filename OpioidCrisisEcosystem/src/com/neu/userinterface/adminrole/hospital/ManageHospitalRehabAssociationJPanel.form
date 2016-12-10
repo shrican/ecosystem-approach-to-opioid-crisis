@@ -40,7 +40,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="202" max="32767" attributes="0"/>
+              <EmptySpace pref="159" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -92,12 +92,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Select Rehabilitation :"/>
+        <Property name="text" type="java.lang.String" value="Select Rehabilitation Facility :"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnAssociateRehabAction">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Associate"/>
+        <Property name="text" type="java.lang.String" value="Confirm Association"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAssociateRehabActionActionPerformed"/>

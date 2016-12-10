@@ -9,6 +9,7 @@ import com.neu.business.organization.Organization;
 import com.neu.business.organization.Organization.Type;
 import com.neu.business.organization.OrganizationDirectory;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -187,6 +188,7 @@ public class ManagePharmaceuticalOrganizationJPanel extends javax.swing.JPanel {
 
         Type type = (Type) organizationJComboBox.getSelectedItem();
         organizationDirectory.createOrganization(type);
+        JOptionPane.showMessageDialog(null, "New organization created");
         populateTable();
     }//GEN-LAST:event_addJButtonActionPerformed
 

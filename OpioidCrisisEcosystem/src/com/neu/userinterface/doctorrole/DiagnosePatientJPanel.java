@@ -20,6 +20,7 @@ import com.neu.business.workqueue.ScheduleAppointmentWorkRequest;
 import com.neu.business.workqueue.SendToRehabilitationWorkRequest;
 import java.awt.CardLayout;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -725,6 +726,8 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
 
         workRequest.setResolveDate(new Date());
         workRequest.setStatus("Patient diagnosed");
+        
+        JOptionPane.showMessageDialog(null, patient.getName()+" has been diagnosed and prescribed a course of "+prescription.getTotalOpioidsPrescribed()+" opioids");
     }//GEN-LAST:event_btnDiagnoseActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
@@ -758,7 +761,7 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
         sendToRehabilitationWorkRequest.setStatus("Rehab needed");
         sendToRehabilitationWorkRequest.setSender(userAccount);
         sendToRehabilitationWorkRequest.setPatient(patient);
-        patient.setRehabStatus("Sent to Rehab");
+        patient.setRehabStatus("Rehab needed");
 
         userAccount.getWorkQueue().getWorkRequestList().add(sendToRehabilitationWorkRequest);
         doctorOrganization.getWorkQueue().getWorkRequestList().add(sendToRehabilitationWorkRequest);
@@ -789,6 +792,8 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
                 }
             }
         }  
+        
+//        JOptionPane.showMessageDialog(null, patient.getName()+" has been sent to "+ rehabilitationCompanyManagerOrganization.getName());
         // get rehab manager user account, add work request to it
     }//GEN-LAST:event_btnSendToRehabActionPerformed
 

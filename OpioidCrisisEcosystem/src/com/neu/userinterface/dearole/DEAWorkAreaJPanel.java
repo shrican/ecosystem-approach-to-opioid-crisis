@@ -68,6 +68,11 @@ public class DEAWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         btnDoctorReport.setText("Generate Doctor Report");
+        btnDoctorReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDoctorReportActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -112,6 +117,10 @@ public class DEAWorkAreaJPanel extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_btnPharmacyReportActionPerformed
+
+    private void btnDoctorReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoctorReportActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDoctorReportActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

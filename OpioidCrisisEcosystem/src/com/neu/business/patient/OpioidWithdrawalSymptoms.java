@@ -18,6 +18,14 @@ public class OpioidWithdrawalSymptoms {
     private boolean coldSweat;
     private boolean enlargedPupils;
 
+    public boolean isLowAppetite() {
+        return lowAppetite;
+    }
+
+    public boolean isHighBloodPressure() {
+        return highBloodPressure;
+    }
+
     public boolean isQuivering() {
         return quivering;
     }

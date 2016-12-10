@@ -9,12 +9,14 @@ import com.neu.business.enterprise.Enterprise;
 import com.neu.business.enterprise.HospitalEnterprise;
 import com.neu.business.organization.DoctorOrganization;
 import com.neu.business.organization.Organization;
+import com.neu.business.organization.RehabilitationManagerOrganization;
 import com.neu.business.patient.Patient;
 import com.neu.business.patient.PatientDirectory;
 import com.neu.business.useraccount.UserAccount;
 import com.neu.business.workqueue.ScheduleAppointmentWorkRequest;
 import com.neu.business.workqueue.SendToRehabilitationWorkRequest;
 import com.neu.business.workqueue.WorkRequest;
+import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -30,51 +32,35 @@ public class RehabManagerWorkAreaJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private Enterprise enterprise;
     private PatientDirectory ecosystemPatientDirectory;
-    
-    
-    public RehabManagerWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise, PatientDirectory ecosystemPatientDirectory) {
+    private RehabilitationManagerOrganization organization;
+
+    public RehabManagerWorkAreaJPanel(JPanel userProcessContainer, RehabilitationManagerOrganization organization, Enterprise enterprise, PatientDirectory ecosystemPatientDirectory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         this.ecosystemPatientDirectory = ecosystemPatientDirectory;
-        
+        this.organization = organization;
+
         populateRehabTable(ecosystemPatientDirectory);
     }
-    
-    public void populateRehabTable(PatientDirectory ecosystemPatientDirectory)
-    {
-        DefaultTableModel dtm = (DefaultTableModel)tblPatient.getModel();
+
+    public void populateRehabTable(PatientDirectory ecosystemPatientDirectory) {
+        DefaultTableModel dtm = (DefaultTableModel) tblPatient.getModel();
         dtm.setRowCount(0);
-        
-        for(Patient patient : ecosystemPatientDirectory.getPatientList())
-        {
+        for (Patient patient : ecosystemPatientDirectory.getPatientList()) {
             String patientName = patient.getName();
-            if(enterprise instanceof HospitalEnterprise)
-            {
-                for(Organization organization : enterprise.getOrganizationDirectory().getOrganizationList())
-                {
-                    if(organization instanceof DoctorOrganization)
-                    {
-                        for(UserAccount user : organization.getUserAccountDirectory().getUserAccountList())
-                        {
-                            for(WorkRequest workRequest : user.getWorkQueue().getWorkRequestList())
-                            {
-                                if(workRequest instanceof SendToRehabilitationWorkRequest)
-                                {
-                                    String rehabPatientName = ((SendToRehabilitationWorkRequest)workRequest).getPatient().getName();
-                                    if(patientName.equals(rehabPatientName))
-                                    {
-                                        Object[] row = new Object [4];
-                                        row[0] = patient.getId();
-                                        row[1] = patient;
-                                        row[2] = patient.getRehabStatus();
-                                        dtm.addRow(row);
-                                    }
-                                }
-                            }
-                        }
+                for (UserAccount user : organization.getUserAccountDirectory().getUserAccountList()) {
+                    for (WorkRequest workRequest : user.getWorkQueue().getWorkRequestList()) {
+                            
+                            
+                                Object[] row = new Object[4];
+                                row[0] = patient.getId();
+                                row[1] = patient;
+                                row[2] = patient.getRehabStatus();
+                                dtm.addRow(row);
+                        
                     }
-                }
+                
             }
         }
     }
@@ -90,8 +76,6 @@ public class RehabManagerWorkAreaJPanel extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPatient = new javax.swing.JTable();
-        btnBack = new javax.swing.JButton();
-        btnUpdate = new javax.swing.JButton();
         btnViewPatientDetails = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -127,10 +111,6 @@ public class RehabManagerWorkAreaJPanel extends javax.swing.JPanel {
             tblPatient.getColumnModel().getColumn(2).setResizable(false);
         }
 
-        btnBack.setText("Back");
-
-        btnUpdate.setText("Update");
-
         btnViewPatientDetails.setText("View Patient Details");
         btnViewPatientDetails.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,14 +129,11 @@ public class RehabManagerWorkAreaJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(218, 218, 218)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnBack)
-                                .addGap(86, 86, 86)
-                                .addComponent(btnViewPatientDetails)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnUpdate))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(147, 147, 147)
+                                .addComponent(btnViewPatientDetails))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1)))
@@ -169,26 +146,24 @@ public class RehabManagerWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addGap(10, 10, 10)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(97, 97, 97)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBack)
-                    .addComponent(btnUpdate)
-                    .addComponent(btnViewPatientDetails))
-                .addContainerGap(223, Short.MAX_VALUE))
+                .addGap(91, 91, 91)
+                .addComponent(btnViewPatientDetails)
+                .addContainerGap(229, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnViewPatientDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewPatientDetailsActionPerformed
         // TODO add your handling code here:
-        
-        
-        
+        Patient patient = (Patient) tblPatient.getValueAt(tblPatient.getSelectedRow(), 1);
+        PatientDetailsJPanel patientDetails = new PatientDetailsJPanel(userProcessContainer, patient, ecosystemPatientDirectory);
+        userProcessContainer.add("PatientDetailsJPanel", patientDetails);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+
     }//GEN-LAST:event_btnViewPatientDetailsActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnUpdate;
     private javax.swing.JButton btnViewPatientDetails;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

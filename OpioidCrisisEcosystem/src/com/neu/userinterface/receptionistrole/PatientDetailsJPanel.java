@@ -6,8 +6,11 @@
 package com.neu.userinterface.receptionistrole;
 
 import com.neu.business.EcoSystem;
+import com.neu.business.enterprise.Enterprise;
 import com.neu.business.patient.Patient;
 import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -18,14 +21,16 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
 
     private Patient patient;
     private JPanel userProcessContainer;
+    private Enterprise enterprise;
 
     /**
      * Creates new form PatientDetailsJPanel
      */
-    public PatientDetailsJPanel(JPanel userProcessContainer, Patient patient) {
+    public PatientDetailsJPanel(JPanel userProcessContainer, Patient patient, Enterprise enterprise) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.patient = patient;
+        this.enterprise = enterprise;
         
         populateFields(patient);
         btnSave.setEnabled(false);
@@ -203,8 +208,11 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
 
     private void backJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton1ActionPerformed
         // TODO add your handling code here:
-
         userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        com.neu.userinterface.receptionistrole.ReceptionistWorkAreaJPanel receptionistwjp = (ReceptionistWorkAreaJPanel) component;
+        receptionistwjp.populateAppointentsTable(enterprise);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButton1ActionPerformed
@@ -218,6 +226,7 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
         patient.setPhoneNo(patientPhoneJTextField.getText());
         btnSave.setEnabled(false);
         updatePatientJButton.setEnabled(true);
+        JOptionPane.showMessageDialog(null, patient.getName()+"'s details updated successfully");
         
     }//GEN-LAST:event_btnSaveActionPerformed
 

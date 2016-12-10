@@ -9,6 +9,7 @@ import com.neu.business.organization.Organization;
 import com.neu.business.organization.OrganizationDirectory;
 import com.neu.business.organization.RehabilitationManagerOrganization;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -79,7 +80,9 @@ public class ManageCommRehabEmployeeJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         nameJTextField = new javax.swing.JTextField();
         backJButton1 = new javax.swing.JButton();
-        addJButton = new javax.swing.JButton();
+        btnAddEmployee = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Manage Employee");
@@ -123,10 +126,10 @@ public class ManageCommRehabEmployeeJPanel extends javax.swing.JPanel {
             }
         });
 
-        addJButton.setText("Create Employee");
-        addJButton.addActionListener(new java.awt.event.ActionListener() {
+        btnAddEmployee.setText("Create Employee");
+        btnAddEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addJButtonActionPerformed(evt);
+                btnAddEmployeeActionPerformed(evt);
             }
         });
 
@@ -140,7 +143,7 @@ public class ManageCommRehabEmployeeJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(backJButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(addJButton))
+                        .addComponent(btnAddEmployee))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(52, 52, 52)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,7 +174,7 @@ public class ManageCommRehabEmployeeJPanel extends javax.swing.JPanel {
                     .addComponent(nameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addJButton)
+                    .addComponent(btnAddEmployee)
                     .addComponent(backJButton1))
                 .addContainerGap(165, Short.MAX_VALUE))
         );
@@ -185,19 +188,20 @@ public class ManageCommRehabEmployeeJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButton1ActionPerformed
 
-    private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
+    private void btnAddEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEmployeeActionPerformed
 
         Organization organization = (Organization) organizationEmpJComboBox.getSelectedItem();
         String name = nameJTextField.getText();
 
+        JOptionPane.showMessageDialog(null, "New employee created");
         organization.getEmployeeDirectory().createEmployee(name);
         populateRehabOrganizationTable();
-    }//GEN-LAST:event_addJButtonActionPerformed
+    }//GEN-LAST:event_btnAddEmployeeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addJButton;
     private javax.swing.JButton backJButton1;
+    private javax.swing.JButton btnAddEmployee;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

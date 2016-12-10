@@ -42,6 +42,8 @@ public class DEAAdminWorkAreaJPanel extends javax.swing.JPanel {
         manageDEAEmpJButton = new javax.swing.JButton();
         manageDEAUsersJButton = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("DEA Admin Work Area");
 

@@ -203,7 +203,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
             initialStock = Integer.parseInt(stock);
             ((PharmacyEnterprise)enterprise).setInitialPharmacyStock(initialStock);
         }
-        
+        JOptionPane.showMessageDialog(null, enterprise.getName()+" enterprise created");
         populateTable();
     }//GEN-LAST:event_addEnterpriseJButtonActionPerformed
 

@@ -80,7 +80,7 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         managePatientJButton = new javax.swing.JButton();
-        managePatientJButton1 = new javax.swing.JButton();
+        btnScheduleAppointment = new javax.swing.JButton();
         viewPatientDetailsJButton = new javax.swing.JButton();
         btnViewAppointmentDetails = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -100,10 +100,10 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        managePatientJButton1.setText("Schedule an appointment");
-        managePatientJButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnScheduleAppointment.setText("Schedule an appointment");
+        btnScheduleAppointment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                managePatientJButton1ActionPerformed(evt);
+                btnScheduleAppointmentActionPerformed(evt);
             }
         });
 
@@ -174,7 +174,7 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel1)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(managePatientJButton1)
+                                .addComponent(btnScheduleAppointment)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnViewAppointmentDetails))
                             .addGroup(layout.createSequentialGroup()
@@ -200,7 +200,7 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
                     .addComponent(managePatientJButton))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(managePatientJButton1)
+                    .addComponent(btnScheduleAppointment)
                     .addComponent(btnViewAppointmentDetails))
                 .addGap(40, 40, 40)
                 .addComponent(btnRefresh)
@@ -211,27 +211,27 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
     private void managePatientJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_managePatientJButtonActionPerformed
         // TODO add your handling code here:
 
-        ManagePatientJPanel managePatientJPanel = new ManagePatientJPanel(userProcessContainer, systemPatientDirectory, hospitalPatientDirectory);
+        ManagePatientJPanel managePatientJPanel = new ManagePatientJPanel(userProcessContainer, systemPatientDirectory, hospitalPatientDirectory, enterprise);
 
         userProcessContainer.add("managePatientJPanel", managePatientJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_managePatientJButtonActionPerformed
 
-    private void managePatientJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_managePatientJButton1ActionPerformed
+    private void btnScheduleAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnScheduleAppointmentActionPerformed
         // TODO add your handling code here:
         ScheduleAppointmentJPanel scheduleAppointmentJPanel = new ScheduleAppointmentJPanel(userProcessContainer, userAccount, enterprise);
         userProcessContainer.add("scheduleAppointmentJPanel", scheduleAppointmentJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
 
-    }//GEN-LAST:event_managePatientJButton1ActionPerformed
+    }//GEN-LAST:event_btnScheduleAppointmentActionPerformed
 
     private void viewPatientDetailsJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPatientDetailsJButtonActionPerformed
         // TODO add your handling code here:
         Patient patient = (Patient) tblAppointments.getValueAt(tblAppointments.getSelectedRow(), 1);
 
-        PatientDetailsJPanel patientDetailsJPanel = new PatientDetailsJPanel(userProcessContainer, patient);
+        PatientDetailsJPanel patientDetailsJPanel = new PatientDetailsJPanel(userProcessContainer, patient, enterprise);
         userProcessContainer.add("patientDetailsJPanel", patientDetailsJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -257,12 +257,12 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRefresh;
+    private javax.swing.JButton btnScheduleAppointment;
     private javax.swing.JButton btnViewAppointmentDetails;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton managePatientJButton;
-    private javax.swing.JButton managePatientJButton1;
     private javax.swing.JTable tblAppointments;
     private javax.swing.JButton viewPatientDetailsJButton;
     // End of variables declaration//GEN-END:variables

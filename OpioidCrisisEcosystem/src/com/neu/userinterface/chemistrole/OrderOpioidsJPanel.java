@@ -273,7 +273,9 @@ public class OrderOpioidsJPanel extends javax.swing.JPanel {
                 }
             }
         }
-
+        
+        JOptionPane.showMessageDialog(null, chemistOrganization.getName()+" has confirmed an order of "+pharmacySupplyWorkRequest.getOrderAmount()+" opioids from "+pharmaceuticalCompanyManagerOrganization);
+        
         populateOrderTable();
     }//GEN-LAST:event_btnOrderActionPerformed
 

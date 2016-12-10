@@ -116,6 +116,11 @@ public class PharmaceuticalCompanyManagerWorkAreaJPanel extends javax.swing.JPan
         txtFieldRemainingStock.setEditable(false);
 
         btnAddStock.setText("Add to stock");
+        btnAddStock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddStockActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Pending distribution orders :");
 
@@ -201,6 +206,15 @@ public class PharmaceuticalCompanyManagerWorkAreaJPanel extends javax.swing.JPan
         layout.next(userProcessContainer);
 
     }//GEN-LAST:event_btnRespondActionPerformed
+
+    private void btnAddStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddStockActionPerformed
+        // TODO add your handling code here:
+        int oldStock = enterprise.getStock();
+        int additionalStock = Integer.parseInt(JOptionPane.showInputDialog(null, "How much stock do you want to add to your inventory?"));
+        enterprise.setStock(oldStock+additionalStock);
+        int currentStock = enterprise.getStock();
+        JOptionPane.showMessageDialog(null, enterprise.getName()+"'s stock changed from "+oldStock+" to "+currentStock);
+    }//GEN-LAST:event_btnAddStockActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

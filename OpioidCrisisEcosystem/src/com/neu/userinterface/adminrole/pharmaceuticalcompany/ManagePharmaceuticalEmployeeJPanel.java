@@ -9,6 +9,7 @@ import com.neu.business.employee.Employee;
 import com.neu.business.organization.Organization;
 import com.neu.business.organization.OrganizationDirectory;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -236,6 +237,7 @@ public class ManagePharmaceuticalEmployeeJPanel extends javax.swing.JPanel {
         String name = nameJTextField.getText();
 
         organization.getEmployeeDirectory().createEmployee(name);
+        JOptionPane.showMessageDialog(null, "New employee created");
     }//GEN-LAST:event_addJButtonActionPerformed
 
     private void organizationJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationJComboBoxActionPerformed

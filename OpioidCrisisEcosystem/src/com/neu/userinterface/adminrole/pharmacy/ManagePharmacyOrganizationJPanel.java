@@ -188,7 +188,7 @@ public class ManagePharmacyOrganizationJPanel extends javax.swing.JPanel {
 
         Type type = (Type) organizationJComboBox.getSelectedItem();
         ChemistOrganization chemistOrganization = (ChemistOrganization) organizationDirectory.createOrganization(type);
-
+        JOptionPane.showMessageDialog(null, "New organization created");
 //            stock = JOptionPane.showInputDialog(null, "Enter " + name + "'s intial stock");
 //            initialStock = Integer.parseInt(stock);
 //            ((PharmacyEnterprise)enterprise).setInitialPharmacyStock(initialStock);

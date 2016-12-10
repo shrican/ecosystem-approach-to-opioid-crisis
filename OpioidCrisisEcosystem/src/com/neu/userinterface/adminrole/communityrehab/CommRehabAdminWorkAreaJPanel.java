@@ -42,6 +42,8 @@ public class CommRehabAdminWorkAreaJPanel extends javax.swing.JPanel {
         manageCommRehabEmpJButton = new javax.swing.JButton();
         manageCommRehabUsersJButton = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Community Rehab Admin Work Area");
 

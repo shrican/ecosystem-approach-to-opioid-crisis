@@ -11,6 +11,7 @@ import com.neu.business.organization.Organization;
 import com.neu.business.role.Role;
 import com.neu.business.useraccount.UserAccount;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -280,7 +281,7 @@ public class ManagePharmaceuticalUserAccountJPanel extends javax.swing.JPanel {
         Role role = (Role) roleJComboBox.getSelectedItem();
 
         organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
-
+        JOptionPane.showMessageDialog(null, "New user account created");
         populateUserTableData();
     }//GEN-LAST:event_createUserJButtonActionPerformed
 

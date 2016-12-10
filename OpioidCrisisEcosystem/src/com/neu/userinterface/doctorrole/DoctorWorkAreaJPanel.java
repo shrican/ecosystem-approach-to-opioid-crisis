@@ -12,8 +12,10 @@ import com.neu.business.patient.Patient;
 import com.neu.business.patient.PatientDirectory;
 import com.neu.business.useraccount.UserAccount;
 import com.neu.business.workqueue.ScheduleAppointmentWorkRequest;
+import com.neu.business.workqueue.SendToRehabilitationWorkRequest;
 import com.neu.business.workqueue.WorkRequest;
 import java.awt.CardLayout;
+import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -33,7 +35,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form doctorWorkArea
      */
-    public DoctorWorkAreaJPanel(JPanel userProcessContainer, UserAccount userAccount, DoctorOrganization doctorOrganization, Enterprise enterprise,Network network, PatientDirectory patientDirectory) {
+    public DoctorWorkAreaJPanel(JPanel userProcessContainer, UserAccount userAccount, DoctorOrganization doctorOrganization, Enterprise enterprise, Network network, PatientDirectory patientDirectory) {
         initComponents();
         this.patientDirectory = patientDirectory;
         this.userProcessContainer = userProcessContainer;
@@ -53,7 +55,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnManageAddictedPatients = new javax.swing.JButton();
         btnManageSchedule = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -61,7 +63,12 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Doctor Work Area");
 
-        jButton1.setText("Manage Addicted Patients");
+        btnManageAddictedPatients.setText("Manage Addicted Patients");
+        btnManageAddictedPatients.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageAddictedPatientsActionPerformed(evt);
+            }
+        });
 
         btnManageSchedule.setText("Diagnose Patients");
         btnManageSchedule.addActionListener(new java.awt.event.ActionListener() {
@@ -77,14 +84,12 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(100, 100, 100)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(878, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(btnManageAddictedPatients)
                         .addGap(141, 141, 141)
-                        .addComponent(btnManageSchedule)
-                        .addContainerGap(640, Short.MAX_VALUE))))
+                        .addComponent(btnManageSchedule)))
+                .addContainerGap(640, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,7 +98,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addGap(75, 75, 75)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(btnManageAddictedPatients)
                     .addComponent(btnManageSchedule))
                 .addContainerGap(545, Short.MAX_VALUE))
         );
@@ -108,10 +113,25 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnManageScheduleActionPerformed
 
+    private void btnManageAddictedPatientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageAddictedPatientsActionPerformed
+        // what to do with this button?
+        ArrayList<Patient> doctorRecommendations = new ArrayList<>();
+        
+        for(WorkRequest workRequest : userAccount.getWorkQueue().getWorkRequestList())
+        {
+            if(workRequest instanceof SendToRehabilitationWorkRequest)
+            {
+                doctorRecommendations.add(((SendToRehabilitationWorkRequest) workRequest).getPatient());
+            }
+        }
+        RehabAssociationJPanel rehabAssociationJPanel = new RehabAssociationJPanel(userProcessContainer, network, userAccount, doctorRecommendations);
+        
+    }//GEN-LAST:event_btnManageAddictedPatientsActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnManageAddictedPatients;
     private javax.swing.JButton btnManageSchedule;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

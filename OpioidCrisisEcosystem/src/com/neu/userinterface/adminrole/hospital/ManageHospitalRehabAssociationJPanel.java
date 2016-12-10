@@ -61,9 +61,9 @@ public class ManageHospitalRehabAssociationJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setText("Select Rehabilitation :");
+        jLabel2.setText("Select Rehabilitation Facility :");
 
-        btnAssociateRehabAction.setText("Associate");
+        btnAssociateRehabAction.setText("Confirm Association");
         btnAssociateRehabAction.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAssociateRehabActionActionPerformed(evt);
@@ -88,7 +88,7 @@ public class ManageHospitalRehabAssociationJPanel extends javax.swing.JPanel {
                             .addComponent(jLabel2)
                             .addGap(103, 103, 103)
                             .addComponent(comboBoxRehab, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(202, Short.MAX_VALUE))
+                .addContainerGap(159, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,6 +141,7 @@ public class ManageHospitalRehabAssociationJPanel extends javax.swing.JPanel {
           return;
       }
         enterprise.addAssociatedRehabilitation(commRehabEnterprise);
+        JOptionPane.showMessageDialog(null, enterprise.getName()+" is now associated with "+commRehabEnterprise.getName());
     }//GEN-LAST:event_btnAssociateRehabActionActionPerformed
 
 

@@ -13,6 +13,7 @@ import com.neu.business.role.AdminRole;
 import com.neu.business.useraccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -227,7 +228,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         Employee employee = enterprise.getEmployeeDirectory().createEmployee(name);
         
         UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new AdminRole());
-        
+        JOptionPane.showMessageDialog(null, enterprise.getName()+"' admin user account created");
         populateTable();
     }//GEN-LAST:event_addUserAccountJButtonActionPerformed
 

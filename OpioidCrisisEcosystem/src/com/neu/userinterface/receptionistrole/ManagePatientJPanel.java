@@ -6,9 +6,11 @@
 package com.neu.userinterface.receptionistrole;
 
 import com.neu.business.EcoSystem;
+import com.neu.business.enterprise.Enterprise;
 import com.neu.business.patient.Patient;
 import com.neu.business.patient.PatientDirectory;
 import java.awt.CardLayout;
+import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -23,15 +25,17 @@ public class ManagePatientJPanel extends javax.swing.JPanel {
 
     private PatientDirectory systemPatientDirectory;
     private PatientDirectory hospitalPatientDirectory;
+    private Enterprise enterprise;
 
     /**
      * Creates new form ManagePatientJPanel
      */
-    public ManagePatientJPanel(JPanel userProcessContainer, PatientDirectory systemPatientDirectory, PatientDirectory hospitalPatientDirectory) {
+    public ManagePatientJPanel(JPanel userProcessContainer, PatientDirectory systemPatientDirectory, PatientDirectory hospitalPatientDirectory, Enterprise enterprise) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.systemPatientDirectory = systemPatientDirectory;
         this.hospitalPatientDirectory = hospitalPatientDirectory;
+        this.enterprise = enterprise;
         
         populatePatientDirectoryTable();
 
@@ -269,8 +273,11 @@ public class ManagePatientJPanel extends javax.swing.JPanel {
 
     private void backJButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton2ActionPerformed
         // TODO add your handling code here:
-
         userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        com.neu.userinterface.receptionistrole.ReceptionistWorkAreaJPanel receptionistwjp = (ReceptionistWorkAreaJPanel) component;
+        receptionistwjp.populateAppointentsTable(enterprise);;
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButton2ActionPerformed
@@ -279,7 +286,7 @@ public class ManagePatientJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         Patient patient = (Patient)hospitalPatientDirectoryJTable.getValueAt(hospitalPatientDirectoryJTable.getSelectedRow(), 1);
 
-        PatientDetailsJPanel patientDetailsJPanel = new PatientDetailsJPanel(userProcessContainer, patient);
+        PatientDetailsJPanel patientDetailsJPanel = new PatientDetailsJPanel(userProcessContainer, patient, enterprise);
         userProcessContainer.add("patientDetailsJPanel", patientDetailsJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

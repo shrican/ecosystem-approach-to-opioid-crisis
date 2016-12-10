@@ -164,6 +164,12 @@ public class MainJFrame extends javax.swing.JFrame {
         char[] passwordCharArray = passwordField.getPassword();
         String password = String.valueOf(passwordCharArray);
 
+        if(userName.equals("")||password.equals(""))
+        {
+            JOptionPane.showMessageDialog(null, "Please enter all details", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
         //Step1: Check in the system user account directory if you have the user
         UserAccount userAccount = system.getUserAccountDirectory().authenticateUser(userName, password);
         Network inNetwork = null;

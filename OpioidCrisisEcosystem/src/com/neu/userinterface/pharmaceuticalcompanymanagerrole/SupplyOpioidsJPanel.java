@@ -167,6 +167,8 @@ public class SupplyOpioidsJPanel extends javax.swing.JPanel {
                     null,
                     options,
                     options[0]);
+            
+            JOptionPane.showMessageDialog(null, "Order of "+pharmaWorkRequest.getOrderAmount()+" dispatched to "+pharmaWorkRequest.getRequesterName());
 
             txtFieldStockLeft.setText(String.valueOf((enterprise).getStock()));
 

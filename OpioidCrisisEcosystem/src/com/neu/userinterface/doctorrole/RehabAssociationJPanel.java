@@ -14,7 +14,11 @@ import com.neu.business.organization.RehabilitationManagerOrganization;
 import com.neu.business.patient.Patient;
 import com.neu.business.useraccount.UserAccount;
 import com.neu.business.workqueue.SendToRehabilitationWorkRequest;
+import java.awt.CardLayout;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -26,18 +30,48 @@ public class RehabAssociationJPanel extends javax.swing.JPanel {
      * Creates new form RehabAssociationJPanel
      */
     private JPanel userProcessContainer;
-    private Patient patient;
+//    private Patient patient;
     private Network network;
     private DoctorOrganization doctorOrganization;
     private UserAccount userAccount;
+    private ArrayList<Patient> doctorRecommendations;
 
-    public RehabAssociationJPanel(JPanel userProcessContainer, Network network, DoctorOrganization doctorOrganization, Patient patient, UserAccount userAccount) {
+    public RehabAssociationJPanel(JPanel userProcessContainer, Network network, UserAccount userAccount, ArrayList<Patient> doctorRecommendations) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.patient = patient;
+//        this.patient = patient;
         this.network = network;
         this.doctorOrganization = doctorOrganization;
         this.userAccount = userAccount;
+        this.doctorRecommendations = doctorRecommendations;
+        
+        populateRehabsComboBox();
+        populateAddictedPatientsTable();
+    }
+    
+    public void populateRehabsComboBox()
+    {
+        for(Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList())
+        {
+            if(enterprise instanceof CommunityRehabEnterprise)
+            {
+                comboBoxRehabCenters.addItem(enterprise);
+            }
+        }
+    }
+    
+    public void populateAddictedPatientsTable()
+    {
+        DefaultTableModel dtm = (DefaultTableModel)tblOpioidAddictedPatients.getModel();
+        dtm.setRowCount(0);
+        
+        for(Patient patient : doctorRecommendations)
+        {
+            Object [] row = new Object [2];
+            row[1] = patient;
+            row[2] = patient.getRehabStatus();
+            dtm.addRow(row);
+        }
     }
 
     /**
@@ -55,6 +89,9 @@ public class RehabAssociationJPanel extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblOpioidAddictedPatients = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        backJButton1 = new javax.swing.JButton();
+        comboBoxRehabCenters = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -96,18 +133,39 @@ public class RehabAssociationJPanel extends javax.swing.JPanel {
 
         jLabel1.setText("Opioids Addicted Patients :");
 
+        backJButton1.setText("<< Back");
+        backJButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backJButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Select rehabilitation center :");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(143, 143, 143)
+                .addContainerGap(142, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addComponent(backJButton1)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnSendToRehab)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(341, Short.MAX_VALUE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(comboBoxRehabCenters, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(75, 75, 75)
+                            .addComponent(btnSendToRehab))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 131, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(143, 143, 143)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(142, 142, 142)
+                        .addComponent(jLabel2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,10 +173,15 @@ public class RehabAssociationJPanel extends javax.swing.JPanel {
                 .addGap(96, 96, 96)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnSendToRehab)
-                .addGap(157, 157, 157))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSendToRehab)
+                    .addComponent(comboBoxRehabCenters, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addComponent(backJButton1)
+                .addGap(76, 76, 76))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -128,21 +191,37 @@ public class RehabAssociationJPanel extends javax.swing.JPanel {
         Enterprise commRehabEnterprise = null;
         Organization rehabilitationCompanyManagerOrganization = null;
 
+        Patient patient = (Patient) tblOpioidAddictedPatients.getValueAt(tblOpioidAddictedPatients.getSelectedRow(), 0);
+        
         SendToRehabilitationWorkRequest sendToRehabilitationWorkRequest = new SendToRehabilitationWorkRequest();
-        sendToRehabilitationWorkRequest.setStatus("Rehab needed");
+        sendToRehabilitationWorkRequest.setStatus("Sent to rehab");
         sendToRehabilitationWorkRequest.setSender(userAccount);
         sendToRehabilitationWorkRequest.setPatient(patient);
 
         userAccount.getWorkQueue().getWorkRequestList().add(sendToRehabilitationWorkRequest);
         doctorOrganization.getWorkQueue().getWorkRequestList().add(sendToRehabilitationWorkRequest);
 
-        for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
-            if (enterprise instanceof CommunityRehabEnterprise) {
-                commRehabEnterprise = enterprise;
-                break;
-            }
+//        for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+//            if (enterprise instanceof CommunityRehabEnterprise) {
+//                commRehabEnterprise = enterprise;
+//                break;
+//            }
+//
+//        }
 
-        }
+        commRehabEnterprise = (CommunityRehabEnterprise) comboBoxRehabCenters.getSelectedItem();
+        
+//        for(Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList())
+//        {
+//            if(enterprise instanceof CommunityRehabEnterprise)
+//            {
+//                String enterpriseName = enterprise.getName();
+//                if(comboBoxRehabCenters.getSelectedItem().equals(enterpriseName))
+//                {
+//                    commRehabEnterprise = enterprise;
+//                }
+//            }
+//        }
 
         for (Organization organization : commRehabEnterprise.getOrganizationDirectory().getOrganizationList()) {
             if (organization instanceof RehabilitationManagerOrganization) {
@@ -162,12 +241,25 @@ public class RehabAssociationJPanel extends javax.swing.JPanel {
                 }
             }
         }
+        
+        JOptionPane.showMessageDialog(null, patient.getName()+" sent to "+commRehabEnterprise.getName());
     }//GEN-LAST:event_btnSendToRehabActionPerformed
+
+    private void backJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton1ActionPerformed
+        // TODO add your handling code here:
+
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_backJButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backJButton1;
     private javax.swing.JButton btnSendToRehab;
+    private javax.swing.JComboBox<Object> comboBoxRehabCenters;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;

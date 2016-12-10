@@ -14,6 +14,7 @@ import com.neu.business.useraccount.UserAccount;
 import com.neu.business.workqueue.ScheduleAppointmentWorkRequest;
 import com.neu.business.workqueue.WorkRequest;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -162,6 +163,12 @@ public class ManageScheduleJPanel extends javax.swing.JPanel {
 
     private void btnDiagnoseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagnoseActionPerformed
         // TODO add your handling code here:
+        int selectedRow = doctorScheduleJTable.getSelectedRow();
+        if(selectedRow == -1)
+        {
+            JOptionPane.showMessageDialog(null, "Select a patient", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         Patient patient = (Patient) doctorScheduleJTable.getValueAt(doctorScheduleJTable.getSelectedRow(), 2);
         patientDirectory.calculateBayesianOpioidAddictionScore(patient);
         ScheduleAppointmentWorkRequest workRequest = (ScheduleAppointmentWorkRequest) doctorScheduleJTable.getValueAt(doctorScheduleJTable.getSelectedRow(), 0);

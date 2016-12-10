@@ -9,6 +9,7 @@ import com.neu.business.EcoSystem;
 import com.neu.business.network.Network;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -156,7 +157,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         
         Network network = system.createAndAddNetwork(name);
         network.setName(name);
-
+        JOptionPane.showMessageDialog(null, "Network "+network.getName()+" added successfully");
         populateNetworkTable();
     }//GEN-LAST:event_addNetworkJButtonActionPerformed
 
