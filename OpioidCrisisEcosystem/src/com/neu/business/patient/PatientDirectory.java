@@ -6,9 +6,13 @@
 package com.neu.business.patient;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
+import static javax.swing.text.StyleConstants.Family;
 
 /**
  *
@@ -108,9 +112,8 @@ public class PatientDirectory {
 
         return bayesianOpioidAddictionScore;
     }
-    
-    public HashMap<String, Integer> generalSymptomsBreakdown(ArrayList<Patient> patientList)
-    {
+
+    public HashMap<String, Integer> generalSymptomsBreakdown(ArrayList<Patient> patientList) {
         int nauseaCount = 0;
         int chestPainCount = 0;
         int pupilaryConstrictionCount = 0;
@@ -120,34 +123,41 @@ public class PatientDirectory {
         int lowRespiratoryRateCount = 0;
         int selfHarmCount = 0;
         int insomniaCount = 0;
-        
-        for(Patient patient : patientList)
-        {
-            for(OpioidAbuseSymptoms abuseSymptoms : patient.getOpioidAbuseSymptomsHistory().getOpioidAbuseSysmpomsList())
-            {
-                if(abuseSymptoms.hasBloodshotEyes())
+
+        for (Patient patient : patientList) {
+            for (OpioidAbuseSymptoms abuseSymptoms : patient.getOpioidAbuseSymptomsHistory().getOpioidAbuseSysmpomsList()) {
+                if (abuseSymptoms.hasBloodshotEyes()) {
                     bloodShotEyesCount++;
-                if(abuseSymptoms.hasChestPain())
+                }
+                if (abuseSymptoms.hasChestPain()) {
                     chestPainCount++;
-                if(abuseSymptoms.hasInsomnia())
+                }
+                if (abuseSymptoms.hasInsomnia()) {
                     insomniaCount++;
-                if(abuseSymptoms.hasJointPain())
+                }
+                if (abuseSymptoms.hasJointPain()) {
                     jointPainCount++;
-                if(abuseSymptoms.hasLowRespiratoryRate())
+                }
+                if (abuseSymptoms.hasLowRespiratoryRate()) {
                     lowRespiratoryRateCount++;
-                if(abuseSymptoms.hasMuscleTension())
+                }
+                if (abuseSymptoms.hasMuscleTension()) {
                     muscleTensionCount++;
-                if(abuseSymptoms.hasNausea())
+                }
+                if (abuseSymptoms.hasNausea()) {
                     nauseaCount++;
-                if(abuseSymptoms.hasPupilaryConstriction())
+                }
+                if (abuseSymptoms.hasPupilaryConstriction()) {
                     pupilaryConstrictionCount++;
-                if(abuseSymptoms.hasSelfHarm())
+                }
+                if (abuseSymptoms.hasSelfHarm()) {
                     selfHarmCount++;
+                }
             }
         }
-        
+
         HashMap<String, Integer> breakdown = new HashMap<>();
-        
+
         breakdown.put("Nausea count", nauseaCount);
         breakdown.put("Chest Pain count", chestPainCount);
         breakdown.put("Pupilary Constriction count", pupilaryConstrictionCount);
@@ -157,35 +167,73 @@ public class PatientDirectory {
         breakdown.put("Low Respiratory Rate count", lowRespiratoryRateCount);
         breakdown.put("Self Harm Count", selfHarmCount);
         breakdown.put("Insomnia count", insomniaCount);
-        
+
         return breakdown;
     }
 
     /*
-        Finds Patient's baysian score wise highest symptoms that patient at each level (low, medium, high) showed
+     * Finds Patient's baysian score wise highest symptoms that patient at each level (low, medium, high) showed
      */
     public void patientScoreStatusWiseHigestAbuseSymptoms() {
 
-        Map<String, Integer> lowBaysianScoreAbuseSymptomCntMap = new HashMap<>();
-        Map<String, Integer> mediumBaysianScoreAbuseSymptomCntMap = new HashMap<>();
-        Map<String, Integer> highBaysianScoreAbuseSymptomCntMap = new HashMap<>();
-        
-        int nauseaCount = 0;
-        int chestPainCount = 0;
-        int pupilaryConstrictionCount = 0;
-        int bloodShotEyesCount = 0;
-        int jointPainCount = 0;
-        int muscleTensionCount = 0;
-        int lowRespiratoryRateCount = 0;
-        int selfHarmCount = 0;
-        int insomniaCount = 0;
-        
-        
+        Map<String, Integer> lowBaysianScoreAbuseSymptomBreakdownMap = new HashMap<>();
+        Map<String, Integer> mediumBaysianScoreAbuseSymptomBreakdownMap = new HashMap<>();
+        Map<String, Integer> highBaysianScoreAbuseSymptomBreakdownMap = new HashMap<>();
+
+        HashSet<Patient> lowBaysianScoreAbuseSymptomPatients = new HashSet<>();
+        HashSet<Patient> mediumBaysianScoreAbuseSymptomPatients = new HashSet<>();
+        HashSet<Patient> highBaysianScoreAbuseSymptomPatients = new HashSet<>();
+
+        //get distinct set of lowBaysianScoreAbuseSymptomPatients, mediumBaysianScoreAbuseSymptomPatients, highBaysianScoreAbuseSymptomPatients
         for (Patient patient : patientList) {
             for (Prescription prescription : patient.getPrescriptionHistory().getPrescriptionHistoryList()) {
-
+                if (prescription.getPatientScoreStatus().equals("Low")) {
+                    lowBaysianScoreAbuseSymptomPatients.add(patient);
+                } else if (prescription.getPatientScoreStatus().equals("Medium")) {
+                    mediumBaysianScoreAbuseSymptomPatients.add(patient);
+                } else {
+                    highBaysianScoreAbuseSymptomPatients.add(patient);
+                }
             }
         }
+
+        //Get breakdown of lowBaysianScoreAbuseSymptomPatients, mediumBaysianScoreAbuseSymptomPatients, highBaysianScoreAbuseSymptomPatients
+        lowBaysianScoreAbuseSymptomBreakdownMap = generalSymptomsBreakdown(new ArrayList<>(lowBaysianScoreAbuseSymptomPatients));
+        mediumBaysianScoreAbuseSymptomBreakdownMap = generalSymptomsBreakdown(new ArrayList<>(mediumBaysianScoreAbuseSymptomPatients));
+        highBaysianScoreAbuseSymptomBreakdownMap = generalSymptomsBreakdown(new ArrayList<>(highBaysianScoreAbuseSymptomPatients));
+
+        // sort lowBaysianScoreAbuseSymptomBreakdownMap, mediumBaysianScoreAbuseSymptomBreakdownMap, highBaysianScoreAbuseSymptomBreakdownMap
+        ValueComparator vc = new ValueComparator(lowBaysianScoreAbuseSymptomBreakdownMap);
+
+        TreeMap<String, Integer> lowBaysianScoreAbuseSymptomBreakdownTree = new TreeMap<>(vc);
+        lowBaysianScoreAbuseSymptomBreakdownTree.putAll(lowBaysianScoreAbuseSymptomBreakdownMap);
+
+        TreeMap<String, Integer> mediumBaysianScoreAbuseSymptomBreakdownTree = new TreeMap<>(vc);
+        mediumBaysianScoreAbuseSymptomBreakdownTree.putAll(mediumBaysianScoreAbuseSymptomBreakdownMap);
+
+        TreeMap<String, Integer> highBaysianScoreAbuseSymptomBreakdownTree = new TreeMap<>(vc);
+        highBaysianScoreAbuseSymptomBreakdownTree.putAll(highBaysianScoreAbuseSymptomBreakdownMap);
+
     }
 
+    /**
+     * Comparator to sort Map based on the value
+     */
+    class ValueComparator implements Comparator<String> {
+
+        Map<String, Integer> baseBap;
+
+        public ValueComparator(Map<String, Integer> base) {
+            this.baseBap = base;
+        }
+
+        @Override
+        public int compare(String a, String b) {
+            if (baseBap.get(a) >= baseBap.get(b)) {
+                return -1;
+            } else {
+                return 1;
+            } // returning 0 would merge keys
+        }
+    }
 }

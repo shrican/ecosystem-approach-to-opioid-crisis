@@ -195,8 +195,8 @@ public class RehabAssociationJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
 
         Enterprise commRehabEnterprise = null;
-        Organization rehabilitationCompanyManagerOrganization = null;
-
+        RehabilitationManagerOrganization rehabilitationCompanyManagerOrganization = null;
+        
         Patient patient = (Patient) tblOpioidAddictedPatients.getValueAt(tblOpioidAddictedPatients.getSelectedRow(), 0);
         
         patient.setRehabStatus("Sent to rehab");
@@ -204,31 +204,32 @@ public class RehabAssociationJPanel extends javax.swing.JPanel {
         sendToRehabilitationWorkRequest.setStatus("Sent to rehab");
         sendToRehabilitationWorkRequest.setSender(doctorUserAccount);
         sendToRehabilitationWorkRequest.setPatient(patient);
-
+        
         doctorUserAccount.getWorkQueue().getWorkRequestList().add(sendToRehabilitationWorkRequest);
         doctorOrganization.getWorkQueue().getWorkRequestList().add(sendToRehabilitationWorkRequest);
-
+        
         commRehabEnterprise = (CommunityRehabEnterprise) network.getEnterpriseByName((String) comboBoxRehabCenters.getSelectedItem());
-
+        
         for (Organization organization : commRehabEnterprise.getOrganizationDirectory().getOrganizationList()) {
             if (organization instanceof RehabilitationManagerOrganization) {
-                rehabilitationCompanyManagerOrganization = organization;
+                rehabilitationCompanyManagerOrganization = (RehabilitationManagerOrganization) organization;
+                
+                rehabilitationCompanyManagerOrganization.getPatientDirectory().addPatient(patient);
                 break;
             }
         }
-
+        
         if (rehabilitationCompanyManagerOrganization != null) {
             rehabilitationCompanyManagerOrganization.getWorkQueue().getWorkRequestList().add(sendToRehabilitationWorkRequest);
-
+            
             for (UserAccount rehabManagerAccount : rehabilitationCompanyManagerOrganization.getUserAccountDirectory().getUserAccountList()) {
                 {
                     rehabManagerAccount.getWorkQueue().getWorkRequestList().add(sendToRehabilitationWorkRequest);
                     sendToRehabilitationWorkRequest.setReceiver(rehabManagerAccount);
-
                 }
             }
         }
-
+        
         JOptionPane.showMessageDialog(null, patient.getName() + " sent to " + commRehabEnterprise.getName());
     }//GEN-LAST:event_btnSendToRehabActionPerformed
 
