@@ -54,7 +54,9 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
             for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
                 if (organization instanceof DoctorOrganization) {
                     for (WorkRequest scheduleAppointmentWorkRequest : organization.getWorkQueue().getWorkRequestList()) {
+                        
                         Object[] row = new Object[6];
+                        if(scheduleAppointmentWorkRequest instanceof ScheduleAppointmentWorkRequest){
                         Patient patient = ((ScheduleAppointmentWorkRequest) scheduleAppointmentWorkRequest).getPatient();
                         row[0] = ((ScheduleAppointmentWorkRequest) scheduleAppointmentWorkRequest).getId();
                         row[1] = patient;
@@ -63,6 +65,7 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
                         row[4] = scheduleAppointmentWorkRequest.getStatus();
                         row[5] = scheduleAppointmentWorkRequest.getReceiver().getEmployee().getName();
                         dtm.addRow(row);
+                    }
                     }
                 }
             }

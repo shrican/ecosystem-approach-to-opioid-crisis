@@ -116,7 +116,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnManageAddictedPatientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageAddictedPatientsActionPerformed
 
-        RehabAssociationJPanel rehabAssociationJPanel = new RehabAssociationJPanel(userProcessContainer, network, userAccount, doctorOrganization);
+        RehabAssociationJPanel rehabAssociationJPanel = new RehabAssociationJPanel(userProcessContainer, network, userAccount, doctorOrganization, enterprise);
         userProcessContainer.add("RehabAssociationJPanel", rehabAssociationJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

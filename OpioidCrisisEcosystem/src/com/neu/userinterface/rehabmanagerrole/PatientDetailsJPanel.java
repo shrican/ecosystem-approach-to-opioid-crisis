@@ -391,7 +391,7 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
                                         .addComponent(checkBoxEnlargedPupils)
                                         .addGap(18, 18, 18)
                                         .addComponent(btnSaveSymptoms)))
-                                .addGap(0, 29, Short.MAX_VALUE))
+                                .addGap(0, 208, Short.MAX_VALUE))
                             .addComponent(jScrollPane1))))
                 .addContainerGap())
         );
