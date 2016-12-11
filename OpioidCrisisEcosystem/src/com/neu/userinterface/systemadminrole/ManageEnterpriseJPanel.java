@@ -143,8 +143,8 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 .addGap(31, 31, 31)
                 .addComponent(jLabel5)
                 .addGap(53, 53, 53)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70)
                 .addComponent(jLabel4)
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,8 +153,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                         .addGap(37, 37, 37)
                         .addComponent(jLabel3)
                         .addGap(38, 38, 38)
-                        .addComponent(jLabel2)
-                        .addGap(6, 6, 6))
+                        .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(networkJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)
@@ -164,8 +163,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addEnterpriseJButton)
-                    .addComponent(backJButton))
-                .addContainerGap(139, Short.MAX_VALUE))
+                    .addComponent(backJButton)))
         );
     }// </editor-fold>//GEN-END:initComponents
 

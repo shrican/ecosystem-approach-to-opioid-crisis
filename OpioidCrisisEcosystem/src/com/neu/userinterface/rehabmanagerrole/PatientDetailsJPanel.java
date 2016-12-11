@@ -30,21 +30,21 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private Patient patient;
     private PatientDirectory ecosystemPatientDirectory;
-
+    
     public PatientDetailsJPanel(JPanel userProcessContainer, Patient patient, PatientDirectory ecosystemPatientDirectory) {
         initComponents();
-
+        
         this.userProcessContainer = userProcessContainer;
         this.patient = patient;
         this.ecosystemPatientDirectory = ecosystemPatientDirectory;
-
+        
         populatePatientDetails();
         populateSymptoms();
         populateAbuseSymptoms();
         populatePrescriptions();
         populateWithdrawalSymptoms();
     }
-
+    
     public void populatePatientDetails() {
         txtFieldName.setText(patient.getName());
         txtFieldAge.setText(String.valueOf(patient.getAge()));
@@ -52,7 +52,7 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
         txtFieldGender.setText(patient.getGender());
         txtFieldNumber.setText(patient.getPhoneNo());
     }
-
+    
     public void populateSymptoms() {
         DefaultTableModel dtm = (DefaultTableModel) tblSymptoms.getModel();
         dtm.setRowCount(0);
@@ -76,11 +76,11 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
             dtm.addRow(row);
         }
     }
-
+    
     public void populateAbuseSymptoms() {
         DefaultTableModel dtm = (DefaultTableModel) tblAbuseSymptoms.getModel();
         dtm.setRowCount(0);
-
+        
         for (OpioidAbuseSymptoms abuseSymptoms : patient.getOpioidAbuseSymptomsHistory().getOpioidAbuseSysmpomsList()) {
             Object[] row = new Object[9];
             row[0] = abuseSymptoms.hasNausea();
@@ -95,11 +95,11 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
             dtm.addRow(row);
         }
     }
-
+    
     public void populatePrescriptions() {
         DefaultTableModel dtm = (DefaultTableModel) tblPrescriptionHistory.getModel();
         dtm.setRowCount(0);
-
+        
         for (Prescription prescription : patient.getPrescriptionHistory().getPrescriptionHistoryList()) {
             Object[] row = new Object[4];
             row[0] = prescription.getOpdDate();
@@ -109,11 +109,11 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
             dtm.addRow(row);
         }
     }
-
+    
     public void populateWithdrawalSymptoms() {
         DefaultTableModel dtm = (DefaultTableModel) tblWithdrawalSymptoms.getModel();
         dtm.setRowCount(0);
-
+        
         for (OpioidWithdrawalSymptoms withdrawalSymptoms : patient.getOpioidWithdrawalSymptomsHistory().getOpioidWithdrawalSymptomsList()) {
             Object[] row = new Object[6];
             row[0] = withdrawalSymptoms.isLowAppetite();
@@ -136,16 +136,6 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        txtFieldName = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        txtFieldAge = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        txtFieldGender = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        txtFieldBloodGroup = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        txtFieldNumber = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblSymptoms = new javax.swing.JTable();
@@ -167,21 +157,28 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
         checkBoxColdSweats = new javax.swing.JCheckBox();
         checkBoxEnlargedPupils = new javax.swing.JCheckBox();
         btnSaveSymptoms = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        txtFieldGender = new javax.swing.JTextField();
+        txtFieldBloodGroup = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtFieldAge = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        txtFieldName = new javax.swing.JTextField();
+        txtFieldNumber = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        checkBoxAlcohol = new javax.swing.JCheckBox();
+        checkBoxStimulant = new javax.swing.JCheckBox();
+        checkBoxTobacco = new javax.swing.JCheckBox();
+        checkBoxCannabis = new javax.swing.JCheckBox();
+        btnSaveOtherAddictions = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Patient Details");
-
-        jLabel2.setText("Name :");
-
-        jLabel3.setText("Age :");
-
-        jLabel4.setText("Gender :");
-
-        jLabel5.setText("Blood Group :");
-
-        jLabel6.setText("Number :");
 
         jLabel7.setText("Symptoms Records :");
 
@@ -324,6 +321,136 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
             }
         });
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Patient Details"));
+
+        jLabel3.setText("Age :");
+
+        jLabel2.setText("Name :");
+
+        jLabel5.setText("Blood Group :");
+
+        jLabel6.setText("Number :");
+
+        jLabel4.setText("Gender :");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6))
+                .addGap(147, 147, 147)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(txtFieldNumber, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtFieldBloodGroup, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtFieldGender, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtFieldAge, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtFieldName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtFieldName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtFieldAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtFieldGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtFieldBloodGroup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(txtFieldNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Other Addictions Caused by Opioids"));
+
+        checkBoxAlcohol.setText("Alcohol Addiction");
+        checkBoxAlcohol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkBoxAlcoholActionPerformed(evt);
+            }
+        });
+
+        checkBoxStimulant.setText("Stimulant Addiction");
+        checkBoxStimulant.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkBoxStimulantActionPerformed(evt);
+            }
+        });
+
+        checkBoxTobacco.setText("Tobacco Addiction");
+        checkBoxTobacco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkBoxTobaccoActionPerformed(evt);
+            }
+        });
+
+        checkBoxCannabis.setText("Cannabis Addiction");
+
+        btnSaveOtherAddictions.setText("Save other Addictions");
+        btnSaveOtherAddictions.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveOtherAddictionsActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(checkBoxCannabis, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(checkBoxStimulant, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(78, 78, 78)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(checkBoxAlcohol, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(checkBoxTobacco, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnSaveOtherAddictions, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(246, Short.MAX_VALUE))
+        );
+
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnSaveOtherAddictions, checkBoxAlcohol, checkBoxCannabis, checkBoxStimulant, checkBoxTobacco});
+
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(checkBoxCannabis)
+                    .addComponent(checkBoxTobacco))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(checkBoxStimulant)
+                    .addComponent(checkBoxAlcohol))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSaveOtherAddictions)
+                .addGap(30, 30, 30))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -339,22 +466,7 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel8)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addGap(3, 3, 3)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel2)
-                                            .addComponent(jLabel3)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel5)
-                                            .addComponent(jLabel6))
-                                        .addGap(147, 147, 147)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(txtFieldNumber, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
-                                            .addComponent(txtFieldBloodGroup, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtFieldGender, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtFieldAge, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtFieldName, javax.swing.GroupLayout.Alignment.LEADING)))))
+                                    .addComponent(jLabel7)))
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel10)))
@@ -365,6 +477,7 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane3)
                             .addComponent(jScrollPane4)
+                            .addComponent(jScrollPane1)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel9)
@@ -387,9 +500,12 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
                                         .addGap(18, 18, 18)
                                         .addComponent(checkBoxEnlargedPupils)
                                         .addGap(18, 18, 18)
-                                        .addComponent(btnSaveSymptoms)))
-                                .addGap(0, 208, Short.MAX_VALUE))
-                            .addComponent(jScrollPane1))))
+                                        .addComponent(btnSaveSymptoms))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -397,27 +513,11 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtFieldName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtFieldAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtFieldGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtFieldBloodGroup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtFieldNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -442,7 +542,7 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
                     .addComponent(checkBoxColdSweats)
                     .addComponent(checkBoxEnlargedPupils)
                     .addComponent(btnSaveSymptoms))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack)
                     .addComponent(btnRefresh))
@@ -471,11 +571,12 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
         withdrawalSymptoms.setLowAppetite(checkBoxLowApetite.isSelected());
         withdrawalSymptoms.setQuivering(checkBoxQuivering.isSelected());
         withdrawalSymptoms.setVomiting(checkBoxVomiting.isSelected());
-
+        
         patient.getOpioidWithdrawalSymptomsHistory().getOpioidWithdrawalSymptomsList().add(withdrawalSymptoms);
-
+        
         JOptionPane.showMessageDialog(null, patient.getName() + "'s Withdrawal symptoms saved");
         populateWithdrawalSymptoms();
+        
 
     }//GEN-LAST:event_btnSaveSymptomsActionPerformed
 
@@ -483,15 +584,43 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRefreshActionPerformed
 
+    private void checkBoxTobaccoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxTobaccoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkBoxTobaccoActionPerformed
+
+    private void checkBoxAlcoholActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxAlcoholActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkBoxAlcoholActionPerformed
+
+    private void btnSaveOtherAddictionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveOtherAddictionsActionPerformed
+        // TODO add your handling code here:
+        
+        patient.getPostOpioidAddiction().setAlcoholAbuse(checkBoxAlcohol.isSelected());
+        patient.getPostOpioidAddiction().setCannabisAbuse(checkBoxCannabis.isSelected());
+        patient.getPostOpioidAddiction().setStimulantAbuse(checkBoxStimulant.isSelected());
+        patient.getPostOpioidAddiction().setTobaccoUse(checkBoxTobacco.isSelected());
+        
+        
+    }//GEN-LAST:event_btnSaveOtherAddictionsActionPerformed
+
+    private void checkBoxStimulantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxStimulantActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkBoxStimulantActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnRefresh;
+    private javax.swing.JButton btnSaveOtherAddictions;
     private javax.swing.JButton btnSaveSymptoms;
+    private javax.swing.JCheckBox checkBoxAlcohol;
+    private javax.swing.JCheckBox checkBoxCannabis;
     private javax.swing.JCheckBox checkBoxColdSweats;
     private javax.swing.JCheckBox checkBoxEnlargedPupils;
     private javax.swing.JCheckBox checkBoxHighBloodPressure;
     private javax.swing.JCheckBox checkBoxLowApetite;
     private javax.swing.JCheckBox checkBoxQuivering;
+    private javax.swing.JCheckBox checkBoxStimulant;
+    private javax.swing.JCheckBox checkBoxTobacco;
     private javax.swing.JCheckBox checkBoxVomiting;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -503,6 +632,8 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
