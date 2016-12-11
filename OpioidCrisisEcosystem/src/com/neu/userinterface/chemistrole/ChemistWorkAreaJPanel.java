@@ -13,6 +13,8 @@ import com.neu.business.network.Network;
 import com.neu.business.organization.ChemistOrganization;
 import com.neu.business.patient.Prescription;
 import com.neu.business.useraccount.UserAccount;
+import com.neu.business.workqueue.PharmacySupplyWorkRequest;
+import com.neu.business.workqueue.WorkRequest;
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,15 +46,21 @@ public class ChemistWorkAreaJPanel extends javax.swing.JPanel {
         this.pharmacyEnterprise = (PharmacyEnterprise) pharmacyEnterprise;
 
         populateStock();
+        updateDeliveredStock();
+
     }
 
     public void populateStock() {
-        chemistOrganization.setStock(pharmacyEnterprise.getInitialPharmacyStock());
-        populateInitialStock();
+
+        if (chemistOrganization.getStock() == 0) {
+            chemistOrganization.setStock(pharmacyEnterprise.getOpioidStock());
+            populateInitialStock();
+        }
+        txtFieldChemistStock.setText(String.valueOf(chemistOrganization.getStock()));
     }
 
     public void populateInitialStock() {
-        txtFieldChemistStock.setText(String.valueOf(pharmacyEnterprise.getInitialPharmacyStock()));
+        txtFieldChemistStock.setText(String.valueOf(chemistOrganization.getStock()));
     }
 
     /**
@@ -159,4 +167,21 @@ public class ChemistWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField txtFieldChemistStock;
     // End of variables declaration//GEN-END:variables
+
+    private void updateDeliveredStock() {
+
+        int stock = chemistOrganization.getStock();
+
+        for (WorkRequest workRequest : chemistOrganization.getWorkQueue().getWorkRequestList()) {
+            PharmacySupplyWorkRequest pharmacySupplyWorkRequest = (PharmacySupplyWorkRequest) workRequest;
+            if (pharmacySupplyWorkRequest.getStatus().equals("Order Completed")) {
+                stock += pharmacySupplyWorkRequest.getOrderAmount();
+                pharmacySupplyWorkRequest.setStatus("Delivery Accepted");
+
+            }
+        }
+
+        chemistOrganization.setStock(stock);
+
+    }
 }

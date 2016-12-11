@@ -34,11 +34,12 @@
                               <Component id="valueLabel" linkSize="2" min="-2" pref="130" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="userJButton" linkSize="2" min="-2" pref="150" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-                              <Component id="manageOrganizationJButton" linkSize="2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
-                              <Component id="manageEmployeeJButton" linkSize="2" min="-2" pref="150" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="305" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="manageOrganizationJButton" linkSize="2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="userJButton" linkSize="2" min="-2" pref="150" max="-2" attributes="0"/>
+                                  <Component id="manageEmployeeJButton" linkSize="2" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
@@ -47,11 +48,11 @@
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                       <Component id="txtInitialStock" min="-2" pref="125" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                       <Component id="btnUpdateStock" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="281" max="32767" attributes="0"/>
+              <EmptySpace pref="312" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -72,13 +73,13 @@
                   <Component id="txtInitialStock" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnUpdateStock" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="133" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="userJButton" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="manageOrganizationJButton" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="manageEmployeeJButton" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="519" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+              <Component id="userJButton" linkSize="1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+              <Component id="manageOrganizationJButton" linkSize="1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+              <Component id="manageEmployeeJButton" linkSize="1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="370" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -129,6 +130,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtInitialStock">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtInitialStockKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnUpdateStock">
       <Properties>

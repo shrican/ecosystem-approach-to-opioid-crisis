@@ -24,15 +24,14 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ManageEnterpriseJPanel
      */
-    
     private JPanel userProcessContainer;
     private EcoSystem system;
-    
+
     public ManageEnterpriseJPanel(JPanel userProcessContainer, EcoSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;
-        
+
         populateTable();
         populateComboBox();
     }
@@ -190,24 +189,15 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Invalid Input!");
             return;
         }
-        
+
         String name = nameJTextField.getText();
-        String stock = "";
-        int initialStock = 0;
-        
+
         Enterprise enterprise = network.getEnterpriseDirectory().createAndAddEnterprise(name, type);
 
-        if(type == Enterprise.EnterpriseType.PharmacyEnterprise)
-        {
-            stock = JOptionPane.showInputDialog(null, "Enter " + name + "'s intial stock");
-            initialStock = Integer.parseInt(stock);
-            ((PharmacyEnterprise)enterprise).setInitialPharmacyStock(initialStock);
-        }
-        JOptionPane.showMessageDialog(null, enterprise.getName()+" enterprise created");
+        JOptionPane.showMessageDialog(null, enterprise.getName() + " enterprise created");
         populateTable();
     }//GEN-LAST:event_addEnterpriseJButtonActionPerformed
 
-    
     private void populateTable() {
         DefaultTableModel model = (DefaultTableModel) enterpriseJTable.getModel();
 

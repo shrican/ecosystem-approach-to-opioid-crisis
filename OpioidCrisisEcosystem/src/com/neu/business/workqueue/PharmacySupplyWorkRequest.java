@@ -1,3 +1,5 @@
+
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -16,7 +18,6 @@ public class PharmacySupplyWorkRequest extends WorkRequest {
     private static int count = 0;
     private int ID;
     private int orderAmount;
-    private PharmacyEnterprise pharmacyEnterprise;
     private String requesterName;
     private String senderName;
     private boolean hasBeenUpdatedInStock;
@@ -33,7 +34,6 @@ public class PharmacySupplyWorkRequest extends WorkRequest {
         this.hasBeenUpdatedInStock = hasBeenUpdatedInStock;
     }
 
-    
     public String getSenderName() {
         return senderName;
     }
@@ -48,14 +48,6 @@ public class PharmacySupplyWorkRequest extends WorkRequest {
 
     public void setRequesterName(String requesterName) {
         this.requesterName = requesterName;
-    }
-
-    public PharmacyEnterprise getPharmacyEnterprise() {
-        return pharmacyEnterprise;
-    }
-
-    public void setPharmacyEnterprise(PharmacyEnterprise pharmacyEnterprise) {
-        this.pharmacyEnterprise = pharmacyEnterprise;
     }
 
     public int getID() {

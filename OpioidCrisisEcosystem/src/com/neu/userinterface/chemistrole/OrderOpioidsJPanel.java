@@ -33,18 +33,19 @@ public class OrderOpioidsJPanel extends javax.swing.JPanel {
     private ChemistOrganization chemistOrganization;
     private Network network;
     private int futureStock = 0;
-    private UserAccount userAccount;
+    private UserAccount chemistUserAccount;
 
     public OrderOpioidsJPanel(JPanel userProcessContainer, Network network, ChemistOrganization chemistOrganization, UserAccount userAccount) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.chemistOrganization = chemistOrganization;
         this.network = network;
-        this.userAccount = userAccount;
+        this.chemistUserAccount = userAccount;
         populateSupplierComboBox();
+//        calculateStock();
         populateCurrentStock();
         populateOrderTable();
-        calculateStock();
+
     }
 
     public void calculateStock() {
@@ -181,27 +182,29 @@ public class OrderOpioidsJPanel extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(jLabel5))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(btnBack))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 801, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(41, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGap(240, 240, 240)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnBack)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(283, 283, 283)
                         .addComponent(btnOrder))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3))
                         .addGap(99, 99, 99)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(comboBoxPharmaceuticalCompanies, 0, 185, Short.MAX_VALUE)
+                            .addComponent(comboBoxPharmaceuticalCompanies, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtFieldOrderAmount)
-                            .addComponent(txtFieldCurrentStock))))
-                .addGap(315, 315, 315))
+                            .addComponent(txtFieldCurrentStock, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(236, 236, 236))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,7 +213,7 @@ public class OrderOpioidsJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel5)
                 .addGap(55, 55, 55)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75)
+                .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(comboBoxPharmaceuticalCompanies, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -222,11 +225,11 @@ public class OrderOpioidsJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtFieldOrderAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnOrder)
-                    .addComponent(btnBack))
-                .addContainerGap(209, Short.MAX_VALUE))
+                .addGap(41, 41, 41)
+                .addComponent(btnOrder)
+                .addGap(96, 96, 96)
+                .addComponent(btnBack)
+                .addGap(83, 83, 83))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -239,11 +242,11 @@ public class OrderOpioidsJPanel extends javax.swing.JPanel {
         PharmacySupplyWorkRequest pharmacySupplyWorkRequest = new PharmacySupplyWorkRequest();
         pharmacySupplyWorkRequest.setOrderAmount(Integer.parseInt(txtFieldOrderAmount.getText()));
         pharmacySupplyWorkRequest.setStatus("Opioids Order Pending");
-        pharmacySupplyWorkRequest.setSender(userAccount);
+        pharmacySupplyWorkRequest.setSender(chemistUserAccount);
         pharmacySupplyWorkRequest.setRequesterName(chemistOrganization.getName());
         pharmacySupplyWorkRequest.setSenderName(comboBoxPharmaceuticalCompanies.getSelectedItem().toString());
 
-        userAccount.getWorkQueue().getWorkRequestList().add(pharmacySupplyWorkRequest);
+        chemistUserAccount.getWorkQueue().getWorkRequestList().add(pharmacySupplyWorkRequest);
         chemistOrganization.getWorkQueue().getWorkRequestList().add(pharmacySupplyWorkRequest);
 
         for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
@@ -262,7 +265,7 @@ public class OrderOpioidsJPanel extends javax.swing.JPanel {
 
         if (pharmaceuticalCompanyManagerOrganization != null) {
             pharmaceuticalCompanyManagerOrganization.getWorkQueue().getWorkRequestList().add(pharmacySupplyWorkRequest);
-            userAccount.getWorkQueue().getWorkRequestList().add(pharmacySupplyWorkRequest);
+            chemistUserAccount.getWorkQueue().getWorkRequestList().add(pharmacySupplyWorkRequest);
             for (UserAccount account : pharmaceuticalCompanyManagerOrganization.getUserAccountDirectory().getUserAccountList()) {
                 {
                     account.getWorkQueue().getWorkRequestList().add(pharmacySupplyWorkRequest);
@@ -271,9 +274,9 @@ public class OrderOpioidsJPanel extends javax.swing.JPanel {
                 }
             }
         }
-        
-        JOptionPane.showMessageDialog(null, chemistOrganization.getName()+" has confirmed an order of "+pharmacySupplyWorkRequest.getOrderAmount()+" opioids from "+pharmaceuticalCompanyManagerOrganization);
-        
+
+        JOptionPane.showMessageDialog(null, chemistOrganization.getName() + " has confirmed an order of " + pharmacySupplyWorkRequest.getOrderAmount() + " opioids from " + pharmaceuticalCompanyManagerOrganization);
+
         populateOrderTable();
     }//GEN-LAST:event_btnOrderActionPerformed
 

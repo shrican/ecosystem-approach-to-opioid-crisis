@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class PharmacyEnterprise extends Enterprise {
 
-    int initialPharmacyStock;
+    int opioidStock;
 
     public PharmacyEnterprise(String name) {
         super(name, EnterpriseType.PharmacyEnterprise);
@@ -22,15 +22,14 @@ public class PharmacyEnterprise extends Enterprise {
 
     @Override
     public ArrayList<Role> getSupportedRole() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
     }
 
-    public int getInitialPharmacyStock() {
-        return initialPharmacyStock;
+    public int getOpioidStock() {
+        return opioidStock;
     }
 
-    public void setInitialPharmacyStock(int initialPharmacyStock) {
-        this.initialPharmacyStock = initialPharmacyStock;
+    public void setOpioidStock(int opioidStock) {
+        this.opioidStock = opioidStock;
     }
-
 }

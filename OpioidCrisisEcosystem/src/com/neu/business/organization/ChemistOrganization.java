@@ -18,7 +18,7 @@ public class ChemistOrganization extends Organization {
 
     private int stock;
     private ArrayList<String> stockChangeHistory;
-    
+
     public ChemistOrganization() {
         super(Type.Chemist.getValue());
         stockChangeHistory = new ArrayList<>();

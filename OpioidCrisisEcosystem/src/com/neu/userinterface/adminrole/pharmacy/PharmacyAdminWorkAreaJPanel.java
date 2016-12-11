@@ -7,6 +7,7 @@ package com.neu.userinterface.adminrole.pharmacy;
 
 import com.neu.business.enterprise.Enterprise;
 import com.neu.business.enterprise.PharmacyEnterprise;
+import com.sun.glass.events.KeyEvent;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -22,16 +23,16 @@ public class PharmacyAdminWorkAreaJPanel extends javax.swing.JPanel {
      */
     private JPanel userProcessContainer;
     private PharmacyEnterprise enterprise;
-    
+
     public PharmacyAdminWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.enterprise = (PharmacyEnterprise)enterprise;
-        
+        this.enterprise = (PharmacyEnterprise) enterprise;
+
         initComponents();
         populateValueLabel();
     }
-    
+
     public void populateValueLabel() {
         valueLabel.setText(enterprise.getName());
     }
@@ -85,6 +86,12 @@ public class PharmacyAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Initial stock");
 
+        txtInitialStock.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtInitialStockKeyTyped(evt);
+            }
+        });
+
         btnUpdateStock.setText("Update");
         btnUpdateStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,19 +115,19 @@ public class PharmacyAdminWorkAreaJPanel extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(userJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(74, 74, 74)
-                                .addComponent(manageOrganizationJButton)
-                                .addGap(69, 69, 69)
-                                .addComponent(manageEmployeeJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(305, 305, 305)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(manageOrganizationJButton)
+                                    .addComponent(userJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(manageEmployeeJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(339, 339, 339)
                         .addComponent(jLabel2)
                         .addGap(49, 49, 49)
                         .addComponent(txtInitialStock, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
+                        .addGap(56, 56, 56)
                         .addComponent(btnUpdateStock)))
-                .addContainerGap(281, Short.MAX_VALUE))
+                .addContainerGap(312, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {enterpriseLabel, jLabel1, manageEmployeeJButton, manageOrganizationJButton, userJButton, valueLabel});
@@ -139,12 +146,13 @@ public class PharmacyAdminWorkAreaJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel2)
                     .addComponent(txtInitialStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnUpdateStock))
-                .addGap(133, 133, 133)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(userJButton)
-                    .addComponent(manageOrganizationJButton)
-                    .addComponent(manageEmployeeJButton))
-                .addContainerGap(519, Short.MAX_VALUE))
+                .addGap(80, 80, 80)
+                .addComponent(userJButton)
+                .addGap(70, 70, 70)
+                .addComponent(manageOrganizationJButton)
+                .addGap(72, 72, 72)
+                .addComponent(manageEmployeeJButton)
+                .addContainerGap(370, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {enterpriseLabel, jLabel1, manageEmployeeJButton, manageOrganizationJButton, userJButton, valueLabel});
@@ -157,23 +165,23 @@ public class PharmacyAdminWorkAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         ManagePharmacyUserAccountJPanel muajp = new ManagePharmacyUserAccountJPanel(userProcessContainer, enterprise);
         userProcessContainer.add("ManageUserAccountJPanel", muajp);
-        
+
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_userJButtonActionPerformed
 
     private void manageEmployeeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeeJButtonActionPerformed
-        
+
         ManagePharmacyEmployeeJPanel manageEmployeeJPanel = new ManagePharmacyEmployeeJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
         userProcessContainer.add("manageEmployeeJPanel", manageEmployeeJPanel);
-        
+
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
 
     }//GEN-LAST:event_manageEmployeeJButtonActionPerformed
 
     private void manageOrganizationJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageOrganizationJButtonActionPerformed
-        
+
         ManagePharmacyOrganizationJPanel manageOrganizationJPanel = new ManagePharmacyOrganizationJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
         userProcessContainer.add("manageOrganizationJPanel", manageOrganizationJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
@@ -182,13 +190,28 @@ public class PharmacyAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnUpdateStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateStockActionPerformed
         // TODO add your handling code here:
-        
-        int initialStock = Integer.parseInt(txtInitialStock.getText());
-        ((PharmacyEnterprise) enterprise).setInitialPharmacyStock(initialStock);
-        
-        JOptionPane.showMessageDialog(null, "Updated");
-        txtInitialStock.setText("");
+
+        if (txtInitialStock != null) {
+            int initialStock = Integer.parseInt(txtInitialStock.getText());
+            ((PharmacyEnterprise) enterprise).setOpioidStock(initialStock);
+
+            JOptionPane.showMessageDialog(null, "Updated");
+            txtInitialStock.setText("");
+        } else {
+            JOptionPane.showMessageDialog(null, "Kindly enter the inial stock!");
+        }
     }//GEN-LAST:event_btnUpdateStockActionPerformed
+
+    private void txtInitialStockKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtInitialStockKeyTyped
+        // TODO add your handling code here:
+        char charEntered = evt.getKeyChar();
+        // Accept only Number/ Backspace/ Delete
+        if (!(Character.isDigit(charEntered)) || charEntered == KeyEvent.VK_BACKSPACE || charEntered == KeyEvent.VK_DELETE) {
+            if (txtInitialStock.getText().length() < 8) {
+                evt.consume();
+            }
+        }
+    }//GEN-LAST:event_txtInitialStockKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

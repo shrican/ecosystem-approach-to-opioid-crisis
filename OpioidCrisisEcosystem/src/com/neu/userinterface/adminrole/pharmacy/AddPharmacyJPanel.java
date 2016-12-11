@@ -21,17 +21,13 @@ public class AddPharmacyJPanel extends javax.swing.JPanel {
      */
     private JPanel userProcessContainer;
     private ChemistOrganization chemistOrganization;
-    
-    
+
     public AddPharmacyJPanel(JPanel userProcessContainer, ChemistOrganization chemistOrganization) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.chemistOrganization = chemistOrganization;
-        
-        
+
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -121,32 +117,29 @@ public class AddPharmacyJPanel extends javax.swing.JPanel {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-        
+
         chemistOrganization.setName(txtFieldPharmacyName.getText());
         chemistOrganization.setStock(Integer.parseInt(txtFieldPharmacyStock.getText()));
-        
-         if(txtFieldPharmacyName.getText().equals(null)||txtFieldPharmacyStock.getText().equals(null)){
+
+        if (txtFieldPharmacyName.getText().equals(null) || txtFieldPharmacyStock.getText().equals(null)) {
             JOptionPane.showMessageDialog(null, "Enter all fields", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, txtFieldPharmacyName.getText() + "'s initial stock set to " + txtFieldPharmacyStock.getText());
+
+            userProcessContainer.remove(this);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.previous(userProcessContainer);
         }
-        
-         else{
-        JOptionPane.showMessageDialog(null, txtFieldPharmacyName.getText() + "'s initial stock set to " + txtFieldPharmacyStock.getText());
-        
-        userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-         }
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
-        if(txtFieldPharmacyName.getText().equals(null)||txtFieldPharmacyStock.getText().equals(null)){
+        if (txtFieldPharmacyName.getText().equals(null) || txtFieldPharmacyStock.getText().equals(null)) {
             JOptionPane.showMessageDialog(null, "A deprecated call", "Warning", JOptionPane.WARNING_MESSAGE);
-        }
-        else{
-        userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
+        } else {
+            userProcessContainer.remove(this);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.previous(userProcessContainer);
         }
     }//GEN-LAST:event_btnBackActionPerformed
 
