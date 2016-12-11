@@ -59,13 +59,13 @@ public class ManagePatientJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         addPatientJButton = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        patientBloodGroupJTextField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         patientGenderJTextField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         patientPhoneJTextField = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         patientAgeJTextField = new javax.swing.JTextField();
+        comboBoxBloodGroup = new javax.swing.JComboBox<>();
         backJButton2 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -104,17 +104,13 @@ public class ManagePatientJPanel extends javax.swing.JPanel {
 
         jLabel6.setText("Blood Group :");
 
-        patientBloodGroupJTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                patientBloodGroupJTextFieldActionPerformed(evt);
-            }
-        });
-
         jLabel3.setText("Gender :");
 
         jLabel4.setText("Phone No. :");
 
         jLabel5.setText("Age :");
+
+        comboBoxBloodGroup.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -131,23 +127,22 @@ public class ManagePatientJPanel extends javax.swing.JPanel {
                                 .addGap(150, 150, 150)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(patientGenderJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(patientBloodGroupJTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(patientPhoneJTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(patientNameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(75, 75, 75)
-                                .addComponent(patientAgeJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(38, 38, 38)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel4))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(patientAgeJTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                    .addComponent(comboBoxBloodGroup, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(0, 62, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel4))
-                .addGap(61, 308, Short.MAX_VALUE))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel2, jLabel3, jLabel4, jLabel5, jLabel6});
@@ -170,7 +165,7 @@ public class ManagePatientJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(patientBloodGroupJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboBoxBloodGroup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -235,7 +230,7 @@ public class ManagePatientJPanel extends javax.swing.JPanel {
         patient.setName(patientNameJTextField.getText());
         patient.setGender(patientGenderJTextField.getText());
         patient.setAge(Integer.parseInt(patientAgeJTextField.getText()));
-        patient.setBloodGroup(patientBloodGroupJTextField.getText());
+        patient.setBloodGroup(comboBoxBloodGroup.getItemAt(comboBoxBloodGroup.getSelectedIndex()));
         patient.setPhoneNo(patientPhoneJTextField.getText());
         systemPatientDirectory.addPatient(patient);
         hospitalPatientDirectory.addPatient(patient);
@@ -245,7 +240,6 @@ public class ManagePatientJPanel extends javax.swing.JPanel {
         patientNameJTextField.setText("");
         patientAgeJTextField.setText("");
         patientGenderJTextField.setText("");
-        patientBloodGroupJTextField.setText("");
         patientPhoneJTextField.setText("");
 
         populatePatientDirectoryTable();
@@ -266,10 +260,6 @@ public class ManagePatientJPanel extends javax.swing.JPanel {
 
     }
 
-
-    private void patientBloodGroupJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patientBloodGroupJTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_patientBloodGroupJTextFieldActionPerformed
 
     private void backJButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton2ActionPerformed
         // TODO add your handling code here:
@@ -296,6 +286,7 @@ public class ManagePatientJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addPatientJButton;
     private javax.swing.JButton backJButton2;
+    private javax.swing.JComboBox<String> comboBoxBloodGroup;
     private javax.swing.JTable hospitalPatientDirectoryJTable;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -306,7 +297,6 @@ public class ManagePatientJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField patientAgeJTextField;
-    private javax.swing.JTextField patientBloodGroupJTextField;
     private javax.swing.JTextField patientGenderJTextField;
     private javax.swing.JTextField patientNameJTextField;
     private javax.swing.JTextField patientPhoneJTextField;

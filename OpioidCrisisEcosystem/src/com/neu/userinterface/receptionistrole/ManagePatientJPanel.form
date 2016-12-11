@@ -146,31 +146,30 @@
                                   <EmptySpace min="150" pref="150" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="patientGenderJTextField" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                                      <Component id="patientBloodGroupJTextField" alignment="1" min="-2" pref="200" max="-2" attributes="0"/>
                                       <Component id="patientPhoneJTextField" alignment="1" min="-2" pref="200" max="-2" attributes="0"/>
                                       <Component id="patientNameJTextField" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
-                                  <Component id="patientAgeJTextField" min="-2" pref="200" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="jLabel3" linkSize="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel2" linkSize="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel5" linkSize="1" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel6" linkSize="1" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel4" linkSize="1" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="patientAgeJTextField" pref="200" max="32767" attributes="0"/>
+                                      <Component id="comboBoxBloodGroup" max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="62" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jLabel3" linkSize="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel2" linkSize="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel5" linkSize="1" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel6" linkSize="1" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel4" linkSize="1" alignment="1" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="61" pref="308" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -195,7 +194,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel6" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="patientBloodGroupJTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="comboBoxBloodGroup" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -230,11 +229,6 @@
             <Property name="text" type="java.lang.String" value="Blood Group :"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="patientBloodGroupJTextField">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="patientBloodGroupJTextFieldActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
             <Property name="text" type="java.lang.String" value="Gender :"/>
@@ -255,6 +249,25 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="patientAgeJTextField">
+        </Component>
+        <Component class="javax.swing.JComboBox" name="comboBoxBloodGroup">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="8">
+                <StringItem index="0" value="A+"/>
+                <StringItem index="1" value="A-"/>
+                <StringItem index="2" value="B+"/>
+                <StringItem index="3" value="B-"/>
+                <StringItem index="4" value="O+"/>
+                <StringItem index="5" value="O-"/>
+                <StringItem index="6" value="AB+"/>
+                <StringItem index="7" value="AB-"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
