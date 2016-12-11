@@ -12,10 +12,11 @@ import com.neu.business.patient.Patient;
  * @author Soham
  */
 public class SendToRehabilitationWorkRequest extends WorkRequest {
- 
+
     private Patient patient;
-    
-    public SendToRehabilitationWorkRequest(){}
+
+    public SendToRehabilitationWorkRequest() {
+    }
 
     public Patient getPatient() {
         return patient;
@@ -24,6 +25,5 @@ public class SendToRehabilitationWorkRequest extends WorkRequest {
     public void setPatient(Patient patient) {
         this.patient = patient;
     }
-    
-    
+
 }

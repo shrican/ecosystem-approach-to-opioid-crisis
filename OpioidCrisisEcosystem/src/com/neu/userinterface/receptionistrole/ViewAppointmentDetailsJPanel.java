@@ -30,27 +30,22 @@ public class ViewAppointmentDetailsJPanel extends javax.swing.JPanel {
      */
     private JPanel userProcessContainer;
     private Enterprise enterprise;
-    
-    
+
     public ViewAppointmentDetailsJPanel(JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
-        
+
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
     }
-    
+
     private void populateAppointmentSchedule(HospitalEnterprise enterprise) {
         DefaultTableModel dtm = (DefaultTableModel) scheduleSummaryJTable.getModel();
         dtm.setRowCount(0);
-        for(Organization organization : enterprise.getOrganizationDirectory().getOrganizationList())
-        {
-            if(organization instanceof DoctorOrganization)
-            {
-                for(UserAccount user : organization.getUserAccountDirectory().getUserAccountList())
-                {
-                    
-                    for(WorkRequest wr : organization.getWorkQueue().getWorkRequestList())
-                    {
+        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            if (organization instanceof DoctorOrganization) {
+                for (UserAccount user : organization.getUserAccountDirectory().getUserAccountList()) {
+
+                    for (WorkRequest wr : organization.getWorkQueue().getWorkRequestList()) {
                         Object[] row = new Object[5];
                         Patient patient = ((ScheduleAppointmentWorkRequest) wr).getPatient();
                         row[0] = ((ScheduleAppointmentWorkRequest) wr).getId();
@@ -147,7 +142,6 @@ public class ViewAppointmentDetailsJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;

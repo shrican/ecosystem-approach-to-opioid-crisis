@@ -10,7 +10,7 @@ package com.neu.business.opioids;
  * @author Soham
  */
 public class Opioids {
-    
+
     private String opioidName;
     private int quantity;
 
@@ -29,5 +29,5 @@ public class Opioids {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-    
+
 }

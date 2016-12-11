@@ -19,14 +19,13 @@ import java.util.ArrayList;
 public class PharmaceuticalCompanyManagerOrganization extends Organization {
 
     private WorkQueue pharmaWorkQueue;
-    
+
     public PharmaceuticalCompanyManagerOrganization() {
         super(Type.PharmaceuticalCompanyManager.getValue());
         pharmaWorkQueue = new WorkQueue();
     }
-    
-    public WorkQueue addOpioidsOrder(PharmacySupplyWorkRequest pharmaWorkRequest)
-    {
+
+    public WorkQueue addOpioidsOrder(PharmacySupplyWorkRequest pharmaWorkRequest) {
         pharmaWorkQueue.getWorkRequestList().add(pharmaWorkRequest);
         return pharmaWorkQueue;
     }

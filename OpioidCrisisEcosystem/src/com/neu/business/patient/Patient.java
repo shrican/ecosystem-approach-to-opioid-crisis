@@ -63,7 +63,7 @@ public class Patient {
     public void setBayesianOpioidAddictionScore(float bayesianOpioidAddictionScore) {
         this.bayesianOpioidAddictionScore = bayesianOpioidAddictionScore;
     }
-    
+
     public String getName() {
         return name;
     }
@@ -167,7 +167,6 @@ public class Patient {
 //    public void setOpioidAddictionSymptomScore(float opioidAddictionSymptomScore) {
 //        this.opioidAddictionSymptomScore = opioidAddictionSymptomScore;
 //    }
-
     @Override
     public String toString() {
         return name;

@@ -25,19 +25,18 @@ public class ManageDEAUserAccountJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ManageDEAUserAccountJPanel
      */
-    
     private JPanel userProcessContainer;
     private Enterprise enterprise;
-    
+
     public ManageDEAUserAccountJPanel(JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
-        
+
         popOrganizationComboBox();
         populateUserTableData();
     }
-    
+
     public void popOrganizationComboBox() {
         organizationJComboBox.removeAllItems();
 
@@ -283,7 +282,6 @@ public class ManageDEAUserAccountJPanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(null, "New user account created");
         populateUserTableData();
     }//GEN-LAST:event_createUserJButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;

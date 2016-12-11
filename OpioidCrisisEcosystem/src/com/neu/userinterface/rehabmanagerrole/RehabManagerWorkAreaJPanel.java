@@ -165,7 +165,6 @@ public class RehabManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnViewPatientDetailsActionPerformed
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnViewPatientDetails;
     private javax.swing.JLabel jLabel1;

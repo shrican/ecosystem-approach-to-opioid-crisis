@@ -29,24 +29,24 @@ public class PharmaceuticalCompanyManagerWorkAreaJPanel extends javax.swing.JPan
     private UserAccount account;
     private PharmaceuticalCompanyManagerOrganization organization;
     private PharmaceuticalCompanyEnterprise enterprise;
-    
+
     public PharmaceuticalCompanyManagerWorkAreaJPanel(JPanel userProcessContainer, UserAccount userAccount, PharmaceuticalCompanyManagerOrganization organization, PharmaceuticalCompanyEnterprise enterprise) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.account = userAccount;
         this.organization = organization;
         this.enterprise = enterprise;
-        
+
         populateOrdersTable();
         txtFieldRemainingStock.setText(String.valueOf((enterprise).getStock()));
     }
-    
+
     public void populateOrdersTable() {
         DefaultTableModel model = (DefaultTableModel) tblPendingOrders.getModel();
-        
+
         model.setRowCount(0);
         int count = 0;
-        
+
         for (WorkRequest workRequest : organization.getWorkQueue().getWorkRequestList()) {
             Object[] row = new Object[5];
             row[0] = count++;
@@ -54,7 +54,7 @@ public class PharmaceuticalCompanyManagerWorkAreaJPanel extends javax.swing.JPan
             row[2] = ((PharmacySupplyWorkRequest) workRequest).getOrderAmount();
             row[3] = workRequest.getRequestDate();
             row[4] = workRequest;
-            
+
             model.addRow(row);
         }
     }
@@ -185,21 +185,21 @@ public class PharmaceuticalCompanyManagerWorkAreaJPanel extends javax.swing.JPan
         // TODO add your handling code here:
 
         int selectedRow = tblPendingOrders.getSelectedRow();
-        
+
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Select an order to fulfil", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
+
         PharmacySupplyWorkRequest request = (PharmacySupplyWorkRequest) tblPendingOrders.getValueAt(selectedRow, 4);
-        
+
         if (request.getStatus().equals("Order Completed")) {
             JOptionPane.showMessageDialog(null, "Order already completed", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
+
         request.setStatus("Processing");
-        
+
         SupplyOpioidsJPanel supplyOpioidsJPanel = new SupplyOpioidsJPanel(userProcessContainer, request, enterprise);
         userProcessContainer.add("supplyOpioidsJPanel", supplyOpioidsJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
@@ -215,9 +215,8 @@ public class PharmaceuticalCompanyManagerWorkAreaJPanel extends javax.swing.JPan
         int currentStock = enterprise.getStock();
         JOptionPane.showMessageDialog(null, enterprise.getName() + "'s stock changed from " + oldStock + " to " + currentStock);
         txtFieldRemainingStock.setText(String.valueOf(enterprise.getStock()));
-        
-    }//GEN-LAST:event_btnAddStockActionPerformed
 
+    }//GEN-LAST:event_btnAddStockActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddStock;

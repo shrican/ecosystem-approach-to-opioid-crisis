@@ -24,21 +24,20 @@ public class ManagePharmaceuticalUserAccountJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ManagePharmaceuticalUserAccountJPanel
      */
-    
     private JPanel userProcessContainer;
     private Enterprise enterprise;
-    
+
     public ManagePharmaceuticalUserAccountJPanel(JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
-        
+
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
-        
+
         popOrganizationComboBox();
         // employeeJComboBox.removeAllItems();
         populateUserTableData();
     }
-    
+
     public void popOrganizationComboBox() {
         organizationJComboBox.removeAllItems();
 
@@ -284,7 +283,6 @@ public class ManagePharmaceuticalUserAccountJPanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(null, "New user account created");
         populateUserTableData();
     }//GEN-LAST:event_createUserJButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;

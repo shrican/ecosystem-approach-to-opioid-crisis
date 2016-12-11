@@ -22,11 +22,9 @@ public class ManagePharmaceuticalEmployeeJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ManagePharmaceuticalEmployeeJPanel
      */
-    
-    
     private JPanel userProcessContainer;
     private OrganizationDirectory organizationDirectory;
-    
+
     public ManagePharmaceuticalEmployeeJPanel(JPanel userProcessContainer, OrganizationDirectory organizationDirectory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
@@ -34,30 +32,29 @@ public class ManagePharmaceuticalEmployeeJPanel extends javax.swing.JPanel {
         populateOrganizationComboBox();
         populateOrganizationEmpComboBox();
     }
-    
-    
-    public void populateOrganizationComboBox(){
+
+    public void populateOrganizationComboBox() {
         organizationJComboBox.removeAllItems();
-        
-        for (Organization organization : organizationDirectory.getOrganizationList()){
+
+        for (Organization organization : organizationDirectory.getOrganizationList()) {
             organizationJComboBox.addItem(organization);
         }
     }
-    
-    public void populateOrganizationEmpComboBox(){
+
+    public void populateOrganizationEmpComboBox() {
         organizationEmpJComboBox.removeAllItems();
-        
-        for (Organization organization : organizationDirectory.getOrganizationList()){
+
+        for (Organization organization : organizationDirectory.getOrganizationList()) {
             organizationEmpJComboBox.addItem(organization);
         }
     }
 
-    private void populateTable(Organization organization){
+    private void populateTable(Organization organization) {
         DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
-        
+
         model.setRowCount(0);
-        
-        for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()){
+
+        for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()) {
             Object[] row = new Object[2];
             row[0] = employee.getId();
             row[1] = employee.getName();
@@ -242,11 +239,10 @@ public class ManagePharmaceuticalEmployeeJPanel extends javax.swing.JPanel {
 
     private void organizationJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationJComboBoxActionPerformed
         Organization organization = (Organization) organizationJComboBox.getSelectedItem();
-        if (organization != null){
+        if (organization != null) {
             populateTable(organization);
         }
     }//GEN-LAST:event_organizationJComboBoxActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addJButton;

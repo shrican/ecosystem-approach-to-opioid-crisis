@@ -235,7 +235,7 @@ public class SellOpioidsJPanel extends javax.swing.JPanel {
         int newStock = oldStock - stockSold;
         chemistOrganization.setStock(newStock);
 
-        JOptionPane.showMessageDialog(null, prescription.getPatientName()+"'s prescription of "+prescription.getTotalOpioidsPrescribed()+" opioids fulfilled");
+        JOptionPane.showMessageDialog(null, prescription.getPatientName() + "'s prescription of " + prescription.getTotalOpioidsPrescribed() + " opioids fulfilled");
         populatePrescriptionTable();
         populateSoldOpioidsTable();
 
@@ -251,7 +251,6 @@ public class SellOpioidsJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;

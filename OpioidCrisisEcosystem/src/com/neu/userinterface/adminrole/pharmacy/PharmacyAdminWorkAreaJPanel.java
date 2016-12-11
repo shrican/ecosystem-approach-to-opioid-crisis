@@ -213,7 +213,6 @@ public class PharmacyAdminWorkAreaJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txtInitialStockKeyTyped
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnUpdateStock;
     private javax.swing.JLabel enterpriseLabel;

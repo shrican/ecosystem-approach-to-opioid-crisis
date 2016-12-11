@@ -36,7 +36,7 @@ public class ManagePatientJPanel extends javax.swing.JPanel {
         this.systemPatientDirectory = systemPatientDirectory;
         this.hospitalPatientDirectory = hospitalPatientDirectory;
         this.enterprise = enterprise;
-        
+
         populatePatientDirectoryTable();
 
     }
@@ -260,7 +260,6 @@ public class ManagePatientJPanel extends javax.swing.JPanel {
 
     }
 
-
     private void backJButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton2ActionPerformed
         // TODO add your handling code here:
         userProcessContainer.remove(this);
@@ -274,14 +273,13 @@ public class ManagePatientJPanel extends javax.swing.JPanel {
 
     private void viewPatientDetailsJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPatientDetailsJButtonActionPerformed
         // TODO add your handling code here:
-        Patient patient = (Patient)hospitalPatientDirectoryJTable.getValueAt(hospitalPatientDirectoryJTable.getSelectedRow(), 1);
+        Patient patient = (Patient) hospitalPatientDirectoryJTable.getValueAt(hospitalPatientDirectoryJTable.getSelectedRow(), 1);
 
         PatientDetailsJPanel patientDetailsJPanel = new PatientDetailsJPanel(userProcessContainer, patient, enterprise);
         userProcessContainer.add("patientDetailsJPanel", patientDetailsJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_viewPatientDetailsJButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addPatientJButton;

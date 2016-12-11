@@ -180,11 +180,10 @@ public class ManageStockJPanel extends javax.swing.JPanel {
         stockChange = "Stock changed from " + String.valueOf(oldStock) + " to " + String.valueOf(newStock);
         stockChangesHistory.add(stockChange);
         chemistOrganization.setStockChangeHistory(stockChangesHistory);
-        JOptionPane.showMessageDialog(null, chemistOrganization+"'s current stock has been updated to "+chemistOrganization.getStock());
+        JOptionPane.showMessageDialog(null, chemistOrganization + "'s current stock has been updated to " + chemistOrganization.getStock());
         populateFields();
 //        txtFieldCurrentStock.setText(String.valueOf(newStock));
     }//GEN-LAST:event_btnUpdateStockActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOrderOpioids;

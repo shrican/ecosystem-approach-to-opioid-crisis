@@ -10,7 +10,7 @@ package com.neu.business.patient;
  * @author Soham
  */
 public class OpioidWithdrawalSymptoms {
-    
+
     private boolean lowAppetite;
     private boolean highBloodPressure;
     private boolean quivering;
@@ -57,8 +57,6 @@ public class OpioidWithdrawalSymptoms {
     public void setEnlargedPupils(boolean enlargedPupils) {
         this.enlargedPupils = enlargedPupils;
     }
-    
-    
 
     public boolean hasLowAppetite() {
         return lowAppetite;
@@ -75,7 +73,5 @@ public class OpioidWithdrawalSymptoms {
     public void setHighBloodPressure(boolean highBloodPressure) {
         this.highBloodPressure = highBloodPressure;
     }
-    
-    
-    
+
 }

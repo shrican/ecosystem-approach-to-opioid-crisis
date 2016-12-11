@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.neu.userinterface.rehabmanagerrole;
+
 import com.neu.business.patient.OpioidAbuseSymptoms;
 import com.neu.business.patient.OpioidWithdrawalSymptoms;
 import com.neu.business.patient.Patient;
@@ -29,37 +30,34 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private Patient patient;
     private PatientDirectory ecosystemPatientDirectory;
-    
+
     public PatientDetailsJPanel(JPanel userProcessContainer, Patient patient, PatientDirectory ecosystemPatientDirectory) {
         initComponents();
-        
+
         this.userProcessContainer = userProcessContainer;
         this.patient = patient;
         this.ecosystemPatientDirectory = ecosystemPatientDirectory;
-        
+
         populatePatientDetails();
         populateSymptoms();
         populateAbuseSymptoms();
         populatePrescriptions();
         populateWithdrawalSymptoms();
     }
-    
-    public void populatePatientDetails()
-    {
+
+    public void populatePatientDetails() {
         txtFieldName.setText(patient.getName());
         txtFieldAge.setText(String.valueOf(patient.getAge()));
         txtFieldBloodGroup.setText(patient.getBloodGroup());
         txtFieldGender.setText(patient.getGender());
         txtFieldNumber.setText(patient.getPhoneNo());
     }
-    
-    public void populateSymptoms()
-    {
+
+    public void populateSymptoms() {
         DefaultTableModel dtm = (DefaultTableModel) tblSymptoms.getModel();
         dtm.setRowCount(0);
-        for(Symptoms symptoms : patient.getSymptomsHistory().getSymptomHistory())
-        {
-            Object [] row = new Object[15];
+        for (Symptoms symptoms : patient.getSymptomsHistory().getSymptomHistory()) {
+            Object[] row = new Object[15];
             row[0] = symptoms.isHasLowerBackPain();
             row[1] = symptoms.isHasArthritis();
             row[2] = symptoms.isHasHeadache();
@@ -78,15 +76,13 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
             dtm.addRow(row);
         }
     }
-    
-    public void populateAbuseSymptoms()
-    {
-        DefaultTableModel dtm = (DefaultTableModel)tblAbuseSymptoms.getModel();
+
+    public void populateAbuseSymptoms() {
+        DefaultTableModel dtm = (DefaultTableModel) tblAbuseSymptoms.getModel();
         dtm.setRowCount(0);
-        
-        for(OpioidAbuseSymptoms abuseSymptoms : patient.getOpioidAbuseSymptomsHistory().getOpioidAbuseSysmpomsList())
-        {
-            Object [] row = new Object[9];
+
+        for (OpioidAbuseSymptoms abuseSymptoms : patient.getOpioidAbuseSymptomsHistory().getOpioidAbuseSysmpomsList()) {
+            Object[] row = new Object[9];
             row[0] = abuseSymptoms.hasNausea();
             row[1] = abuseSymptoms.hasChestPain();
             row[2] = abuseSymptoms.hasPupilaryConstriction();
@@ -99,14 +95,12 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
             dtm.addRow(row);
         }
     }
-    
-    public void populatePrescriptions()
-    {
-        DefaultTableModel dtm = (DefaultTableModel)tblPrescriptionHistory.getModel();
+
+    public void populatePrescriptions() {
+        DefaultTableModel dtm = (DefaultTableModel) tblPrescriptionHistory.getModel();
         dtm.setRowCount(0);
-        
-        for(Prescription prescription : patient.getPrescriptionHistory().getPrescriptionHistoryList())
-        {
+
+        for (Prescription prescription : patient.getPrescriptionHistory().getPrescriptionHistoryList()) {
             Object[] row = new Object[4];
             row[0] = prescription.getOpdDate();
             row[1] = prescription.getDoctorName();
@@ -115,14 +109,12 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
             dtm.addRow(row);
         }
     }
-    
-    public void populateWithdrawalSymptoms()
-    {
-        DefaultTableModel dtm = (DefaultTableModel)tblWithdrawalSymptoms.getModel();
+
+    public void populateWithdrawalSymptoms() {
+        DefaultTableModel dtm = (DefaultTableModel) tblWithdrawalSymptoms.getModel();
         dtm.setRowCount(0);
-        
-        for(OpioidWithdrawalSymptoms withdrawalSymptoms : patient.getOpioidWithdrawalSymptomsHistory().getOpioidWithdrawalSymptomsList())
-        {
+
+        for (OpioidWithdrawalSymptoms withdrawalSymptoms : patient.getOpioidWithdrawalSymptomsHistory().getOpioidWithdrawalSymptomsList()) {
             Object[] row = new Object[6];
             row[0] = withdrawalSymptoms.isLowAppetite();
             row[1] = withdrawalSymptoms.isHighBloodPressure();
@@ -455,7 +447,7 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
-        
+
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
@@ -474,13 +466,12 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
         withdrawalSymptoms.setLowAppetite(checkBoxLowApetite.isSelected());
         withdrawalSymptoms.setQuivering(checkBoxQuivering.isSelected());
         withdrawalSymptoms.setVomiting(checkBoxVomiting.isSelected());
-        
-        patient.getOpioidWithdrawalSymptomsHistory().getOpioidWithdrawalSymptomsList().add(withdrawalSymptoms);
-        
-        JOptionPane.showMessageDialog(null, patient.getName()+"'s Withdrawal symptoms saved");
-        
-    }//GEN-LAST:event_btnSaveSymptomsActionPerformed
 
+        patient.getOpioidWithdrawalSymptomsHistory().getOpioidWithdrawalSymptomsList().add(withdrawalSymptoms);
+
+        JOptionPane.showMessageDialog(null, patient.getName() + "'s Withdrawal symptoms saved");
+
+    }//GEN-LAST:event_btnSaveSymptomsActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;

@@ -22,24 +22,23 @@ public class ManagePharmaceuticalOrganizationJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ManagePharmaceuticalOrganizationJPanel
      */
-    
     private JPanel userProcessContainer;
     private OrganizationDirectory organizationDirectory;
-    
+
     public ManagePharmaceuticalOrganizationJPanel(JPanel userProcessContainer, OrganizationDirectory organizationDirectory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.organizationDirectory = organizationDirectory;
-        
+
         populateTable();
         populateCombo();
     }
-    
+
     private void populateCombo() {
         organizationJComboBox.removeAllItems();
         for (Organization.Type type : Organization.Type.values()) {
             if (!type.getValue().equals(Organization.Type.Admin.getValue())) {
-                if(type.getValue().equals("Pharmaceutical Company Manager Organization")){
+                if (type.getValue().equals("Pharmaceutical Company Manager Organization")) {
                     organizationJComboBox.addItem(type);
                 }
             }
@@ -191,7 +190,6 @@ public class ManagePharmaceuticalOrganizationJPanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(null, "New organization created");
         populateTable();
     }//GEN-LAST:event_addJButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addJButton;

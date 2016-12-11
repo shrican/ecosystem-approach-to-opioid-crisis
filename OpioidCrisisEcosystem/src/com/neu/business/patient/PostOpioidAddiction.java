@@ -10,11 +10,11 @@ package com.neu.business.patient;
  * @author Soham
  */
 public class PostOpioidAddiction {
-    
+
     private boolean tobaccoUse;
     private boolean alcoholAbuse;
     private boolean cannabisAbuse;
-    private boolean stimulantAbuse;    
+    private boolean stimulantAbuse;
 
     public boolean isTobaccoUse() {
         return tobaccoUse;

@@ -27,31 +27,27 @@ public class ManageCommRehabUserAccountJPanel extends javax.swing.JPanel {
      */
     private JPanel userProcessContainer;
     private Enterprise enterprise;
-    
+
     public ManageCommRehabUserAccountJPanel(JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
-        
+
         popOrganizationComboBox();
         populateUserTableData();
         populateEmployeeComboBox();
     }
-    
-    public void populateEmployeeComboBox()
-    {
-        for(Organization organization : enterprise.getOrganizationDirectory().getOrganizationList())
-        {
-            if(organization instanceof RehabilitationManagerOrganization)
-            {
-                for(Employee employee : organization.getEmployeeDirectory().getEmployeeList())
-                {
+
+    public void populateEmployeeComboBox() {
+        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            if (organization instanceof RehabilitationManagerOrganization) {
+                for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()) {
                     employeeJComboBox.addItem(employee);
                 }
             }
         }
     }
-    
+
     public void popOrganizationComboBox() {
         organizationJComboBox.removeAllItems();
 
@@ -275,7 +271,6 @@ public class ManageCommRehabUserAccountJPanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(null, "New user account created");
         populateUserTableData();
     }//GEN-LAST:event_createUserJButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;

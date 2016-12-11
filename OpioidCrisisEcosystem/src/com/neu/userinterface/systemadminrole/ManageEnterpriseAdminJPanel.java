@@ -218,10 +218,10 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void addUserAccountJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserAccountJButtonActionPerformed
-       
+
         Network network = (Network) networkJComboBox.getSelectedItem();
 
-        Enterprise enterprise =  network.getEnterpriseByName((String) enterpriseJComboBox.getSelectedItem());
+        Enterprise enterprise = network.getEnterpriseByName((String) enterpriseJComboBox.getSelectedItem());
 
         String username = usernameJTextField.getText();
         String password = String.valueOf(passwordJPasswordField.getPassword());

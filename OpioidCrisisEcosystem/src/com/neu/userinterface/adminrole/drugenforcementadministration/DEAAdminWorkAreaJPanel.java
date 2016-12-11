@@ -18,10 +18,9 @@ public class DEAAdminWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form DEAAdminWorkAreaJPanel
      */
-    
     private JPanel userProcessContainer;
     private Enterprise enterprise;
-    
+
     public DEAAdminWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
@@ -124,7 +123,6 @@ public class DEAAdminWorkAreaJPanel extends javax.swing.JPanel {
         layout.next(userProcessContainer);
 
     }//GEN-LAST:event_manageDEAUsersJButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

@@ -181,7 +181,6 @@ public class ScheduleAppointmentJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButton2ActionPerformed
 
-
     private void populatePatientComboBox() {
         patientNameJComboBox.removeAllItems();
 
@@ -205,7 +204,6 @@ public class ScheduleAppointmentJPanel extends javax.swing.JPanel {
     private void patientNameJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patientNameJComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_patientNameJComboBoxActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton2;

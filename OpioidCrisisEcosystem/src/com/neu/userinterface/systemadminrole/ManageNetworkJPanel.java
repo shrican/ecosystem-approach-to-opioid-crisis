@@ -29,7 +29,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;
-        
+
         populateNetworkTable();
     }
 
@@ -42,10 +42,8 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
             row[0] = network.getName();
             model.addRow(row);
         }
-    } 
-    
-    
-    
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -154,10 +152,10 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
     private void addNetworkJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNetworkJButtonActionPerformed
 
         String name = nameJTextField.getText();
-        
+
         Network network = system.createAndAddNetwork(name);
         network.setName(name);
-        JOptionPane.showMessageDialog(null, "Network "+network.getName()+" added successfully");
+        JOptionPane.showMessageDialog(null, "Network " + network.getName() + " added successfully");
         populateNetworkTable();
     }//GEN-LAST:event_addNetworkJButtonActionPerformed
 
@@ -170,7 +168,6 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addNetworkJButton;

@@ -167,8 +167,8 @@ public class SupplyOpioidsJPanel extends javax.swing.JPanel {
                     null,
                     options,
                     options[0]);
-            
-            JOptionPane.showMessageDialog(null, "Order of "+pharmaWorkRequest.getOrderAmount()+" dispatched to "+pharmaWorkRequest.getRequesterName());
+
+            JOptionPane.showMessageDialog(null, "Order of " + pharmaWorkRequest.getOrderAmount() + " dispatched to " + pharmaWorkRequest.getRequesterName());
 
             txtFieldStockLeft.setText(String.valueOf((enterprise).getStock()));
 
@@ -182,7 +182,6 @@ public class SupplyOpioidsJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;

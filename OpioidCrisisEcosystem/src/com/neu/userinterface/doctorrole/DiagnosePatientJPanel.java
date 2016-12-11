@@ -629,7 +629,6 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
         }
     }
 
-
     private void btnDiagnoseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagnoseActionPerformed
         // TODO add your handling code here:
 
@@ -801,9 +800,7 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
 //                }
 //            }
 //        }
-
     }//GEN-LAST:event_btnSendToRehabActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;

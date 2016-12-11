@@ -24,21 +24,21 @@ public class ManageCommRehabOrganizationJPanel extends javax.swing.JPanel {
      */
     private JPanel userProcessContainer;
     private OrganizationDirectory organizationDirectory;
-    
+
     public ManageCommRehabOrganizationJPanel(JPanel userProcessContainer, OrganizationDirectory organizationDirectory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.organizationDirectory = organizationDirectory;
-        
+
         populateCombo();
         populateTable();
     }
-    
+
     private void populateCombo() {
         organizationJComboBox.removeAllItems();
         for (Organization.Type type : Organization.Type.values()) {
             if (!type.getValue().equals(Organization.Type.Admin.getValue())) {
-                if(type.getValue().equals("Rehabilitation Manager Organization")){
+                if (type.getValue().equals("Rehabilitation Manager Organization")) {
                     organizationJComboBox.addItem(type);
                 }
             }
@@ -190,7 +190,6 @@ public class ManageCommRehabOrganizationJPanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(null, "New Organization created");
         populateTable();
     }//GEN-LAST:event_addJButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addJButton;

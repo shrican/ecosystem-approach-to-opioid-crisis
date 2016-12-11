@@ -137,10 +137,8 @@ public class Prescription {
 
     }
 
-    
     @Override
-    public String toString()
-    {
+    public String toString() {
         return this.doctorName;//to get doctor name for prescription object in sell opioids
     }
 }

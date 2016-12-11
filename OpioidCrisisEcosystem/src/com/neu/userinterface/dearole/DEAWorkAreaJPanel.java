@@ -117,7 +117,6 @@ public class DEAWorkAreaJPanel extends javax.swing.JPanel {
 //                }
 //            }
 //        }
-
         DiscrepancyJPanel discrepancyJPanel = new DiscrepancyJPanel(userProcessContainer, network);
         userProcessContainer.add("DiscrepancyJPanel", discrepancyJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
@@ -127,7 +126,6 @@ public class DEAWorkAreaJPanel extends javax.swing.JPanel {
     private void btnDoctorReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoctorReportActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnDoctorReportActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDoctorReport;

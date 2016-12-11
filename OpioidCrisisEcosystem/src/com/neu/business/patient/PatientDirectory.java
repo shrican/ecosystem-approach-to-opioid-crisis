@@ -51,7 +51,7 @@ public class PatientDirectory {
         Bayesian estimate:
         weighted rating (WR) = (v ÷ (v+m)) × R + (m ÷ (v+m)) × C
      */
-        public float calculateBayesianOpioidAddictionScore(Patient patient) {
+    public float calculateBayesianOpioidAddictionScore(Patient patient) {
 
         float totalPatients = 0; // Total patients in the Ecosystem (var m in Bayesian Algorithm)
         float totalNoOfVisitsForAllPatients = 0; // Total no of of visits for all patients in the Ecosystem 

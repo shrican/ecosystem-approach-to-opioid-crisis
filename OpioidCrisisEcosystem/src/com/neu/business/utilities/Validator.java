@@ -10,5 +10,5 @@ package com.neu.business.utilities;
  * @author Anmol
  */
 public class Validator {
-    
+
 }

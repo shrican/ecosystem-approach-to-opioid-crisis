@@ -31,7 +31,7 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.patient = patient;
         this.enterprise = enterprise;
-        
+
         populateFields(patient);
         btnSave.setEnabled(false);
         patientNameJTextField.setEditable(false);
@@ -41,9 +41,8 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
         patientAgeJTextField.setEditable(false);
         //patientDirectory = EcoSystem.getPatientDirectory();
     }
-    
-    public void populateFields(Patient patient)
-    {
+
+    public void populateFields(Patient patient) {
         patientNameJTextField.setText(patient.getName());
         patientBloodGroupJTextField.setText(patient.getBloodGroup());
         patientGenderJTextField.setText(patient.getGender());
@@ -226,10 +225,9 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
         patient.setPhoneNo(patientPhoneJTextField.getText());
         btnSave.setEnabled(false);
         updatePatientJButton.setEnabled(true);
-        JOptionPane.showMessageDialog(null, patient.getName()+"'s details updated successfully");
-        
-    }//GEN-LAST:event_btnSaveActionPerformed
+        JOptionPane.showMessageDialog(null, patient.getName() + "'s details updated successfully");
 
+    }//GEN-LAST:event_btnSaveActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton1;

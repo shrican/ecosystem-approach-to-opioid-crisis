@@ -24,37 +24,31 @@ public class ManageCommRehabEmployeeJPanel extends javax.swing.JPanel {
      */
     private JPanel userProcessContainer;
     private OrganizationDirectory organizationDirectory;
-    
+
     public ManageCommRehabEmployeeJPanel(JPanel userProcessContainer, OrganizationDirectory organizationDirectory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.organizationDirectory = organizationDirectory;
-        
+
         populateOrganizationComboBox();
         populateRehabOrganizationTable();
     }
 
-    public void populateOrganizationComboBox()
-    {
-        for(Organization organization : organizationDirectory.getOrganizationList())
-        {
-            if(organization instanceof RehabilitationManagerOrganization)
-            {
+    public void populateOrganizationComboBox() {
+        for (Organization organization : organizationDirectory.getOrganizationList()) {
+            if (organization instanceof RehabilitationManagerOrganization) {
                 organizationEmpJComboBox.addItem(organization);
             }
         }
     }
-    
-    public void populateRehabOrganizationTable()
-    {
+
+    public void populateRehabOrganizationTable() {
         DefaultTableModel dtm = (DefaultTableModel) organizationJTable.getModel();
         dtm.setRowCount(0);
-        
-        for(Organization organization : organizationDirectory.getOrganizationList())
-        {
+
+        for (Organization organization : organizationDirectory.getOrganizationList()) {
             int count = 1;
-            if(organization instanceof RehabilitationManagerOrganization)
-            {
+            if (organization instanceof RehabilitationManagerOrganization) {
                 Object[] row = new Object[2];
                 row[0] = count++;
                 row[1] = organization;
@@ -62,7 +56,7 @@ public class ManageCommRehabEmployeeJPanel extends javax.swing.JPanel {
             }
         }
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -197,7 +191,6 @@ public class ManageCommRehabEmployeeJPanel extends javax.swing.JPanel {
         organization.getEmployeeDirectory().createEmployee(name);
         populateRehabOrganizationTable();
     }//GEN-LAST:event_btnAddEmployeeActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton1;

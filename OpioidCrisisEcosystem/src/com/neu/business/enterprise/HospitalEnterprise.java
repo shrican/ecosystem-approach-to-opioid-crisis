@@ -40,9 +40,9 @@ public class HospitalEnterprise extends Enterprise {
     public void setAssociatedCommRehabList(ArrayList<CommunityRehabEnterprise> associatedCommRehabList) {
         this.associatedCommRehabList = associatedCommRehabList;
     }
-    
-    public void addAssociatedRehabilitation(CommunityRehabEnterprise enterprise){
-       associatedCommRehabList.add(enterprise);
-   }
+
+    public void addAssociatedRehabilitation(CommunityRehabEnterprise enterprise) {
+        associatedCommRehabList.add(enterprise);
+    }
 
 }

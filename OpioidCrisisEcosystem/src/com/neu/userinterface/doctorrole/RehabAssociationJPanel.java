@@ -43,14 +43,14 @@ public class RehabAssociationJPanel extends javax.swing.JPanel {
         this.network = network;
         this.doctorOrganization = doctorOrganization;
         this.doctorUserAccount = userAccount;
-        this.hospitalEnterprise = (HospitalEnterprise)hospitalEnterprise;
+        this.hospitalEnterprise = (HospitalEnterprise) hospitalEnterprise;
 
         populateRehabsComboBox();
         populateAddictedPatientsTable();
     }
 
     public void populateRehabsComboBox() {
-                
+
         for (Enterprise enterprise : hospitalEnterprise.getAssociatedCommRehabList()) {
             if (enterprise instanceof CommunityRehabEnterprise) {
                 comboBoxRehabCenters.addItem(enterprise.getName());
@@ -238,7 +238,6 @@ public class RehabAssociationJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButton1ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton1;

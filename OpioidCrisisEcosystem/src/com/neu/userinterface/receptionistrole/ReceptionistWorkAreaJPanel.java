@@ -258,7 +258,6 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
         populateAppointentsTable(enterprise);
     }//GEN-LAST:event_btnRefreshActionPerformed
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnScheduleAppointment;

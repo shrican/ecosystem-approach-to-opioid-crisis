@@ -164,12 +164,11 @@ public class MainJFrame extends javax.swing.JFrame {
         char[] passwordCharArray = passwordField.getPassword();
         String password = String.valueOf(passwordCharArray);
 
-        if(userName.equals("")||password.equals(""))
-        {
+        if (userName.equals("") || password.equals("")) {
             JOptionPane.showMessageDialog(null, "Please enter all details", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
+
         //Step1: Check in the system user account directory if you have the user
         UserAccount userAccount = system.getUserAccountDirectory().authenticateUser(userName, password);
         Network inNetwork = null;
@@ -178,7 +177,7 @@ public class MainJFrame extends javax.swing.JFrame {
         if (userAccount == null) {
             //Step2: Go inside each network to check each enterprise
             for (Network network : system.getNetworkList()) {
-                    inNetwork = network;
+                inNetwork = network;
                 //Step 2-a: Check against each enterprise
                 for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
                     userAccount = enterprise.getUserAccountDirectory().authenticateUser(userName, password);

@@ -19,11 +19,11 @@ import javax.swing.JPanel;
  *
  * @author shrikantmudholkar
  */
-public class PharmaceuticalCompanyManagerRole extends Role{
+public class PharmaceuticalCompanyManagerRole extends Role {
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem system) {
-        return new PharmaceuticalCompanyManagerWorkAreaJPanel(userProcessContainer, account, (PharmaceuticalCompanyManagerOrganization)organization, (PharmaceuticalCompanyEnterprise)enterprise);
+        return new PharmaceuticalCompanyManagerWorkAreaJPanel(userProcessContainer, account, (PharmaceuticalCompanyManagerOrganization) organization, (PharmaceuticalCompanyEnterprise) enterprise);
     }
-    
+
 }

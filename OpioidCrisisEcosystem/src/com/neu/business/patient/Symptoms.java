@@ -10,7 +10,7 @@ package com.neu.business.patient;
  * @author Anmol
  */
 public class Symptoms {
-    
+
     private boolean hasLowerBackPain;
     private boolean hasArthritis;
     private boolean hasHeadache;
@@ -21,12 +21,11 @@ public class Symptoms {
     private boolean hasCancer;
     private boolean hasInjury;
     private boolean hasBrokenBones;
-    
+
     private int id;
     private static int count = 1;
-    
-    public Symptoms()
-    {
+
+    public Symptoms() {
         id = count++;
     }
 
@@ -74,12 +73,11 @@ public class Symptoms {
     public void setHasAbdominalPain(boolean hasAbdominalPain) {
         this.hasAbdominalPain = hasAbdominalPain;
     }
-    
+
     //divide these into acute and chronic pains. prescribe opioids to multiple acute pains, not to chronic
-    
     private int painMeasure = 0;
     // enter pain measures for each ailment, add each to painMeasure to get total pain
-    
+
     public boolean isHasInjury() {
         return hasInjury;
     }
@@ -163,5 +161,5 @@ public class Symptoms {
     public void setHasCancer(boolean hasCancer) {
         this.hasCancer = hasCancer;
     }
-    
+
 }

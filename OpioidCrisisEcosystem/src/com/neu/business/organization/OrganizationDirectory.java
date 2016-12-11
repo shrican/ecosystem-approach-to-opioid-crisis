@@ -24,28 +24,19 @@ public class OrganizationDirectory {
     public ArrayList<Organization> getOrganizationList() {
         return organizationList;
     }
-    
+
     public ArrayList<Organization.Type> getRelevantOrganizations(Enterprise enterprise) {
         ArrayList<Organization.Type> relevantOrganizations = new ArrayList<>();
-        if(enterprise.getEnterpriseType().getValue().equals("Hospital Enterprise"))
-        {
+        if (enterprise.getEnterpriseType().getValue().equals("Hospital Enterprise")) {
             relevantOrganizations.add(Organization.Type.Doctor);
             relevantOrganizations.add(Organization.Type.Receptionist);
-        }
-        else if(enterprise.getEnterpriseType().getValue().equals("Pharmacy Enterprise"))
-        {
+        } else if (enterprise.getEnterpriseType().getValue().equals("Pharmacy Enterprise")) {
             relevantOrganizations.add(Organization.Type.Chemist);
-        }
-        else if(enterprise.getEnterpriseType().getValue().equals("Pharmaceutical Company Enterprise"))
-        {
+        } else if (enterprise.getEnterpriseType().getValue().equals("Pharmaceutical Company Enterprise")) {
             relevantOrganizations.add(Type.PharmaceuticalCompanyManager);
-        }
-        else if(enterprise.getEnterpriseType().getValue().equals("Drug Enforcement Administration Enterprise"))
-        {
+        } else if (enterprise.getEnterpriseType().getValue().equals("Drug Enforcement Administration Enterprise")) {
             relevantOrganizations.add(Type.DEA);
-        }
-        else if(enterprise.getEnterpriseType().getValue().equals("Community Rehab Enterprise"))
-        {
+        } else if (enterprise.getEnterpriseType().getValue().equals("Community Rehab Enterprise")) {
             relevantOrganizations.add(Type.RehabilitationManager);
         }
         return relevantOrganizations;

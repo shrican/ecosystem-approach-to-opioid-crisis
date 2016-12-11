@@ -143,7 +143,6 @@ public class AddPharmacyJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnBackActionPerformed
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSave;

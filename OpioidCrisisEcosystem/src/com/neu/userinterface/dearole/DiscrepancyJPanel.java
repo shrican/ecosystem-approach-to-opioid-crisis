@@ -28,38 +28,39 @@ public class DiscrepancyJPanel extends javax.swing.JPanel {
     /**
      * Creates new form DiscrepancyJPanel
      */
-    
     class Slice {
-   double value;
-   Color color;
-   public Slice(double value, Color color) {  
-      this.value = value;
-      this.color = color;
-   }
-}
-    
+
+        double value;
+        Color color;
+
+        public Slice(double value, Color color) {
+            this.value = value;
+            this.color = color;
+        }
+    }
+
     private JPanel userProcessContainer;
     private Network network;
     private HashMap<ChemistOrganization, Integer> slices;
-    
+
     public DiscrepancyJPanel(JPanel userPrcessContainer, Network network) {
         initComponents();
         this.userProcessContainer = userPrcessContainer;
         this.network = network;
-        for(Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()){
-        
-            for(Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
-                if(organization instanceof ChemistOrganization){
+        for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+
+            for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                if (organization instanceof ChemistOrganization) {
                     int discrepancy = (int) network.pharmacyStockDiscrepancy((ChemistOrganization) organization);
-                    System.out.println("Discrepncy of "+organization.getName()+" is "+discrepancy);
+                    System.out.println("Discrepncy of " + organization.getName() + " is " + discrepancy);
                 }
-            
-                }
+
+            }
         }
 //        slices = createSlicesMap(network);
-        
+
     }
-    
+
 //    public void paint(Graphics g) {
 //      drawPie((Graphics2D) g, getBounds(), slices);
 //   }
@@ -104,7 +105,6 @@ public class DiscrepancyJPanel extends javax.swing.JPanel {
 //        
 //        return createdSlices;
 //    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -125,7 +125,6 @@ public class DiscrepancyJPanel extends javax.swing.JPanel {
             .addGap(0, 600, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables

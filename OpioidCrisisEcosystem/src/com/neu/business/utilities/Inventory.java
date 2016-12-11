@@ -14,10 +14,10 @@ import java.util.List;
  * @author Soham
  */
 public class Inventory {
-    
+
     private List<Opioids> opioidsList;
-    
-    public Inventory(){
+
+    public Inventory() {
         opioidsList = new ArrayList<>();
     }
 
@@ -28,8 +28,5 @@ public class Inventory {
     public void setOpioidsList(List<Opioids> opioidsList) {
         this.opioidsList = opioidsList;
     }
-    
-    
-    
-    
+
 }
