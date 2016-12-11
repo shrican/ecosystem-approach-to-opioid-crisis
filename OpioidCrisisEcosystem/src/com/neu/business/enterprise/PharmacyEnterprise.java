@@ -16,6 +16,7 @@ import com.neu.business.workqueue.ScheduleAppointmentWorkRequest;
 import com.neu.business.workqueue.WorkRequest;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map.Entry;
 
 /**
@@ -96,33 +97,7 @@ public class PharmacyEnterprise extends Enterprise {
         }
     }
     
-    public void mostDoctorPrescriptions(HospitalEnterprise hospitalEnterprise)
-    {
-//        HashMap<DoctorOrganization, Integer> doctors = new HashMap<>();
-        DoctorOrganization mostPrescribingDoctor;
-        for(Organization organization : hospitalEnterprise.getOrganizationDirectory().getOrganizationList())
-        {
-            int biggest = 0;
-            if(organization instanceof DoctorOrganization)
-            {
-                int prescriptions = 0;
-//                doctors.put((DoctorOrganization) organization, prescriptions);
-                for(WorkRequest workRequest : organization.getWorkQueue().getWorkRequestList())
-                {
-                    if(workRequest instanceof ScheduleAppointmentWorkRequest)
-                    {
-                        prescriptions++;
-                    }
-                }
-                if(prescriptions>biggest){
-                    biggest = prescriptions;
-                    mostPrescribingDoctor = (DoctorOrganization) organization;
-                }
-            }
-            
-        }
-        
-    }
+    
 
     public PharmacyEnterprise(String name) {
         super(name, EnterpriseType.PharmacyEnterprise);

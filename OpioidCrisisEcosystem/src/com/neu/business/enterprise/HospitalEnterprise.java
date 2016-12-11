@@ -124,6 +124,7 @@ public class HospitalEnterprise extends Enterprise {
         symptomsBreakdown.put("Intestinal Disorder", intestinalDisorderCount);
         symptomsBreakdown.put("Lower Back Pain Count", lowerBackPainCount);
         symptomsBreakdown.put("Multiple Sclerosis Count", multipleSclerosisCount);
+        symptomsBreakdown.put("Muscle Spasm Count", muscleSpasmCount);
         symptomsBreakdown.put("Nerve Damage Count", nerveDamageCount);
         symptomsBreakdown.put("Shingles Count", shinglesCount);
         symptomsBreakdown.put("Sprain Count", sprainCount);

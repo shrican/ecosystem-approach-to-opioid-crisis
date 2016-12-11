@@ -733,6 +733,7 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
         prescription.setTotalOpioidsPrescribed(dosage * Integer.parseInt(txtNoOfDays.getText()));
         prescription.setOpdDate(new Date());
         prescription.setPatientScoreStatus(patientScoreStatus);
+        prescription.setSymptoms(symptoms);
 
         workRequest.setResolveDate(new Date());
         workRequest.setStatus("Patient diagnosed");
