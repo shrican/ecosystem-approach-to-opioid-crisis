@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class PharmaceuticalCompanyEnterprise extends Enterprise {
 
     private int stock;
+    private String opioidName;
 
     public int getStock() {
         return stock;
@@ -23,13 +24,19 @@ public class PharmaceuticalCompanyEnterprise extends Enterprise {
     public void setStock(int stock) {
         this.stock = stock;
     }
-    
+
+    public String getOpioidName() {
+        return opioidName;
+    }
+
+    public void setOpioidName(String opioidName) {
+        this.opioidName = opioidName;
+    }
+
     public PharmaceuticalCompanyEnterprise(String name) {
         super(name, EnterpriseType.PharmaceuticalCompanyEnterprise);
         stock = 5000;
     }
-    
-    
 
     @Override
     public ArrayList<Role> getSupportedRole() {

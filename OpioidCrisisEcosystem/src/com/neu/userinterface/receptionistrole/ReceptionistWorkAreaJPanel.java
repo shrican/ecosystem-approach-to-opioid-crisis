@@ -55,14 +55,17 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
                 if (organization instanceof DoctorOrganization) {
                     for (WorkRequest scheduleAppointmentWorkRequest : organization.getWorkQueue().getWorkRequestList()) {
                         Object[] row = new Object[6];
-                        Patient patient = ((ScheduleAppointmentWorkRequest) scheduleAppointmentWorkRequest).getPatient();
-                        row[0] = ((ScheduleAppointmentWorkRequest) scheduleAppointmentWorkRequest).getId();
-                        row[1] = patient;
-                        row[2] = patient.getAge();
-                        row[3] = patient.getGender();
-                        row[4] = scheduleAppointmentWorkRequest.getStatus();
-                        row[5] = scheduleAppointmentWorkRequest.getReceiver().getEmployee().getName();
-                        dtm.addRow(row);
+
+                        if (scheduleAppointmentWorkRequest instanceof ScheduleAppointmentWorkRequest) {
+                            Patient patient = ((ScheduleAppointmentWorkRequest) scheduleAppointmentWorkRequest).getPatient();
+                            row[0] = ((ScheduleAppointmentWorkRequest) scheduleAppointmentWorkRequest).getId();
+                            row[1] = patient;
+                            row[2] = patient.getAge();
+                            row[3] = patient.getGender();
+                            row[4] = scheduleAppointmentWorkRequest.getStatus();
+                            row[5] = scheduleAppointmentWorkRequest.getReceiver().getEmployee().getName();
+                            dtm.addRow(row);
+                        }
                     }
                 }
             }
