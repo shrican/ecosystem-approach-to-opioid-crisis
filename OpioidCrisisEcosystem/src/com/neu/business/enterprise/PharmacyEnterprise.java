@@ -12,6 +12,8 @@ import com.neu.business.patient.Patient;
 import com.neu.business.patient.PatientDirectory;
 import com.neu.business.patient.Prescription;
 import com.neu.business.role.Role;
+import com.neu.business.workqueue.ScheduleAppointmentWorkRequest;
+import com.neu.business.workqueue.WorkRequest;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
@@ -103,8 +105,15 @@ public class PharmacyEnterprise extends Enterprise {
             int biggest = 0;
             if(organization instanceof DoctorOrganization)
             {
-                int prescriptions = organization.getWorkQueue().getWorkRequestList().size();
+                int prescriptions = 0;
 //                doctors.put((DoctorOrganization) organization, prescriptions);
+                for(WorkRequest workRequest : organization.getWorkQueue().getWorkRequestList())
+                {
+                    if(workRequest instanceof ScheduleAppointmentWorkRequest)
+                    {
+                        prescriptions++;
+                    }
+                }
                 if(prescriptions>biggest){
                     biggest = prescriptions;
                     mostPrescribingDoctor = (DoctorOrganization) organization;
