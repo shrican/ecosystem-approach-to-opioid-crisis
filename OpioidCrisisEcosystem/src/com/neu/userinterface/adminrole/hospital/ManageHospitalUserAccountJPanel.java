@@ -26,12 +26,12 @@ public class ManageHospitalUserAccountJPanel extends javax.swing.JPanel {
      */
     private JPanel userProcessContainer;
     private Enterprise enterprise;
-    
+
     public ManageHospitalUserAccountJPanel(JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
-        
+
         popOrganizationComboBox();
         // employeeJComboBox.removeAllItems();
         populateUserTableData();
@@ -194,8 +194,6 @@ public class ManageHospitalUserAccountJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    
     public void popOrganizationComboBox() {
         organizationJComboBox.removeAllItems();
 
@@ -261,7 +259,6 @@ public class ManageHospitalUserAccountJPanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(null, "New user account created");
         populateUserTableData();
     }//GEN-LAST:event_createUserJButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;

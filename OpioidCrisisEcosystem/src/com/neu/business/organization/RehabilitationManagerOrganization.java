@@ -16,6 +16,8 @@ import java.util.ArrayList;
  */
 public class RehabilitationManagerOrganization extends Organization {
 
+    
+    
     public RehabilitationManagerOrganization() {
         super(Type.RehabilitationManager.getValue());
     }

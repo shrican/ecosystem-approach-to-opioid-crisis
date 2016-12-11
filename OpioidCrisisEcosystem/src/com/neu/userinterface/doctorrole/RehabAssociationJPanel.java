@@ -30,46 +30,40 @@ public class RehabAssociationJPanel extends javax.swing.JPanel {
      * Creates new form RehabAssociationJPanel
      */
     private JPanel userProcessContainer;
-//    private Patient patient;
     private Network network;
     private DoctorOrganization doctorOrganization;
-    private UserAccount userAccount;
+    private UserAccount doctorUserAccount;
     private ArrayList<Patient> doctorRecommendations;
 
-    public RehabAssociationJPanel(JPanel userProcessContainer, Network network, UserAccount userAccount, ArrayList<Patient> doctorRecommendations) {
+    public RehabAssociationJPanel(JPanel userProcessContainer, Network network, UserAccount userAccount, DoctorOrganization doctorOrganization) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-//        this.patient = patient;
         this.network = network;
         this.doctorOrganization = doctorOrganization;
-        this.userAccount = userAccount;
-        this.doctorRecommendations = doctorRecommendations;
-        
+        this.doctorUserAccount = userAccount;
+
         populateRehabsComboBox();
         populateAddictedPatientsTable();
     }
-    
-    public void populateRehabsComboBox()
-    {
-        for(Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList())
-        {
-            if(enterprise instanceof CommunityRehabEnterprise)
-            {
-                comboBoxRehabCenters.addItem(enterprise);
+
+    public void populateRehabsComboBox() {
+        for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+            if (enterprise instanceof CommunityRehabEnterprise) {
+                comboBoxRehabCenters.addItem(enterprise.getName());
             }
         }
     }
-    
-    public void populateAddictedPatientsTable()
-    {
-        DefaultTableModel dtm = (DefaultTableModel)tblOpioidAddictedPatients.getModel();
+
+    public void populateAddictedPatientsTable() {
+        DefaultTableModel dtm = (DefaultTableModel) tblOpioidAddictedPatients.getModel();
         dtm.setRowCount(0);
-        
-        for(Patient patient : doctorRecommendations)
-        {
-            Object [] row = new Object [2];
-            row[1] = patient;
-            row[2] = patient.getRehabStatus();
+
+        doctorRecommendations = doctorOrganization.getDoctorRecommendations();
+
+        for (Patient patient : doctorRecommendations) {
+            Object[] row = new Object[2];
+            row[0] = patient;
+            row[1] = patient.getRehabStatus();
             dtm.addRow(row);
         }
     }
@@ -192,36 +186,16 @@ public class RehabAssociationJPanel extends javax.swing.JPanel {
         Organization rehabilitationCompanyManagerOrganization = null;
 
         Patient patient = (Patient) tblOpioidAddictedPatients.getValueAt(tblOpioidAddictedPatients.getSelectedRow(), 0);
-        
+
         SendToRehabilitationWorkRequest sendToRehabilitationWorkRequest = new SendToRehabilitationWorkRequest();
         sendToRehabilitationWorkRequest.setStatus("Sent to rehab");
-        sendToRehabilitationWorkRequest.setSender(userAccount);
+        sendToRehabilitationWorkRequest.setSender(doctorUserAccount);
         sendToRehabilitationWorkRequest.setPatient(patient);
 
-        userAccount.getWorkQueue().getWorkRequestList().add(sendToRehabilitationWorkRequest);
+        doctorUserAccount.getWorkQueue().getWorkRequestList().add(sendToRehabilitationWorkRequest);
         doctorOrganization.getWorkQueue().getWorkRequestList().add(sendToRehabilitationWorkRequest);
 
-//        for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
-//            if (enterprise instanceof CommunityRehabEnterprise) {
-//                commRehabEnterprise = enterprise;
-//                break;
-//            }
-//
-//        }
-
-        commRehabEnterprise = (CommunityRehabEnterprise) comboBoxRehabCenters.getSelectedItem();
-        
-//        for(Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList())
-//        {
-//            if(enterprise instanceof CommunityRehabEnterprise)
-//            {
-//                String enterpriseName = enterprise.getName();
-//                if(comboBoxRehabCenters.getSelectedItem().equals(enterpriseName))
-//                {
-//                    commRehabEnterprise = enterprise;
-//                }
-//            }
-//        }
+        commRehabEnterprise = (CommunityRehabEnterprise) network.getEnterpriseByName((String) comboBoxRehabCenters.getSelectedItem());
 
         for (Organization organization : commRehabEnterprise.getOrganizationDirectory().getOrganizationList()) {
             if (organization instanceof RehabilitationManagerOrganization) {
@@ -232,17 +206,17 @@ public class RehabAssociationJPanel extends javax.swing.JPanel {
 
         if (rehabilitationCompanyManagerOrganization != null) {
             rehabilitationCompanyManagerOrganization.getWorkQueue().getWorkRequestList().add(sendToRehabilitationWorkRequest);
-            userAccount.getWorkQueue().getWorkRequestList().add(sendToRehabilitationWorkRequest);
-            for (UserAccount account : rehabilitationCompanyManagerOrganization.getUserAccountDirectory().getUserAccountList()) {
+
+            for (UserAccount rehabManagerAccount : rehabilitationCompanyManagerOrganization.getUserAccountDirectory().getUserAccountList()) {
                 {
-                    account.getWorkQueue().getWorkRequestList().add(sendToRehabilitationWorkRequest);
-                    sendToRehabilitationWorkRequest.setReceiver(account);
+                    rehabManagerAccount.getWorkQueue().getWorkRequestList().add(sendToRehabilitationWorkRequest);
+                    sendToRehabilitationWorkRequest.setReceiver(rehabManagerAccount);
 
                 }
             }
         }
-        
-        JOptionPane.showMessageDialog(null, patient.getName()+" sent to "+commRehabEnterprise.getName());
+
+        JOptionPane.showMessageDialog(null, patient.getName() + " sent to " + commRehabEnterprise.getName());
     }//GEN-LAST:event_btnSendToRehabActionPerformed
 
     private void backJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton1ActionPerformed

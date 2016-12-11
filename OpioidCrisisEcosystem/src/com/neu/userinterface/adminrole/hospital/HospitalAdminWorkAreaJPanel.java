@@ -21,18 +21,17 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form adminWorkAreaJPanel
      */
-    
     private JPanel userProcessContainer;
     private Enterprise enterprise;
     private PatientDirectory patientDirectory;
     private Network network;
-    
+
     public HospitalAdminWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise, Network network) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         this.network = network;
-        
+
     }
 
     /**
@@ -120,7 +119,7 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void manageHospitalOrgJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageHospitalOrgJButtonActionPerformed
         // TODO add your handling code here:
-        
+
         ManageHospitalOrganizationJPanel manageHospitalOrganizationJPanel = new ManageHospitalOrganizationJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
         userProcessContainer.add("manageHospitalOrganizationJPanel", manageHospitalOrganizationJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
@@ -133,29 +132,28 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
         userProcessContainer.add("manageHospitalEmployeeJPanel", manageHospitalEmployeeJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-        
+
     }//GEN-LAST:event_manageHospitalEmpJButtonActionPerformed
 
     private void manageHospitalUsersJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageHospitalUsersJButtonActionPerformed
         // TODO add your handling code here:
-        
+
         ManageHospitalUserAccountJPanel manageHospitalUserAccountJPanel = new ManageHospitalUserAccountJPanel(userProcessContainer, enterprise);
         userProcessContainer.add("manageHospitalUserAccountJPanel", manageHospitalUserAccountJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-        
+
     }//GEN-LAST:event_manageHospitalUsersJButtonActionPerformed
 
     private void manageHospitalRehabAssoJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageHospitalRehabAssoJButtonActionPerformed
         // TODO add your handling code here:
-        
+
         ManageHospitalRehabAssociationJPanel manageHospitalRehabAssociationJPanel = new ManageHospitalRehabAssociationJPanel(userProcessContainer, enterprise, network);
         userProcessContainer.add("manageHospitalRehabAssociationJPanel", manageHospitalRehabAssociationJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-        
-    }//GEN-LAST:event_manageHospitalRehabAssoJButtonActionPerformed
 
+    }//GEN-LAST:event_manageHospitalRehabAssoJButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

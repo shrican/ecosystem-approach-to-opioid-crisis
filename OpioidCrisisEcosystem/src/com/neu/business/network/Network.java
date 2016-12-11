@@ -110,4 +110,17 @@ public class Network {
         }
         return discrepancy;
     }
+
+    public Enterprise getEnterpriseByName(String name) {
+        Enterprise enterprise = null;
+
+        for (Enterprise e : enterpriseDirectory.getEnterpriseList()) {
+            if (e.getName().equals(name)) {
+                enterprise = e;
+            }
+        }
+
+        return enterprise;
+    }
+
 }

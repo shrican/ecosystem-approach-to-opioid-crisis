@@ -7,7 +7,6 @@ package com.neu.userinterface.chemistrole;
 
 import com.neu.business.enterprise.Enterprise;
 import com.neu.business.enterprise.PharmaceuticalCompanyEnterprise;
-import com.neu.business.enterprise.PharmacyEnterprise;
 import com.neu.business.network.Network;
 import com.neu.business.organization.ChemistOrganization;
 import com.neu.business.organization.Organization;
@@ -252,7 +251,6 @@ public class OrderOpioidsJPanel extends javax.swing.JPanel {
                 pharmaceuticalCompanyEnterprise = enterprise;
                 break;
             }
-
         }
 
         for (Organization organization : pharmaceuticalCompanyEnterprise.getOrganizationDirectory().getOrganizationList()) {

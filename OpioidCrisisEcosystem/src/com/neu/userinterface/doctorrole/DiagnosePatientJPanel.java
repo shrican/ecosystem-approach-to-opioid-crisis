@@ -19,6 +19,7 @@ import com.neu.business.useraccount.UserAccount;
 import com.neu.business.workqueue.ScheduleAppointmentWorkRequest;
 import com.neu.business.workqueue.SendToRehabilitationWorkRequest;
 import java.awt.CardLayout;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -35,18 +36,18 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
      */
     private JPanel userProcessContainer;
     private Patient patient;
-    private UserAccount userAccount;
+    private UserAccount doctorUserAccount;
     private ScheduleAppointmentWorkRequest workRequest;
     private Network network;
     private DoctorOrganization doctorOrganization;
 
     public DiagnosePatientJPanel(JPanel userProcessContainer, Patient patient, Network network, DoctorOrganization doctorOrganization, ScheduleAppointmentWorkRequest workRequest, UserAccount userAccount) {
-       initComponents();
+        initComponents();
 
         this.userProcessContainer = userProcessContainer;
         this.patient = patient;
         this.workRequest = workRequest;
-        this.userAccount = userAccount;
+        this.doctorUserAccount = userAccount;
         this.doctorOrganization = doctorOrganization;
         this.network = network;
 
@@ -669,7 +670,7 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
         Symptoms symptoms = patient.getSymptomsHistory().addSymptoms();
         Prescription prescription = patient.getPrescriptionHistory().addPrescription();
         prescription.setPatientName(patient.getName());
-        prescription.setDoctorName(userAccount.getEmployee().getName());
+        prescription.setDoctorName(doctorUserAccount.getEmployee().getName());
 
         if (checkAbdominalPain.isSelected()) {
             symptoms.setHasAbdominalPain(true);
@@ -726,8 +727,8 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
 
         workRequest.setResolveDate(new Date());
         workRequest.setStatus("Patient diagnosed");
-        
-        JOptionPane.showMessageDialog(null, patient.getName()+" has been diagnosed and prescribed a course of "+prescription.getTotalOpioidsPrescribed()+" opioids");
+
+        JOptionPane.showMessageDialog(null, patient.getName() + " has been diagnosed and prescribed a course of " + prescription.getTotalOpioidsPrescribed() + " opioids");
     }//GEN-LAST:event_btnDiagnoseActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
@@ -747,54 +748,50 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_checkMusclePainActionPerformed
 
     private void btnSendToRehabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendToRehabActionPerformed
-        // TODO add your handling code here:
+
+        patient.setRehabStatus("Rehab recommended");
+        doctorOrganization.addRehabRecommendations(patient);
         
-//        
-//        
+        JOptionPane.showMessageDialog(null, patient.getName() + " has been recommended for Rehab");
         
-        
-        
-        Enterprise commRehabEnterprise = null;
-        Organization rehabilitationCompanyManagerOrganization = null;
+//        Enterprise commRehabEnterprise = null;
+//        Organization rehabilitationCompanyManagerOrganization = null;
+//        SendToRehabilitationWorkRequest sendToRehabilitationWorkRequest = new SendToRehabilitationWorkRequest();
+//        sendToRehabilitationWorkRequest.setStatus("Rehab recommended");
+//        sendToRehabilitationWorkRequest.setSender(doctorUserAccount);
+//        sendToRehabilitationWorkRequest.setPatient(patient);
+//
+//        doctorUserAccount.getWorkQueue().getWorkRequestList().add(sendToRehabilitationWorkRequest);
+//        doctorOrganization.getWorkQueue().getWorkRequestList().add(sendToRehabilitationWorkRequest);
+//
+//        for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+//            if (enterprise instanceof CommunityRehabEnterprise) {
+//                commRehabEnterprise = enterprise;
+//                break;
+//            }
+//        }
+//
+//        for (Organization organization : commRehabEnterprise.getOrganizationDirectory().getOrganizationList()) {
+//            if (organization instanceof RehabilitationManagerOrganization) {
+//                rehabilitationCompanyManagerOrganization = organization;
+//                break;
+//            }
+//        }
+//
+//        // get rehab manager user account, add work request to it
+//        if (rehabilitationCompanyManagerOrganization != null) {
+//            rehabilitationCompanyManagerOrganization.getWorkQueue().getWorkRequestList().add(sendToRehabilitationWorkRequest);
+////            doctorUserAccount.getWorkQueue().getWorkRequestList().add(sendToRehabilitationWorkRequest);
+//            for (UserAccount rehabManagerAccount : rehabilitationCompanyManagerOrganization.getUserAccountDirectory().getUserAccountList()) {
+//                {
+//                    rehabManagerAccount.getWorkQueue().getWorkRequestList().add(sendToRehabilitationWorkRequest);
+//                    sendToRehabilitationWorkRequest.setReceiver(rehabManagerAccount);
+//                    break;
+//                }
+//            }
+//        }
 
-        SendToRehabilitationWorkRequest sendToRehabilitationWorkRequest = new SendToRehabilitationWorkRequest();
-        sendToRehabilitationWorkRequest.setStatus("Rehab needed");
-        sendToRehabilitationWorkRequest.setSender(userAccount);
-        sendToRehabilitationWorkRequest.setPatient(patient);
-        patient.setRehabStatus("Rehab needed");
 
-        userAccount.getWorkQueue().getWorkRequestList().add(sendToRehabilitationWorkRequest);
-        doctorOrganization.getWorkQueue().getWorkRequestList().add(sendToRehabilitationWorkRequest);
-
-        for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
-            if (enterprise instanceof CommunityRehabEnterprise) {
-                commRehabEnterprise = enterprise;
-                break;
-            }
-
-        }
-
-        for (Organization organization : commRehabEnterprise.getOrganizationDirectory().getOrganizationList()) {
-            if (organization instanceof RehabilitationManagerOrganization) {
-                rehabilitationCompanyManagerOrganization = organization;
-                break;
-            }
-        }
-
-        if (rehabilitationCompanyManagerOrganization != null) {
-            rehabilitationCompanyManagerOrganization.getWorkQueue().getWorkRequestList().add(sendToRehabilitationWorkRequest);
-            userAccount.getWorkQueue().getWorkRequestList().add(sendToRehabilitationWorkRequest);
-            for (UserAccount account : rehabilitationCompanyManagerOrganization.getUserAccountDirectory().getUserAccountList()) {
-                {
-                    account.getWorkQueue().getWorkRequestList().add(sendToRehabilitationWorkRequest);
-                    sendToRehabilitationWorkRequest.setReceiver(account);
-
-                }
-            }
-        }  
-        
-//        JOptionPane.showMessageDialog(null, patient.getName()+" has been sent to "+ rehabilitationCompanyManagerOrganization.getName());
-        // get rehab manager user account, add work request to it
     }//GEN-LAST:event_btnSendToRehabActionPerformed
 
 

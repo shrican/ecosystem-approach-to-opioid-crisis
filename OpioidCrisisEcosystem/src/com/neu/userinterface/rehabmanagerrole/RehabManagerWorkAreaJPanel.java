@@ -34,12 +34,15 @@ public class RehabManagerWorkAreaJPanel extends javax.swing.JPanel {
     private PatientDirectory ecosystemPatientDirectory;
     private RehabilitationManagerOrganization organization;
 
-    public RehabManagerWorkAreaJPanel(JPanel userProcessContainer, RehabilitationManagerOrganization organization, Enterprise enterprise, PatientDirectory ecosystemPatientDirectory) {
+    private UserAccount rehabManagerAccount;
+
+    public RehabManagerWorkAreaJPanel(JPanel userProcessContainer, UserAccount rehabManagerAccount, RehabilitationManagerOrganization organization, Enterprise enterprise, PatientDirectory ecosystemPatientDirectory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         this.ecosystemPatientDirectory = ecosystemPatientDirectory;
         this.organization = organization;
+        this.rehabManagerAccount = rehabManagerAccount;
 
         populateRehabTable(ecosystemPatientDirectory);
     }
@@ -47,22 +50,21 @@ public class RehabManagerWorkAreaJPanel extends javax.swing.JPanel {
     public void populateRehabTable(PatientDirectory ecosystemPatientDirectory) {
         DefaultTableModel dtm = (DefaultTableModel) tblPatient.getModel();
         dtm.setRowCount(0);
-        for (Patient patient : ecosystemPatientDirectory.getPatientList()) {
-            String patientName = patient.getName();
-                for (UserAccount user : organization.getUserAccountDirectory().getUserAccountList()) {
-                    for (WorkRequest workRequest : user.getWorkQueue().getWorkRequestList()) {
-                            
-                            
-                                Object[] row = new Object[4];
-                                row[0] = patient.getId();
-                                row[1] = patient;
-                                row[2] = patient.getRehabStatus();
-                                dtm.addRow(row);
-                        
-                    }
-                
-            }
+
+        for (WorkRequest workRequest : rehabManagerAccount.getWorkQueue().getWorkRequestList()) {
+
+            SendToRehabilitationWorkRequest sendToRehabilitationWorkRequest = (SendToRehabilitationWorkRequest) workRequest;
+            Patient patient = sendToRehabilitationWorkRequest.getPatient();
+
+            Object[] row = new Object[4];
+            row[0] = patient.getId();
+            row[1] = patient;
+            row[2] = patient.getRehabStatus();
+            row[3] = sendToRehabilitationWorkRequest.getSender().getEmployee().getName();
+            dtm.addRow(row);
+
         }
+
     }
 
     /**
@@ -86,14 +88,14 @@ public class RehabManagerWorkAreaJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Patient ID", "Patient", "Status"
+                "Patient ID", "Patient", "Status", "Doctor"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -109,6 +111,7 @@ public class RehabManagerWorkAreaJPanel extends javax.swing.JPanel {
             tblPatient.getColumnModel().getColumn(0).setResizable(false);
             tblPatient.getColumnModel().getColumn(1).setResizable(false);
             tblPatient.getColumnModel().getColumn(2).setResizable(false);
+            tblPatient.getColumnModel().getColumn(3).setResizable(false);
         }
 
         btnViewPatientDetails.setText("View Patient Details");

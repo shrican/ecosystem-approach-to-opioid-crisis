@@ -22,7 +22,7 @@ public class RehabilitationManagerRole extends Role {
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem system) {
-        return new RehabManagerWorkAreaJPanel(userProcessContainer,(RehabilitationManagerOrganization)organization, enterprise, system.getPatientDirectory());
+        return new RehabManagerWorkAreaJPanel(userProcessContainer,account ,(RehabilitationManagerOrganization)organization, enterprise, system.getPatientDirectory());
     }
     
 }

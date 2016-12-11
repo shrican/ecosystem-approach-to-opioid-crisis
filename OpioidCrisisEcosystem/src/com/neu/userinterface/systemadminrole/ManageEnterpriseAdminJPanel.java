@@ -218,17 +218,19 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void addUserAccountJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserAccountJButtonActionPerformed
+       
+        Network network = (Network) networkJComboBox.getSelectedItem();
 
-        Enterprise enterprise = (Enterprise) enterpriseJComboBox.getSelectedItem();
+        Enterprise enterprise =  network.getEnterpriseByName((String) enterpriseJComboBox.getSelectedItem());
 
         String username = usernameJTextField.getText();
         String password = String.valueOf(passwordJPasswordField.getPassword());
         String name = nameJTextField.getText();
 
         Employee employee = enterprise.getEmployeeDirectory().createEmployee(name);
-        
+
         UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new AdminRole());
-        JOptionPane.showMessageDialog(null, enterprise.getName()+"' admin user account created");
+        JOptionPane.showMessageDialog(null, enterprise.getName() + "' admin user account created");
         populateTable();
     }//GEN-LAST:event_addUserAccountJButtonActionPerformed
 
@@ -244,7 +246,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         enterpriseJComboBox.removeAllItems();
 
         for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
-            enterpriseJComboBox.addItem(enterprise);
+            enterpriseJComboBox.addItem(enterprise.getName());
         }
 
     }

@@ -29,7 +29,7 @@ public class ManageHospitalRehabAssociationJPanel extends javax.swing.JPanel {
     public ManageHospitalRehabAssociationJPanel(JPanel userProcessContainer, Enterprise enterprise, Network network) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.enterprise = (HospitalEnterprise)enterprise;
+        this.enterprise = (HospitalEnterprise) enterprise;
         this.network = network;
         populateRehabComboBox();
     }
@@ -112,10 +112,9 @@ public class ManageHospitalRehabAssociationJPanel extends javax.swing.JPanel {
         network.getEnterpriseDirectory().getEnterpriseList().stream()
                 .filter((e) -> (e.getEnterpriseType().getValue().equals("Community Rehab Enterprise")))
                 .forEach((e) -> {
-                    comboBoxRehab.addItem(e);
+                    comboBoxRehab.addItem(e.getName());
                 });
     }
-
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
         // TODO add your handling code here:
@@ -127,23 +126,23 @@ public class ManageHospitalRehabAssociationJPanel extends javax.swing.JPanel {
 
     private void btnAssociateRehabActionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssociateRehabActionActionPerformed
         // TODO add your handling code here:
-        Enterprise.EnterpriseType type = (Enterprise.EnterpriseType) comboBoxRehab.getSelectedItem();
-        
-        if (type == null) {
-         JOptionPane.showMessageDialog(null, "Select a Rehabilitation");
-           return;
-        }
-        
-        CommunityRehabEnterprise commRehabEnterprise = (CommunityRehabEnterprise)comboBoxRehab.getSelectedItem();
-      for(CommunityRehabEnterprise en : enterprise.getAssociatedCommRehabList()){
-          if(en.equals(commRehabEnterprise))
-              JOptionPane.showMessageDialog(null,"Already associated with this rehab");
-          return;
-      }
-        enterprise.addAssociatedRehabilitation(commRehabEnterprise);
-        JOptionPane.showMessageDialog(null, enterprise.getName()+" is now associated with "+commRehabEnterprise.getName());
-    }//GEN-LAST:event_btnAssociateRehabActionActionPerformed
 
+        CommunityRehabEnterprise commRehabEnterprise = (CommunityRehabEnterprise) network.getEnterpriseByName((String) comboBoxRehab.getSelectedItem());
+
+        if (commRehabEnterprise == null) {
+            JOptionPane.showMessageDialog(null, "Select a Rehabilitation");
+            return;
+        }
+
+        for (CommunityRehabEnterprise en : enterprise.getAssociatedCommRehabList()) {
+            if (en.equals(commRehabEnterprise)) {
+                JOptionPane.showMessageDialog(null, "Already associated with this rehab");
+            }
+            return;
+        }
+        enterprise.addAssociatedRehabilitation(commRehabEnterprise);
+        JOptionPane.showMessageDialog(null, enterprise.getName() + " is now associated with " + commRehabEnterprise.getName());
+    }//GEN-LAST:event_btnAssociateRehabActionActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;

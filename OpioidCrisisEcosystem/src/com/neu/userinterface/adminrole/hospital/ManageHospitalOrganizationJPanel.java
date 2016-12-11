@@ -25,26 +25,25 @@ public class ManageHospitalOrganizationJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ManageHospitalOrganizationJPanel
      */
-    
     private JPanel userProcessContainer;
     private OrganizationDirectory organizationDirectory;
-    
+
     public ManageHospitalOrganizationJPanel(JPanel userProcessContainer, OrganizationDirectory organizationDirectory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.organizationDirectory = organizationDirectory;
-        
+
         populateTable();
         populateCombo();
     }
-    
-    
+
     private void populateCombo() {
         organizationJComboBox.removeAllItems();
         for (Type type : Organization.Type.values()) {
             if (!type.getValue().equals(Type.Admin.getValue())) {
-                if(type.getValue().equals("Doctor Organization")||type.getValue().equals("Receptionist Organization"))
-                organizationJComboBox.addItem(type);
+                if (type.getValue().equals("Doctor Organization") || type.getValue().equals("Receptionist Organization")) {
+                    organizationJComboBox.addItem(type);
+                }
             }
         }
     }
@@ -177,7 +176,7 @@ public class ManageHospitalOrganizationJPanel extends javax.swing.JPanel {
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
         // TODO add your handling code here:
-        
+
         userProcessContainer.remove(this);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
@@ -194,7 +193,6 @@ public class ManageHospitalOrganizationJPanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(null, "New organization created");
         populateTable();
     }//GEN-LAST:event_addJButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addJButton;

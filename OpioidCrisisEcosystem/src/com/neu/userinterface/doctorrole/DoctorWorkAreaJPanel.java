@@ -31,6 +31,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
     private UserAccount userAccount;
     private PatientDirectory patientDirectory;
     private Network network;
+    private ArrayList<Patient> doctorRecommendations;
 
     /**
      * Creates new form doctorWorkArea
@@ -43,6 +44,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.userAccount = userAccount;
         this.network = network;
+
     }
 
     /**
@@ -56,7 +58,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         btnManageAddictedPatients = new javax.swing.JButton();
-        btnManageSchedule = new javax.swing.JButton();
+        btnDiagnosePatients = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -70,10 +72,10 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnManageSchedule.setText("Diagnose Patients");
-        btnManageSchedule.addActionListener(new java.awt.event.ActionListener() {
+        btnDiagnosePatients.setText("Diagnose Patients");
+        btnDiagnosePatients.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnManageScheduleActionPerformed(evt);
+                btnDiagnosePatientsActionPerformed(evt);
             }
         });
 
@@ -88,7 +90,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnManageAddictedPatients)
                         .addGap(141, 141, 141)
-                        .addComponent(btnManageSchedule)))
+                        .addComponent(btnDiagnosePatients)))
                 .addContainerGap(640, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -99,39 +101,31 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(75, 75, 75)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnManageAddictedPatients)
-                    .addComponent(btnManageSchedule))
+                    .addComponent(btnDiagnosePatients))
                 .addContainerGap(545, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnManageScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageScheduleActionPerformed
+    private void btnDiagnosePatientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagnosePatientsActionPerformed
         // TODO add your handling code here:
-        
         ManageScheduleJPanel manageScheduleJPanel = new ManageScheduleJPanel(userProcessContainer, userAccount, doctorOrganization, enterprise, patientDirectory, network);
         userProcessContainer.add("manageScheduleJPanel", manageScheduleJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-    }//GEN-LAST:event_btnManageScheduleActionPerformed
+    }//GEN-LAST:event_btnDiagnosePatientsActionPerformed
 
     private void btnManageAddictedPatientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageAddictedPatientsActionPerformed
-        // what to do with this button?
-        ArrayList<Patient> doctorRecommendations = new ArrayList<>();
-        
-        for(WorkRequest workRequest : userAccount.getWorkQueue().getWorkRequestList())
-        {
-            if(workRequest instanceof SendToRehabilitationWorkRequest)
-            {
-                doctorRecommendations.add(((SendToRehabilitationWorkRequest) workRequest).getPatient());
-            }
-        }
-        RehabAssociationJPanel rehabAssociationJPanel = new RehabAssociationJPanel(userProcessContainer, network, userAccount, doctorRecommendations);
-        
+
+        RehabAssociationJPanel rehabAssociationJPanel = new RehabAssociationJPanel(userProcessContainer, network, userAccount, doctorOrganization);
+        userProcessContainer.add("RehabAssociationJPanel", rehabAssociationJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnManageAddictedPatientsActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDiagnosePatients;
     private javax.swing.JButton btnManageAddictedPatients;
-    private javax.swing.JButton btnManageSchedule;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
