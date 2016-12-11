@@ -40,6 +40,7 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
     private ScheduleAppointmentWorkRequest workRequest;
     private Network network;
     private DoctorOrganization doctorOrganization;
+    private String patientScoreStatus;
 
     public DiagnosePatientJPanel(JPanel userProcessContainer, Patient patient, Network network, DoctorOrganization doctorOrganization, ScheduleAppointmentWorkRequest workRequest, UserAccount userAccount) {
         initComponents();
@@ -61,7 +62,7 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
         txtFieldPatientAge.setText(String.valueOf(patient.getAge()));
         txtFieldPatientGender.setText(patient.getGender());
         txtFieldPatientBloodGroup.setText(patient.getBloodGroup());
-        String patientScoreStatus = "New patient";
+        patientScoreStatus = "New patient";
         if (patient.getBayesianOpioidAddictionScore() > 0 && patient.getBayesianOpioidAddictionScore() <= 5) {
             patientScoreStatus = "Low";
         } else if (patient.getBayesianOpioidAddictionScore() > 5 && patient.getBayesianOpioidAddictionScore() <= 10) {
@@ -731,6 +732,7 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
         prescription.setDrugName("Codeine");
         prescription.setTotalOpioidsPrescribed(dosage * Integer.parseInt(txtNoOfDays.getText()));
         prescription.setOpdDate(new Date());
+        prescription.setPatientScoreStatus(patientScoreStatus);
 
         workRequest.setResolveDate(new Date());
         workRequest.setStatus("Patient diagnosed");

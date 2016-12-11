@@ -146,13 +146,13 @@ public class PharmacyAdminWorkAreaJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel2)
                     .addComponent(txtInitialStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnUpdateStock))
-                .addGap(80, 80, 80)
-                .addComponent(userJButton)
-                .addGap(70, 70, 70)
+                .addGap(138, 138, 138)
                 .addComponent(manageOrganizationJButton)
-                .addGap(72, 72, 72)
+                .addGap(28, 28, 28)
                 .addComponent(manageEmployeeJButton)
-                .addContainerGap(370, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addComponent(userJButton)
+                .addContainerGap(397, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {enterpriseLabel, jLabel1, manageEmployeeJButton, manageOrganizationJButton, userJButton, valueLabel});

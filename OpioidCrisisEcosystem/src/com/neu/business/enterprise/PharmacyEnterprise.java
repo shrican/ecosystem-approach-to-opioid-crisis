@@ -96,16 +96,19 @@ public class PharmacyEnterprise extends Enterprise {
     
     public void mostDoctorPrescriptions(HospitalEnterprise hospitalEnterprise)
     {
-        HashMap<DoctorOrganization, Integer> doctors = new HashMap<>();
+//        HashMap<DoctorOrganization, Integer> doctors = new HashMap<>();
+        DoctorOrganization mostPrescribingDoctor;
         for(Organization organization : hospitalEnterprise.getOrganizationDirectory().getOrganizationList())
         {
             int biggest = 0;
             if(organization instanceof DoctorOrganization)
             {
                 int prescriptions = organization.getWorkQueue().getWorkRequestList().size();
-                doctors.put((DoctorOrganization) organization, prescriptions);
-                if(prescriptions>biggest)
+//                doctors.put((DoctorOrganization) organization, prescriptions);
+                if(prescriptions>biggest){
                     biggest = prescriptions;
+                    mostPrescribingDoctor = (DoctorOrganization) organization;
+                }
             }
             
         }

@@ -131,7 +131,7 @@ public class ManagePharmacyOrganizationJPanel extends javax.swing.JPanel {
         jLabel1.setText("Organization Type ");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel4.setText("Manage Pharmacy Employees Work Area");
+        jLabel4.setText("Manage Pharmacy Organization Work Area");
 
         jLabel2.setText("Organization Name");
 
@@ -149,13 +149,13 @@ public class ManagePharmacyOrganizationJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(100, 100, 100)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(backJButton)
                                 .addGap(230, 230, 230)
                                 .addComponent(addJButton))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(199, 199, 199)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -166,12 +166,9 @@ public class ManagePharmacyOrganizationJPanel extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(organizationJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(organizationJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(675, Short.MAX_VALUE))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel1, organizationJComboBox});
-
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -208,9 +205,14 @@ public class ManagePharmacyOrganizationJPanel extends javax.swing.JPanel {
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
 
         Type type = (Type) organizationJComboBox.getSelectedItem();
-        ChemistOrganization chemistOrganization = (ChemistOrganization) organizationDirectory.createOrganization(type);
-        JOptionPane.showMessageDialog(null, "New organization created");
-
+        for (Organization org : organizationDirectory.getOrganizationList()) {
+            if (type.getValue().equals(Type.Chemist.getValue())) {
+                JOptionPane.showMessageDialog(null, "Pharmacy organization already exists");
+                return;
+            }
+        }
+        organizationDirectory.createOrganization(type);
+        JOptionPane.showMessageDialog(null, "New Pharmacy organization created");
         populateTable();
     }//GEN-LAST:event_addJButtonActionPerformed
 

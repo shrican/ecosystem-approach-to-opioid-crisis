@@ -5,6 +5,7 @@
  */
 package com.neu.business.organization;
 
+import com.neu.business.patient.Prescription;
 import com.neu.business.role.AdminRole;
 import com.neu.business.role.ChemistRole;
 import com.neu.business.role.Role;
@@ -18,10 +19,25 @@ public class ChemistOrganization extends Organization {
 
     private int stock;
     private ArrayList<String> stockChangeHistory;
+    private ArrayList<Prescription> ordersSold;
 
     public ChemistOrganization() {
         super(Type.Chemist.getValue());
         stockChangeHistory = new ArrayList<>();
+        ordersSold = new ArrayList<>();
+    }
+
+    public ArrayList<Prescription> getOrdersSold() {
+        return ordersSold;
+    }
+
+    public void setOrdersSold(ArrayList<Prescription> ordersSold) {
+        this.ordersSold = ordersSold;
+    }
+    
+    public void addOrder(Prescription prescription)
+    {
+        ordersSold.add(prescription);
     }
 
     public ArrayList<String> getStockChangeHistory() {

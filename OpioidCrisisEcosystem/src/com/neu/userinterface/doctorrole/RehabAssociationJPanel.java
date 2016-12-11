@@ -198,7 +198,8 @@ public class RehabAssociationJPanel extends javax.swing.JPanel {
         Organization rehabilitationCompanyManagerOrganization = null;
 
         Patient patient = (Patient) tblOpioidAddictedPatients.getValueAt(tblOpioidAddictedPatients.getSelectedRow(), 0);
-
+        
+        patient.setRehabStatus("Sent to rehab");
         SendToRehabilitationWorkRequest sendToRehabilitationWorkRequest = new SendToRehabilitationWorkRequest();
         sendToRehabilitationWorkRequest.setStatus("Sent to rehab");
         sendToRehabilitationWorkRequest.setSender(doctorUserAccount);

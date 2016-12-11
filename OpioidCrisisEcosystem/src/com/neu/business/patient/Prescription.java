@@ -25,6 +25,15 @@ public class Prescription {
     private String chemistName;
     private String doctorName;
     private Date dateOfFulfilment;
+    private String patientScoreStatus;
+
+    public String getPatientScoreStatus() {
+        return patientScoreStatus;
+    }
+
+    public void setPatientScoreStatus(String patientScoreStatus) {
+        this.patientScoreStatus = patientScoreStatus;
+    }
 
     public Date getDateOfFulfilment() {
         return dateOfFulfilment;
