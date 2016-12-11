@@ -52,7 +52,7 @@ public class DiscrepancyJPanel extends javax.swing.JPanel {
             for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
                 if (organization instanceof ChemistOrganization) {
                     int discrepancy = (int) network.pharmacyStockDiscrepancy((ChemistOrganization) organization);
-                    System.out.println("Discrepncy of " + organization.getName() + " is " + discrepancy);
+                    System.out.println("Discrepancy of " + organization.getName() + " is " + discrepancy);
                 }
 
             }

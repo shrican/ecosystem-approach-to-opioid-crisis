@@ -8,11 +8,14 @@ package com.neu.business.patient;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
+
 import java.util.HashSet;
+
+import java.util.HashSet;
+
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-import static javax.swing.text.StyleConstants.Family;
 
 /**
  *
@@ -171,7 +174,235 @@ public class PatientDirectory {
         return breakdown;
     }
 
-    /*
+    public HashMap<String, Integer> mostDoctorPrescriptions() {
+        String mostPrescribingDoctor = "";
+
+        int prescriptions = 0;
+
+        HashSet<String> doctorName = new HashSet<>();
+
+        int mostPrescriptions = 0;
+
+        HashMap<String, Integer> mostPrescriptionsDoctorMap = new HashMap<>();
+        for (Patient patient : patientList) {
+
+            for (Prescription prescription : patient.getPrescriptionHistory().getPrescriptionHistoryList()) {
+
+                doctorName.add(prescription.getDoctorName());
+
+            }
+
+        }
+        for (String doctor : doctorName) {
+
+            prescriptions = 0;
+
+            for (Patient patient : patientList) {
+
+                for (Prescription prescription : patient.getPrescriptionHistory().getPrescriptionHistoryList()) {
+
+                    if (prescription.getDoctorName().equals(doctor)) {
+                        prescriptions++;
+                    }
+
+                }
+
+            }
+
+            mostPrescriptionsDoctorMap.put(doctor, prescriptions);
+
+            if (prescriptions > mostPrescriptions) {
+
+                mostPrescriptions = prescriptions;
+
+                mostPrescribingDoctor = doctor;
+
+            }
+
+        }
+        return mostPrescriptionsDoctorMap;
+    }
+
+    public HashMap<String, Integer> fraudDoctorReport() {
+
+        int badPrescriptions = 0;
+        HashSet<String> doctorName = new HashSet<>();
+
+        HashMap<String, Integer> fraudDoctorMap = new HashMap<>();
+        for (Patient patient : patientList) {
+
+            for (Prescription prescription : patient.getPrescriptionHistory().getPrescriptionHistoryList()) {
+
+                if (prescription.getPatientScoreStatus().equals("High")) {
+
+                    doctorName.add(prescription.getDoctorName());
+
+                }
+            }
+
+        }
+        for (String doctor : doctorName) {
+
+            badPrescriptions = 0;
+
+            for (Patient patient : patientList) {
+
+                for (Prescription prescription : patient.getPrescriptionHistory().getPrescriptionHistoryList()) {
+
+                    if (prescription.getPatientScoreStatus().equals("High") && prescription.getDoctorName().equals(doctor)) {
+                        badPrescriptions++;
+
+                    }
+
+                }
+            }
+
+            fraudDoctorMap.put(doctor, badPrescriptions);
+        }
+
+        return fraudDoctorMap;
+    }
+
+    public HashMap<String, Integer> popularChemist() {
+        int prescriptionCount;
+
+        HashSet<String> chemistName = new HashSet<>();
+
+        HashMap<String, Integer> mostSellingChemistMap = new HashMap<>();
+
+        for (Patient patient : patientList) {
+
+            if (patient.getRehabStatus().equals("Sent to rehab") || patient.getRehabStatus().equals("Rehab recommended")) {
+
+                for (Prescription prescription : patient.getPrescriptionHistory().getPrescriptionHistoryList()) {
+
+                    if (prescription.isFulfilled()) {
+
+                        chemistName.add(prescription.getChemistName());
+
+                    }
+
+                }
+            }
+        }
+        for (String chemist : chemistName) {
+            prescriptionCount = 0;
+            for (Patient patient : patientList) {
+                for (Prescription prescription : patient.getPrescriptionHistory().getPrescriptionHistoryList()) {
+                    if (prescription.getChemistName().equals(chemist)) {
+
+                        prescriptionCount++;
+
+                    }
+                }
+            }
+            mostSellingChemistMap.put(chemist, prescriptionCount);//            if (prescriptions > mostPrescriptions) {
+
+//
+//                mostPrescriptions = prescriptions;
+//
+//                mostPrescribingDoctor = doctor;
+//
+//            }
+        }
+
+        return mostSellingChemistMap;
+
+    }
+
+    public HashMap<String, Integer> mostPrescribedSymptom() {
+
+        int lowerBackPainOpioids = 0;
+        int arthritisOpioids = 0;
+        int headacheOpioids = 0;
+        int multipleSclerosisOpioids = 0;
+        int fibromyalgiaOpioids = 0;
+        int shinglesOpioids = 0;
+        int nerveDamageOpioids = 0;
+        int cancerOpioids = 0;
+        int injuryOpioids = 0;
+        int brokenBonesOpioids = 0;
+        int abdominalPainOpioids = 0;
+        int intestinalDisorderOpioids = 0;
+        int infectionOpioids = 0;
+        int sprainOpioids = 0;
+        int muscleSpasmOpioids = 0;
+
+        for (Patient patient : patientList) {
+
+            for (Prescription prescription : patient.getPrescriptionHistory().getPrescriptionHistoryList()) {
+                Symptoms diagnosis = prescription.getSymptoms();
+
+                if (diagnosis.isHasAbdominalPain()) {
+                    abdominalPainOpioids += prescription.getTotalOpioidsPrescribed();
+                }
+                if (diagnosis.isHasArthritis()) {
+                    arthritisOpioids += prescription.getTotalOpioidsPrescribed();
+                }
+                if (diagnosis.isHasBrokenBones()) {
+                    brokenBonesOpioids += prescription.getTotalOpioidsPrescribed();
+                }
+                if (diagnosis.isHasCancer()) {
+                    cancerOpioids += prescription.getTotalOpioidsPrescribed();
+                }
+                if (diagnosis.isHasFibromyalgia()) {
+                    fibromyalgiaOpioids += prescription.getTotalOpioidsPrescribed();
+                }
+                if (diagnosis.isHasHeadache()) {
+                    headacheOpioids += prescription.getTotalOpioidsPrescribed();
+                }
+                if (diagnosis.isHasInfection()) {
+                    infectionOpioids += prescription.getTotalOpioidsPrescribed();
+                }
+                if (diagnosis.isHasInjury()) {
+                    injuryOpioids += prescription.getTotalOpioidsPrescribed();
+                }
+                if (diagnosis.isHasIntestinalDisorder()) {
+                    intestinalDisorderOpioids += prescription.getTotalOpioidsPrescribed();
+                }
+                if (diagnosis.isHasLowerBackPain()) {
+                    lowerBackPainOpioids += prescription.getTotalOpioidsPrescribed();
+                }
+                if (diagnosis.isHasMultipleSclerosis()) {
+                    multipleSclerosisOpioids += prescription.getTotalOpioidsPrescribed();
+                }
+                if (diagnosis.isHasMuscleSpasm()) {
+                    muscleSpasmOpioids += prescription.getTotalOpioidsPrescribed();
+                }
+                if (diagnosis.isHasNerveDamage()) {
+                    nerveDamageOpioids += prescription.getTotalOpioidsPrescribed();
+                }
+                if (diagnosis.isHasShingles()) {
+                    shinglesOpioids += prescription.getTotalOpioidsPrescribed();
+                }
+                if (diagnosis.isHasSprain()) {
+                    sprainOpioids += prescription.getTotalOpioidsPrescribed();
+                }
+            }
+        }
+
+        HashMap<String, Integer> symptomsPrescription = new HashMap<>();
+        symptomsPrescription.put("Abdominal Pain Count", abdominalPainOpioids);
+        symptomsPrescription.put("Arthritis Count", arthritisOpioids);
+        symptomsPrescription.put("Broken Bones Count", brokenBonesOpioids);
+        symptomsPrescription.put("Cancer Count", cancerOpioids);
+        symptomsPrescription.put("Fibromyalgia Count", fibromyalgiaOpioids);
+        symptomsPrescription.put("Headache Count", headacheOpioids);
+        symptomsPrescription.put("Infection Count", infectionOpioids);
+        symptomsPrescription.put("Injury Count", injuryOpioids);
+        symptomsPrescription.put("Intestinal Disorder", intestinalDisorderOpioids);
+        symptomsPrescription.put("Lower Back Pain Count", lowerBackPainOpioids);
+        symptomsPrescription.put("Multiple Sclerosis Count", multipleSclerosisOpioids);
+        symptomsPrescription.put("Muscle Spasm Count", muscleSpasmOpioids);
+        symptomsPrescription.put("Nerve Damage Count", nerveDamageOpioids);
+        symptomsPrescription.put("Shingles Count", shinglesOpioids);
+        symptomsPrescription.put("Sprain Count", sprainOpioids);
+
+        return symptomsPrescription;
+
+    }
+	
+	    /*
      * Finds Patient's baysian score wise highest symptoms that patient at each level (low, medium, high) showed
      */
     public void patientScoreStatusWiseHigestAbuseSymptoms() {
@@ -236,4 +467,5 @@ public class PatientDirectory {
             } // returning 0 would merge keys
         }
     }
+
 }

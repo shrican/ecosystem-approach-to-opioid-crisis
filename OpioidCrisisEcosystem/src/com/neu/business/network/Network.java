@@ -22,6 +22,8 @@ import com.neu.business.workqueue.WorkQueue;
 import com.neu.business.workqueue.WorkRequest;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 
 /**
  *
@@ -32,12 +34,10 @@ public class Network {
     private String name;
     private EnterpriseDirectory enterpriseDirectory;
     private EcoSystem system;
-    private ArrayList<String> fraudDoctorList;
 
     public Network(String name) {
         enterpriseDirectory = new EnterpriseDirectory();
         this.name = name;
-        fraudDoctorList = new ArrayList<>();
     }
 
     public EnterpriseDirectory getEnterpriseDirectory() {
@@ -116,21 +116,7 @@ public class Network {
         return discrepancy;
     }
 
-    public ArrayList<String> fraudDoctorReport() {
-            
-
-        for (Patient patient : system.getPatientDirectory().getPatientList()) {
-            for (Prescription prescription : patient.getPrescriptionHistory().getPrescriptionHistoryList()) {
-                if (prescription.getPatientScoreStatus().equals("High")) {
-                    fraudDoctorList.add(prescription.getDoctorName());
-                }
-            }
-        }
-        
-        return fraudDoctorList;
-
-    }
-
+    
     public Enterprise getEnterpriseByName(String name) {
         Enterprise enterprise = null;
 

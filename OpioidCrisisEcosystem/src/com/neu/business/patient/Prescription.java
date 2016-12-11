@@ -26,6 +26,15 @@ public class Prescription {
     private String doctorName;
     private Date dateOfFulfilment;
     private String patientScoreStatus;
+    private Symptoms symptoms;
+
+    public Symptoms getSymptoms() {
+        return symptoms;
+    }
+
+    public void setSymptoms(Symptoms symptoms) {
+        this.symptoms = symptoms;
+    }
 
     public String getPatientScoreStatus() {
         return patientScoreStatus;
@@ -77,6 +86,7 @@ public class Prescription {
 
     public Prescription() {
         id = String.valueOf(++count);
+        symptoms = new Symptoms();
     }
 
     public enum Dosage {
