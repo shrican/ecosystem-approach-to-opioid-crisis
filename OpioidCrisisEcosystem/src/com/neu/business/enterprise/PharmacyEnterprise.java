@@ -32,4 +32,8 @@ public class PharmacyEnterprise extends Enterprise {
     public void setOpioidStock(int opioidStock) {
         this.opioidStock = opioidStock;
     }
+    
+    public void pharmacyMostBusinessFromDoctors(){
+        
+    }
 }
