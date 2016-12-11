@@ -5,6 +5,7 @@
  */
 package com.neu.business.network;
 
+import com.neu.business.EcoSystem;
 import com.neu.business.enterprise.Enterprise;
 import com.neu.business.enterprise.PharmaceuticalCompanyEnterprise;
 import com.neu.business.enterprise.EnterpriseDirectory;
@@ -20,6 +21,7 @@ import com.neu.business.workqueue.PharmacySupplyWorkRequest;
 import com.neu.business.workqueue.WorkQueue;
 import com.neu.business.workqueue.WorkRequest;
 import java.awt.Color;
+import java.util.ArrayList;
 
 /**
  *
@@ -29,10 +31,13 @@ public class Network {
 
     private String name;
     private EnterpriseDirectory enterpriseDirectory;
+    private EcoSystem system;
+    private ArrayList<String> fraudDoctorList;
 
     public Network(String name) {
         enterpriseDirectory = new EnterpriseDirectory();
         this.name = name;
+        fraudDoctorList = new ArrayList<>();
     }
 
     public EnterpriseDirectory getEnterpriseDirectory() {
@@ -109,6 +114,21 @@ public class Network {
             discrepancy = 0;
         }
         return discrepancy;
+    }
+
+    public ArrayList<String> fraudDoctorReport() {
+            
+
+        for (Patient patient : system.getPatientDirectory().getPatientList()) {
+            for (Prescription prescription : patient.getPrescriptionHistory().getPrescriptionHistoryList()) {
+                if (prescription.getPatientScoreStatus().equals("High")) {
+                    fraudDoctorList.add(prescription.getDoctorName());
+                }
+            }
+        }
+        
+        return fraudDoctorList;
+
     }
 
     public Enterprise getEnterpriseByName(String name) {

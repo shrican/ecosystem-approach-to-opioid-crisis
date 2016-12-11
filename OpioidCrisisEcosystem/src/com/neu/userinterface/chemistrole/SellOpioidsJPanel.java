@@ -234,7 +234,8 @@ public class SellOpioidsJPanel extends javax.swing.JPanel {
         int stockSold = prescription.getTotalOpioidsPrescribed();
         int newStock = oldStock - stockSold;
         chemistOrganization.setStock(newStock);
-
+        chemistOrganization.addOrderSoldPrescription(prescription);
+        
         JOptionPane.showMessageDialog(null, prescription.getPatientName() + "'s prescription of " + prescription.getTotalOpioidsPrescribed() + " opioids fulfilled");
         populatePrescriptionTable();
         populateSoldOpioidsTable();

@@ -55,6 +55,10 @@ public class ChemistOrganization extends Organization {
     public void setStock(int stock) {
         this.stock = stock;
     }
+    
+    public void addOrderSoldPrescription(Prescription prescription){
+        ordersSold.add(prescription);
+    }
 
     @Override
     public ArrayList<Role> getSupportedRole() {
