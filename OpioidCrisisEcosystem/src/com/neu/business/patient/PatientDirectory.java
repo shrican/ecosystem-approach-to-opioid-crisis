@@ -6,7 +6,9 @@
 package com.neu.business.patient;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -105,6 +107,33 @@ public class PatientDirectory {
         }
 
         return bayesianOpioidAddictionScore;
+    }
+
+    /*
+        Finds Patient's baysian score wise highest symptoms that patient at each level (low, medium, high) showed
+     */
+    public void patientScoreStatusWiseHigestAbuseSymptoms() {
+
+        Map<String, Integer> lowBaysianScoreAbuseSymptomCntMap = new HashMap<>();
+        Map<String, Integer> mediumBaysianScoreAbuseSymptomCntMap = new HashMap<>();
+        Map<String, Integer> highBaysianScoreAbuseSymptomCntMap = new HashMap<>();
+        
+        int nauseaCount = 0;
+        int chestPainCount = 0;
+        int pupilaryConstrictionCount = 0;
+        int bloodShotEyesCount = 0;
+        int jointPainCount = 0;
+        int muscleTensionCount = 0;
+        int lowRespiratoryRateCount = 0;
+        int selfHarmCount = 0;
+        int insomniaCount = 0;
+        
+        
+        for (Patient patient : patientList) {
+            for (Prescription prescription : patient.getPrescriptionHistory().getPrescriptionHistoryList()) {
+
+            }
+        }
     }
 
 }

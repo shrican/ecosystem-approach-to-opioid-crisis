@@ -740,6 +740,8 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(null, patient.getName() + " has been diagnosed and prescribed a course of " + prescription.getTotalOpioidsPrescribed() + " opioids");
 
         btnDiagnose.setEnabled(false);
+        
+        
     }//GEN-LAST:event_btnDiagnoseActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
