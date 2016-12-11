@@ -150,7 +150,7 @@ public class ManageHospitalOrganizationJPanel extends javax.swing.JPanel {
                             .addGap(93, 93, 93)
                             .addComponent(jLabel2)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(organizationJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(organizationJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(345, Short.MAX_VALUE))
@@ -189,9 +189,22 @@ public class ManageHospitalOrganizationJPanel extends javax.swing.JPanel {
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
 
         Type type = (Type) organizationJComboBox.getSelectedItem();
+        for (Organization org : organizationDirectory.getOrganizationList()) {
+            if ((type.getValue().equals(Type.Doctor.getValue()))) {
+                JOptionPane.showMessageDialog(null, "Doctor organization already exists");
+                return;
+            } else if ((type.getValue().equals(Type.Receptionist.getValue()))) {
+
+                JOptionPane.showMessageDialog(null, "Reception organization already exists");
+                return;
+            }
+        }
+
         organizationDirectory.createOrganization(type);
         JOptionPane.showMessageDialog(null, "New organization created");
         populateTable();
+
+
     }//GEN-LAST:event_addJButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

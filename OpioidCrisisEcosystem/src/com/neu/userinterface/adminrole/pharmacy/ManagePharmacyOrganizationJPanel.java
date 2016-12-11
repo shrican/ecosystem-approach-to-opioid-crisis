@@ -166,12 +166,9 @@ public class ManagePharmacyOrganizationJPanel extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(organizationJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(organizationJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(675, Short.MAX_VALUE))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel1, organizationJComboBox});
-
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -208,9 +205,14 @@ public class ManagePharmacyOrganizationJPanel extends javax.swing.JPanel {
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
 
         Type type = (Type) organizationJComboBox.getSelectedItem();
-        ChemistOrganization chemistOrganization = (ChemistOrganization) organizationDirectory.createOrganization(type);
-        JOptionPane.showMessageDialog(null, "New organization created");
-
+        for (Organization org : organizationDirectory.getOrganizationList()) {
+            if (type.getValue().equals(Type.Chemist.getValue())) {
+                JOptionPane.showMessageDialog(null, "Pharmacy organization already exists");
+                return;
+            }
+        }
+        organizationDirectory.createOrganization(type);
+        JOptionPane.showMessageDialog(null, "New Pharmacy organization created");
         populateTable();
     }//GEN-LAST:event_addJButtonActionPerformed
 

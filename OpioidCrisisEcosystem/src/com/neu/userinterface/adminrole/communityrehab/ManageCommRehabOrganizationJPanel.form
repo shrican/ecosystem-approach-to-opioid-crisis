@@ -34,7 +34,7 @@
                           <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="organizationJComboBox" min="-2" pref="96" max="-2" attributes="0"/>
+                          <Component id="organizationJComboBox" min="-2" pref="226" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jScrollPane1" alignment="0" min="-2" pref="480" max="-2" attributes="0"/>
                       <Component id="jLabel1" alignment="0" min="-2" pref="259" max="-2" attributes="0"/>

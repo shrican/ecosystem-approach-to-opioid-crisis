@@ -44,9 +44,9 @@
                               <Component id="jTextField1" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Component id="jLabel1" linkSize="2" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="organizationJComboBox" linkSize="2" min="-2" pref="96" max="-2" attributes="0"/>
+                              <Component id="organizationJComboBox" min="-2" pref="193" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
