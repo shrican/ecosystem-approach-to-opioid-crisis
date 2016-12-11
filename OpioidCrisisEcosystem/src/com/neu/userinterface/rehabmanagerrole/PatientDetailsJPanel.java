@@ -265,6 +265,11 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
         jScrollPane3.setViewportView(tblPrescriptionHistory);
 
         btnRefresh.setText("Refresh Tables");
+        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshActionPerformed(evt);
+            }
+        });
 
         btnBack.setText("<<Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -470,8 +475,13 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
         patient.getOpioidWithdrawalSymptomsHistory().getOpioidWithdrawalSymptomsList().add(withdrawalSymptoms);
 
         JOptionPane.showMessageDialog(null, patient.getName() + "'s Withdrawal symptoms saved");
+        populateWithdrawalSymptoms();
 
     }//GEN-LAST:event_btnSaveSymptomsActionPerformed
+
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRefreshActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
