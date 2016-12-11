@@ -7,6 +7,9 @@ package com.neu.business.patient;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import java.util.HashSet;
+
 import java.util.List;
 
 /**
@@ -107,6 +110,7 @@ public class PatientDirectory {
 
         return bayesianOpioidAddictionScore;
     }
+
     
     public HashMap<String, Integer> generalSymptomsBreakdown(ArrayList<Patient> patientList)
     {
@@ -158,6 +162,39 @@ public class PatientDirectory {
         breakdown.put("Insomnia count", insomniaCount);
         
         return breakdown;
+    }
+       
+    public HashMap<HashSet<String>, Integer> fraudDoctorReport() {
+        int badPrescriptions = 0;
+
+        HashSet<String> doctorName = new HashSet<>();
+        HashMap<HashSet<String>, Integer> fraudDoctorMap = new HashMap<>();
+
+        for (Patient patient : patientList) {
+            for (Prescription prescription : patient.getPrescriptionHistory().getPrescriptionHistoryList()) {
+                if (prescription.getPatientScoreStatus().equals("High")) {
+                    doctorName.add(prescription.getDoctorName());
+                }
+
+            }
+        }
+
+        for (String doctor : doctorName) {
+            badPrescriptions = 0;
+            for (Patient patient : patientList) {
+                for (Prescription prescription : patient.getPrescriptionHistory().getPrescriptionHistoryList()) {
+                    if (prescription.getPatientScoreStatus().equals("High") && prescription.getDoctorName().equals(doctor)) {
+
+                        badPrescriptions++;
+                    }
+                }
+
+            }
+            fraudDoctorMap.put(doctorName, badPrescriptions);
+
+        }
+        return fraudDoctorMap;
+
     }
 
 }
