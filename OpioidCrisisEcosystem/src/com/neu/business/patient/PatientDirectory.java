@@ -111,9 +111,7 @@ public class PatientDirectory {
         return bayesianOpioidAddictionScore;
     }
 
-    
-    public HashMap<String, Integer> generalSymptomsBreakdown(ArrayList<Patient> patientList)
-    {
+    public HashMap<String, Integer> generalSymptomsBreakdown(ArrayList<Patient> patientList) {
         int nauseaCount = 0;
         int chestPainCount = 0;
         int pupilaryConstrictionCount = 0;
@@ -123,34 +121,41 @@ public class PatientDirectory {
         int lowRespiratoryRateCount = 0;
         int selfHarmCount = 0;
         int insomniaCount = 0;
-        
-        for(Patient patient : patientList)
-        {
-            for(OpioidAbuseSymptoms abuseSymptoms : patient.getOpioidAbuseSymptomsHistory().getOpioidAbuseSysmpomsList())
-            {
-                if(abuseSymptoms.hasBloodshotEyes())
+
+        for (Patient patient : patientList) {
+            for (OpioidAbuseSymptoms abuseSymptoms : patient.getOpioidAbuseSymptomsHistory().getOpioidAbuseSysmpomsList()) {
+                if (abuseSymptoms.hasBloodshotEyes()) {
                     bloodShotEyesCount++;
-                if(abuseSymptoms.hasChestPain())
+                }
+                if (abuseSymptoms.hasChestPain()) {
                     chestPainCount++;
-                if(abuseSymptoms.hasInsomnia())
+                }
+                if (abuseSymptoms.hasInsomnia()) {
                     insomniaCount++;
-                if(abuseSymptoms.hasJointPain())
+                }
+                if (abuseSymptoms.hasJointPain()) {
                     jointPainCount++;
-                if(abuseSymptoms.hasLowRespiratoryRate())
+                }
+                if (abuseSymptoms.hasLowRespiratoryRate()) {
                     lowRespiratoryRateCount++;
-                if(abuseSymptoms.hasMuscleTension())
+                }
+                if (abuseSymptoms.hasMuscleTension()) {
                     muscleTensionCount++;
-                if(abuseSymptoms.hasNausea())
+                }
+                if (abuseSymptoms.hasNausea()) {
                     nauseaCount++;
-                if(abuseSymptoms.hasPupilaryConstriction())
+                }
+                if (abuseSymptoms.hasPupilaryConstriction()) {
                     pupilaryConstrictionCount++;
-                if(abuseSymptoms.hasSelfHarm())
+                }
+                if (abuseSymptoms.hasSelfHarm()) {
                     selfHarmCount++;
+                }
             }
         }
-        
+
         HashMap<String, Integer> breakdown = new HashMap<>();
-        
+
         breakdown.put("Nausea count", nauseaCount);
         breakdown.put("Chest Pain count", chestPainCount);
         breakdown.put("Pupilary Constriction count", pupilaryConstrictionCount);
@@ -160,15 +165,15 @@ public class PatientDirectory {
         breakdown.put("Low Respiratory Rate count", lowRespiratoryRateCount);
         breakdown.put("Self Harm Count", selfHarmCount);
         breakdown.put("Insomnia count", insomniaCount);
-        
+
         return breakdown;
     }
-       
-    public HashMap<HashSet<String>, Integer> fraudDoctorReport() {
+
+    public HashMap<String, Integer> fraudDoctorReport() {
         int badPrescriptions = 0;
 
         HashSet<String> doctorName = new HashSet<>();
-        HashMap<HashSet<String>, Integer> fraudDoctorMap = new HashMap<>();
+        HashMap<String, Integer> fraudDoctorMap = new HashMap<>();
 
         for (Patient patient : patientList) {
             for (Prescription prescription : patient.getPrescriptionHistory().getPrescriptionHistoryList()) {
@@ -190,11 +195,57 @@ public class PatientDirectory {
                 }
 
             }
-            fraudDoctorMap.put(doctorName, badPrescriptions);
+            fraudDoctorMap.put(doctor, badPrescriptions);
 
         }
         return fraudDoctorMap;
 
+    }
+
+    public HashMap<String, Integer> popularChemist() {
+
+        int prescriptionCount;
+        HashSet<String> chemistName = new HashSet<>();
+        HashMap<String, Integer> mostSellingChemistMap = new HashMap<>();
+        for (Patient patient : patientList) {
+            if (patient.getRehabStatus().equals("Sent to rehab") || patient.getRehabStatus().equals("Rehab recommended")) {
+                for (Prescription prescription : patient.getPrescriptionHistory().getPrescriptionHistoryList()) {
+                    if (prescription.isFulfilled()) {
+                        chemistName.add(prescription.getChemistName());
+                    }
+                }
+
+            }
+
+        }
+
+        for (String chemist : chemistName) {
+
+            prescriptionCount = 0;
+
+            for (Patient patient : patientList) {
+
+                for (Prescription prescription : patient.getPrescriptionHistory().getPrescriptionHistoryList()) {
+
+                    if (prescription.getChemistName().equals(chemist)) {
+                        prescriptionCount++;
+                    }
+
+                }
+
+            }
+
+            mostSellingChemistMap.put(chemist, prescriptionCount);
+
+//            if (prescriptions > mostPrescriptions) {
+//
+//                mostPrescriptions = prescriptions;
+//
+//                mostPrescribingDoctor = doctor;
+//
+//            }
+        }
+        return mostSellingChemistMap;
     }
 
 }
