@@ -7,6 +7,7 @@ package com.neu.userinterface.doctorrole;
 
 import com.neu.business.enterprise.CommunityRehabEnterprise;
 import com.neu.business.enterprise.Enterprise;
+import com.neu.business.enterprise.HospitalEnterprise;
 import com.neu.business.network.Network;
 import com.neu.business.organization.DoctorOrganization;
 import com.neu.business.organization.Organization;
@@ -32,22 +33,25 @@ public class RehabAssociationJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private Network network;
     private DoctorOrganization doctorOrganization;
+    private HospitalEnterprise hospitalEnterprise;
     private UserAccount doctorUserAccount;
     private ArrayList<Patient> doctorRecommendations;
 
-    public RehabAssociationJPanel(JPanel userProcessContainer, Network network, UserAccount userAccount, DoctorOrganization doctorOrganization) {
+    public RehabAssociationJPanel(JPanel userProcessContainer, Network network, UserAccount userAccount, DoctorOrganization doctorOrganization, Enterprise hospitalEnterprise) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.network = network;
         this.doctorOrganization = doctorOrganization;
         this.doctorUserAccount = userAccount;
+        this.hospitalEnterprise = (HospitalEnterprise)hospitalEnterprise;
 
         populateRehabsComboBox();
         populateAddictedPatientsTable();
     }
 
     public void populateRehabsComboBox() {
-        for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                
+        for (Enterprise enterprise : hospitalEnterprise.getAssociatedCommRehabList()) {
             if (enterprise instanceof CommunityRehabEnterprise) {
                 comboBoxRehabCenters.addItem(enterprise.getName());
             }
@@ -86,6 +90,7 @@ public class RehabAssociationJPanel extends javax.swing.JPanel {
         backJButton1 = new javax.swing.JButton();
         comboBoxRehabCenters = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -99,6 +104,8 @@ public class RehabAssociationJPanel extends javax.swing.JPanel {
             }
         ));
         jScrollPane1.setViewportView(jTable1);
+
+        setBackground(new java.awt.Color(255, 255, 255));
 
         btnSendToRehab.setText("Send to Rehabilitation");
         btnSendToRehab.addActionListener(new java.awt.event.ActionListener() {
@@ -136,35 +143,41 @@ public class RehabAssociationJPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Select rehabilitation center :");
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setText("Rehabilitation Association");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(142, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(backJButton1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(comboBoxRehabCenters, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(75, 75, 75)
-                            .addComponent(btnSendToRehab))
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(backJButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(comboBoxRehabCenters, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(75, 75, 75)
+                        .addComponent(btnSendToRehab))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 131, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(143, 143, 143)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(142, 142, 142)
-                        .addComponent(jLabel2)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(143, 143, 143)
+                .addComponent(jLabel1)
+                .addContainerGap(628, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(96, 96, 96)
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addGap(71, 71, 71)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -172,10 +185,9 @@ public class RehabAssociationJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSendToRehab)
                     .addComponent(comboBoxRehabCenters, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                .addComponent(backJButton1)
-                .addGap(76, 76, 76))
+                    .addComponent(jLabel2)
+                    .addComponent(backJButton1))
+                .addContainerGap(136, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -234,6 +246,7 @@ public class RehabAssociationJPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox<Object> comboBoxRehabCenters;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;

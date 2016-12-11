@@ -173,13 +173,22 @@ public class ManageScheduleJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Select a patient", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
+        
+        WorkRequest statusWr = (WorkRequest) doctorScheduleJTable.getValueAt(doctorScheduleJTable.getSelectedRow(), 0);
+        if(statusWr.getStatus().equals("Scheduled for visit")){
         Patient patient = (Patient) doctorScheduleJTable.getValueAt(doctorScheduleJTable.getSelectedRow(), 2);
+        
+        
         patientDirectory.calculateBayesianOpioidAddictionScore(patient);
         ScheduleAppointmentWorkRequest workRequest = (ScheduleAppointmentWorkRequest) doctorScheduleJTable.getValueAt(doctorScheduleJTable.getSelectedRow(), 0);
         DiagnosePatientJPanel diagnose = new DiagnosePatientJPanel(userProcessContainer, patient, network, doctorOrganization, workRequest, userAccount);
         userProcessContainer.add("diagnosePatientJPanel", diagnose);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+        } else
+        {
+            JOptionPane.showMessageDialog(null, "Patient already diagnosed !", "Error", JOptionPane.ERROR_MESSAGE);
+        }      
 
     }//GEN-LAST:event_btnDiagnoseActionPerformed
 

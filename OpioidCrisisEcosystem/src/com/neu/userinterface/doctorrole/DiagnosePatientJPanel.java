@@ -61,7 +61,15 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
         txtFieldPatientAge.setText(String.valueOf(patient.getAge()));
         txtFieldPatientGender.setText(patient.getGender());
         txtFieldPatientBloodGroup.setText(patient.getBloodGroup());
-        txtOpioidScore.setText(String.valueOf(patient.getBayesianOpioidAddictionScore()));
+        String patientScoreStatus = "New patient";
+        if (patient.getBayesianOpioidAddictionScore() > 0 && patient.getBayesianOpioidAddictionScore() <= 5) {
+            patientScoreStatus = "Low";
+        } else if (patient.getBayesianOpioidAddictionScore() > 5 && patient.getBayesianOpioidAddictionScore() <= 10) {
+            patientScoreStatus = "Medium";
+        } else if (patient.getBayesianOpioidAddictionScore() > 10) {
+            patientScoreStatus = "High";
+        }
+        txtOpioidScore.setText(patientScoreStatus);
     }
 
     /**
@@ -729,6 +737,8 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
         workRequest.setStatus("Patient diagnosed");
 
         JOptionPane.showMessageDialog(null, patient.getName() + " has been diagnosed and prescribed a course of " + prescription.getTotalOpioidsPrescribed() + " opioids");
+
+        btnDiagnose.setEnabled(false);
     }//GEN-LAST:event_btnDiagnoseActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
@@ -749,11 +759,12 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
 
     private void btnSendToRehabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendToRehabActionPerformed
 
+        workRequest.setStatus("Rehab recommended/sent");
         patient.setRehabStatus("Rehab recommended");
         doctorOrganization.addRehabRecommendations(patient);
-        
+
         JOptionPane.showMessageDialog(null, patient.getName() + " has been recommended for Rehab");
-        
+
 //        Enterprise commRehabEnterprise = null;
 //        Organization rehabilitationCompanyManagerOrganization = null;
 //        SendToRehabilitationWorkRequest sendToRehabilitationWorkRequest = new SendToRehabilitationWorkRequest();
@@ -790,7 +801,6 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
 //                }
 //            }
 //        }
-
 
     }//GEN-LAST:event_btnSendToRehabActionPerformed
 

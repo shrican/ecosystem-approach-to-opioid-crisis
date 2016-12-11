@@ -54,6 +54,7 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
             for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
                 if (organization instanceof DoctorOrganization) {
                     for (WorkRequest scheduleAppointmentWorkRequest : organization.getWorkQueue().getWorkRequestList()) {
+
                         Object[] row = new Object[6];
 
                         if (scheduleAppointmentWorkRequest instanceof ScheduleAppointmentWorkRequest) {
