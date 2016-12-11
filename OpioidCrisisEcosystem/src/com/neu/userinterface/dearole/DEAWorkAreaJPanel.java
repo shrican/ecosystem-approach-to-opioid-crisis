@@ -13,6 +13,7 @@ import com.neu.business.organization.ChemistOrganization;
 import com.neu.business.organization.DEAOrganization;
 import com.neu.business.organization.Organization;
 import com.neu.business.useraccount.UserAccount;
+import java.awt.CardLayout;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -102,20 +103,25 @@ public class DEAWorkAreaJPanel extends javax.swing.JPanel {
     private void btnPharmacyReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPharmacyReportActionPerformed
         // TODO add your handling code here:
 
-        Map<ChemistOrganization, Double> discripancyMap = new HashMap<>();
-        Double discripancy = 0.0;
+//        Map<ChemistOrganization, Double> discripancyMap = new HashMap<>();
+//        Double discripancy = 0.0;
+//
+//        for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+//
+//            if (enterprise instanceof PharmacyEnterprise) {
+//                for (Organization chemistOrganization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+//                    if (chemistOrganization instanceof ChemistOrganization) {
+//                        discripancy = network.pharmacyStockDiscrepancy((ChemistOrganization) chemistOrganization);
+//                        discripancyMap.put((ChemistOrganization) chemistOrganization, discripancy);
+//                    }
+//                }
+//            }
+//        }
 
-        for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
-
-            if (enterprise instanceof PharmacyEnterprise) {
-                for (Organization chemistOrganization : enterprise.getOrganizationDirectory().getOrganizationList()) {
-                    if (chemistOrganization instanceof ChemistOrganization) {
-                        discripancy = network.pharmacyStockDiscrepancy((ChemistOrganization) chemistOrganization);
-                        discripancyMap.put((ChemistOrganization) chemistOrganization, discripancy);
-                    }
-                }
-            }
-        }
+        DiscrepancyJPanel discrepancyJPanel = new DiscrepancyJPanel(userProcessContainer, network);
+        userProcessContainer.add("DiscrepancyJPanel", discrepancyJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnPharmacyReportActionPerformed
 
     private void btnDoctorReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoctorReportActionPerformed
