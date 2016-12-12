@@ -1,0 +1,1689 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>4</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>624</x>
+      <y>12</y>
+      <w>144</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>com.neu.business::EcoSystem
+--
+-ecoSystem: EcoSystem
+-networkList: ArrayList&lt;Network&gt;
+-patientDirectory: PatientDirectory
+--
+-EcoSystem(): ctor
++getInstance(): EcoSystem
++getNetworkList(): ArrayList&lt;Network&gt;
++createAndAddNetwork(String name): Network
++getSupportedRole(): ArrayList&lt;Role&gt;
++checkIfUsernameIsUnique(String username): boolean
++getPatientDirectory(): PatientDirectory
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>828</x>
+      <y>28</y>
+      <w>100</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>com.neu.business::ConfigureSystem
+--
+--
++configure(): EcoSystem
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>764</x>
+      <y>32</y>
+      <w>72</w>
+      <h>16</h>
+    </coordinates>
+    <panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes>10.0;20.0;160.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>372</x>
+      <y>156</y>
+      <w>156</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.patient::Patient
+--
+-id: String
+-count = 0: int
+-name: String
+-phoneNo: String
+-age: int
+-bloodGroup: String
+-gender: String
+-registrationDate: Date
+-rehabStatus: String
+-opioidAbuseSymptomsHistory: OpioidAbuseSymptomsHistory
+-opioidWithdrawalSymptomsHistory: OpioidWithdrawalSymptomsHistory
+-postOpioidAddiction: PostOpioidAddiction
+-prescriptionHistory: PrescriptionHistory
+-symptomsHistory: PatientSymptomsHistory
+-bayesianOpioidAddictionScore: float
+--
++Patient(): ctor
++getSymptomsHistory(): PatientSymptomsHistory
++getRehabStatus(): String
++setRehabStatus(String rehabStatus): void
++getBayesianOpioidAddictionScore(): float
++setBayesianOpioidAddictionScore(float bayesianOpioidAddictionScore): void
++getName(): String
++setName(String name): void
++getPhoneNo(): String
++setPhoneNo(String phoneNo): void
++getId(): String
++setId(String id): void
++getAge(): int
++setAge(int age): void
++getBloodGroup(): String
++setBloodGroup(String bloodGroup): void
++getGender(): String
++setGender(String gender): void
++getCount(): int
++setCount(int count): void
++getRegistrationDate(): Date
++setRegistrationDate(Date registrationDate): void
++getOpioidAbuseSymptomsHistory(): OpioidAbuseSymptomsHistory
++setOpioidAbuseSymptomsHistory(OpioidAbuseSymptomsHistory opioidAbuseSymptomsHistory): void
++getOpioidWithdrawalSymptomsHistory(): OpioidWithdrawalSymptomsHistory
++setOpioidWithdrawalSymptomsHistory(OpioidWithdrawalSymptomsHistory opioidWithdrawalSymptomsHistory): void
++getPostOpioidAddiction(): PostOpioidAddiction
++setPostOpioidAddiction(PostOpioidAddiction postOpioidAddiction): void
++getPrescriptionHistory(): PrescriptionHistory
++setPrescriptionHistory(PrescriptionHistory prescriptionHistory): void
++toString(): String
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>452</x>
+      <y>16</y>
+      <w>116</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.patient::PatientDirectory
+--
+-patientList: List&lt;Patient&gt;
+-prescriptionList: ArrayList&lt;Prescription&gt;
+--
++PatientDirectory(): ctor
++getPrescriptionList(): ArrayList&lt;Prescription&gt;
++getPatientList(): List&lt;Patient&gt;
++addPatient(): Patient
++addPatient(Patient patient): void
++calculateBayesianOpioidAddictionScore(Patient patient): float
++generalSymptomsBreakdown(ArrayList&lt;Patient&gt; patientList): HashMap&lt;String, Integer&gt;
++mostDoctorPrescriptions(): HashMap&lt;String, Integer&gt;
++fraudDoctorReport(): HashMap&lt;String, Integer&gt;
++popularChemist(): HashMap&lt;String, Integer&gt;
++mostPrescribedSymptom(): HashMap&lt;String, Integer&gt;
++patientScoreStatusWiseHigestAbuseSymptoms(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1444</x>
+      <y>988</y>
+      <w>196</w>
+      <h>16</h>
+    </coordinates>
+    <panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes>10.0;20.0;470.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>476</x>
+      <y>276</y>
+      <w>152</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.patient::OpioidAbuseSymptomsHistory
+--
+-opioidAbuseSysmpomsList: List&lt;OpioidAbuseSymptoms&gt;
+--
++OpioidAbuseSymptomsHistory(): ctor
++getOpioidAbuseSysmpomsList(): List&lt;OpioidAbuseSymptoms&gt;
++addAbuseSymptom(): OpioidAbuseSymptoms
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>120</x>
+      <y>304</y>
+      <w>152</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.patient::OpioidWithdrawalSymptomsHistory
+--
+-opioidWithdrawalSymptomsList: List&lt;OpioidWithdrawalSymptoms&gt;
+--
++OpioidWithdrawalSymptomsHistory(): ctor
++getOpioidWithdrawalSymptomsList(): List&lt;OpioidWithdrawalSymptoms&gt;
++addWithdrawalSymptom(): OpioidWithdrawalSymptoms
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>308</x>
+      <y>292</y>
+      <w>136</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.patient::PatientSymptomsHistory
+--
+-symptomHistory: ArrayList&lt;Symptoms&gt;
+--
++PatientSymptomsHistory(): ctor
++getSymptomHistory(): ArrayList&lt;Symptoms&gt;
++addSymptoms(): Symptoms
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>128</x>
+      <y>384</y>
+      <w>144</w>
+      <h>76</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.patient::OpioidWithdrawalSymptoms
+--
+-lowAppetite: boolean
+-highBloodPressure: boolean
+-quivering: boolean
+-vomiting: boolean
+-coldSweat: boolean
+-enlargedPupils: boolean
+--
++isLowAppetite(): boolean
++isHighBloodPressure(): boolean
++isQuivering(): boolean
++setQuivering(boolean quivering): void
++isVomiting(): boolean
++setVomiting(boolean vomiting): void
++isColdSweat(): boolean
++setColdSweat(boolean coldSweat): void
++isEnlargedPupils(): boolean
++setEnlargedPupils(boolean enlargedPupils): void
++hasLowAppetite(): boolean
++setLowAppetite(boolean lowAppetite): void
++hasHighBloodPressure(): boolean
++setHighBloodPressure(boolean highBloodPressure): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>476</x>
+      <y>348</y>
+      <w>168</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.patient::OpioidAbuseSymptoms
+--
+-nausea: boolean
+-chestPain: boolean
+-pupilaryConstriction: boolean
+-bloodshotEyes: boolean
+-jointPain: boolean
+-muscleTension: boolean
+-lowRespiratoryRate: boolean
+-selfHarm: boolean
+-insomnia: boolean
+-date: Date
+-count = 1: int
+-ID: int
+-opioidAddictionSymptomScore = 0: float
+--
++OpioidAbuseSymptoms(): ctor
++getOpioidAddictionSymptomScore(): float
++setOpioidAddictionSymptomScore(float opioidAddictionSymptomScore): void
++getDate(): Date
++hasInsomnia(): boolean
++setInsomnia(boolean insomnia): void
++hasBloodshotEyes(): boolean
++setBloodshotEyes(boolean bloodshotEyes): void
++hasLowRespiratoryRate(): boolean
++setLowRespiratoryRate(boolean lowRespiratoryRate): void
++hasSelfHarm(): boolean
++setSelfHarm(boolean selfHarm): void
++hasNausea(): boolean
++setNausea(boolean nausea): void
++hasChestPain(): boolean
++setChestPain(boolean chestPain): void
++hasPupilaryConstriction(): boolean
++setPupilaryConstriction(boolean pupilaryConstriction): void
++hasJointPain(): boolean
++setJointPain(boolean jointPain): void
++hasMuscleTension(): boolean
++setMuscleTension(boolean muscleTension): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>292</x>
+      <y>348</y>
+      <w>164</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.patient::Symptoms
+--
+-hasLowerBackPain: boolean
+-hasArthritis: boolean
+-hasHeadache: boolean
+-hasMultipleSclerosis: boolean
+-hasFibromyalgia: boolean
+-hasShingles: boolean
+-hasNerveDamage: boolean
+-hasCancer: boolean
+-hasInjury: boolean
+-hasBrokenBones: boolean
+-id: int
+-count = 1: int
+-hasAbdominalPain: boolean
+-hasIntestinalDisorder: boolean
+-hasInfection: boolean
+-hasSprain: boolean
+-hasMuscleSpasm: boolean
+-painMeasure = 0: int
+--
++Symptoms(): ctor
++isHasIntestinalDisorder(): boolean
++setHasIntestinalDisorder(boolean hasIntestinalDisorder): void
++isHasInfection(): boolean
++setHasInfection(boolean hasInfection): void
++isHasSprain(): boolean
++setHasSprain(boolean hasSprain): void
++isHasMuscleSpasm(): boolean
++setHasMuscleSpasm(boolean hasMuscleSpasm): void
++isHasAbdominalPain(): boolean
++setHasAbdominalPain(boolean hasAbdominalPain): void
++isHasInjury(): boolean
++isHasBrokenBones(): boolean
++getPainMeasure(): int
++setHasInjury(boolean hasInjury): void
++setHasBrokenBones(boolean hasBrokenBones): void
++isHasLowerBackPain(): boolean
++setHasLowerBackPain(boolean hasLowerBackPain): void
++isHasArthritis(): boolean
++setHasArthritis(boolean hasArthritis): void
++isHasHeadache(): boolean
++setHasHeadache(boolean hasHeadache): void
++isHasMultipleSclerosis(): boolean
++setHasMultipleSclerosis(boolean hasMultipleSclerosis): void
++isHasFibromyalgia(): boolean
++setHasFibromyalgia(boolean hasFibromyalgia): void
++isHasShingles(): boolean
++setHasShingles(boolean hasShingles): void
++isHasNerveDamage(): boolean
++setHasNerveDamage(boolean hasNerveDamage): void
++isHasCancer(): boolean
++setHasCancer(boolean hasCancer): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>460</x>
+      <y>84</y>
+      <w>48</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>100.0;10.0;10.0;180.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>376</x>
+      <y>240</y>
+      <w>84</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes>190.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>460</x>
+      <y>240</y>
+      <w>64</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes>10.0;10.0;140.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>200</x>
+      <y>240</y>
+      <w>244</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes>590.0;10.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>376</x>
+      <y>336</y>
+      <w>12</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>220</x>
+      <y>348</y>
+      <w>12</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>532</x>
+      <y>320</y>
+      <w>12</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>24</x>
+      <y>184</y>
+      <w>132</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.patient::PostOpioidAddiction
+--
+-tobaccoUse: boolean
+-alcoholAbuse: boolean
+-cannabisAbuse: boolean
+-stimulantAbuse: boolean
+--
++isTobaccoUse(): boolean
++setTobaccoUse(boolean tobaccoUse): void
++isAlcoholAbuse(): boolean
++setAlcoholAbuse(boolean alcoholAbuse): void
++isCannabisAbuse(): boolean
++setCannabisAbuse(boolean cannabisAbuse): void
++isStimulantAbuse(): boolean
++setStimulantAbuse(boolean stimulantAbuse): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>212</x>
+      <y>48</y>
+      <w>120</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.patient::PrescriptionHistory
+--
+-prescriptionHistoryList: List&lt;Prescription&gt;
+--
++PrescriptionHistory(): ctor
++getPrescriptionHistoryList(): List&lt;Prescription&gt;
++addPrescription(): Prescription
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>152</x>
+      <y>208</y>
+      <w>228</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes>550.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>280</x>
+      <y>92</y>
+      <w>148</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes>350.0;160.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>88</x>
+      <y>116</y>
+      <w>104</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.patient::Prescription
+--
+-drugName: String
+-opdDate: Date
+-id: String
+-count = 0: int
+-dosage: Dosage
+-noOfDays: int
+-totalOpioidsPrescribed: int
+-patientName: String
+-fulfilled: boolean
+-chemistName: String
+-doctorName: String
+-dateOfFulfilment: Date
+-patientScoreStatus: String
+-symptoms: Symptoms
+--
++Prescription(): ctor
++getSymptoms(): Symptoms
++setSymptoms(Symptoms symptoms): void
++getPatientScoreStatus(): String
++setPatientScoreStatus(String patientScoreStatus): void
++getDateOfFulfilment(): Date
++setDateOfFulfilment(Date dateOfFulfilment): void
++getDoctorName(): String
++setDoctorName(String doctorName): void
++getChemistName(): String
++setChemistName(String chemistName): void
++isFulfilled(): boolean
++setFulfilled(boolean fulfilled): void
++getPatientName(): String
++setPatientName(String patientName): void
++getDrugName(): String
++setDrugName(String drugName): void
++getOpdDate(): Date
++setOpdDate(Date opdDate): void
++getId(): String
++getNoOfDays(): int
++setNoOfDays(int noOfDays): void
++getTotalOpioidsPrescribed(): int
++setTotalOpioidsPrescribed(int totalOpioidsPrescribed): void
++calculateTotalOpioidsPrescribed(): void
++toString(): String
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>160</x>
+      <y>92</y>
+      <w>88</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>200.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>724</x>
+      <y>124</y>
+      <w>136</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.network::Network
+--
+-name: String
+-enterpriseDirectory: EnterpriseDirectory
+-system: EcoSystem
+--
++Network(String name): ctor
++getEnterpriseDirectory(): EnterpriseDirectory
++getName(): String
++setName(String name): void
++setEnterpriseDirectory(EnterpriseDirectory enterpriseDirectory): void
++toString(): String
++pharmacyStockDiscrepancy(ChemistOrganization checkChemistOrganization): double
++getEnterpriseByName(String name): Enterprise
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>760</x>
+      <y>316</y>
+      <w>200</w>
+      <h>76</h>
+    </coordinates>
+    <panel_attributes>/com.neu.business.enterprise::Enterprise/
+--
+-enterpriseType: EnterpriseType
+-organizationDirectory: OrganizationDirectory
+--
++Enterprise(String name, EnterpriseType type): ctor
++getOrganizationDirectory(): OrganizationDirectory
++setOrganizationDirectory(OrganizationDirectory organizationDirectory): void
++getEnterpriseType(): EnterpriseType
++setEnterpriseType(EnterpriseType enterpriseType): void
++toString(): String
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>748</x>
+      <y>244</y>
+      <w>216</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.enterprise::EnterpriseDirectory
+--
+-enterpriseList: ArrayList&lt;Enterprise&gt;
+--
++EnterpriseDirectory(): ctor
++getEnterpriseList(): ArrayList&lt;Enterprise&gt;
++createAndAddEnterprise(String name, Enterprise.EnterpriseType type): Enterprise
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>812</x>
+      <y>220</y>
+      <w>12</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>816</x>
+      <y>292</y>
+      <w>12</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1040</x>
+      <y>248</y>
+      <w>232</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.enterprise::CommunityRehabEnterprise
+--
+--
++CommunityRehabEnterprise(String name): ctor
++generalSymptomsBreakdown(ArrayList&lt;Patient&gt; patientList): HashMap&lt;String, Integer&gt;
++abuseSymptomsBreakdown(PatientDirectory patientDirectory): void
++getSupportedRole(): ArrayList&lt;Role&gt;
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1040</x>
+      <y>192</y>
+      <w>188</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.enterprise::DrugEnforcementAdministrationEnterprise
+--
+--
++DrugEnforcementAdministrationEnterprise(String name): ctor
++getSupportedRole(): ArrayList&lt;Role&gt;
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1040</x>
+      <y>412</y>
+      <w>272</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.enterprise::HospitalEnterprise
+--
+-patientDirectory: PatientDirectory
+-associatedCommRehabList: ArrayList&lt;CommunityRehabEnterprise&gt;
+--
++HospitalEnterprise(String name): ctor
++getPatientDirectory(): PatientDirectory
++getSupportedRole(): ArrayList&lt;Role&gt;
++getAssociatedCommRehabList(): ArrayList&lt;CommunityRehabEnterprise&gt;
++setAssociatedCommRehabList(ArrayList&lt;CommunityRehabEnterprise&gt; associatedCommRehabList): void
++addAssociatedRehabilitation(CommunityRehabEnterprise enterprise): void
++symptomsBreakdown(PatientDirectory patientDirectory): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1040</x>
+      <y>316</y>
+      <w>172</w>
+      <h>76</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.enterprise::PharmaceuticalCompanyEnterprise
+--
+-stock: int
+-opioidName: String
+--
++PharmaceuticalCompanyEnterprise(String name): ctor
++getStock(): int
++setStock(int stock): void
++getOpioidName(): String
++setOpioidName(String opioidName): void
++getSupportedRole(): ArrayList&lt;Role&gt;
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1040</x>
+      <y>516</y>
+      <w>132</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.enterprise::PharmacyEnterprise
+--
+~opioidStock: int
+--
++PharmacyEnterprise(String name): ctor
++getSupportedRole(): ArrayList&lt;Role&gt;
++getOpioidStock(): int
++setOpioidStock(int opioidStock): void
++pharmacyMostBusinessFromDoctors(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>956</x>
+      <y>208</y>
+      <w>92</w>
+      <h>124</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;290.0;210.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>956</x>
+      <y>264</y>
+      <w>92</w>
+      <h>76</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;170.0;210.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>956</x>
+      <y>324</y>
+      <w>92</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;40.0;210.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>956</x>
+      <y>352</y>
+      <w>88</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;200.0;230.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>956</x>
+      <y>376</y>
+      <w>92</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;210.0;420.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>736</x>
+      <y>492</y>
+      <w>200</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>/com.neu.business.organization::Organization/
+--
+-name: String
+-workQueue: WorkQueue
+-employeeDirectory: EmployeeDirectory
+-userAccountDirectory: UserAccountDirectory
+-organizationID: int
+-counter: int
+--
++Organization(String name): ctor
++getSupportedRole(): ArrayList&lt;Role&gt;
++toString(): String
++getName(): String
++setName(String name): void
++getWorkQueue(): WorkQueue
++setWorkQueue(WorkQueue workQueue): void
++getEmployeeDirectory(): EmployeeDirectory
++setEmployeeDirectory(EmployeeDirectory employeeDirectory): void
++getUserAccountDirectory(): UserAccountDirectory
++setUserAccountDirectory(UserAccountDirectory userAccountDirectory): void
++getOrganizationID(): int
++setOrganizationID(int organizationID): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>732</x>
+      <y>412</y>
+      <w>208</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.organization::OrganizationDirectory
+--
+-organizationList: ArrayList&lt;Organization&gt;
+--
++OrganizationDirectory(): ctor
++getOrganizationList(): ArrayList&lt;Organization&gt;
++getRelevantOrganizations(Enterprise enterprise): ArrayList&lt;Organization.Type&gt;
++createOrganization(Type type): Organization
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>748</x>
+      <y>88</y>
+      <w>52</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes>10.0;10.0;110.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>812</x>
+      <y>388</y>
+      <w>12</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>816</x>
+      <y>464</y>
+      <w>12</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>416</x>
+      <y>524</y>
+      <w>184</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.organization::ChemistOrganization
+--
+-stock: int
+-stockChangeHistory: ArrayList&lt;String&gt;
+-ordersSold: ArrayList&lt;Prescription&gt;
+--
++ChemistOrganization(): ctor
++getOrdersSold(): ArrayList&lt;Prescription&gt;
++setOrdersSold(ArrayList&lt;Prescription&gt; ordersSold): void
++addOrder(Prescription prescription): void
++getStockChangeHistory(): ArrayList&lt;String&gt;
++setStockChangeHistory(ArrayList&lt;String&gt; stockChangeHistory): void
++getStock(): int
++setStock(int stock): void
++addOrderSoldPrescription(Prescription prescription): void
++getSupportedRole(): ArrayList&lt;Role&gt;
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>460</x>
+      <y>640</y>
+      <w>140</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.organization::AdminOrganization
+--
+--
++AdminOrganization(): ctor
++getSupportedRole(): ArrayList&lt;Role&gt;
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>464</x>
+      <y>476</y>
+      <w>136</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.organization::DEAOrganization
+--
+--
++DEAOrganization(): ctor
++getSupportedRole(): ArrayList&lt;Role&gt;
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>376</x>
+      <y>688</y>
+      <w>224</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.organization::PharmaceuticalCompanyManagerOrganization
+--
+-pharmaWorkQueue: WorkQueue
+--
++PharmaceuticalCompanyManagerOrganization(): ctor
++addOpioidsOrder(PharmacySupplyWorkRequest pharmaWorkRequest): WorkQueue
++getSupportedRole(): ArrayList&lt;Role&gt;
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>420</x>
+      <y>792</y>
+      <w>180</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.organization::RehabilitationManagerOrganization
+--
+-patientDirectory: PatientDirectory
+--
++RehabilitationManagerOrganization(): ctor
++getPatientDirectory(): PatientDirectory
++setPatientDirectory(PatientDirectory patientDirectory): void
++otherAddictionsCausedByOpioidAbuse(): HashMap&lt;String, Integer&gt;
++getSupportedRole(): ArrayList&lt;Role&gt;
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>452</x>
+      <y>744</y>
+      <w>148</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.organization::ReceptionOrganization
+--
+--
++ReceptionOrganization(): ctor
++getSupportedRole(): ArrayList&lt;Role&gt;
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>596</x>
+      <y>496</y>
+      <w>148</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>350.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>596</x>
+      <y>560</y>
+      <w>148</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>350.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>596</x>
+      <y>580</y>
+      <w>148</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>350.0;10.0;10.0;180.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>596</x>
+      <y>588</y>
+      <w>148</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>350.0;10.0;10.0;280.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>596</x>
+      <y>604</y>
+      <w>148</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>350.0;10.0;10.0;380.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>596</x>
+      <y>620</y>
+      <w>148</w>
+      <h>204</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>350.0;10.0;10.0;490.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>840</x>
+      <y>832</y>
+      <w>124</w>
+      <h>124</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.useraccount::UserAccount
+--
+-username: String
+-password: String
+-employee: Employee
+-role: Role
+-workQueue: WorkQueue
+--
++UserAccount(): ctor
++getUsername(): String
++setUsername(String username): void
++getPassword(): String
++setPassword(String password): void
++getRole(): Role
++setEmployee(Employee employee): void
++setRole(Role role): void
++getEmployee(): Employee
++getWorkQueue(): WorkQueue
++toString(): String
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>784</x>
+      <y>716</y>
+      <w>264</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.useraccount::UserAccountDirectory
+--
+-userAccountList: ArrayList&lt;UserAccount&gt;
+--
++UserAccountDirectory(): ctor
++getUserAccountList(): ArrayList&lt;UserAccount&gt;
++authenticateUser(String username, String password): UserAccount
++createUserAccount(String username, String password, Employee employee, Role role): UserAccount
++checkIfUsernameIsUnique(String username): boolean
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>860</x>
+      <y>640</y>
+      <w>44</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes>10.0;10.0;90.0;190.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>884</x>
+      <y>772</y>
+      <w>12</w>
+      <h>68</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>652</x>
+      <y>868</y>
+      <w>108</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.employee::Employee
+--
+-name: String
+-id: int
+-count = 1: int
+--
++Employee(): ctor
++getId(): int
++setName(String name): void
++getName(): String
++toString(): String
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>644</x>
+      <y>796</y>
+      <w>132</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.employee::EmployeeDirectory
+--
+-employeeList: ArrayList&lt;Employee&gt;
+--
++EmployeeDirectory(): ctor
++getEmployeeList(): ArrayList&lt;Employee&gt;
++createEmployee(String name): Employee
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>684</x>
+      <y>640</y>
+      <w>72</w>
+      <h>164</h>
+    </coordinates>
+    <panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes>160.0;10.0;10.0;390.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>704</x>
+      <y>840</y>
+      <w>12</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>756</x>
+      <y>876</y>
+      <w>92</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes>210.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>692</x>
+      <y>972</y>
+      <w>428</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>/com.neu.business.role::Role/
+--
+--
++createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem system): JPanel
++toString(): String
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>564</x>
+      <y>1080</y>
+      <w>428</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.role::ReceptionistRole
+--
+--
++createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem system): JPanel
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>216</x>
+      <y>996</y>
+      <w>428</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.role::RehabilitationManagerRole
+--
+--
++createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem system): JPanel
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>216</x>
+      <y>1036</y>
+      <w>428</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.role::SystemAdminRole
+--
+--
++createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem system): JPanel
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>576</x>
+      <y>972</y>
+      <w>124</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>290.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>640</x>
+      <y>996</y>
+      <w>60</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>130.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1080</x>
+      <y>920</y>
+      <w>428</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.role::DEARole
+--
+--
++createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem system): JPanel
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1136</x>
+      <y>1084</y>
+      <w>428</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.role::DoctorRole
+--
+--
++createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem system): JPanel
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>788</x>
+      <y>1036</y>
+      <w>428</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.role::PharmaceuticalCompanyManagerRole
+--
+--
++createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem system): JPanel
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>648</x>
+      <y>1004</y>
+      <w>60</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>130.0;10.0;10.0;190.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>876</x>
+      <y>1004</y>
+      <w>12</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1020</x>
+      <y>944</y>
+      <w>104</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;70.0;240.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1116</x>
+      <y>1000</y>
+      <w>128</w>
+      <h>92</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;300.0;10.0;300.0;210.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1204</x>
+      <y>960</y>
+      <w>428</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.role::AdminRole
+--
+--
++AdminRole(): ctor
++createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem business): JPanel
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1032</x>
+      <y>864</y>
+      <w>428</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.role::ChemistRole
+--
+--
++createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem system): JPanel
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1004</x>
+      <y>888</y>
+      <w>72</w>
+      <h>92</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;210.0;160.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1116</x>
+      <y>976</y>
+      <w>96</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;220.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1180</x>
+      <y>692</y>
+      <w>124</w>
+      <h>148</h>
+    </coordinates>
+    <panel_attributes>/com.neu.business.workqueue::WorkRequest/
+--
+-message: String
+-sender: UserAccount
+-receiver: UserAccount
+-status: String
+-requestDate: Date
+-resolveDate: Date
+--
++WorkRequest(): ctor
++getMessage(): String
++setMessage(String message): void
++getSender(): UserAccount
++setSender(UserAccount sender): void
++getReceiver(): UserAccount
++setReceiver(UserAccount receiver): void
++getStatus(): String
++setStatus(String status): void
++getRequestDate(): Date
++setRequestDate(Date requestDate): void
++getResolveDate(): Date
++setResolveDate(Date resolveDate): void
++toString(): String
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1180</x>
+      <y>636</y>
+      <w>132</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.workqueue::WorkQueue
+--
+-workRequestList: ArrayList&lt;WorkRequest&gt;
+--
++WorkQueue(): ctor
++getWorkRequestList(): ArrayList&lt;WorkRequest&gt;
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1044</x>
+      <y>652</y>
+      <w>144</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;160.0;340.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1208</x>
+      <y>672</y>
+      <w>12</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1364</x>
+      <y>728</y>
+      <w>184</w>
+      <h>124</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.workqueue::PharmacySupplyWorkRequest
+--
+-count = 0: int
+-ID: int
+-orderAmount: int
+-requesterName: String
+-senderName: String
+-hasBeenUpdatedInStock: boolean
+--
++PharmacySupplyWorkRequest(): ctor
++isHasBeenUpdatedInStock(): boolean
++setHasBeenUpdatedInStock(boolean hasBeenUpdatedInStock): void
++getSenderName(): String
++setSenderName(String senderName): void
++getRequesterName(): String
++setRequesterName(String requesterName): void
++getID(): int
++getOrderAmount(): int
++setOrderAmount(int orderAmount): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1364</x>
+      <y>648</y>
+      <w>176</w>
+      <h>68</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.workqueue::ScheduleAppointmentWorkRequest
+--
+-id: String
+-countId = 0: int
+-patient: Patient
+--
++ScheduleAppointmentWorkRequest(): ctor
++getId(): String
++getPatient(): Patient
++setPatient(Patient patient): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1364</x>
+      <y>592</y>
+      <w>176</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>com.neu.business.workqueue::SendToRehabilitationWorkRequest
+--
+-patient: Patient
+--
++SendToRehabilitationWorkRequest(): ctor
++getPatient(): Patient
++setPatient(Patient patient): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1300</x>
+      <y>616</y>
+      <w>72</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;260.0;160.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1300</x>
+      <y>692</y>
+      <w>72</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;110.0;160.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1300</x>
+      <y>748</y>
+      <w>72</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;160.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>564</x>
+      <y>60</y>
+      <w>68</w>
+      <h>16</h>
+    </coordinates>
+    <panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes>10.0;20.0;150.0;20.0</additional_attributes>
+  </element>
+</diagram>
