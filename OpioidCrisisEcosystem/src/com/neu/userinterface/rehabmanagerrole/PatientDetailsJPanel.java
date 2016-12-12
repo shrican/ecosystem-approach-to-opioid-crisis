@@ -30,21 +30,21 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private Patient patient;
     private PatientDirectory ecosystemPatientDirectory;
-    
+
     public PatientDetailsJPanel(JPanel userProcessContainer, Patient patient, PatientDirectory ecosystemPatientDirectory) {
         initComponents();
-        
+
         this.userProcessContainer = userProcessContainer;
         this.patient = patient;
         this.ecosystemPatientDirectory = ecosystemPatientDirectory;
-        
+
         populatePatientDetails();
         populateSymptoms();
         populateAbuseSymptoms();
         populatePrescriptions();
         populateWithdrawalSymptoms();
     }
-    
+
     public void populatePatientDetails() {
         txtFieldName.setText(patient.getName());
         txtFieldAge.setText(String.valueOf(patient.getAge()));
@@ -52,7 +52,7 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
         txtFieldGender.setText(patient.getGender());
         txtFieldNumber.setText(patient.getPhoneNo());
     }
-    
+
     public void populateSymptoms() {
         DefaultTableModel dtm = (DefaultTableModel) tblSymptoms.getModel();
         dtm.setRowCount(0);
@@ -76,11 +76,11 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
             dtm.addRow(row);
         }
     }
-    
+
     public void populateAbuseSymptoms() {
         DefaultTableModel dtm = (DefaultTableModel) tblAbuseSymptoms.getModel();
         dtm.setRowCount(0);
-        
+
         for (OpioidAbuseSymptoms abuseSymptoms : patient.getOpioidAbuseSymptomsHistory().getOpioidAbuseSysmpomsList()) {
             Object[] row = new Object[9];
             row[0] = abuseSymptoms.hasNausea();
@@ -95,11 +95,11 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
             dtm.addRow(row);
         }
     }
-    
+
     public void populatePrescriptions() {
         DefaultTableModel dtm = (DefaultTableModel) tblPrescriptionHistory.getModel();
         dtm.setRowCount(0);
-        
+
         for (Prescription prescription : patient.getPrescriptionHistory().getPrescriptionHistoryList()) {
             Object[] row = new Object[4];
             row[0] = prescription.getOpdDate();
@@ -109,11 +109,11 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
             dtm.addRow(row);
         }
     }
-    
+
     public void populateWithdrawalSymptoms() {
         DefaultTableModel dtm = (DefaultTableModel) tblWithdrawalSymptoms.getModel();
         dtm.setRowCount(0);
-        
+
         for (OpioidWithdrawalSymptoms withdrawalSymptoms : patient.getOpioidWithdrawalSymptomsHistory().getOpioidWithdrawalSymptomsList()) {
             Object[] row = new Object[6];
             row[0] = withdrawalSymptoms.isLowAppetite();
@@ -135,28 +135,26 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblSymptoms = new javax.swing.JTable();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jPanel3 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblAbuseSymptoms = new javax.swing.JTable();
+        checkBoxQuivering = new javax.swing.JCheckBox();
+        jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tblPrescriptionHistory = new javax.swing.JTable();
-        btnRefresh = new javax.swing.JButton();
-        btnBack = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblWithdrawalSymptoms = new javax.swing.JTable();
-        checkBoxLowApetite = new javax.swing.JCheckBox();
         checkBoxHighBloodPressure = new javax.swing.JCheckBox();
-        checkBoxQuivering = new javax.swing.JCheckBox();
         checkBoxVomiting = new javax.swing.JCheckBox();
+        btnBack = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblSymptoms = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblPrescriptionHistory = new javax.swing.JTable();
         checkBoxColdSweats = new javax.swing.JCheckBox();
         checkBoxEnlargedPupils = new javax.swing.JCheckBox();
-        btnSaveSymptoms = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         txtFieldGender = new javax.swing.JTextField();
         txtFieldBloodGroup = new javax.swing.JTextField();
@@ -174,40 +172,22 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
         checkBoxTobacco = new javax.swing.JCheckBox();
         checkBoxCannabis = new javax.swing.JCheckBox();
         btnSaveOtherAddictions = new javax.swing.JButton();
+        btnRefresh = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        btnSaveSymptoms = new javax.swing.JButton();
+        checkBoxLowApetite = new javax.swing.JCheckBox();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("Patient Details");
-
-        jLabel7.setText("Symptoms Records :");
-
-        tblSymptoms.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Back Pain", "Arthritis", "Headache", "Multiple Sclerosis", "Fibromyalgia", "Shingles", "Nerve Damage", "Cancer", "Injury", "Broken Bones", "Abdominal Pain", "Intestinal Disorder", "Infection", "Sprain", "Muscle Spasm"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(tblSymptoms);
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel8.setText("Abuse Symptoms Records :");
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 497, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setText("Patient Details");
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 16, -1, -1));
 
         tblAbuseSymptoms.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -234,48 +214,16 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tblAbuseSymptoms);
 
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 535, 1289, 107));
+
+        checkBoxQuivering.setText("Quivering");
+        jPanel3.add(checkBoxQuivering, new org.netbeans.lib.awtextra.AbsoluteConstraints(343, 986, -1, -1));
+
+        jLabel7.setText("Symptoms Records :");
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 337, -1, -1));
+
         jLabel9.setText("Prescription Records :");
-
-        tblPrescriptionHistory.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Date", "Prescribing Doctor", "Pharmacy", "Opioids prescribed"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.Integer.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane3.setViewportView(tblPrescriptionHistory);
-
-        btnRefresh.setText("Refresh Tables");
-        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRefreshActionPerformed(evt);
-            }
-        });
-
-        btnBack.setText("<<Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-
-        jLabel10.setText("Withdrawal Symptoms Records :");
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 660, -1, -1));
 
         tblWithdrawalSymptoms.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -302,24 +250,81 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
         });
         jScrollPane4.setViewportView(tblWithdrawalSymptoms);
 
-        checkBoxLowApetite.setText("Low Apetite");
+        jPanel3.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 861, 1289, 107));
 
         checkBoxHighBloodPressure.setText("High Blood Pressure");
-
-        checkBoxQuivering.setText("Quivering");
+        jPanel3.add(checkBoxHighBloodPressure, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 986, -1, -1));
 
         checkBoxVomiting.setText("Vomiting");
+        jPanel3.add(checkBoxVomiting, new org.netbeans.lib.awtextra.AbsoluteConstraints(462, 986, -1, -1));
 
-        checkBoxColdSweats.setText("Cold Sweats");
-
-        checkBoxEnlargedPupils.setText("Enlarged Pupils");
-
-        btnSaveSymptoms.setText("Save Symptoms");
-        btnSaveSymptoms.addActionListener(new java.awt.event.ActionListener() {
+        btnBack.setText("<<Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveSymptomsActionPerformed(evt);
+                btnBackActionPerformed(evt);
             }
         });
+        jPanel3.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(437, 1033, -1, -1));
+
+        tblSymptoms.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Back Pain", "Arthritis", "Headache", "Multiple Sclerosis", "Fibromyalgia", "Shingles", "Nerve Damage", "Cancer", "Injury", "Broken Bones", "Abdominal Pain", "Intestinal Disorder", "Infection", "Sprain", "Muscle Spasm"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblSymptoms);
+
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 373, 1289, 102));
+
+        tblPrescriptionHistory.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Date", "Prescribing Doctor", "Pharmacy", "Opioids prescribed"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(tblPrescriptionHistory);
+
+        jPanel3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 698, 1289, 107));
+
+        checkBoxColdSweats.setText("Cold Sweats");
+        jPanel3.add(checkBoxColdSweats, new org.netbeans.lib.awtextra.AbsoluteConstraints(577, 986, -1, -1));
+
+        checkBoxEnlargedPupils.setText("Enlarged Pupils");
+        jPanel3.add(checkBoxEnlargedPupils, new org.netbeans.lib.awtextra.AbsoluteConstraints(714, 986, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Patient Details"));
@@ -346,13 +351,13 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel4)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6))
-                .addGap(147, 147, 147)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(txtFieldNumber, javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(41, 41, 41)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtFieldNumber, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
                     .addComponent(txtFieldBloodGroup, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtFieldGender, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtFieldAge, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtFieldName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFieldName, javax.swing.GroupLayout.Alignment.LEADING))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -380,6 +385,8 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
                     .addComponent(txtFieldNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
+
+        jPanel3.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 54, 660, -1));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Other Addictions Caused by Opioids"));
@@ -423,14 +430,14 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(checkBoxCannabis, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(checkBoxStimulant, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(78, 78, 78)
+                            .addComponent(checkBoxStimulant, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(checkBoxCannabis, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(checkBoxAlcohol, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(checkBoxTobacco, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(btnSaveOtherAddictions, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(246, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnSaveOtherAddictions, checkBoxAlcohol, checkBoxCannabis, checkBoxStimulant, checkBoxTobacco});
@@ -451,102 +458,47 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
                 .addGap(30, 30, 30))
         );
 
+        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(684, 54, 620, 263));
+
+        btnRefresh.setText("Refresh Tables");
+        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(559, 1033, -1, -1));
+
+        jLabel10.setText("Withdrawal Symptoms Records :");
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 823, -1, -1));
+
+        btnSaveSymptoms.setText("Save Symptoms");
+        btnSaveSymptoms.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveSymptomsActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnSaveSymptoms, new org.netbeans.lib.awtextra.AbsoluteConstraints(873, 986, -1, -1));
+
+        checkBoxLowApetite.setText("Low Apetite");
+        jPanel3.add(checkBoxLowApetite, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 986, -1, -1));
+
+        jScrollPane5.setViewportView(jPanel3);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(373, 373, 373)
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel7)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel10)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane3)
-                            .addComponent(jScrollPane4)
-                            .addComponent(jScrollPane1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel9)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(btnBack)
-                                                .addGap(33, 33, 33)
-                                                .addComponent(btnRefresh))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(checkBoxLowApetite)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(checkBoxHighBloodPressure)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(checkBoxQuivering)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(checkBoxVomiting)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(checkBoxColdSweats)))
-                                        .addGap(18, 18, 18)
-                                        .addComponent(checkBoxEnlargedPupils)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnSaveSymptoms))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap()
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 1319, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(20, 20, 20)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22)
-                .addComponent(jLabel8)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel9)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel10)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(checkBoxLowApetite)
-                    .addComponent(checkBoxHighBloodPressure)
-                    .addComponent(checkBoxQuivering)
-                    .addComponent(checkBoxVomiting)
-                    .addComponent(checkBoxColdSweats)
-                    .addComponent(checkBoxEnlargedPupils)
-                    .addComponent(btnSaveSymptoms))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBack)
-                    .addComponent(btnRefresh))
-                .addGap(308, 308, 308))
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 1078, Short.MAX_VALUE)
+                .addGap(66, 66, 66))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -571,12 +523,12 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
         withdrawalSymptoms.setLowAppetite(checkBoxLowApetite.isSelected());
         withdrawalSymptoms.setQuivering(checkBoxQuivering.isSelected());
         withdrawalSymptoms.setVomiting(checkBoxVomiting.isSelected());
-        
+
         patient.getOpioidWithdrawalSymptomsHistory().getOpioidWithdrawalSymptomsList().add(withdrawalSymptoms);
-        
+
         JOptionPane.showMessageDialog(null, patient.getName() + "'s Withdrawal symptoms saved");
         populateWithdrawalSymptoms();
-        
+
 
     }//GEN-LAST:event_btnSaveSymptomsActionPerformed
 
@@ -594,13 +546,14 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
 
     private void btnSaveOtherAddictionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveOtherAddictionsActionPerformed
         // TODO add your handling code here:
-        
+
         patient.getPostOpioidAddiction().setAlcoholAbuse(checkBoxAlcohol.isSelected());
         patient.getPostOpioidAddiction().setCannabisAbuse(checkBoxCannabis.isSelected());
         patient.getPostOpioidAddiction().setStimulantAbuse(checkBoxStimulant.isSelected());
         patient.getPostOpioidAddiction().setTobaccoUse(checkBoxTobacco.isSelected());
-        
-        
+
+        JOptionPane.showMessageDialog(null, "Addictions caused by opioids updatded!");
+
     }//GEN-LAST:event_btnSaveOtherAddictionsActionPerformed
 
     private void checkBoxStimulantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxStimulantActionPerformed
@@ -634,10 +587,12 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTable tblAbuseSymptoms;
     private javax.swing.JTable tblPrescriptionHistory;
     private javax.swing.JTable tblSymptoms;

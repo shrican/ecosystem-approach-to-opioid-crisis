@@ -145,14 +145,13 @@ public class RehabManagerWorkAreaJPanel extends javax.swing.JPanel {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(304, 304, 304)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(59, 59, 59)
-                                .addComponent(btnViewPatientDetails))
-                            .addComponent(btnOtherAddictions)))
+                        .addComponent(btnOtherAddictions))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(63, 63, 63)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(363, 363, 363)
+                        .addComponent(btnViewPatientDetails)))
                 .addContainerGap(230, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -162,9 +161,9 @@ public class RehabManagerWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addGap(10, 10, 10)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(85, 85, 85)
+                .addGap(87, 87, 87)
                 .addComponent(btnViewPatientDetails)
-                .addGap(46, 46, 46)
+                .addGap(44, 44, 44)
                 .addComponent(btnOtherAddictions)
                 .addContainerGap(160, Short.MAX_VALUE))
         );
@@ -173,7 +172,7 @@ public class RehabManagerWorkAreaJPanel extends javax.swing.JPanel {
     private void btnViewPatientDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewPatientDetailsActionPerformed
         // TODO add your handling code here:
 
-        if (tblPatient.getValueAt(tblPatient.getSelectedRow(), 1) != null) {
+        if (tblPatient.getSelectedRow() >= 0) {
             Patient patient = (Patient) tblPatient.getValueAt(tblPatient.getSelectedRow(), 1);
             PatientDetailsJPanel patientDetails = new PatientDetailsJPanel(userProcessContainer, patient, ecosystemPatientDirectory);
             userProcessContainer.add("PatientDetailsJPanel", patientDetails);
