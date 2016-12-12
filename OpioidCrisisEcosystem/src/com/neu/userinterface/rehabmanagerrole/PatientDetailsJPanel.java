@@ -11,6 +11,7 @@ import com.neu.business.patient.Patient;
 import com.neu.business.patient.PatientDirectory;
 import com.neu.business.patient.Prescription;
 import com.neu.business.patient.Symptoms;
+import com.neu.userinterface.receptionistrole.ReceptionistWorkAreaJPanel;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;

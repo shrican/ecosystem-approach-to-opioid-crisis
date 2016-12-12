@@ -48,6 +48,7 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
         manageHospitalEmpJButton = new javax.swing.JButton();
         manageHospitalUsersJButton = new javax.swing.JButton();
         manageHospitalRehabAssoJButton = new javax.swing.JButton();
+        btnSymptomsBreakdown = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -82,6 +83,13 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnSymptomsBreakdown.setText("Symptoms Breakdown");
+        btnSymptomsBreakdown.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSymptomsBreakdownActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -89,6 +97,7 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(100, 100, 100)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnSymptomsBreakdown, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(manageHospitalOrgJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -110,7 +119,9 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(manageHospitalUsersJButton)
                 .addGap(25, 25, 25)
                 .addComponent(manageHospitalRehabAssoJButton)
-                .addContainerGap(297, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(btnSymptomsBreakdown)
+                .addContainerGap(242, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel1, manageHospitalOrgJButton});
@@ -155,7 +166,18 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_manageHospitalRehabAssoJButtonActionPerformed
 
+    private void btnSymptomsBreakdownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSymptomsBreakdownActionPerformed
+        // TODO add your handling code here:
+        
+        HospitalReportsJPanel symptomsBreakdown = new HospitalReportsJPanel(userProcessContainer, patientDirectory);
+        userProcessContainer.add("SymptomsBreakdownJPanel", symptomsBreakdown);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+        
+    }//GEN-LAST:event_btnSymptomsBreakdownActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSymptomsBreakdown;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton manageHospitalEmpJButton;
     private javax.swing.JButton manageHospitalOrgJButton;
