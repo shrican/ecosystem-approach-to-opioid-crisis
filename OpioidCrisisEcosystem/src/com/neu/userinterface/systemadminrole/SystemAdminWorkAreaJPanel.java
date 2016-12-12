@@ -9,6 +9,7 @@ import com.neu.business.EcoSystem;
 import com.neu.business.enterprise.Enterprise;
 import com.neu.business.network.Network;
 import com.neu.business.organization.Organization;
+import com.neu.business.patient.PatientDirectory;
 import java.awt.CardLayout;
 import static java.time.Clock.system;
 import java.util.ArrayList;
@@ -99,6 +100,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         manageEnterpriseJButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         selectedNodeJLabel = new javax.swing.JLabel();
+        btnJFreeChart = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -153,6 +155,13 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         selectedNodeJLabel.setText("<view_selected_node>");
 
+        btnJFreeChart.setText("Test");
+        btnJFreeChart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJFreeChartActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -166,8 +175,9 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                         .addComponent(selectedNodeJLabel))
                     .addComponent(manageNetworkJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(manageEnterpriseJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(manageAdminJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(828, Short.MAX_VALUE))
+                    .addComponent(manageAdminJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnJFreeChart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(1076, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,7 +192,10 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(manageEnterpriseJButton)
                 .addGap(67, 67, 67)
                 .addComponent(manageAdminJButton)
-                .addContainerGap(890, Short.MAX_VALUE))
+
+                .addGap(54, 54, 54)
+                .addComponent(btnJFreeChart)
+                .addContainerGap(852, Short.MAX_VALUE))
         );
 
         splitPane.setRightComponent(jPanel4);
@@ -228,7 +241,21 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         layout.next(userProcessContainer);
     }//GEN-LAST:event_manageEnterpriseJButtonActionPerformed
 
+    private void btnJFreeChartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJFreeChartActionPerformed
+        // TODO add your handling code here:
+        
+        PatientDirectory systemPatientDirectory = system.getPatientDirectory();
+        JFreeChartJPanel jFreeChartJPanel = new JFreeChartJPanel(userProcessContainer, system);
+        userProcessContainer.add("jFreeChartJPanel", jFreeChartJPanel);
+
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+        
+        
+    }//GEN-LAST:event_btnJFreeChartActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnJFreeChart;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;

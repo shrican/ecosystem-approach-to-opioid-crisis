@@ -12,6 +12,7 @@ import com.neu.business.network.Network;
 import com.neu.business.organization.ChemistOrganization;
 import com.neu.business.organization.DEAOrganization;
 import com.neu.business.organization.Organization;
+import com.neu.business.patient.PatientDirectory;
 import com.neu.business.useraccount.UserAccount;
 import java.awt.CardLayout;
 import java.util.HashMap;
@@ -33,14 +34,17 @@ public class DEAWorkAreaJPanel extends javax.swing.JPanel {
     private DEAOrganization organization;
     private UserAccount account;
     private Network network;
+    private PatientDirectory patientDirectory;
 
-    public DEAWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, DEAOrganization organization, Enterprise enterprise, Network network) {
+    public DEAWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, DEAOrganization organization, Enterprise enterprise, Network network, PatientDirectory patientDirectory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         this.organization = organization;
         this.account = account;
         this.network = network;
+        this.patientDirectory = patientDirectory;
+        
     }
 
     /**
@@ -68,7 +72,7 @@ public class DEAWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnDoctorReport.setText("Generate Doctor Report");
+        btnDoctorReport.setText("Generate Doctor and Chemist Report");
         btnDoctorReport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDoctorReportActionPerformed(evt);
@@ -85,7 +89,7 @@ public class DEAWorkAreaJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel1)
                     .addComponent(btnPharmacyReport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnDoctorReport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(604, Short.MAX_VALUE))
+                .addContainerGap(567, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,6 +129,11 @@ public class DEAWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnDoctorReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoctorReportActionPerformed
         // TODO add your handling code here:
+        DoctorReportJPanel doctorReportJPanel = new DoctorReportJPanel(userProcessContainer, patientDirectory);
+        userProcessContainer.add("doctorReportJPanel", doctorReportJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+        
     }//GEN-LAST:event_btnDoctorReportActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

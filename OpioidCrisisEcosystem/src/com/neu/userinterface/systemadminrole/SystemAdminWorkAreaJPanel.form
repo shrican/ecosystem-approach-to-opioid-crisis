@@ -111,9 +111,10 @@
                           </Group>
                           <Component id="manageNetworkJButton" alignment="0" max="32767" attributes="0"/>
                           <Component id="manageEnterpriseJButton" alignment="0" max="32767" attributes="0"/>
-                          <Component id="manageAdminJButton" alignment="0" min="-2" pref="289" max="-2" attributes="0"/>
+                          <Component id="manageAdminJButton" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnJFreeChart" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="828" max="32767" attributes="0"/>
+                      <EmptySpace pref="1076" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -131,7 +132,9 @@
                       <Component id="manageEnterpriseJButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
                       <Component id="manageAdminJButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="890" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                      <Component id="btnJFreeChart" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="852" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -170,6 +173,14 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="&lt;view_selected_node&gt;"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnJFreeChart">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Test"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnJFreeChartActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

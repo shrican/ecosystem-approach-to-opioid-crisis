@@ -55,6 +55,7 @@ public class PharmacyAdminWorkAreaJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         txtInitialStock = new javax.swing.JTextField();
         btnUpdateStock = new javax.swing.JButton();
+        btnPharmacySales = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -100,6 +101,13 @@ public class PharmacyAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnPharmacySales.setText("View Pharmacy Sales Distribution");
+        btnPharmacySales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPharmacySalesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -117,10 +125,11 @@ public class PharmacyAdminWorkAreaJPanel extends javax.swing.JPanel {
                                 .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(305, 305, 305)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(manageOrganizationJButton)
-                                    .addComponent(userJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(manageEmployeeJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(manageOrganizationJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(userJButton, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                    .addComponent(manageEmployeeJButton, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                    .addComponent(btnPharmacySales, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(339, 339, 339)
                         .addComponent(jLabel2)
@@ -153,7 +162,9 @@ public class PharmacyAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(manageEmployeeJButton)
                 .addGap(29, 29, 29)
                 .addComponent(userJButton)
-                .addContainerGap(397, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addComponent(btnPharmacySales)
+                .addContainerGap(339, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {enterpriseLabel, jLabel1, manageEmployeeJButton, manageOrganizationJButton, userJButton, valueLabel});
@@ -214,7 +225,15 @@ public class PharmacyAdminWorkAreaJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txtInitialStockKeyTyped
 
+    private void btnPharmacySalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPharmacySalesActionPerformed
+        // TODO add your handling code here:
+        
+//        PharmacySalesJPanel pharmacySales = new PharmacySalesJPanel(userProcessContainer, (PharmacyEnterprise)enterprise);
+        
+    }//GEN-LAST:event_btnPharmacySalesActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnPharmacySales;
     private javax.swing.JButton btnUpdateStock;
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel jLabel1;
