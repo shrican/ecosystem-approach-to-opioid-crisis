@@ -523,7 +523,7 @@ public class PatientDirectory {
     /**
      * Comparator to sort Map based on the value
      */
-    class ValueComparator implements Comparator<String> {
+    public class ValueComparator implements Comparator<String> {
 
         Map<String, Integer> baseBap;
 
