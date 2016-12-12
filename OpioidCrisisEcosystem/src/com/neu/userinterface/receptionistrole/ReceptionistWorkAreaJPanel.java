@@ -198,7 +198,7 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
     private void viewPatientDetailsJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPatientDetailsJButtonActionPerformed
         // TODO add your handling code here:
 
-        if (tblAppointments.getValueAt(tblAppointments.getSelectedRow(), 1) != null) {
+        if (tblAppointments.getSelectedRow() >= 0) {
             Patient patient = (Patient) tblAppointments.getValueAt(tblAppointments.getSelectedRow(), 1);
 
             PatientDetailsJPanel patientDetailsJPanel = new PatientDetailsJPanel(userProcessContainer, patient, enterprise);

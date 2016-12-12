@@ -70,6 +70,7 @@ public class ManagePatientJPanel extends javax.swing.JPanel {
         backJButton2 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         hospitalPatientDirectoryJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -81,15 +82,19 @@ public class ManagePatientJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(hospitalPatientDirectoryJTable);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(198, 80, 439, 174));
+
         viewPatientDetailsJButton.setText("View Patient Details");
         viewPatientDetailsJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewPatientDetailsJButtonActionPerformed(evt);
             }
         });
+        add(viewPatientDetailsJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(466, 298, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel7.setText("Manage Patient");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 16, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Add Patient "));
@@ -108,6 +113,12 @@ public class ManagePatientJPanel extends javax.swing.JPanel {
         jLabel3.setText("Gender :");
 
         jLabel4.setText("Phone No. :");
+
+        patientPhoneJTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                patientPhoneJTextFieldKeyTyped(evt);
+            }
+        });
 
         jLabel5.setText("Age :");
 
@@ -184,71 +195,41 @@ public class ManagePatientJPanel extends javax.swing.JPanel {
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel2, jLabel3, jLabel4, jLabel5, jLabel6, patientPhoneJTextField});
 
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(198, 358, -1, -1));
+
         backJButton2.setText("<< Back");
         backJButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButton2ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(198, 198, 198)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(viewPatientDetailsJButton)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(backJButton2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(jLabel7)))
-                .addContainerGap(436, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel7)
-                .addGap(42, 42, 42)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
-                .addGap(44, 44, 44)
-                .addComponent(viewPatientDetailsJButton)
-                .addGap(31, 31, 31)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(backJButton2)
-                .addGap(38, 38, 38))
-        );
+        add(backJButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 720, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void addPatientJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPatientJButtonActionPerformed
         // TODO add your handling code here:
 
-        Patient patient = new Patient();
-        patient.setName(patientNameJTextField.getText());
-        patient.setGender(patientGenderJTextField.getText());
-        patient.setAge(Integer.parseInt(patientAgeJTextField.getText()));
-        patient.setBloodGroup(comboBoxBloodGroup.getItemAt(comboBoxBloodGroup.getSelectedIndex()));
-        patient.setPhoneNo(patientPhoneJTextField.getText());
-        systemPatientDirectory.addPatient(patient);
-        hospitalPatientDirectory.addPatient(patient);
+        if (patientNameJTextField.getText().equals("") || patientGenderJTextField.getText().equals("") || patientAgeJTextField.getText().equals("") || patientPhoneJTextField.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Kindly enter all the fields!");
+        } else {
+            Patient patient = new Patient();
+            patient.setName(patientNameJTextField.getText());
+            patient.setGender(patientGenderJTextField.getText());
+            patient.setAge(Integer.parseInt(patientAgeJTextField.getText()));
+            patient.setBloodGroup(comboBoxBloodGroup.getItemAt(comboBoxBloodGroup.getSelectedIndex()));
+            patient.setPhoneNo(patientPhoneJTextField.getText());
+            systemPatientDirectory.addPatient(patient);
+            hospitalPatientDirectory.addPatient(patient);
 
-        JOptionPane.showMessageDialog(null, "Patient record added");
+            JOptionPane.showMessageDialog(null, "Patient record added");
 
-        patientNameJTextField.setText("");
-        patientAgeJTextField.setText("");
-        patientGenderJTextField.setText("");
-        patientPhoneJTextField.setText("");
+            patientNameJTextField.setText("");
+            patientAgeJTextField.setText("");
+            patientGenderJTextField.setText("");
+            patientPhoneJTextField.setText("");
 
-        populatePatientDirectoryTable();
+            populatePatientDirectoryTable();
+        }
     }//GEN-LAST:event_addPatientJButtonActionPerformed
 
     public void populatePatientDirectoryTable() {
@@ -292,11 +273,19 @@ public class ManagePatientJPanel extends javax.swing.JPanel {
         char charEntered = evt.getKeyChar();
         // Accept only Number/ Backspace/ Delete
         if (!(Character.isDigit(charEntered)) || charEntered == KeyEvent.VK_BACKSPACE || charEntered == KeyEvent.VK_DELETE) {
-            if (patientAgeJTextField.getText().length() < 11) {
-                evt.consume();
-            }
+            evt.consume();
         }
     }//GEN-LAST:event_patientAgeJTextFieldKeyTyped
+
+    private void patientPhoneJTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_patientPhoneJTextFieldKeyTyped
+        // TODO add your handling code here:
+
+        char charEntered = evt.getKeyChar();
+        // Accept only Number/ Backspace/ Delete
+        if (!(Character.isDigit(charEntered)) || charEntered == KeyEvent.VK_BACKSPACE || charEntered == KeyEvent.VK_DELETE) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_patientPhoneJTextFieldKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addPatientJButton;
