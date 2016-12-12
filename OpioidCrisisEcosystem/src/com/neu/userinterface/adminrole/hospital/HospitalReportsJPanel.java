@@ -7,12 +7,16 @@ package com.neu.userinterface.adminrole.hospital;
 
 import com.neu.business.patient.Patient;
 import com.neu.business.patient.PatientDirectory;
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Color;
+import static java.awt.Color.BLUE;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
@@ -23,53 +27,28 @@ public class HospitalReportsJPanel extends javax.swing.JPanel {
     /**
      * Creates new form HospitalReportsJPanel
      */
-    
     private JPanel userProcessContainer;
     private PatientDirectory patientDirectory;
-    
+
     public HospitalReportsJPanel(JPanel userProcessContainer, PatientDirectory patientDirectory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.patientDirectory = patientDirectory;
-        
+
         populateAbuseTable();
-        populateDoctorTable();
-        
+
     }
-    
-    public void populateAbuseTable()
-    {
-        DefaultTableModel dtm = (DefaultTableModel)tblDoctorPrescriptions.getModel();
+
+    public void populateAbuseTable() {
+        DefaultTableModel dtm = (DefaultTableModel) tblDoctorPrescriptions.getModel();
         dtm.setRowCount(0);
-        
-        
-        
+
         HashMap<String, Integer> abuseSymptomBreakdown = patientDirectory.generalSymptomsBreakdown((ArrayList<Patient>) patientDirectory.getPatientList());
-        
-        for(Map.Entry<String, Integer> entry: abuseSymptomBreakdown.entrySet())
-        {
+
+        for (Map.Entry<String, Integer> entry : abuseSymptomBreakdown.entrySet()) {
             String key = entry.getKey();
             Integer value = entry.getValue();
-            
-            Object[] row = new Object[2];
-            row[0] = key;
-            row[1] = value;
-            dtm.addRow(row);
-        }
-    }
-    
-    public void populateDoctorTable()
-    {
-        DefaultTableModel dtm = (DefaultTableModel)tblDoctorPrescriptions.getModel();
-        dtm.setRowCount(0);
-        
-        HashMap<String, Integer> doctorPrescriptions = patientDirectory.mostDoctorPrescriptions();
-        
-        for(Map.Entry<String, Integer> entry : doctorPrescriptions.entrySet())
-        {
-            String key = entry.getKey();
-            Integer value = entry.getValue();
-            
+
             Object[] row = new Object[2];
             row[0] = key;
             row[1] = value;
@@ -77,8 +56,23 @@ public class HospitalReportsJPanel extends javax.swing.JPanel {
         }
     }
 
-    
-    
+    public void populateDoctorTable() {
+        DefaultTableModel dtm = (DefaultTableModel) tblDoctorPrescriptions.getModel();
+        dtm.setRowCount(0);
+
+        HashMap<String, Integer> doctorPrescriptions = patientDirectory.mostDoctorPrescriptions();
+
+        for (Map.Entry<String, Integer> entry : doctorPrescriptions.entrySet()) {
+            String key = entry.getKey();
+            Integer value = entry.getValue();
+
+            Object[] row = new Object[2];
+            row[0] = key;
+            row[1] = value;
+            dtm.addRow(row);
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -92,9 +86,7 @@ public class HospitalReportsJPanel extends javax.swing.JPanel {
         tblDoctorPrescriptions = new javax.swing.JTable();
         backJButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jChartJPanel = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -103,7 +95,7 @@ public class HospitalReportsJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Doctor", "Prescriptions Issued"
+                "Symptom", "Score"
             }
         ) {
             Class[] types = new Class [] {
@@ -133,13 +125,8 @@ public class HospitalReportsJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Hospital Reports");
 
-        jButton1.setText("Doctor Chart");
-
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("Doctors with most number of Opioids prescribed");
-
-        jChartJPanel.setBackground(new java.awt.Color(247, 247, 247));
-        jChartJPanel.setLayout(new java.awt.BorderLayout());
+        jLabel2.setText("Opioid Abuse symptom Breakdown");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -148,24 +135,15 @@ public class HospitalReportsJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(backJButton2))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(97, 97, 97)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton1)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 563, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 399, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jChartJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(97, 97, 97)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(backJButton2)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(614, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,14 +153,10 @@ public class HospitalReportsJPanel extends javax.swing.JPanel {
                 .addGap(22, 22, 22)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(jChartJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 271, Short.MAX_VALUE)
                 .addComponent(backJButton2)
-                .addContainerGap())
+                .addGap(138, 138, 138))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -196,11 +170,7 @@ public class HospitalReportsJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backJButton;
-    private javax.swing.JButton backJButton1;
     private javax.swing.JButton backJButton2;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JPanel jChartJPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane2;

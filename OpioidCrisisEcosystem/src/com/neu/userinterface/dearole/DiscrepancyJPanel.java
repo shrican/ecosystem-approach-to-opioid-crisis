@@ -5,11 +5,14 @@
  */
 package com.neu.userinterface.dearole;
 
+import static com.db4o.internal.InCallback.value;
 import com.neu.business.enterprise.Enterprise;
 import com.neu.business.enterprise.PharmacyEnterprise;
 import com.neu.business.network.Network;
 import com.neu.business.organization.ChemistOrganization;
 import com.neu.business.organization.Organization;
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Color;
 import static java.awt.Color.WHITE;
 import java.awt.Graphics;
@@ -18,6 +21,12 @@ import java.awt.Rectangle;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PiePlot;
+import org.jfree.data.general.DefaultPieDataset;
 
 /**
  *
@@ -28,17 +37,6 @@ public class DiscrepancyJPanel extends javax.swing.JPanel {
     /**
      * Creates new form DiscrepancyJPanel
      */
-    class Slice {
-
-        double value;
-        Color color;
-
-        public Slice(double value, Color color) {
-            this.value = value;
-            this.color = color;
-        }
-    }
-
     private JPanel userProcessContainer;
     private Network network;
     private HashMap<ChemistOrganization, Integer> slices;
@@ -47,64 +45,40 @@ public class DiscrepancyJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userPrcessContainer;
         this.network = network;
+        populateTable();
+
+    }
+
+    public void populateTable() {
+
+        DefaultTableModel dtm = (DefaultTableModel) tblDiscripancy.getModel();
+        dtm.setRowCount(0);
+
+        HashMap<String, Integer> chemistFraud = new HashMap<>();
+
         for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
 
             for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
                 if (organization instanceof ChemistOrganization) {
                     int discrepancy = (int) network.pharmacyStockDiscrepancy((ChemistOrganization) organization);
-                    System.out.println("Discrepancy of " + organization.getName() + " is " + discrepancy);
+                    chemistFraud.put(organization.getName(), discrepancy);
                 }
 
             }
         }
-//        slices = createSlicesMap(network);
 
+        for (Map.Entry<String, Integer> entry : chemistFraud.entrySet()) {
+            String chemist = entry.getKey();
+            Integer fraud = entry.getValue();
+
+            Object[] row = new Object[2];
+            row[0] = chemist;
+            row[1] = fraud;
+            dtm.addRow(row);
+
+        }
     }
 
-//    public void paint(Graphics g) {
-//      drawPie((Graphics2D) g, getBounds(), slices);
-//   }
-//    
-//     void drawPie(Graphics2D g, Rectangle area, HashMap<ChemistOrganization, Integer> slices) {
-//      int total = 0;
-//      
-//      for(Map.Entry<ChemistOrganization, Integer> entry : slices.entrySet()){
-//            total+=entry.getValue();
-//        }
-//      
-//      double curValue = 0.0D;
-//      int startAngle = 0;
-//      for (Map.Entry<ChemistOrganization, Integer> entry : slices.entrySet()) {
-//         startAngle = (int) (curValue * 360 / total);
-//         int arcAngle = (int) (entry.getValue() * 360 / total);
-//         g.setColor(WHITE);
-//         g.fillArc(area.x, area.y, area.width, area.height, 
-//         startAngle, arcAngle);
-//         curValue += entry.getValue();
-//      }
-//     }
-//    public HashMap<ChemistOrganization, Integer> createSlicesMap(Network network)
-//    {
-//        HashMap<ChemistOrganization,Integer> createdSlices = new HashMap<>();
-//        
-//        
-//        for(Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList())
-//        {
-//            if(enterprise instanceof PharmacyEnterprise)
-//            {
-//                for(Organization chemistOrganization : enterprise.getOrganizationDirectory().getOrganizationList())
-//                {
-//                    if(chemistOrganization instanceof ChemistOrganization)
-//                    {
-//                        int discrepancy = (int)(network.pharmacyStockDiscrepancy((ChemistOrganization) chemistOrganization));
-//                        createdSlices.put((ChemistOrganization)chemistOrganization,discrepancy);
-//                    }
-//                }
-//            }
-//        }
-//        
-//        return createdSlices;
-//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -114,18 +88,88 @@ public class DiscrepancyJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        backJButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblDiscripancy = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        backJButton.setText("<< Back");
+        backJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backJButtonActionPerformed(evt);
+            }
+        });
+
+        tblDiscripancy.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Pharmacy", "Discripancy"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblDiscripancy);
+        if (tblDiscripancy.getColumnModel().getColumnCount() > 0) {
+            tblDiscripancy.getColumnModel().getColumn(0).setResizable(false);
+            tblDiscripancy.getColumnModel().getColumn(1).setResizable(false);
+        }
+
+        jLabel1.setText("Pharmacies with Discripancy Report");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(176, 176, 176)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(backJButton)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(272, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel1)
+                .addGap(50, 50, 50)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(135, 135, 135)
+                .addComponent(backJButton)
+                .addGap(129, 129, 129))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
+        // TODO add your handling code here:
+
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_backJButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backJButton;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblDiscripancy;
     // End of variables declaration//GEN-END:variables
 }

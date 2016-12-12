@@ -192,7 +192,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(manageEnterpriseJButton)
                 .addGap(67, 67, 67)
                 .addComponent(manageAdminJButton)
-
                 .addGap(54, 54, 54)
                 .addComponent(btnJFreeChart)
                 .addContainerGap(852, Short.MAX_VALUE))

@@ -6,6 +6,7 @@
 package com.neu.userinterface.adminrole.hospital;
 
 import com.neu.business.enterprise.Enterprise;
+import com.neu.business.enterprise.HospitalEnterprise;
 import com.neu.business.network.Network;
 import com.neu.business.patient.PatientDirectory;
 import com.neu.userinterface.systemadminrole.ManageNetworkJPanel;
@@ -97,14 +98,13 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(100, 100, 100)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSymptomsBreakdown, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(manageHospitalOrgJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(manageHospitalUsersJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(manageHospitalRehabAssoJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(manageHospitalEmpJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(manageHospitalOrgJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(manageHospitalUsersJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(manageHospitalRehabAssoJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(manageHospitalEmpJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSymptomsBreakdown, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(616, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -140,12 +140,11 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void manageHospitalEmpJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageHospitalEmpJButtonActionPerformed
         // TODO add your handling code here:
-        
-        if(enterprise.getOrganizationDirectory().getOrganizationList().size()==0)
-        {
+
+        if (enterprise.getOrganizationDirectory().getOrganizationList().size() == 0) {
             JOptionPane.showMessageDialog(null, "Cannot create an Employee without creating an Organization", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        
+
         ManageHospitalEmployeeJPanel manageHospitalEmployeeJPanel = new ManageHospitalEmployeeJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
         userProcessContainer.add("manageHospitalEmployeeJPanel", manageHospitalEmployeeJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
@@ -156,11 +155,10 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
     private void manageHospitalUsersJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageHospitalUsersJButtonActionPerformed
         // TODO add your handling code here:
 
-        if(enterprise.getOrganizationDirectory().getOrganizationList().size()==0)
-        {
+        if (enterprise.getOrganizationDirectory().getOrganizationList().size() == 0) {
             JOptionPane.showMessageDialog(null, "Cannot create a user account without creating an Organization", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        
+
         ManageHospitalUserAccountJPanel manageHospitalUserAccountJPanel = new ManageHospitalUserAccountJPanel(userProcessContainer, enterprise);
         userProcessContainer.add("manageHospitalUserAccountJPanel", manageHospitalUserAccountJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
@@ -180,12 +178,14 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnSymptomsBreakdownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSymptomsBreakdownActionPerformed
         // TODO add your handling code here:
-        
-        HospitalReportsJPanel symptomsBreakdown = new HospitalReportsJPanel(userProcessContainer, patientDirectory);
+
+        HospitalEnterprise hospitalEnterprise = (HospitalEnterprise) enterprise;
+
+        HospitalReportsJPanel symptomsBreakdown = new HospitalReportsJPanel(userProcessContainer, hospitalEnterprise.getPatientDirectory());
         userProcessContainer.add("SymptomsBreakdownJPanel", symptomsBreakdown);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-        
+
     }//GEN-LAST:event_btnSymptomsBreakdownActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -298,14 +298,8 @@ public class PatientDirectory {
                     }
                 }
             }
-            mostSellingChemistMap.put(chemist, prescriptionCount);//            if (prescriptions > mostPrescriptions) {
+            mostSellingChemistMap.put(chemist, prescriptionCount);
 
-//
-//                mostPrescriptions = prescriptions;
-//
-//                mostPrescribingDoctor = doctor;
-//
-//            }
         }
 
         return mostSellingChemistMap;
@@ -403,8 +397,8 @@ public class PatientDirectory {
         return symptomsPrescription;
 
     }
-	
-	    /*
+
+    /*
      * Finds Patient's baysian score wise highest symptoms that patient at each level (low, medium, high) showed
      */
     public void patientScoreStatusWiseHigestAbuseSymptoms() {
@@ -448,7 +442,7 @@ public class PatientDirectory {
         highBaysianScoreAbuseSymptomBreakdownTree.putAll(highBaysianScoreAbuseSymptomBreakdownMap);
 
     }
-    
+
 //    public void pharmacySalesDistribution(PatientDirectory patientDirectory)
 //    {
 //        ArrayList<Prescription> ordersSold = new ArrayList<>();
@@ -519,7 +513,6 @@ public class PatientDirectory {
 //            System.out.println(patient.getName());
 //        }
 //    }
-
     /**
      * Comparator to sort Map based on the value
      */

@@ -98,8 +98,10 @@ public class Network {
             if (enterprise instanceof HospitalEnterprise) {
                 for (Patient patient : ((HospitalEnterprise) enterprise).getPatientDirectory().getPatientList()) {
                     for (Prescription prescription : patient.getPrescriptionHistory().getPrescriptionHistoryList()) {
-                        if (prescription.getChemistName().equals(checkChemistOrganization.getName())) {
-                            pharmacyPrescriptionsTotal += prescription.getTotalOpioidsPrescribed();
+                        if (prescription.getChemistName() != null) {
+                            if (prescription.getChemistName().equals(checkChemistOrganization.getName())) {
+                                pharmacyPrescriptionsTotal += prescription.getTotalOpioidsPrescribed();
+                            }
                         }
                     }
                 }
@@ -116,7 +118,6 @@ public class Network {
         return discrepancy;
     }
 
-    
     public Enterprise getEnterpriseByName(String name) {
         Enterprise enterprise = null;
 
