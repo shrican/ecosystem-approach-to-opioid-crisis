@@ -42,6 +42,8 @@ public class HospitalReportsJPanel extends javax.swing.JPanel {
         DefaultTableModel dtm = (DefaultTableModel)tblDoctorPrescriptions.getModel();
         dtm.setRowCount(0);
         
+        
+        
         HashMap<String, Integer> abuseSymptomBreakdown = patientDirectory.generalSymptomsBreakdown((ArrayList<Patient>) patientDirectory.getPatientList());
         
         for(Map.Entry<String, Integer> entry: abuseSymptomBreakdown.entrySet())

@@ -10,6 +10,7 @@ import com.neu.business.network.Network;
 import com.neu.business.patient.PatientDirectory;
 import com.neu.userinterface.systemadminrole.ManageNetworkJPanel;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -139,6 +140,12 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void manageHospitalEmpJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageHospitalEmpJButtonActionPerformed
         // TODO add your handling code here:
+        
+        if(enterprise.getOrganizationDirectory().getOrganizationList().size()==0)
+        {
+            JOptionPane.showMessageDialog(null, "Cannot create an Employee without creating an Organization", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
         ManageHospitalEmployeeJPanel manageHospitalEmployeeJPanel = new ManageHospitalEmployeeJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
         userProcessContainer.add("manageHospitalEmployeeJPanel", manageHospitalEmployeeJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
@@ -149,6 +156,11 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
     private void manageHospitalUsersJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageHospitalUsersJButtonActionPerformed
         // TODO add your handling code here:
 
+        if(enterprise.getOrganizationDirectory().getOrganizationList().size()==0)
+        {
+            JOptionPane.showMessageDialog(null, "Cannot create a user account without creating an Organization", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
         ManageHospitalUserAccountJPanel manageHospitalUserAccountJPanel = new ManageHospitalUserAccountJPanel(userProcessContainer, enterprise);
         userProcessContainer.add("manageHospitalUserAccountJPanel", manageHospitalUserAccountJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();

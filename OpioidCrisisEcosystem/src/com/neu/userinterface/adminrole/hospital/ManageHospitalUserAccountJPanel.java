@@ -138,13 +138,13 @@ public class ManageHospitalUserAccountJPanel extends javax.swing.JPanel {
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE))
+                                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jLabel2))
                                     .addGap(30, 30, 30))
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addGap(139, 139, 139)))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(organizationJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -249,13 +249,22 @@ public class ManageHospitalUserAccountJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_organizationJComboBoxActionPerformed
 
     private void createUserJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUserJButtonActionPerformed
+
         String userName = nameJTextField.getText();
         String password = passwordJTextField.getText();
         Organization organization = (Organization) organizationJComboBox.getSelectedItem();
         Employee employee = (Employee) employeeJComboBox.getSelectedItem();
         Role role = (Role) roleJComboBox.getSelectedItem();
 
+        for (UserAccount account : organization.getUserAccountDirectory().getUserAccountList()) {
+            if (account.getUsername().equals(userName)) {
+                JOptionPane.showMessageDialog(null, "User account exists");
+                return;
+            }
+        }
+
         organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
+
         JOptionPane.showMessageDialog(null, "New user account created");
         populateUserTableData();
     }//GEN-LAST:event_createUserJButtonActionPerformed
