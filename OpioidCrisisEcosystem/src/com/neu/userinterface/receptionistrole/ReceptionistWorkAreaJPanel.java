@@ -94,9 +94,11 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Reception Work Area");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 16, -1, -1));
 
         managePatientJButton.setText("Manage Patient");
         managePatientJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -104,6 +106,7 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
                 managePatientJButtonActionPerformed(evt);
             }
         });
+        add(managePatientJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 364, -1, -1));
 
         btnScheduleAppointment.setText("Schedule an appointment");
         btnScheduleAppointment.addActionListener(new java.awt.event.ActionListener() {
@@ -111,6 +114,7 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
                 btnScheduleAppointmentActionPerformed(evt);
             }
         });
+        add(btnScheduleAppointment, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 411, -1, -1));
 
         viewPatientDetailsJButton.setText("View Patient Details");
         viewPatientDetailsJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -118,6 +122,7 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
                 viewPatientDetailsJButtonActionPerformed(evt);
             }
         });
+        add(viewPatientDetailsJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(487, 364, -1, -1));
 
         btnViewAppointmentDetails.setText("View Appointment Details");
         btnViewAppointmentDetails.addActionListener(new java.awt.event.ActionListener() {
@@ -125,6 +130,7 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
                 btnViewAppointmentDetailsActionPerformed(evt);
             }
         });
+        add(btnViewAppointmentDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(443, 411, -1, -1));
 
         tblAppointments.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -156,61 +162,18 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
             tblAppointments.getColumnModel().getColumn(3).setPreferredWidth(15);
         }
 
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 108, 558, 238));
+
         btnRefresh.setText("Refresh Table");
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRefreshActionPerformed(evt);
             }
         });
+        add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 480, -1, -1));
 
         jLabel2.setText("Appointment details");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(311, 311, 311)
-                        .addComponent(btnRefresh))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnScheduleAppointment)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnViewAppointmentDetails))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(managePatientJButton)
-                                .addGap(248, 248, 248)
-                                .addComponent(viewPatientDetailsJButton))
-                            .addComponent(jScrollPane2)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(200, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(34, 34, 34)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(viewPatientDetailsJButton)
-                    .addComponent(managePatientJButton))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnScheduleAppointment)
-                    .addComponent(btnViewAppointmentDetails))
-                .addGap(40, 40, 40)
-                .addComponent(btnRefresh)
-                .addContainerGap(335, Short.MAX_VALUE))
-        );
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 72, 150, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void managePatientJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_managePatientJButtonActionPerformed

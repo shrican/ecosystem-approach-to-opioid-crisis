@@ -35,11 +35,10 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="305" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="manageOrganizationJButton" linkSize="2" max="32767" attributes="0"/>
                                   <Component id="userJButton" linkSize="2" pref="150" max="32767" attributes="0"/>
                                   <Component id="manageEmployeeJButton" linkSize="2" alignment="0" pref="150" max="32767" attributes="0"/>
-                                  <Component id="btnPharmacySales" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -74,15 +73,13 @@
                   <Component id="txtInitialStock" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnUpdateStock" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="138" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
               <Component id="manageOrganizationJButton" linkSize="1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
               <Component id="manageEmployeeJButton" linkSize="1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
               <Component id="userJButton" linkSize="1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-              <Component id="btnPharmacySales" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="339" max="32767" attributes="0"/>
+              <EmptySpace pref="398" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -146,14 +143,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateStockActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnPharmacySales">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="View Pharmacy Sales Distribution"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPharmacySalesActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

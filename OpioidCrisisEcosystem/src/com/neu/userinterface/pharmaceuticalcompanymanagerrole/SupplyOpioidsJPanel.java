@@ -63,14 +63,21 @@ public class SupplyOpioidsJPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Pharmacy Name :");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(198, 146, -1, -1));
+        add(txtFieldPharmacyName, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 143, 200, -1));
 
         jLabel2.setText("Order Amount :");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(198, 193, -1, -1));
+        add(txtFieldOrderAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 187, 200, -1));
 
         jLabel3.setText("Stock Remaining :");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(198, 102, -1, -1));
 
         txtFieldStockLeft.setEnabled(false);
+        add(txtFieldStockLeft, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 99, 200, -1));
 
         btnDispatch.setText("Dispatch Opioids");
         btnDispatch.addActionListener(new java.awt.event.ActionListener() {
@@ -78,6 +85,7 @@ public class SupplyOpioidsJPanel extends javax.swing.JPanel {
                 btnDispatchActionPerformed(evt);
             }
         });
+        add(btnDispatch, new org.netbeans.lib.awtextra.AbsoluteConstraints(469, 247, -1, -1));
 
         btnBack.setText("<<Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -85,61 +93,11 @@ public class SupplyOpioidsJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 359, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setText("Dispatch Opioids");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(236, 236, 236)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnBack)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 196, Short.MAX_VALUE)
-                                .addComponent(btnDispatch))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
-                                .addGap(93, 93, 93)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtFieldPharmacyName)
-                                    .addComponent(txtFieldOrderAmount)
-                                    .addComponent(txtFieldStockLeft, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel4)))
-                .addContainerGap(267, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4)
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtFieldStockLeft, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtFieldPharmacyName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtFieldOrderAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(34, 34, 34)
-                .addComponent(btnDispatch)
-                .addGap(83, 83, 83)
-                .addComponent(btnBack)
-                .addContainerGap(288, Short.MAX_VALUE))
-        );
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 16, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDispatchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDispatchActionPerformed
@@ -152,26 +110,12 @@ public class SupplyOpioidsJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "You do not have enough stock to complete this order", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             enterprise.setStock(stockLeft - orderAmount);
-            // PharmacyEnterprise pharmacyEnterpise = pharmaWorkRequest.getPharmacyEnterprise();
-            // ChemistOrganization organization = (ChemistOrganization)enterprise.getOrganizationDirectory().getOrganizationList().get(0);
-            //int chemistStock = organization.getStock();
-            //organization.setStock(chemistStock+orderAmount);
+
             pharmaWorkRequest.setResolveDate(new Date());
             pharmaWorkRequest.setStatus("Order Completed");
 
-            Object[] options = {"OK"};
-            int n = JOptionPane.showOptionDialog(null,
-                    "Opioids supplied", "Title",
-                    JOptionPane.PLAIN_MESSAGE,
-                    JOptionPane.QUESTION_MESSAGE,
-                    null,
-                    options,
-                    options[0]);
-
             JOptionPane.showMessageDialog(null, "Order of " + pharmaWorkRequest.getOrderAmount() + " dispatched to " + pharmaWorkRequest.getRequesterName());
-
             txtFieldStockLeft.setText(String.valueOf((enterprise).getStock()));
-
         }
 
     }//GEN-LAST:event_btnDispatchActionPerformed

@@ -67,15 +67,21 @@ public class ManageStockJPanel extends javax.swing.JPanel {
         backJButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Manage Stock");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 16, -1, -1));
 
         jLabel2.setText("Current Stock :");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(263, 76, -1, -1));
 
         txtFieldCurrentStock.setEditable(false);
+        add(txtFieldCurrentStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(478, 73, 189, -1));
 
         jLabel3.setText("New Stock :");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(263, 147, -1, -1));
+        add(txtFieldNewStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(478, 144, 189, -1));
 
         btnUpdateStock.setText("Update Stock");
         btnUpdateStock.addActionListener(new java.awt.event.ActionListener() {
@@ -83,6 +89,7 @@ public class ManageStockJPanel extends javax.swing.JPanel {
                 btnUpdateStockActionPerformed(evt);
             }
         });
+        add(btnUpdateStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(263, 228, -1, -1));
 
         btnOrderOpioids.setText("Order Opioids");
         btnOrderOpioids.addActionListener(new java.awt.event.ActionListener() {
@@ -90,6 +97,7 @@ public class ManageStockJPanel extends javax.swing.JPanel {
                 btnOrderOpioidsActionPerformed(evt);
             }
         });
+        add(btnOrderOpioids, new org.netbeans.lib.awtextra.AbsoluteConstraints(534, 228, -1, -1));
 
         backJButton.setText("<< Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -97,55 +105,7 @@ public class ManageStockJPanel extends javax.swing.JPanel {
                 backJButtonActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(798, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addComponent(backJButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnUpdateStock))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(263, 263, 263)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(108, 108, 108)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtFieldCurrentStock)
-                            .addComponent(txtFieldNewStock, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnOrderOpioids)
-                .addGap(39, 39, 39))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtFieldCurrentStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtFieldNewStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(58, 58, 58)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnUpdateStock)
-                    .addComponent(backJButton)
-                    .addComponent(btnOrderOpioids))
-                .addContainerGap(358, Short.MAX_VALUE))
-        );
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 228, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnOrderOpioidsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderOpioidsActionPerformed

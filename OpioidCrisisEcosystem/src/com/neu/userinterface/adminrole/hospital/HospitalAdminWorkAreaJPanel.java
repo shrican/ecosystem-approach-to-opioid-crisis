@@ -112,17 +112,17 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(71, 71, 71)
+                .addGap(70, 70, 70)
                 .addComponent(manageHospitalOrgJButton)
-                .addGap(25, 25, 25)
+                .addGap(70, 70, 70)
                 .addComponent(manageHospitalEmpJButton)
-                .addGap(25, 25, 25)
+                .addGap(70, 70, 70)
                 .addComponent(manageHospitalUsersJButton)
-                .addGap(25, 25, 25)
+                .addGap(70, 70, 70)
                 .addComponent(manageHospitalRehabAssoJButton)
-                .addGap(30, 30, 30)
+                .addGap(70, 70, 70)
                 .addComponent(btnSymptomsBreakdown)
-                .addContainerGap(242, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel1, manageHospitalOrgJButton});

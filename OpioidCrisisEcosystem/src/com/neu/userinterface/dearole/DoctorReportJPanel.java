@@ -68,6 +68,7 @@ public class DoctorReportJPanel extends javax.swing.JPanel {
         jChartJPanel = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblDocFraud.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -79,6 +80,8 @@ public class DoctorReportJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblDocFraud);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 115, -1, 166));
+
         tblPopularChemist.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -89,12 +92,15 @@ public class DoctorReportJPanel extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(tblPopularChemist);
 
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(607, 115, -1, 166));
+
         backJButton2.setText("<< Back");
         backJButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButton2ActionPerformed(evt);
             }
         });
+        add(backJButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 723, -1, -1));
 
         btnDoctorFraud.setText("Show Doctor Fraud Chart");
         btnDoctorFraud.addActionListener(new java.awt.event.ActionListener() {
@@ -102,6 +108,7 @@ public class DoctorReportJPanel extends javax.swing.JPanel {
                 btnDoctorFraudActionPerformed(evt);
             }
         });
+        add(btnDoctorFraud, new org.netbeans.lib.awtextra.AbsoluteConstraints(151, 299, -1, -1));
 
         jButton2.setText("Show Popular Chemist Chart");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -109,74 +116,23 @@ public class DoctorReportJPanel extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 299, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Doctor prescribing with risk score 'High'");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 82, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Chemist selling the most Opioids");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(598, 82, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setText("Reports");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 16, -1, -1));
 
         jChartJPanel.setBackground(new java.awt.Color(247, 247, 247));
         jChartJPanel.setLayout(new java.awt.BorderLayout());
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jChartJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(125, 125, 125)
-                        .addComponent(btnDoctorFraud)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)
-                        .addGap(124, 124, 124))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addGap(238, 238, 238))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(backJButton2)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addGap(44, 44, 44)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDoctorFraud)
-                    .addComponent(jButton2))
-                .addGap(31, 31, 31)
-                .addComponent(jChartJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(backJButton2)
-                .addContainerGap())
-        );
+        add(jChartJPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 359, 1033, 346));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backJButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton2ActionPerformed

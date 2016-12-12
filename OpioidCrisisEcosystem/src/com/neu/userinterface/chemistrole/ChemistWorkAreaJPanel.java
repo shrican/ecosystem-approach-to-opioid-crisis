@@ -79,13 +79,17 @@ public class ChemistWorkAreaJPanel extends javax.swing.JPanel {
         btnManageStock = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Chemist Work Area");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 16, -1, -1));
 
         jLabel2.setText("Stock remaining: ");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 83, -1, -1));
 
         txtFieldChemistStock.setEditable(false);
+        add(txtFieldChemistStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(475, 80, 110, -1));
 
         btnSellOpioids.setText("Sell Opioids");
         btnSellOpioids.addActionListener(new java.awt.event.ActionListener() {
@@ -93,6 +97,7 @@ public class ChemistWorkAreaJPanel extends javax.swing.JPanel {
                 btnSellOpioidsActionPerformed(evt);
             }
         });
+        add(btnSellOpioids, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 200, -1, -1));
 
         btnManageStock.setText("Manage Stock");
         btnManageStock.addActionListener(new java.awt.event.ActionListener() {
@@ -100,45 +105,7 @@ public class ChemistWorkAreaJPanel extends javax.swing.JPanel {
                 btnManageStockActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addContainerGap(716, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(139, 139, 139)
-                                .addComponent(txtFieldChemistStock, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnSellOpioids)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnManageStock)))
-                        .addGap(320, 320, 320))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtFieldChemistStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(94, 94, 94)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSellOpioids)
-                    .addComponent(btnManageStock))
-                .addContainerGap(384, Short.MAX_VALUE))
-        );
+        add(btnManageStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(456, 200, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSellOpioidsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSellOpioidsActionPerformed

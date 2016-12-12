@@ -291,10 +291,10 @@ public class PatientDirectory {
             prescriptionCount = 0;
             for (Patient patient : patientList) {
                 for (Prescription prescription : patient.getPrescriptionHistory().getPrescriptionHistoryList()) {
-                    if (prescription.getChemistName().equals(chemist)) {
-
-                        prescriptionCount++;
-
+                    if (prescription.getChemistName() != null) {
+                        if (prescription.getChemistName().equals(chemist)) {
+                            prescriptionCount++;
+                        }
                     }
                 }
             }
