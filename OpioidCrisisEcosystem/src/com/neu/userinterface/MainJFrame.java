@@ -13,6 +13,7 @@ import com.neu.business.organization.Organization;
 import com.neu.business.useraccount.UserAccount;
 import java.awt.CardLayout;
 import static java.time.Clock.system;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -32,6 +33,7 @@ public class MainJFrame extends javax.swing.JFrame {
         initComponents();
         system = dB4OUtil.retrieveSystem();
         this.setExtendedState(MAXIMIZED_BOTH);
+        imgLabel.setIcon(new ImageIcon("src\\ecosystem.jpg"));
     }
 
     /**
@@ -52,6 +54,7 @@ public class MainJFrame extends javax.swing.JFrame {
         userNameJTextField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         containerJPanel = new javax.swing.JPanel();
+        imgLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(247, 247, 247));
@@ -124,6 +127,8 @@ public class MainJFrame extends javax.swing.JFrame {
         containerJPanel.setBackground(new java.awt.Color(255, 255, 255));
         containerJPanel.setPreferredSize(new java.awt.Dimension(900, 1000));
         containerJPanel.setLayout(new java.awt.CardLayout());
+        containerJPanel.add(imgLabel, "card2");
+
         jSplitPane1.setRightComponent(containerJPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -258,6 +263,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel containerJPanel;
+    private javax.swing.JLabel imgLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JSplitPane jSplitPane1;
