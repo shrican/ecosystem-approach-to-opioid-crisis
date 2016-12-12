@@ -8,12 +8,20 @@ package com.neu.userinterface.dearole;
 import com.neu.business.network.Network;
 import com.neu.business.patient.Patient;
 import com.neu.business.patient.PatientDirectory;
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
  *
@@ -96,6 +104,11 @@ public class DoctorReportJPanel extends javax.swing.JPanel {
         });
 
         jButton2.setText("Show Popular Chemist Chart");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Doctor prescribing with risk score 'High'");
@@ -176,7 +189,65 @@ public class DoctorReportJPanel extends javax.swing.JPanel {
 
     private void btnDoctorFraudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoctorFraudActionPerformed
         // TODO add your handling code here:
+        
+        DefaultCategoryDataset barChartData = new DefaultCategoryDataset();
+        JFreeChart barChart = ChartFactory.createBarChart("Doctors", "", "Bad Prescriptions", barChartData, PlotOrientation.VERTICAL, true, true, true);
+        
+        HashMap<String, Integer> doctorFraud = patientDirectory.fraudDoctorReport();
+
+            for (Map.Entry<String, Integer> entry : doctorFraud.entrySet()) {
+                String doctor = entry.getKey();
+                Integer fraud = entry.getValue();
+
+                barChartData.setValue(fraud, "Doctors", doctor);
+            }
+        
+        
+        CategoryPlot barchrt = barChart.getCategoryPlot();
+
+        barchrt.setRangeGridlinePaint(Color.ORANGE);
+
+        ChartPanel barP = new ChartPanel(barChart);
+
+        barP.setVisible(true);
+
+        jChartJPanel.removeAll();
+
+        jChartJPanel.add(barP, BorderLayout.CENTER);
+
+        jChartJPanel.validate();
+        
     }//GEN-LAST:event_btnDoctorFraudActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        
+        DefaultCategoryDataset barChartData = new DefaultCategoryDataset();
+        JFreeChart barChart = ChartFactory.createBarChart("Chemist", "", "Total Prescriptions", barChartData, PlotOrientation.VERTICAL, true, true, true);
+        
+        HashMap<String, Integer> popularChemists = patientDirectory.popularChemist();
+                
+            for (Map.Entry<String, Integer> entry : popularChemists.entrySet()) {
+                String chemist = entry.getKey();
+                Integer prescription = entry.getValue();
+
+                barChartData.setValue(prescription, "Chemists", chemist);
+            }
+            
+            CategoryPlot barchrt = barChart.getCategoryPlot();
+
+        barchrt.setRangeGridlinePaint(Color.ORANGE);
+
+        ChartPanel barP = new ChartPanel(barChart);
+
+        barP.setVisible(true);
+
+        jChartJPanel.removeAll();
+
+        jChartJPanel.add(barP, BorderLayout.CENTER);
+
+        jChartJPanel.validate();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     
     

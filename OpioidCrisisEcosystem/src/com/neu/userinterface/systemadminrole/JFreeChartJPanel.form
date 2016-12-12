@@ -21,10 +21,10 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jChartDisplayJPanel" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="comboBoxReports" min="-2" pref="264" max="-2" attributes="0"/>
+                      <Component id="comboBoxReports" min="-2" pref="469" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnShowChart" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="509" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="304" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -70,11 +70,13 @@
     <Component class="javax.swing.JComboBox" name="comboBoxReports">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
+          <StringArray count="6">
             <StringItem index="0" value="View Opioids Prescribed per Symptom"/>
             <StringItem index="1" value="General Symptoms Breakdown"/>
             <StringItem index="2" value="Symptoms resulting in most prescriptions"/>
-            <StringItem index="3" value="Patient score status with highest abuse symptoms"/>
+            <StringItem index="3" value="Patient score status with highest abuse symptoms for low score"/>
+            <StringItem index="4" value="Patient score status with highest abuse symptoms for medium score"/>
+            <StringItem index="5" value="Patient score status with highest abuse symptoms for high score"/>
           </StringArray>
         </Property>
       </Properties>

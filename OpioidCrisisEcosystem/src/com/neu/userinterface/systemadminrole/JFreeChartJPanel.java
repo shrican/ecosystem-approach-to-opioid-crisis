@@ -8,11 +8,15 @@ package com.neu.userinterface.systemadminrole;
 import com.neu.business.EcoSystem;
 import com.neu.business.patient.Patient;
 import com.neu.business.patient.PatientDirectory;
+import com.neu.business.patient.Prescription;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.TreeMap;
 import javax.swing.JPanel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -38,11 +42,9 @@ public class JFreeChartJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;
-        this.systemPatientDirectory= system.getPatientDirectory();
-        
-        
+        this.systemPatientDirectory = system.getPatientDirectory();
+
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -68,7 +70,7 @@ public class JFreeChartJPanel extends javax.swing.JPanel {
         jChartDisplayJPanel.setForeground(new java.awt.Color(255, 255, 255));
         jChartDisplayJPanel.setLayout(new java.awt.BorderLayout());
 
-        comboBoxReports.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "View Opioids Prescribed per Symptom", "General Symptoms Breakdown", "Symptoms resulting in most prescriptions", "Patient score status with highest abuse symptoms" }));
+        comboBoxReports.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "View Opioids Prescribed per Symptom", "General Symptoms Breakdown", "Symptoms resulting in most prescriptions", "Patient score status with highest abuse symptoms for low score", "Patient score status with highest abuse symptoms for medium score", "Patient score status with highest abuse symptoms for high score" }));
         comboBoxReports.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxReportsActionPerformed(evt);
@@ -84,10 +86,10 @@ public class JFreeChartJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jChartDisplayJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(comboBoxReports, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(comboBoxReports, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnShowChart)
-                        .addGap(0, 509, Short.MAX_VALUE)))
+                        .addGap(0, 304, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -105,69 +107,156 @@ public class JFreeChartJPanel extends javax.swing.JPanel {
 
     private void btnShowChartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowChartActionPerformed
         // TODO add your handling code here:
-       
-       DefaultCategoryDataset barChartData = new DefaultCategoryDataset();
-       JFreeChart barChart = ChartFactory.createBarChart("Symptoms seen in Patients", "", "Number of Patients", barChartData, PlotOrientation.VERTICAL, true, true, true);
-       if(comboBoxReports.getSelectedIndex() == 0){
-       HashMap<String, Integer> mostPrescribesSymptoms = systemPatientDirectory.mostPrescribedSymptom();
-       
-       for(Map.Entry<String, Integer> entry : mostPrescribesSymptoms.entrySet())
-       {
-           String symptom = entry.getKey();
-           Integer prescriptions = entry.getValue();
-           
-           barChartData.setValue(prescriptions, "", symptom);
-       }
-       
+
+        DefaultCategoryDataset barChartData = new DefaultCategoryDataset();
+        JFreeChart barChart = ChartFactory.createBarChart("Symptoms seen in Patients", "", "Number of Patients", barChartData, PlotOrientation.VERTICAL, true, true, true);
+        if (comboBoxReports.getSelectedIndex() == 0) {
+            HashMap<String, Integer> mostPrescribesSymptoms = systemPatientDirectory.mostPrescribedSymptom();
+
+            for (Map.Entry<String, Integer> entry : mostPrescribesSymptoms.entrySet()) {
+                String symptom = entry.getKey();
+                Integer prescriptions = entry.getValue();
+
+                barChartData.setValue(prescriptions, "", symptom);
+            }
+
 //       barChartData.setValue(5, "Donation Amount", "Sept");
 //
 //       barChartData.setValue(8, "Donation Amount", "Oct");
 //
 //       barChartData.setValue(11, "Donation Amount", "Nov");
+            barChart = ChartFactory.createBarChart("Symptoms Prescription Distribution", "", "Opioids Prescribed", barChartData, PlotOrientation.VERTICAL, true, true, true);
+        } else if (comboBoxReports.getSelectedIndex() == 1) {
+            HashMap<String, Integer> symptomsBreakdown = systemPatientDirectory.generalSymptomsBreakdown((ArrayList<Patient>) systemPatientDirectory.getPatientList());
 
+            for (Map.Entry<String, Integer> entry : symptomsBreakdown.entrySet()) {
+                String symptom = entry.getKey();
+                Integer patients = entry.getValue();
 
+                barChartData.setValue(patients, "", symptom);
+            }
 
-       barChart = ChartFactory.createBarChart("Symptoms Prescription Distribution", "", "Opioids Prescribed", barChartData, PlotOrientation.VERTICAL, true, true, true);
-       }
-       
-       else if(comboBoxReports.getSelectedIndex() == 1){
-           HashMap<String, Integer> symptomsBreakdown = systemPatientDirectory.generalSymptomsBreakdown((ArrayList<Patient>) systemPatientDirectory.getPatientList());
-           
-           for(Map.Entry<String, Integer> entry : symptomsBreakdown.entrySet())
-           {
-               String symptom = entry.getKey();
-               Integer patients = entry.getValue();
-               
-               barChartData.setValue(patients, "", symptom);
-           }
-           
-           barChart = ChartFactory.createBarChart("Symptoms seen in Patients", "", "Number of Patients", barChartData, PlotOrientation.VERTICAL, true, true, true);
-       }
-       
-       else if(comboBoxReports.getSelectedIndex() == 2)
-       {
-           
-       }
-       CategoryPlot barchrt = barChart.getCategoryPlot();
+            barChart = ChartFactory.createBarChart("Symptoms seen in Patients", "", "Number of Patients", barChartData, PlotOrientation.VERTICAL, true, true, true);
+        } else if (comboBoxReports.getSelectedIndex() == 2) {
+            HashMap<String, Integer> symptomsPrescriptions = systemPatientDirectory.mostPrescribedSymptom();
 
-       barchrt.setRangeGridlinePaint(Color.ORANGE);
+            for (Map.Entry<String, Integer> entry : symptomsPrescriptions.entrySet()) {
+                String symptom = entry.getKey();
+                Integer prescriptions = entry.getValue();
 
-       ChartPanel barP = new ChartPanel(barChart);
+                barChartData.setValue(prescriptions, "", symptom);
+            }
 
-       barP.setVisible(true);
+            barChart = ChartFactory.createBarChart("Symptoms seen in Patients", "", "Number of Prescriptions", barChartData, PlotOrientation.VERTICAL, true, true, true);
+        } else if (comboBoxReports.getSelectedIndex() == 3) {
+            Map<String, Integer> lowBaysianScoreAbuseSymptomBreakdownMap = new HashMap<>();
+            HashSet<Patient> lowBaysianScoreAbuseSymptomPatients = new HashSet<>();
+            for (Patient patient : systemPatientDirectory.getPatientList()) {
+                for (Prescription prescription : patient.getPrescriptionHistory().getPrescriptionHistoryList()) {
+                    if (prescription.getPatientScoreStatus().equals("Low")) {
+                        lowBaysianScoreAbuseSymptomPatients.add(patient);
+                    }
+                }
+            }
+            
+            lowBaysianScoreAbuseSymptomBreakdownMap = systemPatientDirectory.generalSymptomsBreakdown(new ArrayList<>(lowBaysianScoreAbuseSymptomPatients));
+            ValueComparator vc = new ValueComparator(lowBaysianScoreAbuseSymptomBreakdownMap);
+            TreeMap<String, Integer> lowBaysianScoreAbuseSymptomBreakdownTree = new TreeMap<>(vc);
+            lowBaysianScoreAbuseSymptomBreakdownTree.putAll(lowBaysianScoreAbuseSymptomBreakdownMap);
+            
+            for (Map.Entry<String, Integer> entry : lowBaysianScoreAbuseSymptomBreakdownTree.entrySet()) {
+                String symptom = entry.getKey();
+                Integer count = entry.getValue();
 
-       jChartDisplayJPanel.removeAll();
+                barChartData.setValue(count, "", symptom);
+            }
+            barChart = ChartFactory.createBarChart("Symptoms seen in Patients with Low Abuse Scores", "", "Number of occurances", barChartData, PlotOrientation.VERTICAL, true, true, true);
+        } else if (comboBoxReports.getSelectedIndex() == 4) {
+            Map<String, Integer> mediumBaysianScoreAbuseSymptomBreakdownMap = new HashMap<>();
+            HashSet<Patient> mediumBaysianScoreAbuseSymptomPatients = new HashSet<>();
+            for (Patient patient : systemPatientDirectory.getPatientList()) {
+                for (Prescription prescription : patient.getPrescriptionHistory().getPrescriptionHistoryList()) {
+                    if (prescription.getPatientScoreStatus().equals("Medium")) {
+                        mediumBaysianScoreAbuseSymptomPatients.add(patient);
+                    }
+                }
+            }
+            
+            mediumBaysianScoreAbuseSymptomBreakdownMap = systemPatientDirectory.generalSymptomsBreakdown(new ArrayList<>(mediumBaysianScoreAbuseSymptomPatients));
+            ValueComparator vc = new ValueComparator(mediumBaysianScoreAbuseSymptomBreakdownMap);
+            TreeMap<String, Integer> mediumBaysianScoreAbuseSymptomBreakdownTree = new TreeMap<>(vc);
+            mediumBaysianScoreAbuseSymptomBreakdownTree.putAll(mediumBaysianScoreAbuseSymptomBreakdownMap);
+            
+            for (Map.Entry<String, Integer> entry : mediumBaysianScoreAbuseSymptomBreakdownTree.entrySet()) {
+                String symptom = entry.getKey();
+                Integer count = entry.getValue();
 
-       jChartDisplayJPanel.add(barP, BorderLayout.CENTER);
+                barChartData.setValue(count, "", symptom);
+            }
+            barChart = ChartFactory.createBarChart("Symptoms seen in Patients with Medium Abuse Scores", "", "Number of occurances", barChartData, PlotOrientation.VERTICAL, true, true, true);
+        }else if (comboBoxReports.getSelectedIndex() == 5) {
+            Map<String, Integer> highBaysianScoreAbuseSymptomBreakdownMap = new HashMap<>();
+            HashSet<Patient> highBaysianScoreAbuseSymptomPatients = new HashSet<>();
+            for (Patient patient : systemPatientDirectory.getPatientList()) {
+                for (Prescription prescription : patient.getPrescriptionHistory().getPrescriptionHistoryList()) {
+                    if (prescription.getPatientScoreStatus().equals("High")) {
+                        highBaysianScoreAbuseSymptomPatients.add(patient);
+                    }
+                }
+            }
+            
+            highBaysianScoreAbuseSymptomBreakdownMap = systemPatientDirectory.generalSymptomsBreakdown(new ArrayList<>(highBaysianScoreAbuseSymptomPatients));
+            ValueComparator vc = new ValueComparator(highBaysianScoreAbuseSymptomBreakdownMap);
+            TreeMap<String, Integer> highBaysianScoreAbuseSymptomBreakdownTree = new TreeMap<>(vc);
+            highBaysianScoreAbuseSymptomBreakdownTree.putAll(highBaysianScoreAbuseSymptomBreakdownMap);
+            
+            for (Map.Entry<String, Integer> entry : highBaysianScoreAbuseSymptomBreakdownTree.entrySet()) {
+                String symptom = entry.getKey();
+                Integer count = entry.getValue();
 
-       jChartDisplayJPanel.validate();
-        
+                barChartData.setValue(count, "", symptom);
+            }
+            barChart = ChartFactory.createBarChart("Symptoms seen in Patients with High Abuse Scores", "", "Number of occurances", barChartData, PlotOrientation.VERTICAL, true, true, true);
+        }
+
+        CategoryPlot barchrt = barChart.getCategoryPlot();
+
+        barchrt.setRangeGridlinePaint(Color.ORANGE);
+
+        ChartPanel barP = new ChartPanel(barChart);
+
+        barP.setVisible(true);
+
+        jChartDisplayJPanel.removeAll();
+
+        jChartDisplayJPanel.add(barP, BorderLayout.CENTER);
+
+        jChartDisplayJPanel.validate();
+
     }//GEN-LAST:event_btnShowChartActionPerformed
 
     private void comboBoxReportsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxReportsActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comboBoxReportsActionPerformed
 
+    public class ValueComparator implements Comparator<String> {
+
+        Map<String, Integer> baseBap;
+
+        public ValueComparator(Map<String, Integer> base) {
+            this.baseBap = base;
+        }
+
+        @Override
+        public int compare(String a, String b) {
+            if (baseBap.get(a) >= baseBap.get(b)) {
+                return -1;
+            } else {
+                return 1;
+            } // returning 0 would merge keys
+        }
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnShowChart;

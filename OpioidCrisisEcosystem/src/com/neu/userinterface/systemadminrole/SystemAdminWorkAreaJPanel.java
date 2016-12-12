@@ -98,8 +98,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         manageNetworkJButton = new javax.swing.JButton();
         manageAdminJButton = new javax.swing.JButton();
         manageEnterpriseJButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        selectedNodeJLabel = new javax.swing.JLabel();
         btnJFreeChart = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -151,11 +149,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setText("Selected Node:");
-
-        selectedNodeJLabel.setText("<view_selected_node>");
-
-        btnJFreeChart.setText("Test");
+        btnJFreeChart.setText("Ecosystem Level Reports");
         btnJFreeChart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnJFreeChartActionPerformed(evt);
@@ -169,24 +163,16 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(130, 130, 130)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(selectedNodeJLabel))
                     .addComponent(manageNetworkJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(manageEnterpriseJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(manageAdminJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(manageAdminJButton, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)
                     .addComponent(btnJFreeChart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(1076, Short.MAX_VALUE))
+                .addContainerGap(828, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(selectedNodeJLabel))
-                .addGap(50, 50, 50)
+                .addGap(145, 145, 145)
                 .addComponent(manageNetworkJButton)
                 .addGap(71, 71, 71)
                 .addComponent(manageEnterpriseJButton)
@@ -194,7 +180,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(manageAdminJButton)
                 .addGap(54, 54, 54)
                 .addComponent(btnJFreeChart)
-                .addContainerGap(852, Short.MAX_VALUE))
+                .addContainerGap(807, Short.MAX_VALUE))
         );
 
         splitPane.setRightComponent(jPanel4);
@@ -255,7 +241,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnJFreeChart;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel jTreePanel;
@@ -263,7 +248,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton manageEnterpriseJButton;
     private javax.swing.JButton manageNetworkJButton;
     private javax.swing.JTree networkTree;
-    private javax.swing.JLabel selectedNodeJLabel;
     private javax.swing.JSplitPane splitPane;
     // End of variables declaration//GEN-END:variables
 }
