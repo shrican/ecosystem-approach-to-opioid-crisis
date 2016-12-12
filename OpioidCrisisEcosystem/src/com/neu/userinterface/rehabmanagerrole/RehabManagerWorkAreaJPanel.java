@@ -178,8 +178,7 @@ public class RehabManagerWorkAreaJPanel extends javax.swing.JPanel {
             userProcessContainer.add("PatientDetailsJPanel", patientDetails);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.next(userProcessContainer);
-        }
-        {
+        } else {
             JOptionPane.showMessageDialog(null, "No row selected! Notthing to display!");
         }
     }//GEN-LAST:event_btnViewPatientDetailsActionPerformed
