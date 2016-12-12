@@ -249,6 +249,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="patientAgeJTextField">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="patientAgeJTextFieldKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="comboBoxBloodGroup">
           <Properties>

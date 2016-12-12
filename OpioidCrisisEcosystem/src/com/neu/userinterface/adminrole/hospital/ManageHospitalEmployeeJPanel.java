@@ -237,6 +237,7 @@ public class ManageHospitalEmployeeJPanel extends javax.swing.JPanel {
         String name = nameJTextField.getText();
 
         organization.getEmployeeDirectory().createEmployee(name);
+        populateTable((Organization) organizationJComboBox.getItemAt(0));
         JOptionPane.showMessageDialog(null, "New employee created");
     }//GEN-LAST:event_addJButtonActionPerformed
 

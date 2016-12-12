@@ -9,6 +9,7 @@ import com.neu.business.EcoSystem;
 import com.neu.business.enterprise.Enterprise;
 import com.neu.business.patient.Patient;
 import com.neu.business.patient.PatientDirectory;
+import com.sun.glass.events.KeyEvent;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
@@ -109,6 +110,12 @@ public class ManagePatientJPanel extends javax.swing.JPanel {
         jLabel4.setText("Phone No. :");
 
         jLabel5.setText("Age :");
+
+        patientAgeJTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                patientAgeJTextFieldKeyTyped(evt);
+            }
+        });
 
         comboBoxBloodGroup.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-" }));
 
@@ -280,6 +287,17 @@ public class ManagePatientJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_viewPatientDetailsJButtonActionPerformed
+
+    private void patientAgeJTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_patientAgeJTextFieldKeyTyped
+        // TODO add your handling code here:
+        char charEntered = evt.getKeyChar();
+        // Accept only Number/ Backspace/ Delete
+        if (!(Character.isDigit(charEntered)) || charEntered == KeyEvent.VK_BACKSPACE || charEntered == KeyEvent.VK_DELETE) {
+            if (patientAgeJTextField.getText().length() < 11) {
+                evt.consume();
+            }
+        }
+    }//GEN-LAST:event_patientAgeJTextFieldKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addPatientJButton;

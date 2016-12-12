@@ -15,6 +15,7 @@ import com.neu.business.useraccount.UserAccount;
 import com.neu.business.workqueue.ScheduleAppointmentWorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -167,6 +168,7 @@ public class ScheduleAppointmentJPanel extends javax.swing.JPanel {
                 }
             }
         }
+        JOptionPane.showMessageDialog(null, "Appointment scheduled!");
 
     }//GEN-LAST:event_scheduleAppointmentJButtonActionPerformed
 

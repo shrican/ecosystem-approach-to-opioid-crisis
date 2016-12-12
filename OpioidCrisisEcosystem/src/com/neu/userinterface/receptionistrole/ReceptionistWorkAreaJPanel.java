@@ -17,6 +17,7 @@ import com.neu.business.workqueue.ScheduleAppointmentWorkRequest;
 import com.neu.business.workqueue.WorkQueue;
 import com.neu.business.workqueue.WorkRequest;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -233,23 +234,30 @@ public class ReceptionistWorkAreaJPanel extends javax.swing.JPanel {
 
     private void viewPatientDetailsJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPatientDetailsJButtonActionPerformed
         // TODO add your handling code here:
-        Patient patient = (Patient) tblAppointments.getValueAt(tblAppointments.getSelectedRow(), 1);
 
-        PatientDetailsJPanel patientDetailsJPanel = new PatientDetailsJPanel(userProcessContainer, patient, enterprise);
-        userProcessContainer.add("patientDetailsJPanel", patientDetailsJPanel);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
+        if (tblAppointments.getValueAt(tblAppointments.getSelectedRow(), 1) != null) {
+            Patient patient = (Patient) tblAppointments.getValueAt(tblAppointments.getSelectedRow(), 1);
 
+            PatientDetailsJPanel patientDetailsJPanel = new PatientDetailsJPanel(userProcessContainer, patient, enterprise);
+            userProcessContainer.add("patientDetailsJPanel", patientDetailsJPanel);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a row!");
+        }
     }//GEN-LAST:event_viewPatientDetailsJButtonActionPerformed
 
     private void btnViewAppointmentDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewAppointmentDetailsActionPerformed
         // TODO add your handling code here:
+        if (tblAppointments.getValueAt(tblAppointments.getSelectedRow(), 1) != null) {
 
-        ViewAppointmentDetailsJPanel viewAppointmentDetailsJPanel = new ViewAppointmentDetailsJPanel(userProcessContainer, enterprise);
-        userProcessContainer.add("viewAppointmentDetailsJPanel", viewAppointmentDetailsJPanel);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-
+            ViewAppointmentDetailsJPanel viewAppointmentDetailsJPanel = new ViewAppointmentDetailsJPanel(userProcessContainer, enterprise);
+            userProcessContainer.add("viewAppointmentDetailsJPanel", viewAppointmentDetailsJPanel);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a row!");
+        }
     }//GEN-LAST:event_btnViewAppointmentDetailsActionPerformed
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed

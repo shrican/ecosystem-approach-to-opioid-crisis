@@ -187,7 +187,7 @@ public class ManageCommRehabOrganizationJPanel extends javax.swing.JPanel {
 
         Type type = (Type) organizationJComboBox.getSelectedItem();
         for (Organization org : organizationDirectory.getOrganizationList()) {
-            if (type.getValue().equals(Type.RehabilitationManager.getValue())) {
+            if (type.getValue().equals(org.getName())) {
                 JOptionPane.showMessageDialog(null, "Rehabilitation manager organization already exists");
                 return;
             }

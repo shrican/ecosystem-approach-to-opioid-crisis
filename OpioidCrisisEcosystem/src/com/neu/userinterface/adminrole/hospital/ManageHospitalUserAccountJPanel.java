@@ -33,7 +33,7 @@ public class ManageHospitalUserAccountJPanel extends javax.swing.JPanel {
         this.enterprise = enterprise;
 
         popOrganizationComboBox();
-        // employeeJComboBox.removeAllItems();
+
         populateUserTableData();
     }
 

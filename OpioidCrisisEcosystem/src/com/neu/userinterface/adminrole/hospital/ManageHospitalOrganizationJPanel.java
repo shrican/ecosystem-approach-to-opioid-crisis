@@ -190,10 +190,10 @@ public class ManageHospitalOrganizationJPanel extends javax.swing.JPanel {
 
         Type type = (Type) organizationJComboBox.getSelectedItem();
         for (Organization org : organizationDirectory.getOrganizationList()) {
-            if ((type.getValue().equals(Type.Doctor.getValue()))) {
+            if ((type.getValue().equals(org.getName()))) {
                 JOptionPane.showMessageDialog(null, "Doctor organization already exists");
                 return;
-            } else if ((type.getValue().equals(Type.Receptionist.getValue()))) {
+            } else if ((type.getValue().equals(org.getName()))) {
 
                 JOptionPane.showMessageDialog(null, "Reception organization already exists");
                 return;

@@ -187,7 +187,7 @@ public class ManagePharmaceuticalOrganizationJPanel extends javax.swing.JPanel {
 
         Type type = (Type) organizationJComboBox.getSelectedItem();
         for (Organization org : organizationDirectory.getOrganizationList()) {
-            if (type.getValue().equals(Type.PharmaceuticalCompanyManager.getValue())) {
+            if (type.getValue().equals(org.getName())) {
                 JOptionPane.showMessageDialog(null, "Pharmaceutical Company Manager organization already exists");
                 return;
             }

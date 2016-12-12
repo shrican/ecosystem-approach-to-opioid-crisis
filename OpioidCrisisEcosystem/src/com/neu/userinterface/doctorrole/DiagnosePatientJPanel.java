@@ -18,6 +18,7 @@ import com.neu.business.patient.Symptoms;
 import com.neu.business.useraccount.UserAccount;
 import com.neu.business.workqueue.ScheduleAppointmentWorkRequest;
 import com.neu.business.workqueue.SendToRehabilitationWorkRequest;
+import com.sun.glass.events.KeyEvent;
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import java.util.Date;
@@ -214,11 +215,11 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Prescription No.", "Drug Name", "Dosage", "No. of days", "Date"
+                "Prescription No.", "Dosage", "No. of days", "Date"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -231,7 +232,6 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
             tblPrescriptionHistory.getColumnModel().getColumn(1).setResizable(false);
             tblPrescriptionHistory.getColumnModel().getColumn(2).setResizable(false);
             tblPrescriptionHistory.getColumnModel().getColumn(3).setResizable(false);
-            tblPrescriptionHistory.getColumnModel().getColumn(4).setResizable(false);
         }
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -477,6 +477,13 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
             }
         });
 
+        txtNoOfDays.setText("0");
+        txtNoOfDays.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNoOfDaysKeyTyped(evt);
+            }
+        });
+
         cmbDosage.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
 
         jLabel8.setText("tablets of codeine per day for");
@@ -622,9 +629,8 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
 
             row[0] = prescription.getId();
             row[1] = prescription.getDrugName();
-            //row[2] = prescription.getDosage();
-            row[3] = prescription.getNoOfDays();
-            row[4] = prescription.getOpdDate();
+            row[2] = prescription.getNoOfDays();
+            row[3] = prescription.getOpdDate();
 
             model.addRow(row);
         }
@@ -741,8 +747,10 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(null, patient.getName() + " has been diagnosed and prescribed a course of " + prescription.getTotalOpioidsPrescribed() + " opioids");
 
         btnDiagnose.setEnabled(false);
-        
-        
+        populatePrescriptionHistory();
+        populateAbuseSystemTable();
+
+
     }//GEN-LAST:event_btnDiagnoseActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
@@ -806,6 +814,15 @@ public class DiagnosePatientJPanel extends javax.swing.JPanel {
 //            }
 //        }
     }//GEN-LAST:event_btnSendToRehabActionPerformed
+
+    private void txtNoOfDaysKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNoOfDaysKeyTyped
+        // TODO add your handling code here:
+        char charEntered = evt.getKeyChar();
+        // Accept only Number/ Backspace/ Delete
+        if (!(Character.isDigit(charEntered)) || charEntered == KeyEvent.VK_BACKSPACE || charEntered == KeyEvent.VK_DELETE) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNoOfDaysKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;

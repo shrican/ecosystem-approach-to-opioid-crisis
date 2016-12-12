@@ -31,7 +31,7 @@
                               <EmptySpace min="-2" pref="230" max="-2" attributes="0"/>
                               <Component id="addJButton" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jScrollPane1" alignment="0" pref="480" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
                           <Component id="jLabel4" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>

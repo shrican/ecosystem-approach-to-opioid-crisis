@@ -207,7 +207,7 @@ public class PharmaceuticalCompanyAdminWorkAreaJPanel extends javax.swing.JPanel
         } else {
             enterprise.setOpioidName(txtOpioidName.getText());
             enterprise.setStock(Integer.parseInt(txtProductionStock.getText()));
-
+            JOptionPane.showMessageDialog(null, "Stock set!");
         }
     }//GEN-LAST:event_btnSetActionPerformed
 

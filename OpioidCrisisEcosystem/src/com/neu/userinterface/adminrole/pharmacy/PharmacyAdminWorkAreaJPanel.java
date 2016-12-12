@@ -86,6 +86,7 @@ public class PharmacyAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Initial stock");
 
+        txtInitialStock.setText("0");
         txtInitialStock.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtInitialStockKeyTyped(evt);
@@ -196,7 +197,7 @@ public class PharmacyAdminWorkAreaJPanel extends javax.swing.JPanel {
             ((PharmacyEnterprise) enterprise).setOpioidStock(initialStock);
 
             JOptionPane.showMessageDialog(null, "Updated");
-            txtInitialStock.setText("");
+            txtInitialStock.setEditable(false);
         } else {
             JOptionPane.showMessageDialog(null, "Kindly enter the inial stock!");
         }

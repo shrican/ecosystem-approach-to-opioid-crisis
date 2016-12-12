@@ -17,6 +17,8 @@ import com.neu.business.workqueue.ScheduleAppointmentWorkRequest;
 import com.neu.business.workqueue.SendToRehabilitationWorkRequest;
 import com.neu.business.workqueue.WorkRequest;
 import java.awt.CardLayout;
+import java.util.HashMap;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -80,6 +82,7 @@ public class RehabManagerWorkAreaJPanel extends javax.swing.JPanel {
         tblPatient = new javax.swing.JTable();
         btnViewPatientDetails = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        btnOtherAddictions = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -124,6 +127,13 @@ public class RehabManagerWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Rehab Manager Work Area");
 
+        btnOtherAddictions.setText("Other Addictions Caused by Opioids");
+        btnOtherAddictions.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOtherAddictionsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -132,14 +142,17 @@ public class RehabManagerWorkAreaJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(218, 218, 218)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(147, 147, 147)
-                                .addComponent(btnViewPatientDetails))))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(304, 304, 304)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(59, 59, 59)
+                                .addComponent(btnViewPatientDetails))
+                            .addComponent(btnOtherAddictions))))
                 .addContainerGap(230, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -149,23 +162,38 @@ public class RehabManagerWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addGap(10, 10, 10)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(91, 91, 91)
+                .addGap(85, 85, 85)
                 .addComponent(btnViewPatientDetails)
-                .addContainerGap(229, Short.MAX_VALUE))
+                .addGap(46, 46, 46)
+                .addComponent(btnOtherAddictions)
+                .addContainerGap(160, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnViewPatientDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewPatientDetailsActionPerformed
         // TODO add your handling code here:
-        Patient patient = (Patient) tblPatient.getValueAt(tblPatient.getSelectedRow(), 1);
-        PatientDetailsJPanel patientDetails = new PatientDetailsJPanel(userProcessContainer, patient, ecosystemPatientDirectory);
-        userProcessContainer.add("PatientDetailsJPanel", patientDetails);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
 
+        if (tblPatient.getValueAt(tblPatient.getSelectedRow(), 1) != null) {
+            Patient patient = (Patient) tblPatient.getValueAt(tblPatient.getSelectedRow(), 1);
+            PatientDetailsJPanel patientDetails = new PatientDetailsJPanel(userProcessContainer, patient, ecosystemPatientDirectory);
+            userProcessContainer.add("PatientDetailsJPanel", patientDetails);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
+        }
+        {
+            JOptionPane.showMessageDialog(null, "No row selected! Notthing to display!");
+        }
     }//GEN-LAST:event_btnViewPatientDetailsActionPerformed
 
+    private void btnOtherAddictionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOtherAddictionsActionPerformed
+        // TODO add your handling code here:
+        HashMap<String, Integer> otherAddictionsCausedByOpioidAbuseMap = organization.otherAddictionsCausedByOpioidAbuse();
+
+
+    }//GEN-LAST:event_btnOtherAddictionsActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnOtherAddictions;
     private javax.swing.JButton btnViewPatientDetails;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

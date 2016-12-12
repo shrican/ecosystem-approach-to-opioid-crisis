@@ -41,11 +41,10 @@ public class OrderOpioidsJPanel extends javax.swing.JPanel {
         this.chemistOrganization = chemistOrganization;
         this.network = network;
         this.chemistUserAccount = userAccount;
+
         populateSupplierComboBox();
-//        calculateStock();
         populateCurrentStock();
         populateOrderTable();
-
     }
 
     public void calculateStock() {
@@ -67,7 +66,7 @@ public class OrderOpioidsJPanel extends javax.swing.JPanel {
     public void populateSupplierComboBox() {
         for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()) {
             if (e.getEnterpriseType().getValue().equals("Pharmaceutical Company Enterprise")) {
-                comboBoxPharmaceuticalCompanies.addItem(e);
+                comboBoxPharmaceuticalCompanies.addItem(e.getName());
             }
         }
     }
@@ -177,107 +176,114 @@ public class OrderOpioidsJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel5))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(btnBack))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 801, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(41, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(240, 240, 240)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(283, 283, 283)
-                        .addComponent(btnOrder))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(99, 99, 99)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(comboBoxPharmaceuticalCompanies, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtFieldOrderAmount)
-                            .addComponent(txtFieldCurrentStock, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(236, 236, 236))
+                .addGap(15, 15, 15)
+                .addComponent(jLabel5))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 801, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(241, 241, 241)
+                .addComponent(jLabel1)
+                .addGap(144, 144, 144)
+                .addComponent(comboBoxPharmaceuticalCompanies, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(241, 241, 241)
+                .addComponent(jLabel3)
+                .addGap(106, 106, 106)
+                .addComponent(txtFieldCurrentStock, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(241, 241, 241)
+                .addComponent(jLabel2)
+                .addGap(99, 99, 99)
+                .addComponent(txtFieldOrderAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(524, 524, 524)
+                .addComponent(btnOrder))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(btnBack))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(16, 16, 16)
                 .addComponent(jLabel5)
                 .addGap(55, 55, 55)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(55, 55, 55)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel1))
                     .addComponent(comboBoxPharmaceuticalCompanies, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel3))
                     .addComponent(txtFieldCurrentStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel2))
                     .addComponent(txtFieldOrderAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
                 .addComponent(btnOrder)
                 .addGap(96, 96, 96)
-                .addComponent(btnBack)
-                .addGap(83, 83, 83))
+                .addComponent(btnBack))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
         // TODO add your handling code here:
 
-        Enterprise pharmaceuticalCompanyEnterprise = null;
-        Organization pharmaceuticalCompanyManagerOrganization = null;
+        if (txtFieldOrderAmount.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Kindly enter order amount!");
+        } else {
 
-        PharmacySupplyWorkRequest pharmacySupplyWorkRequest = new PharmacySupplyWorkRequest();
-        pharmacySupplyWorkRequest.setOrderAmount(Integer.parseInt(txtFieldOrderAmount.getText()));
-        pharmacySupplyWorkRequest.setStatus("Opioids Order Pending");
-        pharmacySupplyWorkRequest.setSender(chemistUserAccount);
-        pharmacySupplyWorkRequest.setRequesterName(chemistOrganization.getName());
-        pharmacySupplyWorkRequest.setSenderName(comboBoxPharmaceuticalCompanies.getSelectedItem().toString());
+            Enterprise pharmaceuticalCompanyEnterprise = null;
+            Organization pharmaceuticalCompanyManagerOrganization = null;
 
-        chemistUserAccount.getWorkQueue().getWorkRequestList().add(pharmacySupplyWorkRequest);
-        chemistOrganization.getWorkQueue().getWorkRequestList().add(pharmacySupplyWorkRequest);
+            PharmacySupplyWorkRequest pharmacySupplyWorkRequest = new PharmacySupplyWorkRequest();
+            pharmacySupplyWorkRequest.setOrderAmount(Integer.parseInt(txtFieldOrderAmount.getText()));
+            pharmacySupplyWorkRequest.setStatus("Opioids Order Pending");
+            pharmacySupplyWorkRequest.setSender(chemistUserAccount);
+            pharmacySupplyWorkRequest.setRequesterName(chemistOrganization.getName());
+            pharmacySupplyWorkRequest.setSenderName(comboBoxPharmaceuticalCompanies.getSelectedItem().toString());
 
-        for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
-            if (enterprise instanceof PharmaceuticalCompanyEnterprise) {
-                pharmaceuticalCompanyEnterprise = enterprise;
-                break;
-            }
-        }
-
-        for (Organization organization : pharmaceuticalCompanyEnterprise.getOrganizationDirectory().getOrganizationList()) {
-            if (organization instanceof PharmaceuticalCompanyManagerOrganization) {
-                pharmaceuticalCompanyManagerOrganization = organization;
-                break;
-            }
-        }
-
-        if (pharmaceuticalCompanyManagerOrganization != null) {
-            pharmaceuticalCompanyManagerOrganization.getWorkQueue().getWorkRequestList().add(pharmacySupplyWorkRequest);
-            chemistUserAccount.getWorkQueue().getWorkRequestList().add(pharmacySupplyWorkRequest);
-            for (UserAccount account : pharmaceuticalCompanyManagerOrganization.getUserAccountDirectory().getUserAccountList()) {
-                {
-                    account.getWorkQueue().getWorkRequestList().add(pharmacySupplyWorkRequest);
-                    pharmacySupplyWorkRequest.setReceiver(account);
-
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                if (enterprise instanceof PharmaceuticalCompanyEnterprise) {
+                    pharmaceuticalCompanyEnterprise = enterprise;
+                    break;
                 }
             }
+
+            for (Organization organization : pharmaceuticalCompanyEnterprise.getOrganizationDirectory().getOrganizationList()) {
+                if (organization instanceof PharmaceuticalCompanyManagerOrganization) {
+                    pharmaceuticalCompanyManagerOrganization = organization;
+                    break;
+                }
+            }
+
+            if (pharmaceuticalCompanyManagerOrganization != null) {
+                pharmaceuticalCompanyManagerOrganization.getWorkQueue().getWorkRequestList().add(pharmacySupplyWorkRequest);
+                chemistUserAccount.getWorkQueue().getWorkRequestList().add(pharmacySupplyWorkRequest);
+                for (UserAccount account : pharmaceuticalCompanyManagerOrganization.getUserAccountDirectory().getUserAccountList()) {
+                    {
+                        account.getWorkQueue().getWorkRequestList().add(pharmacySupplyWorkRequest);
+                        pharmacySupplyWorkRequest.setReceiver(account);
+
+                    }
+                }
+                chemistUserAccount.getWorkQueue().getWorkRequestList().add(pharmacySupplyWorkRequest);
+                chemistOrganization.getWorkQueue().getWorkRequestList().add(pharmacySupplyWorkRequest);
+                JOptionPane.showMessageDialog(null, chemistOrganization.getName() + " has confirmed an order of " + pharmacySupplyWorkRequest.getOrderAmount() + " opioids from " + pharmaceuticalCompanyManagerOrganization);
+
+            }
+
+            populateOrderTable();
         }
-
-        JOptionPane.showMessageDialog(null, chemistOrganization.getName() + " has confirmed an order of " + pharmacySupplyWorkRequest.getOrderAmount() + " opioids from " + pharmaceuticalCompanyManagerOrganization);
-
-        populateOrderTable();
     }//GEN-LAST:event_btnOrderActionPerformed
 
     private void comboBoxPharmaceuticalCompaniesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxPharmaceuticalCompaniesActionPerformed
